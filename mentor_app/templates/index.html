@@ -1,0 +1,753 @@
+<!DOCTYPE html> 
+<!-- saved from url=(0036)http://demo.themeum.com/html/oxygen/ -->
+
+ {% load staticfiles %}
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}
+</style><link type="text/css" rel="stylesheet" href="./css"><style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}
+</style><style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style><style type="text/css">.gm-style-pbc{transition:opacity ease-in-out;background-color:rgba(0,0,0,0.45);text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}
+</style>
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Oxygen - One Page HTML Template | Themeum</title>
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/animate.min.css' %}" rel="stylesheet"> 
+  <link href="{% static 'css/font-awesome.min(1).css' %}" rel="stylesheet">
+  <link href="{% static 'css/lightbox.css' %}" rel="stylesheet">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link id="css-preset" href="{% static 'css/css-preset.css' %}" rel="stylesheet">
+  <link href="{% static 'css/css-preset1.css' %}" rel="stylesheet">
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+  
+  
+  <style type="text/css">
+    .gm-style {
+        font: 400 11px Roboto, Arial, sans-serif;
+        text-decoration: none;
+      }
+      .gm-style img { max-width: none; }
+
+      #about-us {
+        background-image: url("{% static '/images/about.jpg' %}");
+        padding: 60px 0;
+      }
+      #twitter {
+        background-image: url("{% static 'images/tweets.jpg' %}");
+        padding-bottom: 120px;
+      }
+      #contact-us {
+        background-image:url("{% static 'images/contact.jpg' %}");
+        padding-bottom: 90px; 
+      }
+	</style>
+	<script type="text/javascript" charset="UTF-8" src="./onion.js.download"></script>
+	<script type="text/javascript" charset="UTF-8" src="./controls.js.download"></script></head><!--/head-->
+
+  <body>
+
+    <!--.preloader-->
+    
+    <!--/.preloader-->
+
+    <header id="home">
+      <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="item" style="background-image: url('{% static 'images/mentor.jpg' %}'); height: 672px;">
+            <div class="caption">
+              <h1 class="animated fadeInLeftBig">This is <span>thebossoffice.com</span></h1>
+              <p class="animated fadeInRightBig">We bring you close enough to mentors that can collaborate with you to  achieve that dream</p>
+              <a data-scroll="" class="btn btn-start animated fadeInUpBig" href="http://demo.themeum.com/html/oxygen/#services">Start now</a>
+            </div>
+          </div>
+          <div class="item" style="background-image: url('{% static 'images/mentee.jpg' %}'); height: 672px;">
+            <div class="caption">
+              <h1 class="animated fadeInLeftBig"><span>THEBOSSOFFICE.COM</span></h1>
+              <p class="animated fadeInRightBig">Mentorship | Business Success</p>
+              <a data-scroll="" class="btn btn-start animated fadeInUpBig" href="http://demo.themeum.com/html/oxygen/#services">Start now</a>
+            </div>
+          </div>
+          <div class="item active" style="background-image: url('{% static 'images/work.jpg' %}'); height: 672px;">
+            <div class="caption">
+              <h1 class="animated fadeInLeftBig"><span>thebossoffice</span></h1>
+              <p class="animated fadeInRightBig">Mentorship | Business Success</p>
+              <a data-scroll="" class="btn btn-start animated fadeInUpBig" href="#">Apply as a Mentee</a>
+               <a data-scroll="" class="btn btn-start animated fadeInUpBig" href="#">Apply as a Mentor</a>
+            </div>
+          </div>
+        </div>
+        <a class="left-control" href="http://demo.themeum.com/html/oxygen/#home-slider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+        <a class="right-control" href="http://demo.themeum.com/html/oxygen/#home-slider" data-slide="next"><i class="fa fa-angle-right"></i></a>
+
+        <a id="tohash" href="http://demo.themeum.com/html/oxygen/#services"><i class="fa fa-angle-down"></i></a>
+
+      </div><!--/#home-slider-->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://demo.themeum.com/html/oxygen/index.html">
+              <img class="img-responsive" src="{% static 'images/logo.png' %}" alt="logo" width="100" height="100">
+            </a>                    
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">                 
+              <li class="scroll active"><a href="http://demo.themeum.com/html/oxygen/#services">Meet a Mentor</a></li> 
+              <li class="scroll"><a href="http://demo.themeum.com/html/oxygen/#about-us">Meet an Expert</a></li>                     
+              <li class="scroll"><a href="http://demo.themeum.com/html/oxygen/#portfolio">Apply as a Mentor</a></li>
+              <li class="scroll"><a href="http://demo.themeum.com/html/oxygen/#team">Team</a></li>
+              <li class="scroll"><a href="http://demo.themeum.com/html/oxygen/#blog">Blog</a></li>
+              <li class="scroll"><a href="http://demo.themeum.com/html/oxygen/#contact">Contact</a></li>       
+            </ul>
+          </div>
+        </div>
+      </div><!--/.navbar-->
+    </header><!--/#home-->
+    
+    <section id="about-us" class="parallax">
+      <div class="container">
+        <div class="row">
+        <div class="col-md-6"></div>
+          <div class="col-sm-6">
+            <div class="about-info wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+              <h2>About us</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.Ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!--/#about-us-->
+
+    <section id="portfolio">
+      <div class="container">
+        <div class="row">
+          <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+            <h2>Our Featured Experts</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam</p>
+          </div>
+        </div> 
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="folio-item wow fadeInRightBig animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInRightBig;">
+              <div class="folio-image">
+                <img class="img-responsive" src="{% static 'images/1.jpg' %}" alt="">
+              </div>
+              <div class="overlay">
+                <div class="overlay-content">
+                  <div class="overlay-text">
+                    <div class="folio-info">
+                      <h3>Time Hours</h3>
+                      <p>Design, Photography</p>
+                    </div>
+                    <div class="folio-overview">
+                      <span class="folio-link"><a class="folio-read-more" href="http://demo.themeum.com/html/oxygen/#" data-single_url="portfolio-single.html"><i class="fa fa-link"></i></a></span>
+                      <span class="folio-expand"><a href="http://demo.themeum.com/html/oxygen/images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="folio-item wow fadeInLeftBig animated" data-wow-duration="1000ms" data-wow-delay="400ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 400ms; animation-name: fadeInLeftBig;">
+              <div class="folio-image">
+                <img class="img-responsive" src="{% static 'images/2.jpg' %}" alt="">
+              </div>
+              <div class="overlay">
+                <div class="overlay-content">
+                  <div class="overlay-text">
+                    <div class="folio-info">
+                      <h3>Time Hours</h3>
+                      <p>Design, Photography</p>
+                    </div>
+                    <div class="folio-overview">
+                      <span class="folio-link"><a class="folio-read-more" href="http://demo.themeum.com/html/oxygen/#" data-single_url="portfolio-single.html"><i class="fa fa-link"></i></a></span>
+                      <span class="folio-expand"><a href="http://demo.themeum.com/html/oxygen/images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="folio-item wow fadeInRightBig animated" data-wow-duration="1000ms" data-wow-delay="500ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 500ms; animation-name: fadeInRightBig;">
+              <div class="folio-image">
+                <img class="img-responsive" src="{% static 'images/3.jpg' %}" alt="">
+              </div>
+              <div class="overlay">
+                <div class="overlay-content">
+                  <div class="overlay-text">
+                    <div class="folio-info">
+                      <h3>Time Hours</h3>
+                      <p>Design, Photography</p>
+                    </div>
+                    <div class="folio-overview">
+                      <span class="folio-link"><a class="folio-read-more" href="http://demo.themeum.com/html/oxygen/#" data-single_url="portfolio-single.html"><i class="fa fa-link"></i></a></span>
+                      <span class="folio-expand"><a href="http://demo.themeum.com/html/oxygen/images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="folio-item wow fadeInLeftBig animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 600ms; animation-name: fadeInLeftBig;">
+              <div class="folio-image">
+                <img class="img-responsive" src="{% static 'images/4.jpg' %}" alt="">
+              </div>
+              <div class="overlay">
+                <div class="overlay-content">
+                  <div class="overlay-text">
+                    <div class="folio-info">
+                      <h3>Time Hours</h3>
+                      <p>Design, Photography</p>
+                    </div>
+                    <div class="folio-overview">
+                      <span class="folio-link"><a class="folio-read-more" href="http://demo.themeum.com/html/oxygen/#" data-single_url="portfolio-single.html"><i class="fa fa-link"></i></a></span>
+                      <span class="folio-expand"><a href="http://demo.themeum.com/html/oxygen/images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="folio-item wow fadeInRightBig animated" data-wow-duration="1000ms" data-wow-delay="700ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 700ms; animation-name: fadeInRightBig;">
+              <div class="folio-image">
+                <img class="img-responsive" src="{% static 'images/5.jpg' %}" alt="">
+              </div>
+              <div class="overlay">
+                <div class="overlay-content">
+                  <div class="overlay-text">
+                    <div class="folio-info">
+                      <h3>Time Hours</h3>
+                      <p>Design, Photography</p>
+                    </div>
+                    <div class="folio-overview">
+                      <span class="folio-link"><a class="folio-read-more" href="http://demo.themeum.com/html/oxygen/#" data-single_url="portfolio-single.html"><i class="fa fa-link"></i></a></span>
+                      <span class="folio-expand"><a href="http://demo.themeum.com/html/oxygen/images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="folio-item wow fadeInLeftBig animated" data-wow-duration="1000ms" data-wow-delay="800ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 800ms; animation-name: fadeInLeftBig;">
+              <div class="folio-image">
+                <img class="img-responsive" src="{% static 'images/6.jpg' %}" alt="">
+              </div>
+              <div class="overlay">
+                <div class="overlay-content">
+                  <div class="overlay-text">
+                    <div class="folio-info">
+                      <h3>Time Hours</h3>
+                      <p>Design, Photography</p>
+                    </div>
+                    <div class="folio-overview">
+                      <span class="folio-link"><a class="folio-read-more" href="http://demo.themeum.com/html/oxygen/#" data-single_url="portfolio-single.html"><i class="fa fa-link"></i></a></span>
+                      <span class="folio-expand"><a href="http://demo.themeum.com/html/oxygen/images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="folio-item wow fadeInRightBig animated" data-wow-duration="1000ms" data-wow-delay="900ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 900ms; animation-name: fadeInRightBig;">
+              <div class="folio-image">
+                <img class="img-responsive" src="{% static 'images/7.jpg' %}" alt="">
+              </div>
+              <div class="overlay">
+                <div class="overlay-content">
+                  <div class="overlay-text">
+                    <div class="folio-info">
+                      <h3>Time Hours</h3>
+                      <p>Design, Photography</p>
+                    </div>
+                    <div class="folio-overview">
+                      <span class="folio-link"><a class="folio-read-more" href="http://demo.themeum.com/html/oxygen/#" data-single_url="portfolio-single.html"><i class="fa fa-link"></i></a></span>
+                      <span class="folio-expand"><a href="http://demo.themeum.com/html/oxygen/images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="folio-item wow fadeInLeftBig animated" data-wow-duration="1000ms" data-wow-delay="1000ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 1000ms; animation-name: fadeInLeftBig;">
+              <div class="folio-image">
+                <img class="img-responsive" src="{% static 'images/8.jpg' %}" alt="">
+                <h3 style="padding: 10px; position: absolute; bottom: 0px; text-align: center; left: 0px; color: #fff; width: 100%; background: rgba(0,0,0,0.4);">Pastor, Emmanuel</h3>
+              </div>
+              <div class="overlay">
+                <div class="overlay-content">
+                  <div class="overlay-text">
+                    <div class="folio-info">
+                      <h3>Pastor, Emmanuel</h3>
+                      <p>Design, Photography</p>
+                    </div>
+                    <div class="folio-overview">
+                      <span class="folio-link"><a class="folio-read-more" href="http://demo.themeum.com/html/oxygen/#" data-single_url="portfolio-single.html"><i class="fa fa-link"></i></a></span>
+                      <span class="folio-expand"><a href="http://demo.themeum.com/html/oxygen/images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="portfolio-single-wrap">
+        <div id="portfolio-single">
+        </div>
+      </div><!-- /#portfolio-single-wrap -->
+    </section><!--/#portfolio-->
+
+    <section id="twitter" class="parallax">
+      <div>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 wow fadeIn animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeIn;">
+              <div class="twitter-icon text-center">
+                <i class="fa fa-twitter"></i>
+                <h4>thebossoffice.com</h4>
+              </div>
+              <div id="twitter-carousel" class="carousel slide" data-ride="carousel">
+
+                <ol class="carousel-indicators">
+                  <li data-target="#twitter-carousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#twitter-carousel" data-slide-to="1" class=""></li>
+                  <li data-target="#twitter-carousel" data-slide-to="2" class=""></li>
+                </ol><!-- /.carousel-indicators -->
+
+                <div class="carousel-inner">
+                  <div class="item active">
+                    <p>Introducing Shortcode generator for Helix V2 based templates <a href="http://demo.themeum.com/html/oxygen/#"><span>#helixframework #joomla</span> http://bit.ly/1qlgwav</a></p>
+                  </div>
+                  <div class="item">
+                    <p>Introducing Shortcode generator for Helix V2 based templates <a href="http://demo.themeum.com/html/oxygen/#"><span>#helixframework #joomla</span> http://bit.ly/1qlgwav</a></p>
+                  </div>
+                  <div class="item">                                
+                    <p>Introducing Shortcode generator for Helix V2 based templates <a href="http://demo.themeum.com/html/oxygen/#"><span>#helixframework #joomla</span> http://bit.ly/1qlgwav</a></p>
+                  </div>
+                </div>                        
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!--/#twitter-->
+     <section id="team">
+      <div class="container">
+        <div class="row">
+          <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp animated" data-wow-duration="1200ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1200ms; animation-delay: 300ms; animation-name: fadeInUp;">
+            <h2>Meet The Team</h2>
+            <h4>Thebossoffice has 700 years cumulative experience in startups and MSMEs support services.<br> 
+            </h4>
+            <p>Feel free to contact us:</p>
+          </div>
+        </div>
+         <hr>
+        <div class="team-members">
+          <div class="row">
+            <div class="col-sm-6 col-md-3">
+              <div class="team-member wow flipInY animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: flipInY;">
+                <div class="member-image">
+                  <img class="img-responsive" src="{% static '/images/tereigh.jpg' %}" alt="">
+                </div>
+                <div class="member-info">
+                  <h3>Tereigh Ozakpo</h3>
+                  <h4>Head, Strategy</h4>
+                  <p>Tereigh is passionate about success, especially business success. 
+                  He is an avid business development consultant
+                  </p>
+                  <p>tereigh.o@thebossoffice.com</p>
+                </div>
+                <div class="social-icons">
+                  <ul>
+                    <li><a class="facebook" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a class="twitter" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a class="linkedin" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a class="dribbble" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a class="rss" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-rss"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <div class="team-member wow flipInY animated" data-wow-duration="1000ms" data-wow-delay="500ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 500ms; animation-name: flipInY;">
+                <div class="member-image">
+                  <img class="img-responsive" src="{% static '/images/lawretta.jpg' %}" alt="">
+                </div>
+                <div class="member-info">
+                  <h3>Barrister Lawretta</h3>
+                  <h4>Head, Legal/HR</h4>
+                  <p>Barrister Lawretta  has experience across three continents in Legal services. She has great interest in the MSMEs sector</p>
+                  <p>lawretta.m@thebossoffice.com</p>
+                </div>
+                <div class="social-icons">
+                  <ul>
+                    <li><a class="facebook" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a class="twitter" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a class="linkedin" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a class="dribbble" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a class="rss" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-rss"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <div class="team-member wow flipInY animated" data-wow-duration="1000ms" data-wow-delay="800ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 800ms; animation-name: flipInY;">
+                <div class="member-image">
+                  <img class="img-responsive" src="{% static '/images/jerry.jpg' %}" alt="">
+                </div>
+                <div class="member-info">
+                  <h3>Jerry Ogunbaro</h3>
+                  <h4>Head, Brand/Comms</h4>
+                  <p>Jerry is an avid graphics designer and media marketing expert. 
+                  He has led PR units for reputable companies in Nigeria</p>
+                  <p>jeremiah.o@thebossoffice.com</p>
+                </div>
+                <div class="social-icons">
+                  <ul>
+                    <li><a class="facebook" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a class="twitter" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a class="linkedin" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a class="dribbble" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a class="rss" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-rss"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <div class="team-member wow flipInY animated" data-wow-duration="1000ms" data-wow-delay="1100ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 1100ms; animation-name: flipInY;">
+                <div class="member-image">
+                  <img class="img-responsive" src="{% static '/images/bunmi.png' %}" alt="">
+                </div>
+                <div class="member-info">
+                  <h3>Bunmi Jembola</h3>
+                  <h4>Head, Mentor Mgt</h4>
+                  <p>Bunmi resigned from one of the leading banks in Nigeria to start Venture Starter so as to support MSMEs in Nigeria</p>
+                  <p>bunmi.j@thebossoffice.com</p>
+                </div>
+                <div class="social-icons">
+                  <ul>
+                    <li><a class="facebook" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a class="twitter" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a class="linkedin" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a class="dribbble" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a class="rss" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-rss"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 col-md-3">
+              <div class="team-member wow flipInY animated" data-wow-duration="1000ms" data-wow-delay="1100ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 1100ms; animation-name: flipInY;">
+                <div class="member-image">
+                  <img class="img-responsive" src="{% static '/images/bunmi.png' %}" alt="">
+                </div>
+                <div class="member-info">
+                  <h3>Bunmi Jembola</h3>
+                  <h4>Head, Mentor Mgt</h4>
+                  <p>Bunmi resigned from one of the leading banks in Nigeria to start Venture Starter so as to support MSMEs in Nigeria</p>
+                  <p>bunmi.j@thebossoffice.com</p>
+                </div>
+                <div class="social-icons">
+                  <ul>
+                    <li><a class="facebook" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a class="twitter" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a class="linkedin" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a class="dribbble" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a class="rss" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-rss"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <div class="team-member wow flipInY animated" data-wow-duration="1000ms" data-wow-delay="1100ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 1100ms; animation-name: flipInY;">
+                <div class="member-image">
+                  <img class="img-responsive" src="{% static '/images/bunmi.png' %}" alt="">
+                </div>
+                <div class="member-info">
+                  <h3>Bunmi Jembola</h3>
+                  <h4>Head, Mentor Mgt</h4>
+                  <p>Bunmi resigned from one of the leading banks in Nigeria to start Venture Starter so as to support MSMEs in Nigeria</p>
+                  <p>bunmi.j@thebossoffice.com</p>
+                </div>
+                <div class="social-icons">
+                  <ul>
+                    <li><a class="facebook" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a class="twitter" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a class="linkedin" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a class="dribbble" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a class="rss" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-rss"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <div class="team-member wow flipInY animated" data-wow-duration="1000ms" data-wow-delay="1100ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 1100ms; animation-name: flipInY;">
+                <div class="member-image">
+                  <img class="img-responsive" src="{% static '/images/bunmi.png' %}" alt="">
+                </div>
+                <div class="member-info">
+                  <h3>Bunmi Jembola</h3>
+                  <h4>Head, Mentor Mgt</h4>
+                  <p>Bunmi resigned from one of the leading banks in Nigeria to start Venture Starter so as to support MSMEs in Nigeria</p>
+                  <p>bunmi.j@thebossoffice.com</p>
+                </div>
+                <div class="social-icons">
+                  <ul>
+                    <li><a class="facebook" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a class="twitter" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a class="linkedin" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a class="dribbble" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a class="rss" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-rss"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <div class="team-member wow flipInY animated" data-wow-duration="1000ms" data-wow-delay="1100ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 1100ms; animation-name: flipInY;">
+                <div class="member-image">
+                  <img class="img-responsive" src="{% static '/images/bunmi.png' %}" alt="">
+                </div>
+                <div class="member-info">
+                  <h3>Bunmi Jembola</h3>
+                  <h4>Head, Mentor Mgt</h4>
+                  <p>Bunmi resigned from one of the leading banks in Nigeria to start Venture Starter so as to support MSMEs in Nigeria</p>
+                  <p>bunmi.j@thebossoffice.com</p>
+                </div>
+                <div class="social-icons">
+                  <ul>
+                    <li><a class="facebook" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a class="twitter" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a class="linkedin" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a class="dribbble" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a class="rss" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-rss"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>            
+      </div>
+    </section><!--/#team-->
+
+    <section id="blog">
+      <div class="container">
+        <div class="row">
+          <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1200ms" data-wow-delay="300ms" style="visibility: hidden; animation-duration: 1200ms; animation-delay: 300ms; animation-name: none;">
+            <h2>Blog Posts</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam</p>
+          </div>
+        </div>
+        <div class="blog-posts">
+          <div class="row">
+            <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms" style="visibility: hidden; animation-duration: 1000ms; animation-delay: 400ms; animation-name: none;">
+              <div class="post-thumb">
+                <a href="http://demo.themeum.com/html/oxygen/#"><img class="img-responsive" src="{% static 'images/1(2).jpg' %}" alt=""></a> 
+                <div class="post-meta">
+                  <span><i class="fa fa-comments-o"></i> 3 Comments</span>
+                  <span><i class="fa fa-heart"></i> 0 Likes</span> 
+                </div>
+                <div class="post-icon">
+                  <i class="fa fa-pencil"></i>
+                </div>
+              </div>
+              <div class="entry-header">
+                <h3><a href="http://demo.themeum.com/html/oxygen/#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h3>
+                <span class="date">June 26, 2014</span>
+                <span class="cetagory">in <strong>Photography</strong></span>
+              </div>
+              <div class="entry-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              </div>
+            </div>
+            <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: hidden; animation-duration: 1000ms; animation-delay: 600ms; animation-name: none;">
+              <div class="post-thumb">
+                <div id="post-carousel" class="carousel slide" data-ride="carousel">
+                  <ol class="carousel-indicators">
+                    <li data-target="#post-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#post-carousel" data-slide-to="1" class=""></li>
+                    <li data-target="#post-carousel" data-slide-to="2" class=""></li>
+                  </ol>
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <a href="http://demo.themeum.com/html/oxygen/#"><img class="img-responsive" src="{% static 'images/3(2).jpg' %}" alt=""></a>
+                    </div>
+                    <div class="item">
+                      <a href="http://demo.themeum.com/html/oxygen/#"><img class="img-responsive" src="{% static 'images/2(2).jpg' %}" alt=""></a>
+                    </div>
+                    <div class="item">
+                      <a href="http://demo.themeum.com/html/oxygen/#"><img class="img-responsive" src="{% static 'images/1(2).jpg' %}" alt=""></a>
+                    </div>
+                  </div>                               
+                  <a class="blog-left-control" href="http://demo.themeum.com/html/oxygen/#post-carousel" role="button" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+                  <a class="blog-right-control" href="http://demo.themeum.com/html/oxygen/#post-carousel" role="button" data-slide="next"><i class="fa fa-angle-right"></i></a>
+                </div>                            
+                <div class="post-meta">
+                  <span><i class="fa fa-comments-o"></i> 3 Comments</span>
+                  <span><i class="fa fa-heart"></i> 0 Likes</span> 
+                </div>
+                <div class="post-icon">
+                  <i class="fa fa-picture-o"></i>
+                </div>
+              </div>
+              <div class="entry-header">
+                <h3><a href="http://demo.themeum.com/html/oxygen/#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h3>
+                <span class="date">June 26, 2014</span>
+                <span class="cetagory">in <strong>Photography</strong></span>
+              </div>
+              <div class="entry-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              </div>
+            </div>
+            <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="800ms" style="visibility: hidden; animation-duration: 1000ms; animation-delay: 800ms; animation-name: none;">
+              <div class="post-thumb">
+                <a href="http://demo.themeum.com/html/oxygen/#"><img class="img-responsive" src="{% static 'images/3(2).jpg' %}" alt=""></a>
+                <div class="post-meta">
+                  <span><i class="fa fa-comments-o"></i> 3 Comments</span>
+                  <span><i class="fa fa-heart"></i> 0 Likes</span> 
+                </div>
+                <div class="post-icon">
+                  <i class="fa fa-video-camera"></i>
+                </div>
+              </div>
+              <div class="entry-header">
+                <h3><a href="http://demo.themeum.com/html/oxygen/#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h3>
+                <span class="date">June 26, 2014</span>
+                <span class="cetagory">in <strong>Photography</strong></span>
+              </div>
+              <div class="entry-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              </div>
+            </div>                    
+          </div>
+          <div class="load-more wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms" style="visibility: hidden; animation-duration: 1000ms; animation-delay: 500ms; animation-name: none;">
+            <a href="http://demo.themeum.com/html/oxygen/#" class="btn btn-loadmore"><i class="fa fa-repeat"></i> See Other Posts</a>
+          </div>                
+        </div>
+      </div>
+    </section><!--/#blog-->
+
+    <section id="contact">
+      
+      <div id="contact-us" class="parallax">
+        <div class="container">
+          <div class="row">
+            <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: hidden; animation-duration: 1000ms; animation-delay: 300ms; animation-name: none;">
+              <h2>Contact Us</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam</p>
+            </div>
+          </div>
+          <div class="contact-form wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: hidden; animation-duration: 1000ms; animation-delay: 600ms; animation-name: none;">
+            <div class="row">
+              <div class="col-sm-6">
+                <form id="main-contact-form" name="contact-form" method="post" action="http://demo.themeum.com/html/oxygen/#">
+                  <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: hidden; animation-duration: 1000ms; animation-delay: 300ms; animation-name: none;">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Name" required="required">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="Email Address" required="required">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="subject" class="form-control" placeholder="Subject" required="required">
+                  </div>
+                  <div class="form-group">
+                    <textarea name="message" id="message" class="form-control" rows="4" placeholder="Enter your message" required="required"></textarea>
+                  </div>                        
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Send Now</button>
+                  </div>
+                </form>   
+              </div>
+              <div class="col-sm-6">
+                <div class="contact-info wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: hidden; animation-duration: 1000ms; animation-delay: 300ms; animation-name: none;">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                  <ul class="address">
+                    <li><i class="fa fa-map-marker"></i> <span> Address:</span> 2400 South Avenue A </li>
+                    <li><i class="fa fa-phone"></i> <span> Phone:</span> +928 336 2000  </li>
+                    <li><i class="fa fa-envelope"></i> <span> Email:</span><a href="mailto:someone@yoursite.com"> support@oxygen.com</a></li>
+                    <li><i class="fa fa-globe"></i> <span> Website:</span> <a href="http://demo.themeum.com/html/oxygen/#">www.sitename.com</a></li>
+                  </ul>
+                </div>                            
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>        
+    </section><!--/#contact-->
+    <footer id="footer">
+      <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: hidden; animation-duration: 1000ms; animation-delay: 300ms; animation-name: none;">
+        <div class="container text-center">
+          <div class="footer-logo">
+            <a href="http://demo.themeum.com/html/oxygen/index.html"><img class="img-responsive" src="{% static 'images/logo.png' %}" alt="" width="70" height="70"></a>
+          </div>
+          <div class="social-icons">
+            <ul>
+              <li><a class="envelope" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-envelope"></i></a></li>
+              <li><a class="twitter" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-twitter"></i></a></li> 
+              <li><a class="dribbble" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-dribbble"></i></a></li>
+              <li><a class="facebook" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="linkedin" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-linkedin"></i></a></li>
+              <li><a class="tumblr" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-tumblr-square"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6">
+              <p>© 2014 Oxygen Theme.</p>
+            </div>
+            <div class="col-sm-6">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="text/javascript" charset="UTF-8" src="{% static 'js/common.js' %}">
+    </script><script type="text/javascript" charset="UTF-8" src="{% static 'js/util.js' %}"></script>
+    <script type="text/javascript" charset="UTF-8" src="{% static 'js/stats.js' %}"></script>
+    <script type="text/javascript" charset="UTF-8" src="{% static 'js/map.js' %}"></script>
+    <script type="text/javascript" charset="UTF-8" src="{% static 'js/marker.js' %}"></script>
+    <script type="text/javascript" charset="UTF-8" src="{% static 'js/infowindow.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.inview.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/wow.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mousescroll.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/smoothscroll.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.countTo.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/lightbox.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script> 
+ </body>
+</html>

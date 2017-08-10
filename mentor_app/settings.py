@@ -11,10 +11,12 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -25,7 +27,11 @@ SECRET_KEY = 'i-a=nwysyhwu8^xhck3k78oar=%fryvcn^5c7n7m-_=a6+!2-6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ADMINS = (
+    ('Pastor Emmanuel', 'pastorenuel@gmail.com'),
+)
+
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #install apps 
+    'accounts',
+    'mentee',
+    'mentor',
+    'expert',
+    'contacts',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +66,9 @@ ROOT_URLCONF = 'mentor_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+                os.path.join(PROJECT_DIR, 'templates'),
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -105,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Lagos'
 
 USE_I18N = True
 
@@ -118,3 +132,27 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_DIR, 'static'),
+)
+
+#Login Credentials and urls
+LOGIN_URL = '/accounts/login/' #reverse_lazy('login') ##VERY HARMFUL TO LOGINREQUIRED VIEWS
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGOUT_REDIRECT_URL = 'home'
+
+PAGE_SIZE = 20
+PAGE_ORPHANS = 5        
+
+#Email_configuration
+DEFAULT_FROM_EMAIL = 'noreply@thebossoffice.com'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '' #'emails.address.email_addr'
+EMAIL_HOST_PASSWORD = ''
