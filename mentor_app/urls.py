@@ -21,7 +21,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
+    url(r'^home$', TemplateView.as_view(template_name='index.html'), name='home'),
+    url(r'^$', TemplateView.as_view(template_name='landing.html'), name='landing'),
     # url(r'^accounts/', include('accounts.urls', namespace='accounts')),
     # url(r'^mentee/', include('mentee.urls', namespace='mentee')),
     # url(r'^mentor/', include('mentor.urls', namespace='mentor')),

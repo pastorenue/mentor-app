@@ -1,0 +1,155 @@
+<!DOCTYPE html> 
+<!-- saved from url=(0036)http://demo.themeum.com/html/oxygen/ -->
+
+ {% load staticfiles %}
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}
+</style><link type="text/css" rel="stylesheet" href="./css"><style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}
+</style><style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style><style type="text/css">.gm-style-pbc{transition:opacity ease-in-out;background-color:rgba(0,0,0,0.45);text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}
+</style>
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>thebossofice.com</title>
+  <link href="{% static 'css/css-preset1.css' %}" rel="stylesheet">
+   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/animate.min.css' %}" rel="stylesheet"> 
+  <link href="{% static 'css/font-awesome.min(1).css' %}" rel="stylesheet">
+  <link href="{% static 'css/lightbox.css' %}" rel="stylesheet">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+  
+  
+  <style type="text/css">
+
+      @font-face {
+          font-family: Candara;
+          src: url("{% static 'fonts/Candara.ttf' %}");
+      }
+
+    .gm-style {
+        font: 400 11px Roboto, Arial, sans-serif;
+        text-decoration: none;
+      }
+      .gm-style img { max-width: none; }
+
+      #about-us {
+        background-image: url("{% static '/images/about.jpg' %}"), ;
+        padding: 60px 0;
+      }
+      #twitter {
+        background-image: url("{% static 'images/tweets.jpg' %}");
+        padding-bottom: 120px;
+      }
+      #contact-us {
+        background-image:url("{% static 'images/contact.jpg' %}");
+      }
+	</style>
+	<script type="text/javascript" charset="UTF-8" src="{% static 'js/onion.js' %}"></script>
+	<script type="text/javascript" charset="UTF-8" src="{% static 'js/controls.js' %}"></script></head><!--/head-->
+
+  <body>
+
+    <!--.preloader-->
+    
+    <!--/.preloader-->
+
+    <header id="home" style="height: 100vh; overflow-y: hidden;">
+      <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="item" style="background-image: url('{% static 'images/mentor.jpg' %}'); height: 672px;">
+            <div class="caption">
+              <h1 class="animated fadeInLeftBig">We <span style="color: #027db3;">TRAIN</span></h1>
+              <p class="animated fadeInRightBig head-p">We bring you close enough to mentors that can collaborate with you to  achieve that dream</p>
+              <a data-scroll="" class="btn btn-start animated fadeInUpBig" href="http://demo.themeum.com/html/oxygen/#services">Start now</a>
+            </div>
+          </div>
+          <div class="item" style="background-image: url('{% static 'images/mentee.jpg' %}'); height: 672px;">
+            <div class="caption">
+              <h1 class="animated fadeInLeftBig"><span>THEBOSSOFFICE.COM</span></h1>
+              <p class="animated fadeInRightBig">Mentorship | Business Success</p>
+              <a data-scroll="" class="btn btn-start animated fadeInUpBig" href="http://demo.themeum.com/html/oxygen/#services">Start now</a>
+            </div>
+          </div>
+          <div class="item active" style="background-image: url('{% static 'images/african.jpg' %}'); height: 672px;">
+            <div class="caption">
+              <h1 class="animated fadeInLeftBig">This is <span style="color: #027db3;">thebossoffice</span></h1>
+              <p class="animated fadeInRightBig">Mentorship | Business Success</p>
+              <a data-scroll="" class="btn btn-start animated fadeInUpBig" href="#">Get Started Now!</a>
+               <a data-scroll="" class="btn btn-start animated fadeInUpBig" href="#">Apply as a Mentor</a>
+            </div>
+          </div>
+        </div>
+        <a class="left-control" href="http://demo.themeum.com/html/oxygen/#home-slider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+        <a class="right-control" href="http://demo.themeum.com/html/oxygen/#home-slider" data-slide="next"><i class="fa fa-angle-right"></i></a>
+
+      </div><!--/#home-slider-->
+      <div class="navbar navbar-default navbar-fixed" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://demo.themeum.com/html/oxygen/index.html">
+              <img class="img-responsive" src="{% static 'images/logo.png' %}" alt="logo" width="80" height="80">
+            </a>                    
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">                 
+              <li class="scroll active"><a href="http://demo.themeum.com/html/oxygen/#services">See All Mentees</a></li> 
+              <li class="scroll"><a href="/#about-us">Meet an Expert</a></li>                     
+              <li class="scroll"><a href="">See All Mentors</a></li>
+              <li class="scroll"><a href="/#team">About Us</a></li>
+              <li class="scroll"><a href="">Our Core Values</a></li>  
+              <li class="scroll"><a href="">Blog</a></li>     
+            </ul>
+          </div>
+        </div>
+      </div><!--/.navbar-->
+    </header><!--/#home-->
+    <div class="page-overlay">
+      <div class="quote">
+        <div class="content">
+          <span class="span1">"</span>
+          <p>Mentorship happens organically, and you can’t just force it. Many men don’t even know HOW to mentor, and often mentor others by accident. It’s not a mentor’s responsibility to mentor, it’s the responsibility of the mentee to seek mentorship and appropriate it</p>
+          <h3>-Josh Hatcher</h3>
+           <span class="span2">"</span>
+        </div>
+        <div class="quote-author">
+          <img class="img" src="{% static 'images/josh.jpg' %}" alt="">
+        </div>
+      </div>
+      <div class="overlay-h1">`
+        <h1>THEBOSSOFFICE.COM</h1> 
+      </div>
+      <div class="overlay-exit">
+        <a id="tohash" href="{% url 'home' %}">LETS GO THERE &raquo;</a>
+      </div>
+    </div>
+    <script type="text/javascript" charset="UTF-8" src="{% static 'js/common.js' %}">
+    </script><script type="text/javascript" charset="UTF-8" src="{% static 'js/util.js' %}"></script>
+    <script type="text/javascript" charset="UTF-8" src="{% static 'js/stats.js' %}"></script>
+    <script type="text/javascript" charset="UTF-8" src="{% static 'js/map.js' %}"></script>
+    <script type="text/javascript" charset="UTF-8" src="{% static 'js/marker.js' %}"></script>
+    <script type="text/javascript" charset="UTF-8" src="{% static 'js/infowindow.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.inview.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/wow.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mousescroll.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/smoothscroll.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.countTo.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/lightbox.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script> 
+ </body>
+</html>

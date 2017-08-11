@@ -5,7 +5,7 @@
 
 /* md */
 @media (min-width: 992px) and (max-width: 1199px) {
-
+	
 }
 
 /* sm */
@@ -26,10 +26,10 @@
 /* xs */
 @media (max-width: 767px) {
 	body {
-		font-size: 14px;
+		font-size: 16px;
 	}
 	#home-slider .caption h1 {
-		font-size: 40px;
+		font-size: 30px;
 	}
 	#home-slider .caption {
 		font-size: 15px;
@@ -77,6 +77,9 @@
 	}
 	.heading h2 {
 		font-size: 26px;
+	}
+	.head-p {
+		padding: 0;
 	}
 	.service-info h3 {
 		font-size: 20px;
@@ -180,5 +183,127 @@
 	.footer-bottom p.pull-right {
 		float: none !important;
 	}
+	/**********************************************************
+	*******************FULL PAGE OVERLAY***********************
+	***********************************************************/
+	.page-overlay .quote {
+	  position: absolute;
+	  bottom: 8%;
+	  right: 7%;
+	  height: 320px;
+	  width: 320px;
+	  border-radius: 50%;
+	  border: 2px solid #fff;
+	  color: #fff;
+	  font-weight: 400;
+	}
+	.page-overlay .content {
+	  position: relative;
+	  height: 400px;
+	  vertical-align: middle;
+	  top: 50px;
+	  padding: 23px;
+	  font-size: 17px;
+	  text-align: center;
+	}
+	.page-overlay .content>h3 {
+	  text-align: center;
+	  color: #fff;
+	  padding: 10px;
+	  font-weight: 600;
+	  margin-top: -10px;
+	  font-size: 17px;
+	}
+	.page-overlay .content .span1 {
+	  position: absolute;
+	  left: 70px;
+	  top: 10px;
+	  font-size: 1.5em;
+	}
+	.page-overlay .span2 {
+	  position: absolute;
+	  right: 70px;
+	  bottom: 47%;
+	  font-size: 1.5em;
+	}
+	.page-overlay .quote-author {
+	  position: absolute;
+	  top: -15px;
+	  right: -70px;
+	  border: none;
+	  height: 150px;
+	  width: 150px;
+	  border-radius: 50%;
+	}
+	.page-overlay .quote-author .img {
+	  height: 80px;
+	  width: 80px;
+	  padding: 2px;
+	  border-radius: 50%;
+	  background: #fff;
+	}
+	.page-overlay .overlay-h1 h1 {
+	  position: absolute;
+	  font-size: 32px;
+	  top: 10%;
+	  left: 20px;
+	  font-weight: 600;
+	  color: #027db3;
+	}
+	.page-overlay .overlay-exit {
+	  position: absolute;
+	  top: 21%;
+	  left: 20px;
+	  font-weight: 600;
+	  font-size: 18px;
+	  color: #fff;
+	  padding: 7px 25px;
+	  background: #027db3;
+	  border-radius: 20px;
+	  transition: all .45s ease-in-out;
+	  -webkit-animation: bounce 3000ms infinite;
+	  animation: bounce 3000ms infinite;
+	}
+	.page-overlay .overlay-exit a {
+	  color: #fff;
+	}
+	.page-overlay .overlay-exit a:hover {
+	  color: #053b52;
+	}
 }
+@media (min-width: 640px) and (max-width: 700px) {
+	.page-overlay .quote {
+	  position: absolute;
+	  bottom: 4%;
+	  right: 7%;
+	  height: 320px;
+	  width: 320px;
+	  border-radius: 50%;
+	  border: 2px solid #fff;
+	  color: #fff;
+	  font-weight: 400;
+	}
+	.page-overlay .overlay-exit {
+	  position: absolute;
+	  top: 27%;
+	  left: 20px;
+	  font-weight: 600;
+	  font-size: 15px;
+	  color: #fff;
+	  padding: 4px 25px;
+	  background: #027db3;
+	  border-radius: 20px;
+	  transition: all .45s ease-in-out;
+	  -webkit-animation: bounce 3000ms infinite;
+	  animation: bounce 3000ms infinite;
+	}
+	.page-overlay .overlay-h1 h1 {
+	  position: absolute;
+	  font-size: 30px;
+	  top: 10%;
+	  left: 20px;
+	  font-weight: 600;
+	  color: #027db3;
+	}
 
+}
