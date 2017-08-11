@@ -619,7 +619,6 @@ section {
 **************************/
 #features {
   text-align: center;
-  background-image: url(../images/features-bg.jpg);
 }
 
 #features i {
@@ -695,7 +694,6 @@ section {
 ********Twitter CSS*******
 **************************/
 #twitter {
-  background-image: url(../images/twitter-bg.jpg);
   padding-bottom: 120px;
 }
 
@@ -882,7 +880,6 @@ section {
 }
 
 #contact-us {
-  background-image:url(../images/contact-bg.jpg);
   margin-bottom: 90px; 
 }
 
