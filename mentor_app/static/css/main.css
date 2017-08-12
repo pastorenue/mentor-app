@@ -1120,22 +1120,54 @@ ul.address {
     z-index: 300; 
     cursor: pointer; 
 }
+.page-overlay .vertical-line {
+  right: 10%;
+  top: 40px;
+  position: absolute;
+  height: 430px;
+  width: 6px;
+  background: #fff;
+}
+.page-overlay .horizontal-line {
+  right: 10%;
+  top: 70px;
+  position: absolute;
+  height: 6px;
+  width: 350px;
+  background: #fff;
+}
+.page-overlay .short-vertical-1 {
+  right: 30%;
+  top: 76px;
+  position: absolute;
+  height: 30px;
+  width: 6px;
+  background: #fff;
+}
+.page-overlay .short-vertical-2 {
+  right: 20%;
+  top: 76px;
+  position: absolute;
+  height: 30px;
+  width: 6px;
+  background: #fff;
+}
 .page-overlay .quote {
   position: absolute;
-  bottom: 20%;
-  right: 100px;
-  height: 450px;
-  width: 450px;
-  border-radius: 50%;
-  border: 4px solid #fff;
+  bottom: 30%;
+  right: 13%;
+  height: 400px;
+  width: 400px;
+  border-top-left-radius: 15%;
+  border: 6px solid #fff;
   color: #fff;
   font-weight: 400;
 }
 .page-overlay .content {
   position: relative;
-  height: 400px;
+  height: 350px;
   vertical-align: middle;
-  top: 100px;
+  top: 10%;
   padding: 40px;
   font-size: 24px;
   text-align: center;
@@ -1157,22 +1189,22 @@ ul.address {
 .page-overlay .span2 {
   position: absolute;
   right: 70px;
-  bottom: 110px;
+  bottom: 10%;
   font-size: 3em;
 }
 .page-overlay .quote-author {
   position: absolute;
   top: -60px;
-  right: -20px;
+  right: 80%;
   border: none;
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
 }
 .page-overlay .quote-author .img {
-  height: 150px;
-  width: 150px;
-  padding: 4px;
+  height: 100px;
+  width: 100px;
+  padding: 6px;
   border-radius: 50%;
   background: #fff;
 }
