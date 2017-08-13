@@ -880,7 +880,7 @@ section {
 }
 
 #contact-us {
-  margin-bottom: 90px; 
+  
 }
 
 #contact-us .heading {
@@ -1116,7 +1116,7 @@ ul.address {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.93);
+    background-color: rgba(0,0,0,0.89);
     z-index: 300; 
     cursor: pointer; 
 }
@@ -1238,4 +1238,7 @@ ul.address {
 .page-overlay .overlay-exit:hover {
   color: #053b52;
   background: #fff;
+}
+.footer {
+  padding-top: 20px;
 }
