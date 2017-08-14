@@ -65,62 +65,9 @@
     <!--/.preloader-->
 
     <header id="home">
-      <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="item" style="background-image: url('{% static 'images/mentor.jpg' %}'); height: 672px;">
-            <div class="caption">
-              <h1 class="animated fadeInLeftBig">We <span class="mark-head">TRAIN</span></h1>
-              <p class="animated fadeInRightBig head-p">We bring you close enough to mentors that can collaborate with you to  achieve that dream</p>
-              <a data-scroll="" class="btn btn-start animated fadeInUpBig" href="http://demo.themeum.com/html/oxygen/#services">Meet an Expert Now</a>
-            </div>
-          </div>
-          <div class="item" style="background-image: url('{% static 'images/mentee.jpg' %}'); height: 672px;">
-            <div class="caption">
-              <h1 class="animated fadeInLeftBig ">THEBOSSOFFICE.COM</h1>
-              <p class="animated fadeInRightBig">Mentorship | Business Success</p>
-              <a data-scroll="" class="btn btn-start animated fadeInUpBig" href="http://demo.themeum.com/html/oxygen/#services">See How it Works &raquo;</a>
-            </div>
-          </div>
-          <div class="item active" style="background-image: url('{% static 'images/work.jpg' %}'); height: 672px;">
-            <div class="caption">
-              <h1 class="animated fadeInLeftBig">This is <span class="mark-head">thebossoffice</span></h1>
-              <p class="animated fadeInRightBig">Mentorship | Business Success</p>
-              <a data-scroll="" class="btn btn-start animated fadeInUpBig" href="#">Apply as a Mentee</a>
-               <a data-scroll="" class="btn btn-start animated fadeInUpBig" href="#">Apply as a Mentor</a>
-            </div>
-          </div>
-        </div>
-        <a class="left-control" href="http://demo.themeum.com/html/oxygen/#home-slider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
-        <a class="right-control" href="http://demo.themeum.com/html/oxygen/#home-slider" data-slide="next"><i class="fa fa-angle-right"></i></a>
+      {% include '_slider.html' %}
 
-        <a id="tohash" href="http://demo.themeum.com/html/oxygen/#services"><i class="fa fa-angle-down"></i></a>
-
-      </div><!--/#home-slider-->
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="http://demo.themeum.com/html/oxygen/index.html">
-              <img class="img-responsive" src="{% static 'images/logo.png' %}" alt="logo" width="80" height="80">
-            </a>                    
-          </div>
-          <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">                 
-              <li class="scroll active"><a href="http://demo.themeum.com/html/oxygen/#services">See All Mentees</a></li> 
-              <li class="scroll"><a href="/#about-us">Meet an Expert</a></li>                     
-              <li class="scroll"><a href="">See All Mentors</a></li>
-              <li class="scroll"><a href="/#team">About Us</a></li>
-              <li class="scroll"><a href="">Our Core Values</a></li>  
-              <li class="scroll"><a href="">Blog</a></li>     
-            </ul>
-          </div>
-        </div>
-      </div><!--/.navbar-->
+      {% include '_navbar.html' %}
     </header><!--/#home-->
     <section id="services">
       <div class="container">

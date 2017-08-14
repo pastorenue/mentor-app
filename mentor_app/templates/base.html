@@ -1,0 +1,95 @@
+<!DOCTYPE html> 
+<!-- saved from url=(0036)http://demo.themeum.com/html/oxygen/ -->
+
+ {% load staticfiles thumbnail %}
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}
+</style><link type="text/css" rel="stylesheet" href="./css"><style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}
+</style><style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style><style type="text/css">.gm-style-pbc{transition:opacity ease-in-out;background-color:rgba(0,0,0,0.45);text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}
+</style>
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>thebossofice.com</title>
+  <link href="{% static 'css/css-preset1.css' %}" rel="stylesheet">
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link href="{% static 'css/animate.min.css' %}" rel="stylesheet"> 
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/font-awesome.min(1).css' %}" rel="stylesheet">
+  <link href="{% static 'css/lightbox.css' %}" rel="stylesheet">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style6.css' %}" rel="stylesheet">
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+  <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  {% block extra_css %}{% endblock %}
+
+
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+  
+  
+  <style type="text/css">
+
+      @font-face {
+          font-family: Candara;
+          src: url("{% static 'fonts/Candara.ttf' %}");
+      }
+
+    .gm-style {
+        font: 400 11px Roboto, Arial, sans-serif;
+        text-decoration: none;
+      }
+      .gm-style img { max-width: none; }
+
+      #about-us {
+        background-image: url("{% static '/images/about.jpg' %}"), ;
+        padding: 60px 0;
+      }
+      #twitter {
+        background-image: url("{% static 'images/tweets.jpg' %}");
+        padding-bottom: 120px;
+      }
+      #contact-us {
+        background-image:url("{% static 'images/contact.jpg' %}");
+      }
+	</style>
+	<script type="text/javascript" charset="UTF-8" src="{% static 'js/onion.js' %}"></script>
+	<script type="text/javascript" charset="UTF-8" src="{% static 'js/controls.js' %}"></script></head><!--/head-->
+
+  <body>
+
+    <!--.preloader-->
+    
+    <!--/.preloader-->
+
+    <header id="home">
+       {% include '_navbar.html' %}
+        {% block banner %}
+        {% endblock %}
+      }
+    </header><!--/#home-->
+  {% block content %}{% endblock %}    
+
+  {% include '_footer.html' %}
+
+    <script type="text/javascript" charset="UTF-8" src="{% static 'js/common.js' %}">
+    </script><script type="text/javascript" charset="UTF-8" src="{% static 'js/util.js' %}"></script>
+    <script type="text/javascript" charset="UTF-8" src="{% static 'js/stats.js' %}"></script>
+    <script type="text/javascript" charset="UTF-8" src="{% static 'js/map.js' %}"></script>
+    <script type="text/javascript" charset="UTF-8" src="{% static 'js/marker.js' %}"></script>
+    <script type="text/javascript" charset="UTF-8" src="{% static 'js/infowindow.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.inview.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/wow.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mousescroll.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/smoothscroll.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.countTo.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/lightbox.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script> 
+    {% block extrajs %}{% endblock %}
+ </body>
+</html>

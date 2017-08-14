@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^core-values$', TemplateView.as_view(template_name='core_values.html'), name='core-values'),
     url(r'^home$', TemplateView.as_view(template_name='index.html'), name='home'),
     url(r'^$', TemplateView.as_view(template_name='landing.html'), name='landing'),
     # url(r'^accounts/', include('accounts.urls', namespace='accounts')),
