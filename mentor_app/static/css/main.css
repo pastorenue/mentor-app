@@ -1213,7 +1213,7 @@ ul.address {
   top: 30%;
   left: 50px;
   font-weight: 600;
-  color: #027db3;
+  color: #3b5998;
 }
 .page-overlay .overlay-exit {
   position: absolute;
@@ -1223,7 +1223,7 @@ ul.address {
   font-size: 18px;
   color: #fff;
   padding: 8px 40px;
-  background: #027db3;
+  background: #3b5998;
   border-radius: 40px;
   transition: all .45s ease-in-out;
   -webkit-animation: bounce 3000ms infinite;

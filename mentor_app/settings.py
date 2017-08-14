@@ -121,7 +121,26 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AGE_RANGE_CHOICES = (
+    ('25-30', '25-30 years'),
+    ('31-35', '31-35 years'),
+    ('36-40', '36-40 years'),
+    ('41-50', '41-50 years'),
+    ('51-60', '51-60 years'),
+    ('60+', '60+ years')
 
+)
+TITLE_CHOICES = (
+    ('Mr.', 'Mr.'),
+    ('Mrs.', 'Mrs.'),
+    ('Miss', 'Miss'),
+    ('Dr.', 'Dr.'),
+    ('Prof.', 'Prof.'),
+    ('Alhaji', 'Alhaji'),
+    ('Chief', 'Chief'),
+    ('Prince', 'Prince'),
+    ('Princess', 'Princess')
+)
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
