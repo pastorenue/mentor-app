@@ -57,6 +57,8 @@ INSTALLED_APPS = [
     'mentor',
     'expert',
     'contacts',
+    'sorl.thumbnail',
+    'states'
 ]
 
 MIDDLEWARE = [

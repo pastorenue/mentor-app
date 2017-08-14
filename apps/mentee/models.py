@@ -35,7 +35,7 @@ class Mentee(models.Model):
 	industry = models.ForeignKey("expert.Industry")
 	address = models.ForeignKey("expert.Address")
 	slug = models.SlugField(unique=True)
-	year_of_commencement = models.IntegerField(max_length=4, choices=YEAR_CHOICES, default=datetime.datetime.now().year) 
+	year_of_commencement = models.IntegerField(choices=YEAR_CHOICES, default=datetime.datetime.now().year) 
 	time_with_mentor = models.CharField("How much time would need from your mentor?", max_length=20, choices=TIME_CHOICES)
 	model_of_communication = models.OneToOneField('mentee.CommunicationMode')
 	date_created = models.DateTimeField(auto_now_add=True)

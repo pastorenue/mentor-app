@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <!-- saved from url=(0036)http://demo.themeum.com/html/oxygen/ -->
 
- {% load staticfiles %}
+ {% load staticfiles thumbnail %}
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}
 </style><link type="text/css" rel="stylesheet" href="./css"><style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}
 </style><style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style><style type="text/css">.gm-style-pbc{transition:opacity ease-in-out;background-color:rgba(0,0,0,0.45);text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}
@@ -19,6 +19,7 @@
   <link href="{% static 'css/font-awesome.min(1).css' %}" rel="stylesheet">
   <link href="{% static 'css/lightbox.css' %}" rel="stylesheet">
   <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style6.css' %}" rel="stylesheet">
   <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
   <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
 
@@ -68,7 +69,7 @@
         <div class="carousel-inner">
           <div class="item" style="background-image: url('{% static 'images/mentor.jpg' %}'); height: 672px;">
             <div class="caption">
-              <h1 class="animated fadeInLeftBig">We <span style="color: #027db3;">TRAIN</span></h1>
+              <h1 class="animated fadeInLeftBig">We <span class="mark-head">TRAIN</span></h1>
               <p class="animated fadeInRightBig head-p">We bring you close enough to mentors that can collaborate with you to  achieve that dream</p>
               <a data-scroll="" class="btn btn-start animated fadeInUpBig" href="http://demo.themeum.com/html/oxygen/#services">Meet an Expert Now</a>
             </div>
@@ -82,7 +83,7 @@
           </div>
           <div class="item active" style="background-image: url('{% static 'images/work.jpg' %}'); height: 672px;">
             <div class="caption">
-              <h1 class="animated fadeInLeftBig">This is <span style="color: #027db3;">thebossoffice</span></h1>
+              <h1 class="animated fadeInLeftBig">This is <span class="mark-head">thebossoffice</span></h1>
               <p class="animated fadeInRightBig">Mentorship | Business Success</p>
               <a data-scroll="" class="btn btn-start animated fadeInUpBig" href="#">Apply as a Mentee</a>
                <a data-scroll="" class="btn btn-start animated fadeInUpBig" href="#">Apply as a Mentor</a>
@@ -123,75 +124,135 @@
     </header><!--/#home-->
     <section id="services">
       <div class="container">
-        <div class="heading wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+        <div class="wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
           <div class="row">
             <div class="text-center col-sm-8 col-sm-offset-2">
-              <h2>Business Support Services</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam</p>
+              <h2><strong>Business Support Services</strong></h2>
+              <p>At the THEBOSSOFFICE.COM, we support startups and SMEs with the following business services. </p>
             </div>
           </div> 
         </div>
         <div class="text-center our-services">
           <div class="row">
             <div class="col-sm-4 wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInDown;">
-              <div class="service-icon">
+              <!-- <div class="service-icon">
                 <i class="fa fa-flask"></i>
-              </div>
-              <div class="service-info">
-                <h3>Business diagnostics</h3>
-                <p>We thoroughly review business operations and the books to determine the health of the business and make recommendations. Apart from recommendation, we render services to SMEs in the following aspects;</p>
+              </div> -->
+              <h2 class="ch-head">Business Diagnostics</h2>
+              <div class="ch-item ch-img-2">
+                <div class="ch-info-wrap">
+                  <div class="ch-info">
+                      <div class="ch-info-front ch-img-2"></div>
+                      <div class="ch-info-back">
+                        <h3>Business Diagnostics</h3>
+                          <p>We thoroughly review business operations and the books to determine the health of the business and make recommendations. Apart from recommendation, we render services to SMEs in the following aspects;
+                          <a href="">Meet an Expert &raquo;</a>
+                          </p>
+                      </div>
+                    </div>
+                </div>
               </div>
             </div>
             <div class="col-sm-4 wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="450ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 450ms; animation-name: fadeInDown;">
-              <div class="service-icon">
+              <!-- <div class="service-icon">
                 <i class="fa fa-umbrella"></i>
-              </div>
-              <div class="service-info">
-                <h3>Operations optimization</h3>
-                <p>We offer operations optimization services to SMEs to improve their business processes to attain better efficiencies and optimum performances</p>
+              </div> -->
+              <h2 class="ch-head">Operations optimization</h2>
+              <div class="ch-item ch-img-3">
+                <div class="ch-info-wrap">
+                  <div class="ch-info">
+                      <div class="ch-info-front ch-img-3"></div>
+                      <div class="ch-info-back">
+                        <h3>Operations optimization</h3>
+                          <p>We offer operations optimization services to SMEs to improve their business processes to attain better efficiencies and optimum performances
+                          <a href="">Meet an Expert &raquo;</a>
+                          </p>
+                      </div>
+                    </div>
+                </div>
               </div>
             </div>
             <div class="col-sm-4 wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="550ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 550ms; animation-name: fadeInDown;">
-              <div class="service-icon">
+              <!-- <div class="service-icon">
                 <i class="fa fa-cloud"></i>
-              </div>
-              <div class="service-info">
-                <h3>Business templates</h3>
-                <p>As part of the support services we render, business templates will be available for download on our website. These would be paid for by SMEs. The templates would cover all business aspects</p>
+              </div> -->
+              <h2 class="ch-head">Business templates</h2>
+              <div class="ch-item ch-img-6">
+                <div class="ch-info-wrap">
+                  <div class="ch-info">
+                      <div class="ch-info-front ch-img-6"></div>
+                      <div class="ch-info-back">
+                        <h3>Business templates</h3>
+                          <p>As part of the support services we render, business templates will be available for download on our website. These would be paid for by SMEs. The templates would cover all business aspects
+                          <a href="">Meet an Expert &raquo;</a>
+                          </p>
+                      </div>
+                    </div>
+                </div>
               </div>
             </div>
             <div class="col-sm-4 wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="650ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 650ms; animation-name: fadeInUp;">
-              <div class="service-icon">
+              <!-- <div class="service-icon">
                 <i class="fa fa-coffee"></i>
-              </div>
-              <div class="service-info">
-                <h3>Business plan</h3>
-                <p>Most small businesses do not have business plans thus at the preliminary stages of the mentorship program, we encourage the mentors to demand for a business plan so that sustainability plan can be checked. To this end, we provide free templates and paid business plan services for SMEs</p>
+              </div> -->
+              <h2 class="ch-head">Logo Design</h2>
+              <div class="ch-item ch-img-5">
+                <div class="ch-info-wrap">
+                  <div class="ch-info">
+                      <div class="ch-info-front ch-img-5"></div>
+                      <div class="ch-info-back">
+                        <h3>Logo Design</h3>
+                          <p>We design highly interactive logos. Our logo is a typical example.
+                          <a href="">Meet an Expert &raquo;</a>
+                          </p>
+                      </div>
+                    </div>
+                </div>
               </div>
             </div>
             <div class="col-sm-4 wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="750ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 750ms; animation-name: fadeInUp;">
-              <div class="service-icon">
+              <!-- <div class="service-icon">
                 <i class="fa fa-bitbucket"></i>
-              </div>
-              <div class="service-info">
-                <h3>Marketing and brand communication</h3>
-                <p>Our experts can transform your business from one ordinary business to the spotlight when we’re engaged. We have professional industry experts that can transform your business</p>
+              </div> -->
+              <h2 class="ch-head">Marketing/Branding</h2>
+              <div class="ch-item ch-img-4">
+                <div class="ch-info-wrap">
+                  <div class="ch-info">
+                      <div class="ch-info-front ch-img-4"></div>
+                      <div class="ch-info-back">
+                        <h3>Marketing/Branding</h3>
+                          <p>Our experts can transform your business from one ordinary business to the spotlight when we’re engaged. We have professional industry experts that can transform your business
+                          <a href="">Meet an Expert &raquo;</a>
+                          </p>
+                      </div>
+                    </div>
+                </div>
               </div>
             </div>
-            <div class="col-sm-4 wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="850ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 850ms; animation-name: fadeInUp;">
-              <div class="service-icon">
-                <i class="fa fa-gift"></i>
-              </div>
-              <div class="service-info">
-                <h3>Resources</h3>
-                <p>We provide private business leadership and management training</p>
+            <div class="col-sm-4 wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="750ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 750ms; animation-name: fadeInUp;">
+              <!-- <div class="service-icon">
+                <i class="fa fa-bitbucket"></i>
+              </div> -->
+              <h2 class="ch-head">Business plan</h2>
+              <div class="ch-item ch-img-1">
+                <div class="ch-info-wrap">
+                  <div class="ch-info">
+                      <div class="ch-info-front ch-img-1"></div>
+                      <div class="ch-info-back">
+                        <h3>Business plan</h3>
+                          <p>Most small businesses do not have business plans thus at the preliminary stages of the mentorship program, we encourage the mentors to demand for a business plan so that sustainability plan can be checked. To this end, we provide free templates and paid business plan services for SMEs
+                          <a href="">Meet an Expert &raquo;</a>
+                          </p>
+                      </div>
+                    </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section><!--/#services-->
-    <section id="team">
+    <section id="team" style="margin-top: 40px;">
       <div class="container">
         <div class="row">
           <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp animated" data-wow-duration="1200ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1200ms; animation-delay: 300ms; animation-name: fadeInUp;">
@@ -207,7 +268,7 @@
             <div class="col-sm-6 col-md-3">
               <div class="team-member wow flipInY animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: flipInY;">
                 <div class="member-image">
-                  <img class="img-responsive" src="{% static '/images/tereigh.jpg' %}" alt="">
+                  <img class="img-responsive" src="{% static 'images/tereigh.jpg' %}" alt="">
                 </div>
                 <div class="member-info">
                   <h3>Tereigh Ozakpo</h3>
@@ -234,7 +295,7 @@
                   <img class="img-responsive" src="{% static '/images/bunmi.png' %}" alt="">
                 </div>
                 <div class="member-info">
-                  <h3>Kene Udeh</h3>
+                  <h3>Kenechukwu Udeh</h3>
                   <h4>Partner</h4>
                   <p>Kenechukwu is an associate of McKinsey & Company. He has passion for consulting and solutions for business optimization</p>
                   <p>kene.u@thebossoffice.com</p>
@@ -304,7 +365,7 @@
                 <div class="member-info">
                   <h3>Tobi Ricketts</h3>
                   <h4>Head, Mentee Mgt</h4>
-                  <p>BTobi connects small business owners, start-ups and entrepreneurs to an eco-system where they can succeed the hurdles of doing business</p>
+                  <p>Tobi connects small business owners, start-ups and entrepreneurs to an eco-system where they can succeed the hurdles of doing business</p>
                   <p>jeremiah.o@thebossoffice.com</p>
                 </div>
                 <div class="social-icons">
@@ -534,49 +595,7 @@
         </div>>
       </div>        
     </section><!--/#contact-->
-    <footer id="" class="footer">
-      <div class="row">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-3">
-              <div style="text-align: center;">
-                <img class="img-responsive" src="{% static 'images/logo.png' %}" alt="" width="70" height="70">
-                <p>Thebossoffice has 700 years cumulative experience in startups and MSMEs support services</p>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div style="text-align: center;">
-                <h3><strong>Connect With Us</strong></h3>
-                <a class="envelope" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-envelope"></i></a>
-                <a class="envelope" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-twitter"></i></a>
-                <a class="envelope" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-linkedin"></i></a>
-                <a class="envelope" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-instagram"></i></a>
-                <a class="envelope" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-facebook"></i></a>
-              </div>
-
-            </div>
-            <div class="col-md-3">
-              <h3><strong>Connect With Us</strong></h3>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row" style="background: #163356; color: #fff;">
-        <div class="container">
-          <div class="row" >
-            <div class="col-md-4"></div>
-            <div class="col-sm-4">
-              <p>© 2017 THEBOSSOFFICE.COM. All Rights Reserved</p>
-            </div>
-            <div class="col-sm-4">
-              <a href="">Terms</a> |
-              <a href="">Privacy Poloicy</a> |
-              <a href="">About Us</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    {% include '_footer.html' %}
 
 
     <script type="text/javascript" charset="UTF-8" src="{% static 'js/common.js' %}">

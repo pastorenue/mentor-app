@@ -14,7 +14,7 @@
 body {
   font-family: 'Candara', sans-serif;
   font-size: 14px;
-  line-height: 24px;
+  line-height: 17px;
   color: #666;
   background-color: #fff;
 }
@@ -537,6 +537,12 @@ section {
 
 .team-member {
   margin-bottom: 30px;
+}
+.team-member img {
+  width: 240px;
+  height: 278px;
+  padding: 8px;
+  border: 1px solid #f9f9f9;
 }
 
 .social-icons {
@@ -1241,4 +1247,32 @@ ul.address {
 }
 .footer {
   padding-top: 20px;
+  height: 340px;
+}
+
+/********************************************************
+*********************HEADER DECORATION*******************
+********************************************************/
+.mark-head {
+  color: #3b5998;
+}
+
+.social-icons {
+  display: inline-block;
+  text-align: center;
+}
+.social-icons a {
+  margin-right: 10px; 
+}
+.social-icons i {
+  font-size: 23px;
+}
+.about-link {
+  margin-left: 0;
+  padding: 0;
+}
+.about-link li {
+  list-style: none;
+  font-size: 15px;
+
 }
