@@ -37,7 +37,7 @@ urlpatterns = [
 urlpatterns+=static(setting.MEDIA_URL, document_root=setting.MEDIA_ROOT)
 
 urlpatterns += [
-    url(r'^auth/login$', auth_views.LoginView.as_view(template_name='login.html'), name='user_login'),
+    url(r'^auth/login$', auth_views.login, {'template_name':'login.html'}, name='user_login'),
     url(r'^auth/logout$', auth_views.LogoutView.as_view(), name='logout'),
     url(r'^auth/password_change$', auth_views.PasswordChangeView.as_view(success_url=reverse('home')), name='password_change'),
     url(r'^auth/password_change/done$', auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
