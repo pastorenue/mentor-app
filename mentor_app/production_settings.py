@@ -23,7 +23,7 @@ ADMINS = (
 )
 
 DEBUG = False
-SECRET_KEY =os.environ.get('SECRET_KEY')
+SECRET_KEY =os.environ.get('SECRET_KEY', '3dkwehi(vjksjhjk-!dhe3427#@@vcs=./kfdhjreudss')
 EMAIL_HOST_PASSWORD = ''
 ALLOWED_HOSTS =  ['thebossoffice.herokuapp.com', '.thebossoffice.com']
 
