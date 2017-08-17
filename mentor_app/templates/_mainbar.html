@@ -28,11 +28,11 @@
                     <li><a href="#modal-faculty" data-toggle="modal"> Faculty...</a></li>
                     <li class="divider"></li>
                     <li><a href="#modal-course" data-toggle="modal"> Course...</a></li>
-                    <li><a href=" {% url 'logout' %}" data-toggle="modal"> Sign Out</a></li>
+                    <li><a href="{% url 'logout' %}" data-toggle="modal"> Sign Out</a></li>
               </ul>
           </label>
           {% else %}
-          <a href="{% url 'user_login' %}">Log In</a>
+          <a href="auth/login">Log In</a>
           <a href="">Sign Up</a>
           {% endif %}
         </div>
