@@ -1,0 +1,42 @@
+{% load staticfiles %}
+
+<div class="main-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="thebossoffice.com"></a>
+        <div class="search">
+          <input type="search" placeholder="Search Here">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <ul>                     
+          <a href=""><li class="scroll"><i class="fa fa-group"></i><br>Meet An Expert</li></a>
+          <a href=""><li class="scroll"><i class="fa fa-list"></i><br>See All Mentors</li></a>
+          <a href="{% url 'core-values' %}"><li class="scroll"><i class="fa fa-info"></i><br>About Us</li></a>
+          <a href=""><li class="scroll"><i class="fa fa-bell"></i><br>Notifications</li></a>  
+        </ul>
+      </div>
+      <div class="col-sm-2" style="padding-left: 5px;">
+        <div class="nav-reg">
+          {% if user.is_authenticated %}
+          <label class="dropdown" style="">
+              <span data-toggle="dropdown" style="cursor: pointer;">{{user}}</span><b class="caret"></b>
+              <ul class="dropdown-menu" role="menu" style="background-color: #fafafa; color: ##3b5998; border-top: 2px solid  ##3b5998; top: 24px;">
+                    <li><a href="#modal-department" data-toggle="modal"> Department...</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#modal-faculty" data-toggle="modal"> Faculty...</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#modal-course" data-toggle="modal"> Course...</a></li>
+              </ul>
+          </label>
+          {% else %}
+          <a href="{% url 'login' %}">Log In</a>
+          <a href=" {% url 'logout' %}">Sign Up</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="height: 50px;"></div>

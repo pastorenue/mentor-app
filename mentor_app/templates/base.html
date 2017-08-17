@@ -59,30 +59,28 @@
 	<script type="text/javascript" charset="UTF-8" src="{% static 'js/onion.js' %}"></script>
 	<script type="text/javascript" charset="UTF-8" src="{% static 'js/controls.js' %}"></script></head><!--/head-->
 
-  <body>
+  <body style="height: 100%;">
+    <header>
+       {% include '_mainbar.html' %}
+    </header>
+    {% block banner %}{% endblock %}
+    {% block mainbar %}
+    <div  class="row main-header">
+    {% block header %}<h1>Our Core Values</h1>{% endblock %}
+    </div>
+    {% endblock %}
 
-    <!--.preloader-->
-    
-    <!--/.preloader-->
+    {% block content %}
+    {% endblock %}    
 
-    <header id="home">
-       {% include '_navbar.html' %}
-        {% block banner %}
-        {% endblock %}
-      }
-    </header><!--/#home-->
-  {% block content %}{% endblock %}    
-
+{% block footer %}
   {% include '_footer.html' %}
-
+{% endblock %}
     <script type="text/javascript" charset="UTF-8" src="{% static 'js/common.js' %}">
     </script><script type="text/javascript" charset="UTF-8" src="{% static 'js/util.js' %}"></script>
-    <script type="text/javascript" charset="UTF-8" src="{% static 'js/stats.js' %}"></script>
-    <script type="text/javascript" charset="UTF-8" src="{% static 'js/map.js' %}"></script>
-    <script type="text/javascript" charset="UTF-8" src="{% static 'js/marker.js' %}"></script>
     <script type="text/javascript" charset="UTF-8" src="{% static 'js/infowindow.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jquery.inview.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/wow.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/mousescroll.js' %}"></script>

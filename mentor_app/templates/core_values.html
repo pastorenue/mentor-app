@@ -14,10 +14,79 @@
   }
 </style>
 {% endblock %}
-{% block banner %}
-<div class="row">
-	<div class="bg-overlay" style="background-image: linear-gradient(to bottom right,rgba(59,89,152,0.7), rgba(2,125,179,0.5)), url('{% static 'images/values.jpg' %}'); background-repeat: no-repeat; background-size: cover; height: 500px;">
-		<h1>Our Core Values</h1>
-	</div>
+{% block header %}   
+    <h1>Our <span style="color: #3b5998; font-size: 30px; font-weight: 600;">HISTORY</span><br></h1>
+  {% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row about-row">
+  <div class="about-page">
+    <h3>About Us</h3>
+  </div>
+  <div class="col-md-6">
+    <div class="about-page">
+      <span></span>
+      <p><strong style="color: #3b5998;">Thebossoffice</strong> was borne out of a strong need to salvage the prevalent economic problems in Nigeria and other African countries. From our findings, Nigeria has well over 40 million micro, small and medium business enterprises which employ over 80% of Nigeria’s labour force and contributes about <strong>50% </strong>to Nigeria’s GDP yet our findings also reveal a <strong>73%</strong> business death rate within this same sector within the first three years of operations. This, we also gathered that apart from poor funding options, was largely due to poor leadership and management skills the small business owners possessed.</p>
+        <p>Thus thebossoffice is set up to address the gaps and connect well meaning Nigerian industry veterans, mentors, experts and business owners to help startups and MSMEs to grow their businesses from infancy through to sustainability.</p>
+        <p>Our goal is to ensure that we reduce poverty and unemployment by strengthening the SMEs in Nigeria, Africa and the world.</p>
+        <p>We have a robust network of business mentors and experts from various sectors of Nigeria’s economy, business schools and other big economies around the world. </p>
+    </div>
+  </div>
+  <div class="col-md-6" style="background-image: url('{% static 'images/history.png' %}'); background-size: cover; background-repeat: no-repeat; height: 329px;">
+  </div>
+</div>
+<div class="row about-row">
+  <div class="col-md-6">
+    <div class="about-page">
+      <span></span>
+      <h3>Mission Statement</h3>
+      <p>Guiding startups and small businesses to a sustainable future through mentorship and support services.</p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="about-page">
+      <span></span>
+      <h3>Vision Statement</h3>
+      <p>To be the foremost mentorship and business support institution out of Africa </p>
+    </div>
+  </div>
+</div>
+<div class="row about-row">
+  <div class="about-page">
+    <span></span>
+    <h3>Our Core Values</h3>
+    <p>At thebossoffice.com, We think the <span style="font-size: 20px;"><strong>BOSS</strong></span></p>
+  </div>
+  <div class="col-md-3">
+     <div class="core-idea">
+      <h1 style="color: #e2b945;"><strong>B</strong></h1>
+      <h3>Best Practices</h3>
+    </div>
+  </div>
+  <div class="col-md-3">
+     <div class="core-idea">
+      <h1 style="color: #4c9051;"><strong>O</strong></h1>
+      <h3>Objectivity</h3>
+    </div>
+  </div>
+  <div class="col-md-3">
+     <div class="core-idea">
+      <h1 style="color: #3b7698;"><strong>S</strong></h1>
+      <h3>Simplicity</h3>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="core-idea">
+      <h1 style="color: #3b5998;"><strong>S</strong></h1>
+      <h3>Sustainability</h3>
+    </div>
+  </div>
+</div>
+<div class="row about-row">
+  <div style="text-align: center;">
+    <button class="btn btn-primary" style="width: 40%; border-radius: 12px; font-size: 16px;">Subscribe to Free Newsletter</button>
+  </div>
+</div>
 </div>
 {% endblock %}
