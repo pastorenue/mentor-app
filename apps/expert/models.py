@@ -52,6 +52,11 @@ class Industry(models.Model):
 	def __str__(self):
 		return self.name
 
+	class Meta:
+		verbose_name = _(u'Industry')
+		verbose_name_plural = _(u'Industries')
+		
+
 class WorkType(models.Model):
 	business_diagnostics = models.BooleanField(default=False)
 	operation_optimization = models.BooleanField(default=False)

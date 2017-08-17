@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block header %}<h1>ALL MENTEES</h1>{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			{% if user.is_authenticated %}
+			<div class="panel panel-default top-margin">
+				<h3>Your Profile</h3>
+			</div>
+			{% else %}
+			<div class="panel panel-default top-margin">
+				<div class="div-header">
+					<h3><strong>Trending News</strong> <span style="font-size: 14px; float: right;"><a href="">See More &raquo;</a></span></h3>
+				</div>
+				<div class="news-list">
+					<img src="{% static 'images/about.jpg' %}" alt="tweets">
+					<div class="content">
+						<a href=""><h4>Taking the first steps to writing a business paln <span>[posted: {date}]</span></h4></a>
+						<p>dsg;lgsgfdsgfdglkfdsglfdgjdsk;lgjs
+						sdl;gdsjglkfdgfgds;fgslkdjf;lsfkdslfdsgfs
+						dsgjds;fdslkjf;sdkjfsd;fks</p>
+					</div>
+				</div>
+				<div class="news-list">
+					<img src="{% static 'images/tweets.jpg' %}" alt="tweets">
+					<div class="content">
+						<a href=""><h4>Using Multivariated approach in Business <span>[posted: {date}]</span></h4></a>
+						<p>dsg;lgsgfdsgfdglkfdsglfdgjdsk;lgjs
+						sdl;gdsjglkfdgfgds;fgslkdjf;lsfkdslfdsgfs
+						dsgjds;fdslkjf;sdkjfsd;fks</p>
+					</div>
+				</div>
+				<div class="news-list">
+					<img src="{% static 'images/work.jpg' %}" alt="tweets">
+					<div class="content">
+						<a href=""><h4>Your first business deal <span>[posted: {date}]</span></h4></a>
+						<p>dsg;lgsgfdsgfdglkfdsglfdgjdsk;lgjs
+						sdl;gdsjglkfdgfgds;fgslkdjf;lsfkdslfdsgfs
+						dsgjds;fdslkjf;sdkjfsd;fks</p>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default top-margin">
+				<div class="div-header">
+					<h3><strong>Business Tips 101</strong></h3>
+				</div>
+			</div>
+			{% endif %}
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-default top-margin">
+				<div class="" style="text-align: left;">
+					<div class="filter">
+						<h4 for=""><i class="fa fa-filter"></i> Filter</h4>
+						<select name="industry" id="id_industry" class="form-filter">
+							<option value="all">Filter By Industry...</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="row" style="padding: 4px;">
+					<div class="col-md-6">
+						<div class="dtl12">
+                            <img src="{% static 'images/marketing.jpg' %}" alt="">
+                            <h4>Tereigh, Banks</h4>
+                            <div class="dtl">
+                                <h3>Tereigh, Banks</h3>
+                                <p>Area of Expertise: <strong>Marketing</strong></p>
+                                <p>Years of Experience: <strong>12 years</strong></p>
+                                <a href="#">View Profile</a>
+                            </div>
+                        </div>
+					</div>
+					<div class="col-md-6">
+						<div class="dtl12">
+                            <img src="{% static 'images/african.jpg' %}" alt="">
+                            <h4>Anderson, Osiobaifo</h4>
+                            <div class="dtl">
+                                <h3>Anderson, Osiobaifo</h3>
+                                <p>Area of Expertise: <strong>Business Intelligence</strong></p>
+                                <p>Years of Experience: <strong>12 years</strong></p>
+                                <a href="#">View Profile</a>
+                            </div>
+                        </div>
+					</div>
+					<div class="col-md-6">
+						<div class="dtl12">
+                            <img src="{% static 'images/work.jpg' %}" alt="">
+                            <h4>Clad, Merlin</h4>
+                            <div class="dtl">
+                                <h3>Clad, Merlin</h3>
+                                <p>Area of Expertise: <strong>Marketing</strong></p>
+                                <p>Years of Experience: <strong>4 years</strong></p>
+                                <a href="#">View Profile</a>
+                            </div>
+                        </div>
+					</div>
+					<div class="col-md-6">
+						<div class="dtl12">
+                            <img src="{% static 'images/about.jpg' %}" alt="">
+                            <h4>Zain, Fardin</h4>
+                            <div class="dtl">
+                                <h3>Zain, Fardin</h3>
+                                <p>Area of Expertise: <strong>Branding</strong></p>
+                                <p>Years of Experience: <strong>12 years</strong></p>
+                                <a href="#">View Profile</a>
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="panel panel-default top-margin">
+				<div class="div-header">
+					<h3><strong>Trending Experts</strong> <span style="font-size: 15px; float: right;"><a href="">View all</a></span></h3>
+				</div>
+				<div class="div-content-list">
+					<img src="{% static 'images/logo.png' %}" alt="">
+					<h4>Pastor, Emmanuel</h4>
+					<h5>Expert in Marketing</h5>
+					<a href="">See Profile &raquo;</a>
+				</div>
+				<div class="div-content-list">
+					<img src="{% static 'images/logo.png' %}" alt="">
+					<h4>Cleo, Mardi</h4>
+					<h5>Expert in Branding</h5>
+					<a href="">View Profile &raquo;</a>
+				</div>
+				<div class="div-content-list">
+					<img src="{% static 'images/logo.png' %}" alt="">
+					<h4>James, Adetola</h4>
+					<h5>Expert in Branding</h5>
+					<a href="">View Profile &raquo;</a>
+				</div>
+			</div>
+			<div class="panel panel-default top-margin">
+				<div class="aside-info">
+					<a href="">About</a>
+					<a href="">FAQs</a>
+					<a href="">Privacy Policy</a>
+					<a href="">Ads</a>
+					<a href="">NewsRoom</a>
+					<a href="">Brand</a>
+					<a href="">Business Development</a>
+					<a href="">Advertising</a>
+					<a href="">Latest Services</a>
+					<div style="text-align: center; margin-top: 15px; border-top: 1px solid #f1f1f1; padding-top: 6px;">
+						<img src="{% static 'images/logo.png' %}" alt="thebossoffice.com" width="20" height="20">
+						<span style="font-size: 10px; color: #c1c1c1;">© 2017 THEBOSSOFFICE.COM. All Rights Reserved</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
