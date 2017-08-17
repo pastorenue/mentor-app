@@ -43,11 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #install apps 
-    'accounts',
-    'mentee',
-    'mentor',
-    'expert',
-    'contacts',
+    'apps.accounts',
+    'apps.mentee',
+    'apps.mentor',
+    'apps.expert',
+    'apps.contacts',
     'sorl.thumbnail',
     'states'
 ]
