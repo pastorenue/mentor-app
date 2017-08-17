@@ -2,6 +2,7 @@
 /static/
 db.sqlite3
 *.pyc
-__secrete_file.txt
+__secrete_file
 uploads/
-
+mentor_app/settings/local.py
+mentor_app/settings.py
