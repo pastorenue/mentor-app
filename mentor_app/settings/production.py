@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'apps.expert',
     'apps.contacts',
     'sorl.thumbnail',
-    'states'
+    'apps.states'
 ]
 
 MIDDLEWARE = [
