@@ -1422,6 +1422,9 @@ ul.address {
 .div-content-list:hover {
   box-shadow: 1px 2px 4px rgba(0,0,0,0.04), 2px 2px 6px rgba(0,0,0,0.07);
   transform: translateX(-10px);
+  -moz-transform: translateX(-10px);
+  -webkit-transform: translateX(-10px);
+  -o-transform: translateX(-10px);
 }
 .div-content-list img {
   width: 50px;
@@ -1473,9 +1476,18 @@ ul.address {
 
 .news-list {
   text-align: center;
-  margin: 6px 2px;
+  margin: 10px 2px;
   border-bottom: 1px solid #e5e5e5;
   padding-bottom: 5px;
+  cursor: pointer;
+  transition: all 0.45s ease-in-out;
+}
+.news-list:hover {
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.04), 2px 2px 6px rgba(0,0,0,0.07);
+  transform: translateY(-6px);
+  -moz-transform: translateY(-6px);
+  -webkit-transform: translateY(-6px);
+  -o-transform: translateY(-6px);
 }
 .news-list img {
   width: 254px;
@@ -1515,6 +1527,8 @@ ul.address {
 }
 .div-main-content {
   box-shadow: 1px 2px 4px rgba(0,0,0,0.04), 2px 2px 6px rgba(0,0,0,0.07);
+  -webkit-box-shadow: 1px 2px 4px rgba(0,0,0,0.04), 2px 2px 6px rgba(0,0,0,0.07);
+  -moz-box-shadow: 1px 2px 4px rgba(0,0,0,0.04), 2px 2px 6px rgba(0,0,0,0.07);
   border-radius: 5px;
 }
 
