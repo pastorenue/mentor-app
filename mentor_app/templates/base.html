@@ -59,13 +59,13 @@
 	<script type="text/javascript" charset="UTF-8" src="{% static 'js/onion.js' %}"></script>
 	<script type="text/javascript" charset="UTF-8" src="{% static 'js/controls.js' %}"></script></head><!--/head-->
 
-  <body style="height: 100%;">
+  <body style="height: 100%; background: #f5f5f5;">
     <header>
        {% include '_mainbar.html' %}
     </header>
     {% block banner %}{% endblock %}
     {% block mainbar %}
-    <div  class="row main-header">
+    <div  class="row main-header" style="background: #fff;">
     {% block header %}<h1>Our Core Values</h1>{% endblock %}
     </div>
     {% endblock %}

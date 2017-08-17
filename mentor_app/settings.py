@@ -22,7 +22,7 @@ ADMINS = (
     ('Pastor Emmanuel', 'pastorenuel@gmail.com'),
 )
 
-DEBUG = True
+DEBUG = False
 SECRET_KEY = 'i-a=nwysyhwu8^xhck3k78oar=%fryvcn^5c7n7m-_=a6+!2-6'
 EMAIL_HOST_PASSWORD = ''
 ALLOWED_HOSTS = ['*']
