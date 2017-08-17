@@ -1,5 +1,5 @@
 DEBUG = False
-ALLOWED_HOSTS =  ['thebossoffice.herokuapp.com', 'thebossoffice.com']
+ALLOWED_HOSTS =  ['thebossoffice.herokuapp.com', '.thebossoffice.com']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
