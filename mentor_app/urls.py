@@ -24,7 +24,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^core-values$', TemplateView.as_view(template_name='core_values.html'), name='core-values'),
+    url(r'^our-history$', TemplateView.as_view(template_name='_about.html'), name='about'),
     url(r'^home$', TemplateView.as_view(template_name='index.html'), name='home'),
     url(r'^$', TemplateView.as_view(template_name='landing.html'), name='landing'),
     url(r'^auth/dashboard$', dashboard, name='dashboard'),

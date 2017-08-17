@@ -13,7 +13,7 @@
         <ul>                     
           <a href=""><li class="scroll"><i class="fa fa-group"></i><br>Meet An Expert</li></a>
           <a href=""><li class="scroll"><i class="fa fa-list"></i><br>See All Mentors</li></a>
-          <a href="{% url 'core-values' %}"><li class="scroll"><i class="fa fa-info"></i><br>About Us</li></a>
+          <a href="{% url 'about' %}"><li class="scroll"><i class="fa fa-info"></i><br>About Us</li></a>
           <a href=""><li class="scroll"><i class="fa fa-bell"></i><br>Notifications</li></a>  
         </ul>
       </div>
@@ -32,8 +32,8 @@
               </ul>
           </label>
           {% else %}
-          <a href="/auth/login">Log In</a>
-          <a href="/auth/logout">Sign Up</a>
+          <a href="{% url 'login' %}">Log In</a>
+          <a href="">Sign Up</a>
           {% endif %}
         </div>
       </div>
