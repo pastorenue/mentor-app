@@ -172,7 +172,7 @@ STATICFILES_DIRS = (
 )
 
 #Login Credentials and urls
-LOGIN_URL = '/accounts/login/' #reverse_lazy('login') ##VERY HARMFUL TO LOGINREQUIRED VIEWS
+LOGIN_URL = '/auth/login/' #reverse_lazy('login') ##VERY HARMFUL TO LOGINREQUIRED VIEWS
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'home'
 
