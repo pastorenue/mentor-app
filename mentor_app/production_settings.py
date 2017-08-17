@@ -168,5 +168,5 @@ DEFAULT_FROM_EMAIL = 'noreply@thebossoffice.com'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = '' #'emails.address.email_addr'
+EMAIL_HOST_USER = 'pastorenuel@gmail.com' #'emails.address.email_addr'
 
