@@ -15,8 +15,9 @@
       </div>
       <div class="col-sm-6">
         <ul>                     
-          <a href=""><li class="scroll"><i class="fa fa-group"></i><br>Meet An Expert</li></a>
+          <a href="{% url 'expert:expert-list' %}"><li class="scroll"><i class="fa fa-group"></i><br>Meet An Expert</li></a>
           <a href="{% url 'mentor:mentor-list' %}"><li class="scroll"><i class="fa fa-list"></i><br>See All Mentors</li></a>
+          <a href="{% url 'mentee:mentee-list' %}"><li class="scroll"><i class="fa fa-list"></i><br>See All Mentees</li></a>
           <a href="{% url 'about' %}"><li class="scroll"><i class="fa fa-info"></i><br>About Us</li></a>
           {% if user.is_authenticated %}
           <a href=""><li class="scroll"><i class="fa fa-bell"></i><br>Notifications</li></a>
@@ -28,20 +29,26 @@
       <div class="col-sm-2" style="padding-left: 5px;">
         <div class="nav-reg">
           {% if user.is_authenticated %}
-          <label class="dropdown" style="">
-              <span data-toggle="dropdown" style="cursor: pointer;">{{user}}</span><b class="caret"></b>
-              <ul class="dropdown-menu" role="menu" style="background-color: #fafafa; color: ##3b5998; border-top: 2px solid  ##3b5998; top: 24px;">
-                    <li><a href="#modal-department" data-toggle="modal"> Department...</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#modal-faculty" data-toggle="modal"> Faculty...</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#modal-course" data-toggle="modal"> Course...</a></li>
-                    <li><a href="{% url 'logout' %}" data-toggle="modal"> Sign Out</a></li>
+            <a id="user" href="">{{user.last_name}} <i class="fa fa-chevron-down"></i></a>
+          
+          <div class="drop-menu">
+            <span></span>
+            <div class="panel panel-default">
+              <ul>
+                <li><a href="">Account Settings</a></li>
+                <li><a href="">Help Center</a></li>
+                <li><a href="">Chat with your mentor</a></li>
               </ul>
-          </label>
+            </div>
+            <div class="panel panel-default">
+              <ul>
+                <li><a href="{% url 'logout' %}">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
           {% else %}
           <a href="{% url 'user_login' %}">Log In</a>
-          <a href="">Sign Up</a>
+          <a href="{% url 'accounts:signup' %}?user_type=unknown">Sign Up</a>
           {% endif %}
         </div>
       </div>

@@ -14,9 +14,9 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">                 
-        <li class="scroll"><a href="">Welcome!</a></li> 
+        <li class="scroll"><a href="{% url 'expert:expert-list' %}">Meet An Expert</a></li> 
         <li class="scroll"><a href="{% url 'mentor:mentor-list' %}">See All Mentors</a></li>
-        <li class="scroll"><a href="">See All Mentees</a></li>
+        <li class="scroll"><a href="{% url 'mentee:mentee-list' %}">See All Mentees</a></li>
         <li class="scroll"><a href="{% url 'about' %}">About Us</a></li>
         <li class="scroll"><a href="">News</a></li>  
         {% if user.is_authenticated %}
@@ -24,7 +24,7 @@
         <li class="scroll"><a href="{% url 'logout' %}">Log out</a></li>
         {% else %}
         <li class="scroll"><a href="{% url 'user_login' %}">Log In</a></li>   
-        <li class="scroll"><a href="">Sign Up</a></li>
+        <li class="scroll"><a href="{% url 'accounts:signup' %}?user_type=unknown">Sign Up</a></li>
         {% endif %}                                      
       </ul>
     </div>

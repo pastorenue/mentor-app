@@ -6,6 +6,7 @@ from django.views.generic import ListView
 class MentorListView(ListView):
 	model = Mentor
 	template_name = 'mentor/mentor_list.html'
+	context_object_name = "mentors"
 
 	def get_queryset(self):
 		queryset = super(MentorListView, self).get_queryset(**kwargs)

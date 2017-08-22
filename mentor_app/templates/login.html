@@ -41,7 +41,7 @@
            {% endfor %}
             <label for="{{field.id_for_label}}">{{field.label}}</label>
             {% if field.html_name == 'username' %}
-            <input id="{{field.id_for_label}}" required="required" name="{{field.html_name}}" type="text" class="form-control" placeholder="Username" style="text-align: center;">
+            <input id="{{field.id_for_label}}" required="required" name="{{field.html_name}}" type="text" class="form-control" placeholder="enter your email address" style="text-align: center;">
             {% else %}
             <input id="{{field.id_for_label}}"  name="{{field.html_name}}" type="password" class="form-control" placeholder="Password" style="text-align: center;" required="required">
             {% endif %}

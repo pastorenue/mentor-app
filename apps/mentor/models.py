@@ -30,7 +30,7 @@ class Mentor(models.Model):
 	)
 
 	title = models.CharField(max_length=10, choices=settings.TITLE_CHOICES)
-	name = models.CharField(max_length=50)
+	name = models.CharField(max_length=50, blank=True)
 	user = models.OneToOneField(User)
 	photo = models.ImageField(upload_to='uploads/%Y/%m/%d', blank=True)
 	age_range = models.CharField(max_length=5, choices=settings.AGE_RANGE_CHOICES)
@@ -40,6 +40,7 @@ class Mentor(models.Model):
 	phone_number = models.CharField(max_length=13)
 	type_to_handle = models.CharField(max_length=20, choices=PROJECT_TYPE_CHOICES)
 	short_biography = models.TextField(blank=True)
+	years_of_experience = models.PositiveIntegerField(null=True)
 	cv_file = models.FileField("Attach PDF copy of CV ", upload_to='uploads/%Y/%m/%d')
 	slug = models.SlugField(unique=True)
 	linkedin_url = models.URLField("Link to LinkedIn Bio/profile", blank=True)
@@ -52,6 +53,9 @@ class Mentor(models.Model):
 		return "%s %s" % (self.title, self.name)
 
 	def get_absolute_url(self):
+		pass
+
+	def get_public_url(self):
 		pass
 
 	class Meta:

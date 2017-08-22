@@ -1,56 +1,14 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load staticfiles humanize thumbnail %}
 
-{% block header %}<h1>MEET OUR MENTORS</h1>{% endblock %}
+{% block header %}<h1>MEET OUR <span style="color: #104e8a;">MENTORS</span> <span>{{ mentors}}</span></h1>{% endblock %}
 {% block content %}
 <div class="container">
 	<div class="row">
 		<div class="col-md-3">
-			{% if user.is_authenticated %}
-			<div class="panel panel-default top-margin">
-				<h3>Your Profile</h3>
-			</div>
-			{% else %}
-			<div class="panel panel-default top-margin">
-				<div class="div-header">
-					<h3><strong>Trending News</strong> <span style="font-size: 14px; float: right;"><a href="">See More &raquo;</a></span></h3>
-				</div>
-				<div class="news-list">
-					<img src="{% static 'images/about.jpg' %}" alt="tweets">
-					<div class="content">
-						<a href=""><h4>Taking the first steps to writing a business paln <span>[posted: {date}]</span></h4></a>
-						<p>dsg;lgsgfdsgfdglkfdsglfdgjdsk;lgjs
-						sdl;gdsjglkfdgfgds;fgslkdjf;lsfkdslfdsgfs
-						dsgjds;fdslkjf;sdkjfsd;fks</p>
-					</div>
-				</div>
-				<div class="news-list">
-					<img src="{% static 'images/tweets.jpg' %}" alt="tweets">
-					<div class="content">
-						<a href=""><h4>Using Multivariated approach in Business <span>[posted: {date}]</span></h4></a>
-						<p>dsg;lgsgfdsgfdglkfdsglfdgjdsk;lgjs
-						sdl;gdsjglkfdgfgds;fgslkdjf;lsfkdslfdsgfs
-						dsgjds;fdslkjf;sdkjfsd;fks</p>
-					</div>
-				</div>
-				<div class="news-list">
-					<img src="{% static 'images/work.jpg' %}" alt="tweets">
-					<div class="content">
-						<a href=""><h4>Your first business deal <span>[posted: {date}]</span></h4></a>
-						<p>dsg;lgsgfdsgfdglkfdsglfdgjdsk;lgjs
-						sdl;gdsjglkfdgfgds;fgslkdjf;lsfkdslfdsgfs
-						dsgjds;fdslkjf;sdkjfsd;fks</p>
-					</div>
-				</div>
-			</div>
-			<div class="panel panel-default top-margin">
-				<div class="div-header">
-					<h3><strong>Business Tips 101</strong></h3>
-				</div>
-			</div>
-			{% endif %}
+			{% include 'side_bar.html' %}
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-6" style="padding-left: 0; padding-right: 0;">
 			<div class="panel panel-default top-margin">
 				<div class="" style="text-align: left;">
 					<div class="filter">
@@ -64,20 +22,24 @@
 					</div>
 				</div>
 			</div>
-			<div class="panel panel-default">
-				<div class="row" style="padding: 4px;">
+			<div class="panel panel-default top-margin">
+				<div class="row" style="padding: 10px;">
+					{% for mentor in mentors %}
 					<div class="col-md-6">
 						<div class="dtl12">
-                            <img src="{% static 'images/marketing.jpg' %}" alt="">
-                            <h4>Tereigh, Banks</h4>
+							{% thumbnail mentor.photo "267x213" crop="center" as im %}
+                            <img src="{{im.url}}" alt="{{mentor}}">
+                            {% endthumbnail %}
+                            <h4>{{mentor.name}}</h4>
                             <div class="dtl">
-                                <h3>Tereigh, Banks</h3>
-                                <p>Area of Expertise: <strong>Marketing</strong></p>
-                                <p>Years of Experience: <strong>12 years</strong></p>
-                                <a href="#">View Profile</a>
+                                <h3>{{mentor.name}}</h3>
+                                <p>Area of Expertise: <strong>{{mentor.industry}}</strong></p>
+                                <p>Years of Experience: <strong>{{mentors.years_of_experience}} years</strong></p>
+                                <a href="{{mentor.get_public_url}}">View Profile</a>
                             </div>
                         </div>
 					</div>
+					{% endfor %}
 					<div class="col-md-6">
 						<div class="dtl12">
                             <img src="{% static 'images/african.jpg' %}" alt="">
@@ -150,6 +112,7 @@
 					<a href="">NewsRoom</a>
 					<a href="">Brand</a>
 					<a href="">Business Development</a>
+					<a href="">Business Tips</a>
 					<a href="">Advertising</a>
 					<a href="">Latest Services</a>
 					<div style="text-align: center; margin-top: 15px; border-top: 1px solid #f1f1f1; padding-top: 6px;">

@@ -21,6 +21,7 @@
   <link href="{% static 'css/main.css' %}" rel="stylesheet">
   <link href="{% static 'css/style6.css' %}" rel="stylesheet">
   <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+  <link href="{% static 'css/intlTelInput.css' %}" rel="stylesheet">
    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
   <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
   {% block extra_css %}{% endblock %}
@@ -38,7 +39,11 @@
           font-family: Candara;
           src: url("{% static 'fonts/Candara.ttf' %}");
       }
-
+      .bg-pane {
+        background-image: url("{% static 'images/bg-profile.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
     .gm-style {
         font: 400 11px Roboto, Arial, sans-serif;
         text-decoration: none;
@@ -61,6 +66,15 @@
 	<script type="text/javascript" charset="UTF-8" src="{% static 'js/controls.js' %}"></script></head><!--/head-->
 
   <body style="height: 100%; background: #f5f5f5;">
+    {% if messages %}
+      {% for message in messages %}
+      <div id="notification" class="alert-{{message.tags}}" style="">
+        <div><span onclick="hideMe()">&times;</span></div>
+        <h4><strong>{{message.tags|title}}</strong></h4>
+        <h5>{{ message }}</h5>
+      </div>
+      {% endfor %}
+    {% endif %}
     <header>
        {% include '_mainbar.html' %}
     </header>
@@ -89,8 +103,27 @@
     <script type="text/javascript" src="{% static 'js/jquery.countTo.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/lightbox.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/intlTelInput.min.js' %}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.0.1/js/utils.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script>
+      function hideMe(){
+            $("#notification").hide('slideUp');
+          }
+          setTimeout(function() {
+            $("#notification").slideUp(1000)
+          }, 6000);
 
+          $('.drop-menu').hide();
+          $('#user').mouseenter(function() {
+            $('.drop-menu').show('fade');
+          })
+          $('.drop-menu').mouseleave(function() {
+            setTimeout(function() {
+              $('.drop-menu').hide('fade')
+            }, 2000);
+          });
+    </script>
     {% block extrajs %}{% endblock %}
  </body>
 </html>

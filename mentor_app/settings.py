@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.humanize', 
     'django.contrib.staticfiles',
     #install apps 
     'accounts',
@@ -54,7 +55,8 @@ INSTALLED_APPS = [
     'expert',
     'contacts',
     'sorl.thumbnail',
-    'states'
+    'states',
+    'anymail'
 ]
 
 MIDDLEWARE = [
@@ -68,7 +70,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mentor_app.urls'
-
+TEMPLATE_DEBUG =True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -158,16 +160,25 @@ STATICFILES_DIRS = (
 
 #Login Credentials and urls
 LOGIN_URL = '/auth/login' #reverse_lazy('login') ##VERY HARMFUL TO LOGINREQUIRED VIEWS
-LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_REDIRECT_URL = 'mentee:mentee-list'
 LOGOUT_REDIRECT_URL = 'home'
 
 PAGE_SIZE = 20
 PAGE_ORPHANS = 5        
 
 #Email_configuration
-DEFAULT_FROM_EMAIL = 'noreply@thebossoffice.com'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = '' #'emails.address.email_addr'
+# EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+# DEFAULT_FROM_EMAIL = 'noreply@thebossoffice.com'
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = '' #'emails.address.email_addr'
+ANYMAIL = {
+    "SENDGRID_API_KEY": "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",
+}
 
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'pastorenuel@gmail.com'
+EMAIL_HOST_PASSWORD = 'treble89'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

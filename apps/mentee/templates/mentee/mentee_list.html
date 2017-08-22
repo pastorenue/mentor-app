@@ -1,80 +1,45 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load staticfiles thumbnail %}
 
-{% block header %}<h1>ALL MENTEES</h1>{% endblock %}
+{% block header %}<h1>AVAILABLE <span style="color: #446f1e;">MENTEES</span> <span>{{mentees.count}}</span></h1>{% endblock %}
 {% block content %}
 <div class="container">
 	<div class="row">
 		<div class="col-md-3">
-			{% if user.is_authenticated %}
-			<div class="panel panel-default top-margin">
-				<h3>Your Profile</h3>
-			</div>
-			{% else %}
-			<div class="panel panel-default top-margin">
-				<div class="div-header">
-					<h3><strong>Trending News</strong> <span style="font-size: 14px; float: right;"><a href="">See More &raquo;</a></span></h3>
-				</div>
-				<div class="news-list">
-					<img src="{% static 'images/about.jpg' %}" alt="tweets">
-					<div class="content">
-						<a href=""><h4>Taking the first steps to writing a business paln <span>[posted: {date}]</span></h4></a>
-						<p>dsg;lgsgfdsgfdglkfdsglfdgjdsk;lgjs
-						sdl;gdsjglkfdgfgds;fgslkdjf;lsfkdslfdsgfs
-						dsgjds;fdslkjf;sdkjfsd;fks</p>
-					</div>
-				</div>
-				<div class="news-list">
-					<img src="{% static 'images/tweets.jpg' %}" alt="tweets">
-					<div class="content">
-						<a href=""><h4>Using Multivariated approach in Business <span>[posted: {date}]</span></h4></a>
-						<p>dsg;lgsgfdsgfdglkfdsglfdgjdsk;lgjs
-						sdl;gdsjglkfdgfgds;fgslkdjf;lsfkdslfdsgfs
-						dsgjds;fdslkjf;sdkjfsd;fks</p>
-					</div>
-				</div>
-				<div class="news-list">
-					<img src="{% static 'images/work.jpg' %}" alt="tweets">
-					<div class="content">
-						<a href=""><h4>Your first business deal <span>[posted: {date}]</span></h4></a>
-						<p>dsg;lgsgfdsgfdglkfdsglfdgjdsk;lgjs
-						sdl;gdsjglkfdgfgds;fgslkdjf;lsfkdslfdsgfs
-						dsgjds;fdslkjf;sdkjfsd;fks</p>
-					</div>
-				</div>
-			</div>
-			<div class="panel panel-default top-margin">
-				<div class="div-header">
-					<h3><strong>Business Tips 101</strong></h3>
-				</div>
-			</div>
-			{% endif %}
+			{% include 'side_bar.html' %}
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-6" style="padding-left: 0; padding-right: 0;">
 			<div class="panel panel-default top-margin">
 				<div class="" style="text-align: left;">
 					<div class="filter">
-						<h4 for=""><i class="fa fa-filter"></i> Filter</h4>
+						<h4><i class="fa fa-filter"></i> Filter</h4>
 						<select name="industry" id="id_industry" class="form-filter">
 							<option value="all">Filter By Industry...</option>
+							{% for industry in industries %}
+							<option value="{{industry.id}}">{{industry}}</option>
+							{% endfor %}
 						</select>
 					</div>
 				</div>
 			</div>
 			<div class="panel panel-default">
-				<div class="row" style="padding: 4px;">
+				<div class="row" style="padding: 10px;">
+					{% for mentee in mentees %}
 					<div class="col-md-6">
 						<div class="dtl12">
-                            <img src="{% static 'images/marketing.jpg' %}" alt="">
-                            <h4>Tereigh, Banks</h4>
+                            {% thumbnail mentee.photo "240x200" crop="top" as im %}
+                            <img src="{{im.url}}" alt="{{mentee.name}}">
+                            {% endthumbnail %}
+                            <h4>{{mentee}}</h4>
                             <div class="dtl">
-                                <h3>Tereigh, Banks</h3>
-                                <p>Area of Expertise: <strong>Marketing</strong></p>
-                                <p>Years of Experience: <strong>12 years</strong></p>
-                                <a href="#">View Profile</a>
+                                <h3>{{mentee.name}}</h3>
+                                <p>Name of Business: <strong>{{mentee.name_of_business}}</strong></p>
+                                <p>Years of Commencement: <strong>{{mentee.year_of_commencement}}</strong></p>
+                                <a href="{{mentee.get_public_url}}">View Profile</a>
                             </div>
                         </div>
 					</div>
+					{% endfor %}
 					<div class="col-md-6">
 						<div class="dtl12">
                             <img src="{% static 'images/african.jpg' %}" alt="">
@@ -117,7 +82,7 @@
 		<div class="col-md-3">
 			<div class="panel panel-default top-margin">
 				<div class="div-header">
-					<h3><strong>Trending Experts</strong> <span style="font-size: 15px; float: right;"><a href="">View all</a></span></h3>
+					<h3><strong>Recent Mentees</strong> <span style="font-size: 15px; float: right;"><a href="">View all</a></span></h3>
 				</div>
 				<div class="div-content-list">
 					<img src="{% static 'images/logo.png' %}" alt="">
@@ -158,4 +123,9 @@
 		</div>
 	</div>
 </div>
+{% endblock %}
+{% block extrajs %}
+<script>
+	$('#id_industry').select2();
+</script>
 {% endblock %}

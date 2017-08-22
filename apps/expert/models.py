@@ -11,7 +11,7 @@ class MeetingExpert(models.Model):
 		(RETURNING_USER, 'Returning User')
 	)
 	user = models.ForeignKey(User)
-	name = models.CharField(max_length=30)
+	name = models.CharField(max_length=50, blank=True)
 	name_of_business = models.CharField(max_length=100)
 	address_of_business = models.OneToOneField('expert.Address')
 	sector_or_industry = models.ForeignKey('expert.Industry')
@@ -40,7 +40,7 @@ class Address(models.Model):
 	street = models.CharField(max_length=50)
 	city = models.CharField("City/Town/Village", max_length=20)
 	state = models.ForeignKey("states.State")
-	Country = models.ForeignKey("states.Country")
+	Country = models.ForeignKey("states.Country", default="156")
 
 	def __str__(self):
 		return "%s, %s" % (self.street, self.city)
@@ -90,7 +90,7 @@ class Expert(models.Model):
 	user = models.OneToOneField(User)
 	photo = models.ImageField(upload_to='uploads/%Y/%m/%d', blank=True)
 	age_range = models.CharField(max_length=5, choices=settings.AGE_RANGE_CHOICES)
-	Industry = models.ForeignKey(Industry)
+	industry = models.ForeignKey(Industry)
 	availability = models.CharField(max_length=20, choices=AVAILABILITY_CHOICES)
 	email = models.EmailField()
 	phone_number = models.CharField(max_length=13)
