@@ -22,7 +22,7 @@ ADMINS = (
     ('Pastor Emmanuel', 'pastorenuel@gmail.com'),
 )
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 SECRET_KEY =os.environ.get('SECRET_KEY', '3dkwehi(vjksjhjk-!dhe3427#@@vcs=./kfdhjreudss')
 EMAIL_HOST_PASSWORD = ''
