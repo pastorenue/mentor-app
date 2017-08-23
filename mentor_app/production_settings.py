@@ -23,9 +23,10 @@ ADMINS = (
 )
 
 DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 SECRET_KEY =os.environ.get('SECRET_KEY', '3dkwehi(vjksjhjk-!dhe3427#@@vcs=./kfdhjreudss')
 EMAIL_HOST_PASSWORD = ''
-ALLOWED_HOSTS =  ['thebossoffice.herokuapp.com', '*']
+ALLOWED_HOSTS =  ['localhost', 'thebossoffice.herokuapp.com']
 
 DATABASES = {
     'default': {
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.humanize',
     'django.contrib.staticfiles',
     #install apps 
     'accounts',
@@ -54,7 +56,8 @@ INSTALLED_APPS = [
     'expert',
     'contacts',
     'sorl.thumbnail',
-    'states'
+    'states',
+    'anymail'
 ]
 
 MIDDLEWARE = [
@@ -186,3 +189,13 @@ LOGGING = {
         },
     },
 }
+
+ANYMAIL = {
+    "SENDGRID_API_KEY": "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",
+}
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'pastorenuel@gmail.com'
+EMAIL_HOST_PASSWORD = 'treble89'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
