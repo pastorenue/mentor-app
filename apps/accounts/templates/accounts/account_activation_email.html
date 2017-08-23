@@ -1,0 +1,10 @@
+{% autoescape off %}
+<h2>Hi {{ user.username }},</h2>
+<div>
+	<p>Please click on the link below to confirm your registration:</p>
+	http://{{ domain }}{% url 'accounts:activate' uidb64=uid token=token %}
+</div>
+{% endautoescape %}
+<div style="background: #3b5998; color: #fff; width: 100%; text-align: center; height: 70px;">
+	<h3>thebossoffice.com</h3>
+</div>

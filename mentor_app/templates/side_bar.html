@@ -1,0 +1,50 @@
+{% load staticfiles thumbnail %}
+
+{% if user.is_authenticated %}
+<div class="panel panel-default top-margin">
+	<div class="bg-pane">
+	</div>
+	<div class="profile">
+		{% thumbnail profile.photo "80x80" crop="top" as im %}
+		<img src="{{im.url}}" alt="">
+		{% endthumbnail %}
+		<h4>{{profile.name}}</h4>
+		{% if profile.name_of_business %}
+		<h5>{{profile.name_of_business}}</h5>
+		{% endif %}
+		<hr>
+		{% if profile.address %}
+		<h5><strong>Address: </strong>{{profile.address}}</h5>
+		{% endif %}
+	</div>
+</div>
+{% else %}
+<div class="panel panel-default top-margin">
+	<div class="div-header">
+		<h3><strong>Trending News</strong> <span style="font-size: 14px; float: right;"><a href="">See More &raquo;</a></span></h3>
+	</div>
+	<div class="news-list">
+		<img src="{% static 'images/about.jpg' %}" alt="tweets">
+		<div class="content">
+			<a href=""><h4>Taking the first steps to writing a business paln <span>[posted: {date}]</span></h4></a>
+		</div>
+	</div>
+	<div class="news-list">
+		<img src="{% static 'images/tweets.jpg' %}" alt="tweets">
+		<div class="content">
+			<a href=""><h4>Using Multivariated approach in Business <span>[posted: {date}]</span></h4></a>
+		</div>
+	</div>
+	<div class="news-list">
+		<img src="{% static 'images/work.jpg' %}" alt="tweets">
+		<div class="content">
+			<a href=""><h4>Your first business deal <span>[posted: {date}]</span></h4></a>
+		</div>
+	</div>
+</div>
+<div class="panel panel-default top-margin">
+	<div class="div-header">
+		<h3><strong>Business Tips 101</strong></h3>
+	</div>
+</div>
+{% endif %}

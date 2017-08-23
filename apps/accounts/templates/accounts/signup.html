@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extra_css %}
+<style>
+	.btn-tab {
+		border-radius: 5px;
+		padding: 3px 8px;
+		cursor: pointer;
+		margin-bottom: 6px;
+		border: 1px solid rgba(59,89,152,0.3);
+	}
+	.tcs {
+		position: absolute;
+		bottom: 100px;
+		padding: 10px;
+		box-shadow: 1px 2px 6px rgba(0,0,0,0.07), 1px 3px 8px rgba(0,0,0,0.1);
+		border-radius: 4px;
+		right: -40px;
+		z-index: 300;
+		background: #fff;
+		width: 70%;
+		height: 300px;
+		overflow-y: auto;
+	}
+	.iti-flag {
+		background-image: url("{% static 'images/flags.png' %}");
+	}
+	@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    .iti-flag {
+      background-image: url("{% static 'images/flags@2x.png' %}"); } }
+	.added-padding {
+		padding: 3px 15px;
+	}
+	#frm_reg h4 {
+		border-bottom: 1px solid #f5f5f5;
+		font-weight: 600;
+		color: #027db3;
+	}
+	#signup-div {
+    background-image: linear-gradient(to bottom right, rgba(0,0,0,0.4),rgba(59,89,152,0.8)), url("{% static 'images/login.jpg' %}");
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    min-height: 55vh;
+    overflow-y: auto;
+  }
+  #signup-div input, #signup-div select {
+    background: #fff;
+    height: 35px;  
+    color: #000;
+    font-size: 16px;
+  }
+input[type=text], input[type=password], input[type=email], select, textarea, input[type=url] {
+	display: block;
+	padding: 6px 12px;
+	line-height: 1.42756;
+	width: 100%;
+	border-radius: 4px;
+	border-color: #027db3;
+	box-shadow: none;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+textarea {
+	height: 80px;
+}
+  .sub-panel {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ecf0f1;
+  }
+  .btn-primary:hover {
+    background: #3b5998 !important;
+  }
+</style>
+{% endblock %}
+{% block mainbar %}{% endblock %}
+
+{% block content %}
+<div id="signup-div" class="row">
+	<div class="col-md-7 center-block">
+		<div class="panel panel-default" style="margin-top: 80px; padding: 15px; box-shadow: 1px 5px 4px rgba(0,0,0,0.3), 2px 5px 6px rgba(0,0,0,0.2);">
+			<div class="sub-panel" style="text-align: center;">
+	          <h2>Sign Up</h2>
+	        </div>
+			<form method="GET" action="">
+				{% if user_type != "unknown" %}
+				<div class="form-group">
+					<label for="id_user_type">User Type:</label>
+					<input disabled="disabled" type="text" class="form-control" value="{{user_type|upper}}">
+				</div>
+				{% else %}
+				<select name="user_type" id="id_user_type" class="form-control">
+					<option value="unknown">Select User Type</option>
+					<option value="mentee">Mentee</option>
+					<option value="mentor">Mentor</option>
+					<option value="expert">Expert</option>
+				</select>
+				<button hidden="hidden" type="search" id="get_type"></button>
+				{% endif %}
+			</form>
+			{% if user_type != "unknown" %}
+			<form id="frm_reg" method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+				<h4 class="btn-tab" onclick="toggleUser()">SignUp Detail<span class="pull-right"><i class="fa fa-chevron-down"></i></span></h4>
+				<div id="id_user" class="panel panel-default added-padding">
+					{{u_form.as_p}}
+				</div>
+				<h4 class="btn-tab" onclick="toggleBasic()">Basic Profile Detail<span class="pull-right"><i class="fa fa-chevron-down"></i></span></h4>
+				<div id="id_basic" class="panel panel-default added-padding">
+					{{b_form.as_p}}
+				</div>
+				{% if user_type == "mentee" %}
+				<h4 class="btn-tab" onclick="toggleAddress()">Address Detail<span class="pull-right"><i class="fa fa-chevron-down"></i></span></h4>
+				<div id="id_addr" class="panel panel-default added-padding">
+					{{a_form.as_p}}
+				</div>
+				{% endif %}
+				<h4 class="btn-tab" onclick="toggleProffession()">Business\Professional Detail<span class="pull-right"><i class="fa fa-chevron-down"></i></span></h4>
+				<div id="id_prof" class="panel panel-default added-padding">
+					{{p_form.as_p}}
+				</div>
+				<div class="panel panel-default" style="padding: 10px;">
+					<p style="cursor: pointer; color: #027db3;" onclick="showTCs()">Please click to read the terms and conditions</p>
+					<div id="id_tcs" class="tcs">
+						{% include 'accounts/_mentor_tcs.html' %}
+						<button id="id_accept" type="button" class="btn btn-primary btn-block">I have read and accept</button>
+					</div>
+					<button id="submit" type="submit" disabled="disabled" class="btn btn-primary btn-block">Register</button>
+				</div>
+			</form>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% if user_type == "mentee" %}
+<div class="modal fade" id="modal-info" tabindex="-1" role="dialog">
+	{% include 'accounts/_modal_info.html' %}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block extrajs %}
+<script>
+	$('#id_user_type').change(function() {
+		$('#get_type').click();
+	});
+	$('#id_industry').select2();
+	$('#id_state').select2();
+	$('#id_Country').select2();
+	// $('#id_phone_number').intlTelInput({
+	// 	defaultCountry: "ng",
+	// });
+	$('#id_tcs').hide();
+	$('#id_prof').hide();
+	$('#id_addr').hide();
+	$('#id_basic').hide();
+
+	function showTCs() {
+		$('#id_tcs').toggle('fade');
+	}
+	$('#id_accept').click(function() {
+		$('#id_tcs').hide('fade');
+		$('#submit').attr('disabled', false);
+	})
+
+	function toggleProffession() {
+		$('#id_prof').toggle('fade');
+	}
+	function toggleAddress() {
+		$('#id_addr').toggle('fade');
+	}
+	function toggleBasic() {
+		$('#id_basic').toggle('fade');
+	}
+	function toggleUser() {
+		$('#id_user').toggle('fade');
+	}
+	$(window).on('load',function(){
+        $('#modal-info').modal('show');
+    });
+</script>
+{% endblock %}
