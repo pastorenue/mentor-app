@@ -26,7 +26,7 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 SECRET_KEY =os.environ.get('SECRET_KEY', '3dkwehi(vjksjhjk-!dhe3427#@@vcs=./kfdhjreudss')
 EMAIL_HOST_PASSWORD = ''
-ALLOWED_HOSTS =  ['.thebossoffice.herokuapp.com']
+ALLOWED_HOSTS =  ['thebossoffice.herokuapp.com']
 
 DATABASES = {
     'default': {
