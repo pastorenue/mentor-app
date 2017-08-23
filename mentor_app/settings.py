@@ -174,7 +174,7 @@ PAGE_ORPHANS = 5
 # EMAIL_PORT = 587
 # EMAIL_HOST_USER = '' #'emails.address.email_addr'
 ANYMAIL = {
-    "SENDGRID_API_KEY": "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",
+    "SENDGRID_API_KEY": os.environ.get('SENDGRID_API_KEY'),
 }
 
 EMAIL_HOST = 'smtp.sendgrid.net'
