@@ -22,7 +22,7 @@ ADMINS = (
     ('Pastor Emmanuel', 'pastorenuel@gmail.com'),
 )
 
-DEBUG = False
+DEBUG = True
 SECRET_KEY = 'i-a=nwysyhwu8^xhck3k78oar=%fryvcn^5c7n7m-_=a6+!2-6'
 EMAIL_HOST_PASSWORD = ''
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
@@ -70,7 +70,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mentor_app.urls'
-TEMPLATE_DEBUG =DEBUG
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -79,6 +79,7 @@ TEMPLATES = [
             ],
         'APP_DIRS': True,
         'OPTIONS': {
+            'debug': DEBUG,
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',

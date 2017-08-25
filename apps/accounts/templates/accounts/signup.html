@@ -15,7 +15,7 @@
 		bottom: 100px;
 		padding: 10px;
 		box-shadow: 1px 2px 6px rgba(0,0,0,0.07), 1px 3px 8px rgba(0,0,0,0.1);
-		border-radius: 4px;
+		border-radius: 5px;
 		right: -40px;
 		z-index: 300;
 		background: #fff;
@@ -120,7 +120,15 @@ textarea {
 				<div class="panel panel-default" style="padding: 10px;">
 					<p style="cursor: pointer; color: #027db3;" onclick="showTCs()">Please click to read the terms and conditions</p>
 					<div id="id_tcs" class="tcs">
+						{% if user_type == 'mentor' %}
 						{% include 'accounts/_mentor_tcs.html' %}
+						{% endif %}
+						{% if user_type == 'mentee' %}
+						{% include 'accounts/_mentee_tcs.html' %}
+						{% endif %}
+						{% if user_type == 'expert' %}
+						{% include 'accounts/_expert_tcs.html' %}
+						{% endif %}
 						<button id="id_accept" type="button" class="btn btn-primary btn-block">I have read and accept</button>
 					</div>
 					<button id="submit" type="submit" disabled="disabled" class="btn btn-primary btn-block">Register</button>
@@ -130,11 +138,23 @@ textarea {
 		</div>
 	</div>
 </div>
+
 {% if user_type == "mentee" %}
-<div class="modal fade" id="modal-info" tabindex="-1" role="dialog">
+<div class="modal fade" id="modal-info" tabindex="-1" role="dialog">	
 	{% include 'accounts/_modal_info.html' %}
 </div>
 {% endif %}
+{% if user_type == "mentor" %}
+<div class="modal fade" id="modal-info" tabindex="-1" role="dialog">
+	{% include 'accounts/_mentor_modal_info.html' %}
+</div>
+{% endif %}
+{% if user_type == "expert" %}
+<div class="modal fade" id="modal-info" tabindex="-1" role="dialog">
+	{% include 'accounts/_expert_modal_info.html' %}	
+</div>
+{% endif %}
+
 {% endblock %}
 
 {% block extrajs %}

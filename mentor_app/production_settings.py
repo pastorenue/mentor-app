@@ -23,7 +23,6 @@ ADMINS = (
 )
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 SECRET_KEY =os.environ.get('SECRET_KEY', '3dkwehi(vjksjhjk-!dhe3427#@@vcs=./kfdhjreudss')
 EMAIL_HOST_PASSWORD = ''
 ALLOWED_HOSTS =  ['thebossoffice.herokuapp.com']
@@ -81,6 +80,7 @@ TEMPLATES = [
             ],
         'APP_DIRS': True,
         'OPTIONS': {
+            'debug': DEBUG,
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',

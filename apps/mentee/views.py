@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Mentee
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 # Create your views here.
 
@@ -14,3 +14,9 @@ class MenteeListView(ListView):
 		if hasattr(self.request.user, 'mentee'):
 			queryset = queryset.exclude(user=self.request.user)
 		return queryset
+
+class MenteePublicDetailView(DetailView):
+	model = Mentee
+	template_name = 'mentee/mentee_public_profile.html'
+	slug_url_kwarg = 'slug'
+	context_object_name = 'mentee'

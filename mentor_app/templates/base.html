@@ -1,5 +1,4 @@
 <!DOCTYPE html> 
-<!-- saved from url=(0036)http://demo.themeum.com/html/oxygen/ -->
 
  {% load staticfiles thumbnail %}
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}
@@ -20,7 +19,6 @@
   <link href="{% static 'css/main.css' %}" rel="stylesheet">
   <link href="{% static 'css/style6.css' %}" rel="stylesheet">
   <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
-  <link href="{% static 'css/intlTelInput.css' %}" rel="stylesheet">
    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
   <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
   {% block extra_css %}{% endblock %}
@@ -61,8 +59,7 @@
         background-image:url("{% static 'images/contact.jpg' %}");
       }
 	</style>
-	<script type="text/javascript" charset="UTF-8" src="{% static 'js/onion.js' %}"></script>
-	<script type="text/javascript" charset="UTF-8" src="{% static 'js/controls.js' %}"></script></head><!--/head-->
+	</head><!--/head-->
 
   <body style="height: 100%; background: #f5f5f5;">
     {% if messages %}
@@ -90,19 +87,15 @@
 {% block footer %}
   {% include '_footer.html' %}
 {% endblock %}
-    <script type="text/javascript" charset="UTF-8" src="{% static 'js/common.js' %}">
-    </script><script type="text/javascript" charset="UTF-8" src="{% static 'js/util.js' %}"></script>
-    <script type="text/javascript" charset="UTF-8" src="{% static 'js/infowindow.js' %}"></script>
+
     <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/jquery.inview.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/wow.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/mousescroll.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/smoothscroll.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jquery.countTo.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/lightbox.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/intlTelInput.min.js' %}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.0.1/js/utils.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script>

@@ -6,6 +6,8 @@ from django.conf import settings
 import uuid
 from django.template.defaultfilters import slugify
 from expert.models import Industry, Address
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 
 
 class Mentee(models.Model):
@@ -57,7 +59,7 @@ class Mentee(models.Model):
 		pass
 
 	def get_public_url(self):
-		pass
+		return reverse('mentee:mentee-public-profile', kwargs={'slug': self.slug})
 
 	def save(self, *args, **kwargs):
 		orig = slugify(self.name)

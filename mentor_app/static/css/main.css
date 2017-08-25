@@ -1355,7 +1355,7 @@ ul.address {
 *****************MAIN CONTENT********************
 ************************************************/
 .main-header {
-  height: 60px;
+  min-height: 60px;
   text-align: center;
   box-shadow: 0px 1px 2px #163356;
   color: #163356; 

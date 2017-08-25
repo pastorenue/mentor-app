@@ -63,10 +63,24 @@ def signup(request):
 			basic.industry = professional_form.cleaned_data['industry']
 			basic.mode_details = professional_form.cleaned_data['mode_details']
 			basic.mode_of_communication = professional_form.cleaned_data['mode_of_communication']
-			basic.name_of_business = professional_form.cleaned_data['name_of_business']
-			basic.level_of_education = professional_form.cleaned_data['level_of_education']
-			basic.time_with_mentor = professional_form.cleaned_data['time_with_mentor']
-			basic.year_of_commencement = professional_form.cleaned_data['year_of_commencement']
+			if hasattr(basic, 'name_of_business'):
+				basic.name_of_business = professional_form.cleaned_data['name_of_business']
+			if hasattr(basic, 'level_of_education'):
+				basic.level_of_education = professional_form.cleaned_data['level_of_education']
+			if hasattr(basic, 'time_with_mentor'):
+				basic.time_with_mentor = professional_form.cleaned_data['time_with_mentor']
+			if hasattr(basic, 'year_of_commencement'):
+				basic.year_of_commencement = professional_form.cleaned_data['year_of_commencement']
+			if hasattr(basic, 'type_to_handle'):
+				basic.type_to_handle = professional_form.cleaned_data['type_to_handle']
+			if hasattr(basic, 'short_biography'):
+				basic.short_biography = professional_form.cleaned_data['short_biography']
+			if hasattr(basic, 'linkedin_url'):
+				basic.linkedin_url = professional_form.cleaned_data['linkedin_url']
+			if hasattr(basic, 'years_of_experience'):
+				basic.years_of_experience = professional_form.cleaned_data['years_of_experience']
+			if hasattr(basic, 'cv_file'):
+				basic.cv_file = professional_form.cleaned_data['cv_file']
 			basic.save()
 			notify(request, user)
 			return HttpResponseRedirect(reverse('accounts:account_activation_sent'))
