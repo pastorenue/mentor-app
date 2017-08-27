@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Mentor
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 # Create your views here.
 class MentorListView(ListView):
@@ -9,18 +9,13 @@ class MentorListView(ListView):
 	context_object_name = "mentors"
 
 	def get_queryset(self):
-		queryset = super(MentorListView, self).get_queryset(**kwargs)
-		params = self.request.GET
-		industry = params.get('industry')
-		if industry != 'all':
-			queryset = Mentor.objects.filter(industry=industry)
+		queryset = Mentor.objects.all()
+		if hasattr(self.request.user, 'mentor'):
+			queryset = Mentor.objects.exclude(user=self.request.user)
 		return queryset
 
-	def get_context_data(self, **kwargs):
-		context = super	(MentorListView, self).get_context_data(**kwargs)
-		context['trending_mentors'] = Mentor.objects.trending_mentors()
-		return context
-
-
-def mentors(request):
-	return render(request, 'mentor/mentor_list.html', {})
+class MentorPublicDetailView(DetailView):
+	model = Mentor
+	template_name = 'mentor/mentor_public_profile.html'
+	slug_url_kwarg = 'slug'
+	context_object_name = 'mentor'

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles thumbnail %}
 {% block header %}
-	<h1>{{mentee}}</h1>
+	<h1>{{mentee.name}}</h1>
 {% endblock %}
 {% block content %}
 <div class="container">
@@ -10,13 +10,13 @@
 			<div class="row">
 				<div class="panel panel-default top-margin">
 					<div style="height: 150px; background: #fff;"></div>
-					<div style="height: 50px; background: #f2f5f7;">
+					<div style="height: 60px; background: #f2f5f7;">
 					{% thumbnail mentee.photo "120x120" crop="top" as img %}
-					<img src="{{img.url}}" alt="" style="position: absolute; left: 5%; top: 125px; padding: 5px; background: #fff;" class="img-circle">
+					<img src="{{img.url}}" alt="" style="position: absolute; left: 4%; top: 125px; padding: 5px; background: #fff;" class="img-circle">
 					{% endthumbnail %}
 						<div class="col-md-2"></div>
 						<div class="col-md-7">
-							<h2>{{ mentee.title}} {{mentee}}</h2>
+							<h2>{{mentee}}</h2>
 						</div>
 						<div class="com-md-3">
 							<a href="">Ask for More Details</a>
@@ -26,12 +26,12 @@
 			</div>
 			<div class="row">
 				<div class="col-md-3"></div>
-				<div class="col-md-9">
+				<div class="col-md-9" style="padding-right: 0;">
 					<div class="panel panel-default top-margin">
 						<div style="height: 150px; background: #fff;">
 							<h4>User Profile</h4>
 							<div class="col-md-6">
-								<h4><strong>Business Type:</strong> <span>{{mentee.industry}}</span></h4>
+								<h4><strong>Industry:</strong> <span>{{mentee.industry}}</span></h4>
 								<h4><strong>Business Name:</strong> <span>{{mentee.name_of_business}}</span></h4> 
 								<h4><strong>Date of Commencement:</strong> <span>{{mentee.year_of_commencement}}</span></h4>
 							</div>

@@ -30,16 +30,17 @@ def signup(request):
 	template_name = 'accounts/signup.html'
 	context = {}
 	user_type = request.GET.get('user_type')
+
 	if request.method == "POST":
 		user_form = basic_form = professional_form = None
 		if user_type == 'mentor':
 			user_form = MentorSignUpForm(request.POST)
 			basic_form = BasicMentorForm(request.POST, request.FILES)
-			professional_form = MentorProfessionalForm(request.POST)
+			professional_form = MentorProfessionalForm(request.POST, request.FILES)
 		if user_type == 'expert':
 			user_form = ExpertSignUpForm(request.POST)
 			basic_form = BasicExpertForm(request.POST, request.FILES)
-			professional_form = ExpertProfessionalForm(request.POST)
+			professional_form = ExpertProfessionalForm(request.POST, request.FILES)
 		if user_type == 'mentee':
 			user_form = MenteeSignUpForm(request.POST)
 			basic_form = BasicMenteeForm(request.POST, request.FILES)
@@ -50,8 +51,6 @@ def signup(request):
 			user.is_active = False
 			user.save()
 			basic = basic_form.save(commit=False)
-			import pdb
-			pdb.set_trace()
 			if hasattr(basic, 'address_id'):
 				if addr_form.is_valid:
 					addr = addr_form.save(commit=False)
@@ -61,8 +60,10 @@ def signup(request):
 			basic.name = "%s, %s" % (user.first_name, user.last_name)
 			basic.user = user
 			basic.industry = professional_form.cleaned_data['industry']
-			basic.mode_details = professional_form.cleaned_data['mode_details']
-			basic.mode_of_communication = professional_form.cleaned_data['mode_of_communication']
+			if hasattr(basic, 'mode_details'):
+				basic.mode_details = professional_form.cleaned_data['mode_details']
+			if hasattr(basic, 'mode_of_communication'):
+				basic.mode_of_communication = professional_form.cleaned_data['mode_of_communication']
 			if hasattr(basic, 'name_of_business'):
 				basic.name_of_business = professional_form.cleaned_data['name_of_business']
 			if hasattr(basic, 'level_of_education'):
@@ -73,8 +74,8 @@ def signup(request):
 				basic.year_of_commencement = professional_form.cleaned_data['year_of_commencement']
 			if hasattr(basic, 'type_to_handle'):
 				basic.type_to_handle = professional_form.cleaned_data['type_to_handle']
-			if hasattr(basic, 'short_biography'):
-				basic.short_biography = professional_form.cleaned_data['short_biography']
+			if hasattr(basic, 'availability'):
+				basic.availability = professional_form.cleaned_data['availability']
 			if hasattr(basic, 'linkedin_url'):
 				basic.linkedin_url = professional_form.cleaned_data['linkedin_url']
 			if hasattr(basic, 'years_of_experience'):
@@ -83,7 +84,6 @@ def signup(request):
 				basic.cv_file = professional_form.cleaned_data['cv_file']
 			basic.save()
 			notify(request, user)
-			return HttpResponseRedirect(reverse('accounts:account_activation_sent'))
 	else:
 		user_form = basic_form = professional_form = None
 		if user_type == 'mentor':
@@ -116,7 +116,6 @@ def activate(request, uidb64, token):
 		user = User.objects.get(pk=uid)
 	except (TypeError, ValueError, OverflowError, User.DoesNotExist):
 		user = None
-
 		if user is not None and account_activation_token.check_token(user, token):
 		    user.is_active = True
 		    user.profile.email_confirmed = True
@@ -142,12 +141,15 @@ def notify(request, user):
 	msg = EmailMultiAlternatives(subject, txt_message, from_email, [to])
 	msg.attach_alternative(html_message, "text/html")
 	try:
-	    msg.send()
-	    messages.info(request, 'Check your email for a link to activate your account.')
+		import pdb
+		pdb.set_trace()
+		msg.send()
+		messages.info(request, 'Check your email for a link to activate your account.')
+		return HttpResponseRedirect(reverse('accounts:account_activation_sent'))
 	except:#I activate the user if I can't send email and log.
 	    user.is_active = True
 	    user.save()
-	    user = authenticate(username = user.username, password = request.POST['login-password'])
 	    if user is not None:
 	        login(request, user)
 	    messages.success(request, 'Your account is now active')
+	    return HttpResponseRedirect(reverse('mentee:mentee-list'))

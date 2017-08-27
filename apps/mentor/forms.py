@@ -11,11 +11,14 @@ class BasicMentorForm(forms.ModelForm):
 		model = Mentor
 		fields = ('title', 'photo', 'age_range', 'phone_number', 'short_biography')
 
+
 class MentorProfessionalForm(forms.ModelForm):
 
 	class Meta:
 		model = Mentor
-		fields = ('industry', 'availability', 'type_to_handle', 'cv_file', 'linkedin_url')
+		fields = ('industry', 'years_of_experience', 
+					'availability', 'type_to_handle', 
+					'cv_file', 'linkedin_url')
 
 
 class MentorSignUpForm(UserCreationForm):

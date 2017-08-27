@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load staticfiles thumbnail %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+{% block header %}
+	<h1>{{mentor.name}}</h1>
+{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-9">
+			<div class="row">
+				<div class="panel panel-default top-margin">
+					<div style="height: 150px; background: #fff;"></div>
+					<div class="lc-profile">
+					{% thumbnail mentor.photo "120x120" crop="top" as img %}
+					<img src="{{img.url}}" alt="" style="position: absolute; left: 4%; top: 125px; padding: 5px; background: #fff;" class="img-circle">
+					{% endthumbnail %}
+						<div class="col-md-2"></div>
+						<div class="col-md-7">
+							<h2>{{mentor}}</h2>
+						</div>
+						<div class="com-md-3">
+							<a href="">Ask for More Details</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-9">
+					<div class="panel panel-default top-margin">
+						<div style="height: 150px; background: #fff;">
+							<h4>User Profile</h4>
+							<div class="col-md-6">
+								<h4><strong>Business Type:</strong> <span>{{mentor.industry}}</span></h4>
+								<h4><strong>Business Name:</strong> <span>{{mentor.name_of_business}}</span></h4> 
+								<h4><strong>Date of Commencement:</strong> <span>{{mentor.year_of_commencement}}</span></h4>
+							</div>
+							<div class="col-md-6">
+								<h4><strong>Business Location:</strong> <span>{{mentor.address}}</span></h4>
+								<h4><strong>Business Name:</strong> <span>{{mentor.name_of_business}}</span></h4> 
+								<h4><strong>Date of Commencement:</strong> <span>{{mentor.year_of_commencement}}</span></h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			{% include 'side_bar.html' %}
+
+		</div>
+	</div>
+</div>
+{% endblock %}
