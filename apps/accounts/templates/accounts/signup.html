@@ -162,10 +162,7 @@ textarea {
 	$('#id_user_type').change(function() {
 		$('#get_type').click();
 	});
-	$('#id_industry').select2();
-	$('#id_state').select2();
-	$('#id_Country').select2();
-	// $('#id_phone_number').intlTelInput({
+	// // $('#id_phone_number').intlTelInput({
 	// 	defaultCountry: "ng",
 	// });
 	$('#id_tcs').hide();
@@ -196,5 +193,10 @@ textarea {
 	$(window).on('load',function(){
         $('#modal-info').modal('show');
     });
+</script>
+<script>
+	$('#id_industry').select2();
+	$('#id_state').select2();
+	$('#id_Country').select2();
 </script>
 {% endblock %}

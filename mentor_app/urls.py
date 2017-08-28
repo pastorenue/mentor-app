@@ -42,6 +42,7 @@ urlpatterns = [
     url(r'^mentee/', include('mentee.urls', namespace='mentee')),
     url(r'^mentor/', include('mentor.urls', namespace='mentor')),
     url(r'^expert/', include('expert.urls', namespace='expert')),
+    url(r'^discussion/', include('forum.urls', namespace='forum')),
 ]
 
 urlpatterns+=static(setting.MEDIA_URL, document_root=setting.MEDIA_ROOT)

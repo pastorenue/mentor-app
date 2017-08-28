@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+from django.core.urlresolvers import reverse
+from django.template.defaultfilters import slugify
+import uuid
 # Create your models here.
 
 class MeetingExpert(models.Model):
@@ -92,12 +95,12 @@ class Expert(models.Model):
 	age_range = models.CharField(max_length=5, choices=settings.AGE_RANGE_CHOICES)
 	industry = models.ForeignKey(Industry)
 	availability = models.CharField(max_length=20, choices=AVAILABILITY_CHOICES)
-	email = models.EmailField()
+	email = models.EmailField(blank=True)
 	phone_number = models.CharField(max_length=13)
 	type_to_handle = models.CharField(max_length=20, choices=PROJECT_TYPE_CHOICES)
 	short_biography = models.TextField(blank=True)
 	cv_file = models.FileField("Attach PDF copy of CV ", upload_to='uploads/%Y/%m/%d')
-	slug = models.SlugField(unique=True)
+	slug = models.SlugField(unique=True, blank=True)
 	linkedin_url = models.URLField("Link to LinkedIn Bio/profile", blank=True)
 	date_created = models.DateTimeField(auto_now_add=True)
 	date_modified = models.DateTimeField(auto_now=True)
@@ -107,3 +110,17 @@ class Expert(models.Model):
 
 	def get_absolute_url(self):
 		pass
+
+	def get_public_url(self):
+		return reverse('expert:expert-public-profile', kwargs={'slug': self.slug})
+
+	def save(self, *args, **kwargs):
+		orig = slugify(self.name)
+		self.slug = "%s-%s"[:50] % (orig, uuid.uuid4())
+		self.email = self.user.username
+		super(Expert, self).save(*args, **kwargs)
+
+	class Meta:
+		verbose_name = _(u'Expert')
+		verbose_name_plural = _(u'Experts')
+		ordering = ('name',)

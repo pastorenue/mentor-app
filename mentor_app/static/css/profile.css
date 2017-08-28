@@ -1,0 +1,53 @@
+.lc-profile {
+	height: 50px;
+	background: rgba(58,89,152,0.1);
+}
+.lc-profile h2 {
+	margin-top: 5px;
+	padding-left: 10px;
+}
+.lc-profile a {
+	position: absolute;
+	top: 182px;
+	right: 10px;
+	padding: 6px 15px;
+	border-radius: 20px;
+	background: rgba(58,89,152,0.8);
+	color: #fff;
+	transition: all .45s ease-in-out;
+}
+.lc-profile a:hover {
+	box-shadow: 1px 2px 4px rgba(0,0,0,0.1), 2px 4px 5px rgba(0,0,0,0.2);
+}
+.lc-detail {
+	min-height: 120px; 
+	width: 100%;
+	padding-left: 10px;
+	background: #fff;
+}
+.lc-detail>div>h3 {
+	padding-left: 10px;
+	border-bottom: 1px solid rgba(0,0,0,0.05);
+	padding-bottom: 6px;
+	font-size: 22px;
+	color: rgb(59,89,152);
+}
+.lc-detail p {
+	font-size: 15px;
+}
+.other-detail {
+	padding: 10px 5px;
+	border-radius: 4px;
+	border: 1px solid #f5f5f5;
+	text-align: center;
+	transition: all .45s ease-in-out;
+}
+.other-detail img {
+	margin-bottom: 10px;
+	border-radius: 3px;
+	border-bottom: 1px solid #f5f5f5;
+}
+.other-detail:hover {
+	box-shadow: 2px 3px 5px rgba(0,0,0,0.05), 2px 3px 6px rgba(0,0,0,0.07);
+	transform: translateY(-6px);
+}

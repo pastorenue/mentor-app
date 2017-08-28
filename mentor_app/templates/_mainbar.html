@@ -16,12 +16,13 @@
       <div class="col-sm-6">
         <ul>                     
           <a href="{% url 'expert:expert-list' %}"><li class="scroll"><i class="fa fa-group"></i><br>Meet An Expert</li></a>
-          <a href="{% url 'mentor:mentor-list' %}"><li class="scroll"><i class="fa fa-list"></i><br>See All Mentors</li></a>
-          <a href="{% url 'mentee:mentee-list' %}"><li class="scroll"><i class="fa fa-list"></i><br>See All Mentees</li></a>
-          <a href="{% url 'about' %}"><li class="scroll"><i class="fa fa-info"></i><br>About Us</li></a>
+          <a href="{% url 'mentor:mentor-list' %}"><li class="scroll"><i class="fa fa-group"></i><br>See All Mentors</li></a>
+          <a href="{% url 'mentee:mentee-list' %}"><li class="scroll"><i class="fa fa-group"></i><br>See All Mentees</li></a>
           {% if user.is_authenticated %}
           <a href=""><li class="scroll"><i class="fa fa-bell"></i><br>Notifications</li></a>
+          <a href=""><li class="scroll"><i class="fa fa-laptop"></i><br>Forum</li></a>
           {% else %}
+          <a href="{% url 'about' %}"><li class="scroll"><i class="fa fa-info"></i><br>About Us</li></a>
           <a href=""><li class="scroll"><i class="fa fa-tablet"></i><br>How It Works</li></a>
           {% endif %}
         </ul>
@@ -29,7 +30,7 @@
       <div class="col-sm-2" style="padding-left: 5px;">
         <div class="nav-reg">
           {% if user.is_authenticated %}
-            <a id="user" href="">{{user.last_name}} <i class="fa fa-chevron-down"></i></a>
+            <a id="user" href="">{{user.first_name}} <i class="fa fa-chevron-down"></i></a>
           
           <div class="drop-menu">
             <span></span>

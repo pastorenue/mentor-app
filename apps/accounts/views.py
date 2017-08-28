@@ -84,6 +84,7 @@ def signup(request):
 				basic.cv_file = professional_form.cleaned_data['cv_file']
 			basic.save()
 			notify(request, user)
+			return HttpResponseRedirect(reverse('mentee:mentee-list'))
 	else:
 		user_form = basic_form = professional_form = None
 		if user_type == 'mentor':
@@ -141,8 +142,6 @@ def notify(request, user):
 	msg = EmailMultiAlternatives(subject, txt_message, from_email, [to])
 	msg.attach_alternative(html_message, "text/html")
 	try:
-		import pdb
-		pdb.set_trace()
 		msg.send()
 		messages.info(request, 'Check your email for a link to activate your account.')
 		return HttpResponseRedirect(reverse('accounts:account_activation_sent'))
@@ -152,4 +151,3 @@ def notify(request, user):
 	    if user is not None:
 	        login(request, user)
 	    messages.success(request, 'Your account is now active')
-	    return HttpResponseRedirect(reverse('mentee:mentee-list'))

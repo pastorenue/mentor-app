@@ -12,13 +12,7 @@
 			<div class="panel panel-default top-margin">
 				<div class="" style="text-align: left;">
 					<div class="filter">
-						<h4 for=""><i class="fa fa-filter"></i> Filter</h4>
-						<select name="industry" id="id_industry" class="form-filter">
-							<option value="all">Filter By Industry...</option>
-							{% for industry in industries %}
-							<option value="{{industry.id}}">{{industry}}</option>
-							{% endfor %}
-						</select>
+						{% include 'filter.html' %}
 					</div>
 				</div>
 			</div>
@@ -39,70 +33,14 @@
                             </div>
                         </div>
 					</div>
+					{% empty %}
+					<h4 style="text-align: center; margin: 30px auto;">Sorry! No records were found</h4>
 					{% endfor %}
-					<div class="col-md-6">
-						<div class="dtl12">
-                            <img src="{% static 'images/african.jpg' %}" alt="">
-                            <h4>Anderson, Osiobaifo</h4>
-                            <div class="dtl">
-                                <h3>Anderson, Osiobaifo</h3>
-                                <p>Area of Expertise: <strong>Business Intelligence</strong></p>
-                                <p>Years of Experience: <strong>12 years</strong></p>
-                                <a href="#">View Profile</a>
-                            </div>
-                        </div>
-					</div>
-					<div class="col-md-6">
-						<div class="dtl12">
-                            <img src="{% static 'images/work.jpg' %}" alt="">
-                            <h4>Clad, Merlin</h4>
-                            <div class="dtl">
-                                <h3>Clad, Merlin</h3>
-                                <p>Area of Expertise: <strong>Marketing</strong></p>
-                                <p>Years of Experience: <strong>4 years</strong></p>
-                                <a href="#">View Profile</a>
-                            </div>
-                        </div>
-					</div>
-					<div class="col-md-6">
-						<div class="dtl12">
-                            <img src="{% static 'images/about.jpg' %}" alt="">
-                            <h4>Zain, Fardin</h4>
-                            <div class="dtl">
-                                <h3>Zain, Fardin</h3>
-                                <p>Area of Expertise: <strong>Branding</strong></p>
-                                <p>Years of Experience: <strong>12 years</strong></p>
-                                <a href="#">View Profile</a>
-                            </div>
-                        </div>
-					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-3">
-			<div class="panel panel-default top-margin">
-				<div class="div-header">
-					<h3><strong>Trending Experts</strong> <span style="font-size: 15px; float: right;"><a href="">View all</a></span></h3>
-				</div>
-				<div class="div-content-list">
-					<img src="{% static 'images/logo.png' %}" alt="">
-					<h4>Pastor, Emmanuel</h4>
-					<h5>Expert in Marketing</h5>
-					<a href="">See Profile &raquo;</a>
-				</div>
-				<div class="div-content-list">
-					<img src="{% static 'images/logo.png' %}" alt="">
-					<h4>Cleo, Mardi</h4>
-					<h5>Expert in Branding</h5>
-					<a href="">View Profile &raquo;</a>
-				</div>
-				<div class="div-content-list">
-					<img src="{% static 'images/logo.png' %}" alt="">
-					<h4>James, Adetola</h4>
-					<h5>Expert in Branding</h5>
-					<a href="">View Profile &raquo;</a>
-				</div>
-			</div>
+			{% include 'expert/trending_expert.html' %}
 			<div class="panel panel-default top-margin">
 				<div class="aside-info">
 					<a href="">About</a>
@@ -126,6 +64,11 @@
 </div>
 {% endblock %}
 {% block extrajs %}
+<script>
+	$('#id_industry').change(function() {
+		$('#id_filter').click();
+	})
+</script>
 <script>
 	$('#id_industry').select2();
 </script>

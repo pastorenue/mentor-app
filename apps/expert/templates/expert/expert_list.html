@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles humanize thumbnail %}
 
-{% block header %}<h1>SEE OUR <span style="color: #104e8a;">EXPERTS</span> <span></span></h1>{% endblock %}
+{% block header %}<h1>SEE OUR <span style="color: #104e8a;">EXPERTS</span> <span style="padding: 3px 25px; border-radius: 15px; background: #f4f4f4;">{{experts.count}}</span></h1>{% endblock %}
 {% block content %}
 <div class="container">
 	<div class="row">
@@ -12,70 +12,29 @@
 			<div class="panel panel-default top-margin">
 				<div class="" style="text-align: left;">
 					<div class="filter">
-						<h4 for=""><i class="fa fa-filter"></i> Filter</h4>
-						<select name="industry" id="id_industry" class="form-filter">
-							<option value="all">Filter By Industry...</option>
-							{% for industry in industries %}
-							<option value="{{industry.id}}">{{industry}}</option>
-							{% endfor %}
-						</select>
+						{% include 'filter.html' %}
 					</div>
 				</div>
 			</div>
 			<div class="panel panel-default top-margin">
 				<div class="row" style="padding: 10px;">
-					{% for mentor in mentors %}
+					{% for expert in experts %}
 					<div class="col-md-6">
 						<div class="dtl12">
-							{% thumbnail mentor.photo "267x213" crop="center" as im %}
-                            <img src="{{im.url}}" alt="{{mentor}}">
+							{% thumbnail expert.photo "267x213" crop="center" as im %}
+                            <img src="{{im.url}}" alt="{{expert}}">
                             {% endthumbnail %}
-                            <h4>{{mentor.name}}</h4>
+                            <h4>{{expert.name}}</h4>
                             <div class="dtl">
-                                <h3>{{mentor.name}}</h3>
-                                <p>Area of Expertise: <strong>{{mentor.industry}}</strong></p>
-                                <p>Years of Experience: <strong>{{mentors.years_of_experience}} years</strong></p>
-                                <a href="{{mentor.get_public_url}}">View Profile</a>
+                                <h3>{{expert.name}}</h3>
+                                <p>Area of Expertise: <strong>{{expert.industry}}</strong></p>
+                                <a href="{{expert.get_public_url}}">View Profile</a>
                             </div>
                         </div>
 					</div>
+					{% empty %}
+					<h4 style="text-align: center; margin: 30px auto;">Sorry! No Experts were found</h4>
 					{% endfor %}
-					<div class="col-md-6">
-						<div class="dtl12">
-                            <img src="{% static 'images/african.jpg' %}" alt="">
-                            <h4>Anderson, Osiobaifo</h4>
-                            <div class="dtl">
-                                <h3>Anderson, Osiobaifo</h3>
-                                <p>Area of Expertise: <strong>Business Intelligence</strong></p>
-                                <p>Years of Experience: <strong>12 years</strong></p>
-                                <a href="#">View Profile</a>
-                            </div>
-                        </div>
-					</div>
-					<div class="col-md-6">
-						<div class="dtl12">
-                            <img src="{% static 'images/work.jpg' %}" alt="">
-                            <h4>Clad, Merlin</h4>
-                            <div class="dtl">
-                                <h3>Clad, Merlin</h3>
-                                <p>Area of Expertise: <strong>Marketing</strong></p>
-                                <p>Years of Experience: <strong>4 years</strong></p>
-                                <a href="#">View Profile</a>
-                            </div>
-                        </div>
-					</div>
-					<div class="col-md-6">
-						<div class="dtl12">
-                            <img src="{% static 'images/about.jpg' %}" alt="">
-                            <h4>Zain, Fardin</h4>
-                            <div class="dtl">
-                                <h3>Zain, Fardin</h3>
-                                <p>Area of Expertise: <strong>Branding</strong></p>
-                                <p>Years of Experience: <strong>12 years</strong></p>
-                                <a href="#">View Profile</a>
-                            </div>
-                        </div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -126,6 +85,11 @@
 </div>
 {% endblock %}
 {% block extrajs %}
+<script>
+	$('#id_industry').change(function() {
+		$('#id_filter').click();
+	})
+</script>
 <script>
 	$('#id_industry').select2();
 </script>
