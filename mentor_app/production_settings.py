@@ -22,7 +22,7 @@ ADMINS = (
     ('Pastor Emmanuel', 'pastorenuel@gmail.com'),
 )
 
-DEBUG = False
+DEBUG = True
 SECRET_KEY =os.environ.get('SECRET_KEY', '3dkwehi(vjksjhjk-!dhe3427#@@vcs=./kfdhjreudss')
 EMAIL_HOST_PASSWORD = ''
 ALLOWED_HOSTS =  ['thebossoffice.herokuapp.com', '*']
@@ -151,7 +151,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
