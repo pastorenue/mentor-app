@@ -155,8 +155,10 @@ def notify(request, user):
 	    messages.success(request, 'Your account is now active')
 
 def landing_view(request):
-	quote_pk = randint(1, Quote.objects.count())
-	quote = get_object_or_404(Quote, pk=quote_pk)
+	quote = None
+	if Quote.objects.count() > 0:
+		quote_pk = randint(1, Quote.objects.count())
+		quote = get_object_or_404(Quote, pk=quote_pk)
 	template_name = 'landing.html'
 	context = {
 		'quote': quote,
