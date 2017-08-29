@@ -38,6 +38,7 @@ class Mentee(models.Model):
 	name = models.CharField(max_length=50, null=True, blank=True)
 	user = models.OneToOneField(User)
 	photo = models.ImageField(upload_to='uploads/%Y/%m/%d', blank=True)
+	background_image = models.ImageField(upload_to='uploads/%Y/%m/%d', blank=True)
 	age_range = models.CharField(max_length=5, choices=settings.AGE_RANGE_CHOICES, null=True, blank=True)
 	phone_number = models.CharField(max_length=12, blank=True)
 	level_of_education = models.CharField(max_length=27, choices=QUALIFICATION_CHOICES, null=True, blank=True)
@@ -56,10 +57,7 @@ class Mentee(models.Model):
 		return "%s %s" % (self.title, self.name)
 
 	def get_absolute_url(self):
-		pass
-
-	def get_public_url(self):
-		return reverse('mentee:mentee-public-profile', kwargs={'slug': self.slug})
+		return reverse('mentee:mentee-profile', kwargs={'slug': self.slug})
 
 	def save(self, *args, **kwargs):
 		orig = slugify(self.name)
@@ -68,11 +66,16 @@ class Mentee(models.Model):
 
 
 class MentorshipRequest(models.Model):
-	from_user= models.ForeignKey(User, related_name='from_user')
+	mentee= models.ForeignKey(User, related_name='request_sent', null=True)
 	industry = models.ForeignKey(Industry)
-	to_user = models.ForeignKey(User, related_name='to_user')
+	to_user = models.ForeignKey(User, related_name='request_received')
 	date_created = models.DateTimeField(auto_now_add=True)
 
 
 	def __str__(self):
-		return "%s-->%s" % (self.mentee, self.mentor)
+		return "%s-->%s" % (self.mentee, self.to_user)
+
+	class Meta:
+		verbose_name = _(u'Mentorship Request')
+		verbose_name_plural = _(u'Mentorship Requests')
+		ordering = ('-date_created',)

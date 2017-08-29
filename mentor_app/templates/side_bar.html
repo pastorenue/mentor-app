@@ -8,7 +8,7 @@
 		{% thumbnail profile.photo "80x80" crop="top" as im %}
 		<img src="{{im.url}}" alt="">
 		{% endthumbnail %}
-		<h4>{{profile.name}}</h4>
+		<a href="{{profile.get_absolute_url}}"><h3>{{profile.name}}</h3></a>
 		{% if profile.name_of_business %}
 		<h5>{{profile.name_of_business}}</h5>
 		{% endif %}

@@ -1,160 +1,84 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load staticfiles thumbnail %}
 
-{% block header %}<h1>MEET OUR MENTORS</h1>{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+{% block header %}
+	<h1>{{mentee.name}}</h1>
+{% endblock %}
 {% block content %}
 <div class="container">
 	<div class="row">
-		<div class="col-md-3">
-			{% if user.is_authenticated %}
-			<div class="panel panel-default top-margin">
-				<h3>Your Profile</h3>
-			</div>
-			{% else %}
-			<div class="panel panel-default top-margin">
-				<div class="div-header">
-					<h3><strong>Trending News</strong> <span style="font-size: 14px; float: right;"><a href="">See More &raquo;</a></span></h3>
-				</div>
-				<div class="news-list">
-					<img src="{% static 'images/about.jpg' %}" alt="tweets">
-					<div class="content">
-						<a href=""><h4>Taking the first steps to writing a business paln <span>[posted: {date}]</span></h4></a>
-						<p>dsg;lgsgfdsgfdglkfdsglfdgjdsk;lgjs
-						sdl;gdsjglkfdgfgds;fgslkdjf;lsfkdslfdsgfs
-						dsgjds;fdslkjf;sdkjfsd;fks</p>
-					</div>
-				</div>
-				<div class="news-list">
-					<img src="{% static 'images/tweets.jpg' %}" alt="tweets">
-					<div class="content">
-						<a href=""><h4>Using Multivariated approach in Business <span>[posted: {date}]</span></h4></a>
-						<p>dsg;lgsgfdsgfdglkfdsglfdgjdsk;lgjs
-						sdl;gdsjglkfdgfgds;fgslkdjf;lsfkdslfdsgfs
-						dsgjds;fdslkjf;sdkjfsd;fks</p>
-					</div>
-				</div>
-				<div class="news-list">
-					<img src="{% static 'images/work.jpg' %}" alt="tweets">
-					<div class="content">
-						<a href=""><h4>Your first business deal <span>[posted: {date}]</span></h4></a>
-						<p>dsg;lgsgfdsgfdglkfdsglfdgjdsk;lgjs
-						sdl;gdsjglkfdgfgds;fgslkdjf;lsfkdslfdsgfs
-						dsgjds;fdslkjf;sdkjfsd;fks</p>
+		<div class="col-md-9">
+			<div class="row">
+				<div class="panel panel-default top-margin">
+					<div style="height: 150px; background: #fff;"></div>
+					<div class="lc-profile">
+					{% thumbnail mentee.photo "120x120" crop="top" as img %}
+					<img src="{{img.url}}" alt="" style="position: absolute; left: 4%; top: 125px; padding: 5px; background: #fff;" class="img-circle">
+					{% endthumbnail %}
+						<div class="col-md-2"></div>
+						<div class="col-md-7">
+							<h2>{{mentee}}</h2>
+						</div>
+						<div class="com-md-3">
+							{% if user.is_authenticated and user != mentee.user %}
+							<a href="">Request for more details</a>
+							{% endif %}
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="panel panel-default top-margin">
-				<div class="div-header">
-					<h3><strong>Business Tips 101</strong></h3>
-				</div>
-			</div>
-			{% endif %}
-		</div>
-		<div class="col-md-6">
-			<div class="panel panel-default top-margin">
-				<div class="" style="text-align: left;">
-					<div class="filter">
-						<h4 for=""><i class="fa fa-filter"></i> Filter</h4>
-						<select name="industry" id="id_industry" class="form-filter">
-							<option value="all">Filter By Industry...</option>
-						</select>
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-9" style="padding-right: 0;">
+					<div class="panel panel-default top-margin">
+						<div class="lc-detail">
+							<div>
+								<h3>Mentee Profile <span style="float: right; padding-right: 10px; font-size: 16px;">{% if user == mentee.user %} <a href=""><i class="fa fa-edit"></i> Edit</a></span>{% endif %}</h3>
+							</div>
+							<div class="col-md-6">
+								<p><strong>Industry:</strong> <span>{{mentee.industry}}</span></p>
+								<p><strong>Business Name:</strong> <span>{{mentee.name_of_business}}</span></p> 
+								<p><strong>Date of Commencement:</strong> <span>{{mentee.year_of_commencement}}</span></p>
+							</div>
+							<div class="col-md-6">
+								<p><strong>Business Location:</strong> <span>{{mentee.address}}</span></p>
+								<p><strong>Last Active:</strong> <span>{{mentee.date_modified}}</span></p> 
+								<p><strong>Education Qualification:</strong> <span>{{mentee.level_of_education}}</span></p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="panel panel-default">
-				<div class="row" style="padding: 4px;">
-					<div class="col-md-6">
-						<div class="dtl12">
-                            <img src="{% static 'images/marketing.jpg' %}" alt="">
-                            <h4>Tereigh, Banks</h4>
-                            <div class="dtl">
-                                <h3>Tereigh, Banks</h3>
-                                <p>Area of Expertise: <strong>Marketing</strong></p>
-                                <p>Years of Experience: <strong>12 years</strong></p>
-                                <a href="#">View Profile</a>
-                            </div>
-                        </div>
+			<diV class="row">
+				<div class="panel panel-default top-margin">
+					<div class="div-header">
+						<h3><strong>Other Mentees with {% if user == mentee.user %} Your {% else %} {{mentee.title}} {{mentee.user.first_name}}'s {% endif %}Industry type</strong></h3>
 					</div>
-					<div class="col-md-6">
-						<div class="dtl12">
-                            <img src="{% static 'images/african.jpg' %}" alt="">
-                            <h4>Anderson, Osiobaifo</h4>
-                            <div class="dtl">
-                                <h3>Anderson, Osiobaifo</h3>
-                                <p>Area of Expertise: <strong>Business Intelligence</strong></p>
-                                <p>Years of Experience: <strong>12 years</strong></p>
-                                <a href="#">View Profile</a>
-                            </div>
-                        </div>
-					</div>
-					<div class="col-md-6">
-						<div class="dtl12">
-                            <img src="{% static 'images/work.jpg' %}" alt="">
-                            <h4>Clad, Merlin</h4>
-                            <div class="dtl">
-                                <h3>Clad, Merlin</h3>
-                                <p>Area of Expertise: <strong>Marketing</strong></p>
-                                <p>Years of Experience: <strong>4 years</strong></p>
-                                <a href="#">View Profile</a>
-                            </div>
-                        </div>
-					</div>
-					<div class="col-md-6">
-						<div class="dtl12">
-                            <img src="{% static 'images/about.jpg' %}" alt="">
-                            <h4>Zain, Fardin</h4>
-                            <div class="dtl">
-                                <h3>Zain, Fardin</h3>
-                                <p>Area of Expertise: <strong>Branding</strong></p>
-                                <p>Years of Experience: <strong>12 years</strong></p>
-                                <a href="#">View Profile</a>
-                            </div>
-                        </div>
+					<div class="row" style="padding: 5px 10px;">
+						{% for mentee in mentees_for_industry %}
+						<div class="col-sm-3">
+							<a href="{{mentee.get_absolute_url}}">
+								<div class="other-detail">
+									{% thumbnail mentee.photo "150x150" crop="top" as img %}
+									<img src="{{img.url}}" alt="">
+									{% endthumbnail %}
+									<h4>{{mentee}}</h4>
+								</div>
+							</a>
+						</div>
+						{% empty %}
+						<p style="text-align: center; margin: 20px auto;">Sorry! We couldn't find any other Mentees for similar Industry.</p>
+						{% endfor %}
 					</div>
 				</div>
-			</div>
+			</diV>
 		</div>
 		<div class="col-md-3">
-			<div class="panel panel-default top-margin">
-				<div class="div-header">
-					<h3><strong>Trending Experts</strong> <span style="font-size: 15px; float: right;"><a href="">View all</a></span></h3>
-				</div>
-				<div class="div-content-list">
-					<img src="{% static 'images/logo.png' %}" alt="">
-					<h4>Pastor, Emmanuel</h4>
-					<h5>Expert in Marketing</h5>
-					<a href="">See Profile &raquo;</a>
-				</div>
-				<div class="div-content-list">
-					<img src="{% static 'images/logo.png' %}" alt="">
-					<h4>Cleo, Mardi</h4>
-					<h5>Expert in Branding</h5>
-					<a href="">View Profile &raquo;</a>
-				</div>
-				<div class="div-content-list">
-					<img src="{% static 'images/logo.png' %}" alt="">
-					<h4>James, Adetola</h4>
-					<h5>Expert in Branding</h5>
-					<a href="">View Profile &raquo;</a>
-				</div>
-			</div>
-			<div class="panel panel-default top-margin">
-				<div class="aside-info">
-					<a href="">About</a>
-					<a href="">FAQs</a>
-					<a href="">Privacy Policy</a>
-					<a href="">Ads</a>
-					<a href="">NewsRoom</a>
-					<a href="">Brand</a>
-					<a href="">Business Development</a>
-					<a href="">Advertising</a>
-					<a href="">Latest Services</a>
-					<div style="text-align: center; margin-top: 15px; border-top: 1px solid #f1f1f1; padding-top: 6px;">
-						<img src="{% static 'images/logo.png' %}" alt="thebossoffice.com" width="20" height="20">
-						<span style="font-size: 10px; color: #c1c1c1;">© 2017 THEBOSSOFFICE.COM. All Rights Reserved</span>
-					</div>
-				</div>
-			</div>
+			{% include 'side_bar.html' %}
+			{% include 'expert/trending_expert.html' %}
 		</div>
 	</div>
 </div>

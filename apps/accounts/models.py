@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 class Quote(models.Model):
 	author = models.CharField(max_length=30)
 	content = models.TextField()
-	image = models.ImageField(upload_to='uploads/%Y/%m/%') 
+	image = models.ImageField(upload_to='uploads/%Y/%m/%d') 
 	source = models.CharField("Quote Reference", max_length=40, blank=True)
 	date_created = models.DateTimeField(auto_now_add=True)
 

@@ -8,6 +8,19 @@ import uuid
 # Create your models here.
 
 class MeetingExpert(models.Model):
+	WORK_TYPE = (
+		(1, 'Business diagnostics'),
+		(2, 'Operations optimization'),
+		(3, 'Training/HR needs'),
+		(4, 'Business plan'),
+		(5, 'Feasibility studies'),
+		(6, 'Business templates'),
+		(7, ' Marketing and brand communication'),
+		(8, 'Social media marketing and PR'),
+		(9, 'Pubic speaking training'),
+		(10, 'Interview preparation training'),
+		(11, 'Logo design'),
+	)
 	NEW_USER, RETURNING_USER = ('N', 'R')
 	USER_TYPE_CHOICES = (
 		(NEW_USER, 'New User'),
@@ -18,7 +31,7 @@ class MeetingExpert(models.Model):
 	name_of_business = models.CharField(max_length=100)
 	address_of_business = models.OneToOneField('expert.Address')
 	sector_or_industry = models.ForeignKey('expert.Industry')
-	work_type = models.ForeignKey('expert.WorkType')
+	work_type = models.CharField(max_length=2, choices=WORK_TYPE)
 	user_type = models.CharField(max_length=1, choices=USER_TYPE_CHOICES)
 	about_project = models.CharField("What is your project about?", max_length=100)
 	skills_required = models.CharField("What skills are required?", max_length=100)
@@ -60,27 +73,11 @@ class Industry(models.Model):
 		verbose_name_plural = _(u'Industries')
 		
 
-class WorkType(models.Model):
-	business_diagnostics = models.BooleanField(default=False)
-	operation_optimization = models.BooleanField(default=False)
-	traning_needs = models.BooleanField("Training/HR needs", default=False)
-	business_plan = models.BooleanField("Business Plan", default=False)
-	feasibility_study = models.BooleanField()
-	business_templates = models.BooleanField()
-	marketing_communication = models.BooleanField("Marketing and Brand Communication")
-	social_media_marketing = models.BooleanField("Social media marketing and PR")
-	public_speaking_training = models.BooleanField("Pubic speaking training")
-	interview_operations = models.BooleanField("Interview preparation training")
-	logo_design = models.BooleanField("Logo Design")
-	newsletter_subscription = models.BooleanField("Subscribe to newsletter")
-
-
 class Expert(models.Model):
 	AVAILABILITY_CHOICES = (
 		('daily', 'Daily'),
 		('forth-nightly', 'Forth-nightly'),
 		('monthly', 'Monthly'),
-
 	)
 
 	PROJECT_TYPE_CHOICES = (
@@ -92,6 +89,7 @@ class Expert(models.Model):
 	name = models.CharField(max_length=50)
 	user = models.OneToOneField(User)
 	photo = models.ImageField(upload_to='uploads/%Y/%m/%d', blank=True)
+	background_image = models.ImageField(upload_to='uploads/%Y/%m/%d', blank=True)
 	age_range = models.CharField(max_length=5, choices=settings.AGE_RANGE_CHOICES)
 	industry = models.ForeignKey(Industry)
 	availability = models.CharField(max_length=20, choices=AVAILABILITY_CHOICES)
@@ -109,10 +107,7 @@ class Expert(models.Model):
 		return "%s %s" % (self.title, self.name)
 
 	def get_absolute_url(self):
-		pass
-
-	def get_public_url(self):
-		return reverse('expert:expert-public-profile', kwargs={'slug': self.slug})
+		return reverse('expert:expert-profile', kwargs={'slug': self.slug})
 
 	def save(self, *args, **kwargs):
 		orig = slugify(self.name)

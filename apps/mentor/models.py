@@ -36,6 +36,7 @@ class Mentor(models.Model):
 	name = models.CharField(max_length=50, blank=True)
 	user = models.OneToOneField(User)
 	photo = models.ImageField(upload_to='uploads/%Y/%m/%d', blank=True)
+	background_image = models.ImageField(upload_to='uploads/%Y/%m/%d', blank=True)
 	age_range = models.CharField(max_length=5, choices=settings.AGE_RANGE_CHOICES)
 	industry = models.ForeignKey('expert.Industry')
 	availability = models.CharField(max_length=20, choices=AVAILABILITY_CHOICES)
@@ -56,10 +57,7 @@ class Mentor(models.Model):
 		return "%s %s" % (self.title, self.name)
 
 	def get_absolute_url(self):
-		pass
-
-	def get_public_url(self):
-		return reverse('mentor:mentor-public-profile', kwargs={'slug': self.slug})
+		return reverse('mentor:mentor-profile', kwargs={'slug': self.slug})
 
 	def save(self, *args, **kwargs):
 		orig = slugify(self.name)

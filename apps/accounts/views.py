@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from mentor.forms import MentorProfessionalForm, MentorSignUpForm, BasicMentorForm
 from expert.forms import ExpertProfessionalForm, ExpertSignUpForm, BasicExpertForm, AddressForm
 from mentee.forms import MenteeSignUpForm, MenteeProfessionalForm, BasicMenteeForm
@@ -19,6 +19,8 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib import messages
 from django.contrib.auth.models import User
+from .models import Quote
+from random import randint
 
 def dashboard(request):
 	template_name = 'accounts/dashboard.html'
@@ -151,3 +153,13 @@ def notify(request, user):
 	    if user is not None:
 	        login(request, user)
 	    messages.success(request, 'Your account is now active')
+
+def landing_view(request):
+	quote_pk = randint(1, Quote.objects.count())
+	quote = get_object_or_404(Quote, pk=quote_pk)
+	template_name = 'landing.html'
+	context = {
+		'quote': quote,
+	}
+	return render(request, template_name, context)
+

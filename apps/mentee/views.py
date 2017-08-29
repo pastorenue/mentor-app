@@ -20,14 +20,14 @@ class MenteeListView(ListView):
 		return queryset
 
 
-class MenteePublicDetailView(DetailView):
+class MenteeDetailView(DetailView):
 	model = Mentee
-	template_name = 'mentee/mentee_public_profile.html'
+	template_name = 'mentee/mentee_profile.html'
 	slug_url_kwarg = 'slug'
 	context_object_name = 'mentee'
 
 	def get_context_data(self, **kwargs):
-		context = super(MenteePublicDetailView, self).get_context_data(**kwargs)
+		context = super(MenteeDetailView, self).get_context_data(**kwargs)
 		self.mentee = context['mentee']
 		context['mentees_for_industry'] = Mentee.objects.filter(industry=self.mentee.industry).exclude(user=self.mentee.user)[:4]
 		return context

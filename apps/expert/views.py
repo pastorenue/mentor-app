@@ -18,14 +18,14 @@ class ExpertListView(ListView):
 			queryset = queryset.exclude(user=self.request.user)
 		return queryset
 
-class ExpertPublicDetailView(DetailView):
+class ExpertDetailView(DetailView):
 	model = Expert
-	template_name = 'expert/expert_public_profile.html'
+	template_name = 'expert/expert_profile.html'
 	slug_url_kwarg = 'slug'
 	context_object_name = 'expert'
 
 	def get_context_data(self, **kwargs):
-		context = super(ExpertPublicDetailView, self).get_context_data(**kwargs)
+		context = super(ExpertDetailView, self).get_context_data(**kwargs)
 		self.expert = context['expert']
 		context['experts_for_industry'] = Expert.objects.filter(industry=self.expert.industry).exclude(user=self.expert.user)[:4]
 		return context
