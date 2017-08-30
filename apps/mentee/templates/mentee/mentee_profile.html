@@ -81,7 +81,9 @@
 		</div>
 		<div class="col-md-3">
 			{% include 'side_bar.html' %}
-			{% include 'expert/trending_expert.html' %}
+			{% if user.is_authenticated %}
+				{% include 'expert/trending_expert.html' %}
+			{% endif %}
 		</div>
 	</div>
 </div>

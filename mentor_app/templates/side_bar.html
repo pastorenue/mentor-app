@@ -1,46 +1,46 @@
 {% load staticfiles thumbnail %}
 
 {% if user.is_authenticated %}
-{% if user.mentee %}
-<div class="panel panel-default top-margin">
-	<div class="bg-pane">
+	{% if user.mentee %}
+	<div class="panel panel-default top-margin">
+		<div class="bg-pane">
+		</div>
+		<div class="profile">
+			{% thumbnail user.mentee.photo "80x80" crop="top" as im %}
+			<img src="{{im.url}}" alt="">
+			{% endthumbnail %}
+			<a href="{{user.mentee.get_absolute_url}}"><h3>{{user.mentee.name}}</h3></a>
+			<h5>{{user.mentee.name_of_business}}</h5>
+			<hr>
+			<h5><strong>Address: </strong>{{user.mentee.address}}</h5>
+		</div>
 	</div>
-	<div class="profile">
-		{% thumbnail user.mentee.photo "80x80" crop="top" as im %}
-		<img src="{{im.url}}" alt="">
-		{% endthumbnail %}
-		<a href="{{get_profile.get_absolute_url}}"><h3>{{user.mentee.name}}</h3></a>
-		<h5>{{user.mentee.name_of_business}}</h5>
-		<hr>
-		<h5><strong>Address: </strong>{{user.mentee.address}}</h5>
+	{% endif %}
+	{% if user.mentor %}
+	<div class="panel panel-default top-margin">
+		<div class="bg-pane">
+		</div>
+		<div class="profile">
+			{% thumbnail user.mentor.photo "80x80" crop="top" as im %}
+			<img src="{{im.url}}" alt="">
+			{% endthumbnail %}
+			<a href="{{user.mentor.get_absolute_url}}"><h3>{{user.mentor.name}}</h3></a>
+			<hr>
+		</div>
 	</div>
-</div>
-{% endif %}
-{% if user.mentor %}
-<div class="panel panel-default top-margin">
-	<div class="bg-pane">
+	{% endif %}
+	{% if user.expert %}
+	<div class="panel panel-default top-margin">
+		<div class="bg-pane">
+		</div>
+		<div class="profile">
+			{% thumbnail user.expert.photo "80x80" crop="top" as im %}
+			<img src="{{im.url}}" alt="">
+			{% endthumbnail %}
+			<a href="{{user.expert.get_absolute_url}}"><h3>{{user.expert.name}}</h3></a>
+		</div>
 	</div>
-	<div class="profile">
-		{% thumbnail user.mentor.photo "80x80" crop="top" as im %}
-		<img src="{{im.url}}" alt="">
-		{% endthumbnail %}
-		<a href="{{get_profile.get_absolute_url}}"><h3>{{user.mentor.name}}</h3></a>
-		<hr>
-	</div>
-</div>
-{% endif %}
-{% if user.expert %}
-<div class="panel panel-default top-margin">
-	<div class="bg-pane">
-	</div>
-	<div class="profile">
-		{% thumbnail user.expert.photo "80x80" crop="top" as im %}
-		<img src="{{im.url}}" alt="">
-		{% endthumbnail %}
-		<a href="{{get_profile.get_absolute_url}}"><h3>{{user.expert.name}}</h3></a>
-	</div>
-</div>
-{% endif %}
+	{% endif %}
 {% else %}
 <div class="panel panel-default top-margin">
 	<div class="div-header">
