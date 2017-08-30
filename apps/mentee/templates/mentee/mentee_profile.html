@@ -26,6 +26,9 @@
 							{% if user.is_authenticated and user != mentee.user %}
 							<a href="">Request for more details</a>
 							{% endif %}
+							{% if user.is_authenticated and user == mentee.user %}
+							<a href="">Edit Account</a>
+							{% endif %}
 						</div>
 					</div>
 				</div>
