@@ -5,16 +5,16 @@
 	<div class="bg-pane">
 	</div>
 	<div class="profile">
-		{% thumbnail profile.photo "80x80" crop="top" as im %}
+		{% thumbnail get_profile.photo "80x80" crop="top" as im %}
 		<img src="{{im.url}}" alt="">
 		{% endthumbnail %}
-		<a href="{{profile.get_absolute_url}}"><h3>{{profile.name}}</h3></a>
-		{% if profile.name_of_business %}
-		<h5>{{profile.name_of_business}}</h5>
+		<a href="{{get_profile.get_absolute_url}}"><h3>{{get_profile.name}}</h3></a>
+		{% if get_profile.name_of_business %}
+		<h5>{{get_profile.name_of_business}}</h5>
 		{% endif %}
 		<hr>
-		{% if profile.address %}
-		<h5><strong>Address: </strong>{{profile.address}}</h5>
+		{% if get_profile.address %}
+		<h5><strong>Address: </strong>{{get_profile.address}}</h5>
 		{% endif %}
 	</div>
 </div>

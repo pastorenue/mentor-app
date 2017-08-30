@@ -198,7 +198,7 @@ ANYMAIL = {
 
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'pastorenuel@gmail.com'
-EMAIL_HOST_PASSWORD = 'treble89'
+EMAIL_HOST_PASSWORD = 'Treble1603'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
