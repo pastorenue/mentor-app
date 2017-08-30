@@ -25,6 +25,8 @@
 							{% if user.is_authenticated %}
 								{% if user.mentee %}
 								<a href="">Connect with Mentor</a>
+								{% elif user == mentor.user %}
+								<a href="">Edit Account</a>
 								{% else %}
 								<a href="">Request for more details</a>
 								{% endif %}

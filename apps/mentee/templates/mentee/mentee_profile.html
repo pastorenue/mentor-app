@@ -24,7 +24,7 @@
 						</div>
 						<div class="com-md-3">
 							{% if user.is_authenticated %}
-								{% if user == mentee.user %}
+								{% if user != mentee.user %}
 									<a href="">Request for more details</a>
 								{% else %}
 									<a href="">Edit Account</a>
