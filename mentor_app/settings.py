@@ -184,3 +184,5 @@ EMAIL_HOST_USER = 'pastorenuel@gmail.com'
 EMAIL_HOST_PASSWORD = 'treble89'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+TEMPLATE_DEBUG=True

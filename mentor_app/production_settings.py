@@ -163,7 +163,7 @@ STATICFILES_DIRS = (
 
 #Login Credentials and urls
 LOGIN_URL = '/auth/login' #reverse_lazy('login') ##VERY HARMFUL TO LOGINREQUIRED VIEWS
-LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_REDIRECT_URL = 'mentee:mentee-list'
 LOGOUT_REDIRECT_URL = 'home'
 
 PAGE_SIZE = 20
