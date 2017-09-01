@@ -12,5 +12,7 @@
 		<h5>Expert in {{expert.industry}}</h5>
 		<a href="{{expert.get_absolute_url}}">See Profile &raquo;</a>
 	</div>
+	{% empty %}
+	<h4 style="margin: 10px auto; text-align: center;">None Available Yet</h4>
 	{% endfor %}
 </div>
