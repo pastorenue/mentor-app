@@ -5,7 +5,7 @@ from django.template.defaultfilters import slugify
 
 
 class Channels(models.Model):
-	name = models.CharField(max_length=30, null=True)
+	name = models.CharField(max_length=100, null=True)
 	date_created = models.DateTimeField(auto_now_add=True)
 	date_modified = models.DateTimeField(auto_now=True)
 
@@ -19,7 +19,7 @@ class Channels(models.Model):
 
 
 class Post(models.Model):
-	title = models.CharField(max_length=50, null=True)
+	title = models.CharField(max_length=100, null=True)
 	user = models.ForeignKey(User, null=True)
 	content = models.TextField()
 	channels = models.ForeignKey(Channels, null=True)
@@ -31,7 +31,7 @@ class Post(models.Model):
 
 	def save(self, *args, **kwargs):
 		orig = slugify(self.content)
-		self.slug = "%s-%s"[:52] % (orig, uuid.uuid4())
+		self.slug = "%s-%s"[:50] % (orig, uuid.uuid4())
 		super(Post, self).save(*args, **kwargs)
 
 
