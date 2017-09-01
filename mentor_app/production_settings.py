@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'contacts',
     'sorl.thumbnail',
     'states',
-    'anymail'
+    'anymail',
 ]
 
 MIDDLEWARE = [
