@@ -8,7 +8,7 @@
 			{% for channel in channels %}
 			<a href="{% url 'forum:forum' %}?channel={{channel.id}}"><li>{{channel}}</li></a>
 			{% empty %}
-			<li style="text-align: center; box-shadow: none; margin: 20px auto;">No Channels Available Yet</li>
+			<li style="text-align: center; box-shadow: none; margin: 5px auto;">No Channels Available Yet</li>
 			{% endfor %}
 		</ul>
 	</div>
