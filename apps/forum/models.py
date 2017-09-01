@@ -23,7 +23,7 @@ class Post(models.Model):
 	user = models.ForeignKey(User, null=True)
 	content = models.TextField()
 	channels = models.ForeignKey(Channels, null=True)
-	slug = models.SlugField(unique=True, blank=True)
+	slug = models.SlugField(max_length=255, unique=True, blank=True)
 	date_created = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
@@ -31,7 +31,7 @@ class Post(models.Model):
 
 	def save(self, *args, **kwargs):
 		orig = slugify(self.content)
-		self.slug = "%s-%s"[:50] % (orig, uuid.uuid4())
+		self.slug = "%s-%s" % (orig, uuid.uuid4())
 		super(Post, self).save(*args, **kwargs)
 
 
