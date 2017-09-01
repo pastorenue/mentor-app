@@ -151,7 +151,7 @@
 				<div>
 					<div class="post-base">
 						<div class="prompt" id="id_prompt">
-							<h5 id="id_head">Click to Add a Post Here</h5>
+							<h5 id="id_head">Click to Start a Discussion</h5>
 						</div>
 						<div id="id_container">
 							<form method="POST" action="{% url 'forum:create-post' %}">{% csrf_token %}
@@ -211,7 +211,7 @@
 					<!-- <img src="{% static 'images/about.jpg' %}" alt="" style="width: 100%; height: 200px;"> -->
 					<div style="margin-top: 5px;">
 						<a><i class="fa fa-heart-o"></i> Like</a>
-						<a style="cursor: pointer;" data-toggle="modal" data-target="#{{post.id}}"><i class="fa fa-comment-o"> {{post.comment_set.count}}</i> Comment</a>
+						<a style="cursor: pointer;" data-toggle="modal" data-target="#{{post.id}}"><i class="fa fa-comment-o"> {{post.comment_set.count}}</i> Comment{{post.comment_set.count|pluralize}}</a>
 						<div class="modal fade" id="{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						  {% include 'forum/_comment.html' %}
 						</div>	
@@ -241,7 +241,7 @@
 			isVisible = false;
 			$('id_head').val('');
 			$('#id_panel').removeClass('blur');
-			$('#id_head').html('Click to Add a Post Here');
+			$('#id_head').html('Click to Start a Discussion');
 		} else {
 			container.style.display = 'block';
 			$('#id_panel').addClass('blur');
