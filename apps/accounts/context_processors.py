@@ -1,5 +1,6 @@
 from mentor.models import Mentor
 from expert.models import Industry
+from forum.models import Channels, Post
 
 def trending_data(request):
 	get_profile = None
@@ -15,5 +16,6 @@ def trending_data(request):
 		'latest_news': list(),
 		'latest_mentors': list(),
 		'newest_mentees': list(),
-		'get_profile': get_profile
+		'get_profile': get_profile,
+		'channels': Channels.objects.all(),
 	}

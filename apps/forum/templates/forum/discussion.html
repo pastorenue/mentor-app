@@ -1,10 +1,271 @@
 {% extends 'base.html' %}
 {% load staticfiles thumbnail %}
-
+ box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 12px 18px 1px rgba(0,0,0,.2);
 {% block header %}
+<h2>Join The Discussion</h2>
+{% endblock %}
 
+{% block extra_css %}
+<style>
+	.comment {
+		border-top: 1px solid #f5f5f5;
+		margin-top: 10px;
+		text-align: left;
+	}
+	.modal.fade .modal-dialog {
+	    -webkit-transform: scale(0.1);
+	    -moz-transform: scale(0.1);
+	    -ms-transform: scale(0.1);
+	    transform: scale(0.1);
+	    top: 500px;
+	    opacity: 0;
+	    -webkit-transition: all 0.3s;
+	    -moz-transition: all 0.3s;
+	    transition: all 0.3s;
+	}
+
+	.modal.fade.in .modal-dialog {
+	    -webkit-transform: scale(1);
+	    -moz-transform: scale(1);
+	    -ms-transform: scale(1);
+	    transform: scale(1);
+	    -webkit-transform: translate3d(0, -300px, 0);
+	    transform: translate3d(0, -500px, 0);
+	    opacity: 1;
+	}
+	.post-base {
+		min-height: 30px;
+	}
+	.post-base .prompt {
+		background: #f5f5f5;
+		padding: 5px;
+		border: 1px solid #e5e5e5;
+		cursor: pointer;
+	}
+	select, input[type=text] {
+		height: 33px !important;
+		color: #000 !important;
+	}
+	textarea {
+		min-height: 70px !important;
+	}
+	.post-base p {
+		padding: 6px 5px;
+		cursor: pointer;
+		width: 19%;
+		margin: 10px 7px;
+		border-radius: 15px;
+		text-align: center;
+		display: inline-block;
+		font-size: 16px;
+		border: 1px solid #f5f5f5;
+		transition: all .45s ease-in-out;
+	}
+	.post-base p:hover {
+		border: 1px solid #3b5998;
+		color: #3b5998;
+	}
+	#id_container {
+		padding: 10px;
+		transition: all .44s ease-in-out;
+		display: none;
+	}
+	.post-btn {
+		border-top: 1px solid #e5e5e5;
+	}
+	.blur {
+		box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 12px 18px 1px rgba(0,0,0,.2) !important;
+	}
+	.post-head {
+		padding: 5px 10px;
+		border-bottom: 1px solid #e5e5e5;
+		margin-bottom: 10px;
+	}
+	.post {
+		padding: 5px 10px;
+		border-bottom: 1px solid #e5e5e5;
+		margin-bottom: 5px;
+	}
+	.post h5 {
+		margin-top: 0;
+		font-size: 15px;
+	}
+	.post a {
+		display: inline-block;
+		padding: 5px 10px;
+	}
+	.post img {
+		border-radius: 50%;
+		float: left;
+	}
+	.l-name {
+		margin-bottom: 10px;
+		padding-left: 0;
+	} 
+	.l-name img {
+		height: 50px;
+		width: 50px;
+		border-radius: 50%;
+		padding: 5px;
+	}
+	.l-name p {
+		margin-bottom: 0; 
+		padding-left: 10px;
+	}
+	.comment {
+		background: #fafafa;
+	}
+	.channel-link {
+		padding: 5px 10px;
+	}
+	.channel-link ul {
+		padding: 0;
+	}
+	.channel-link ul li {
+		list-style: none;
+		border-bottom: 1px solid #f5f5f5;
+		padding: 10px 10px;
+		font-size: 17px;
+		transition: all .43s ease-in-out;
+	}
+	.channel-link ul li:hover {
+		box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 4px 6px 1px rgba(0,0,0,.2);
+		transform: translateY(-3px);
+		transform: translateX(5px);
+	}
+</style>
 {% endblock %}
 
 {% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-3" style="">
+			{% include 'side_bar.html' %}
+			{% include 'expert/trending_expert.html' %}
+		</div>
+		<div class="col-sm-6" style="padding-left: 0; padding-right: 0;">
+			<div id="id_panel" class="panel panel-default top-margin">
+				<div>
+					<div class="post-base">
+						<div class="prompt" id="id_prompt">
+							<h5 id="id_head">Click to Add a Post Here</h5>
+						</div>
+						<div id="id_container">
+							<form method="POST" action="{% url 'forum:create-post' %}">{% csrf_token %}
+								<div class="form-group" style="margin-bottom: 10px;">
+									<select name="channel" id="id_channel" class="form-control">
+										<option value="">Select a Channel...</option>
+										{% for channel in channels %}
+										<option value="{{channel.id}}">{{channel}}</option>
+										{% endfor %}
+									</select>
+								</div>
+								<div class="form-group" style="margin-bottom: 10px;">
+									<input type="text" name="title" class="form-control" placeholder="Enter Title" required>
+								</div>
+								<div class="form-group" style="margin-bottom: 0;">
+									<textarea name="comment" id="id_comment" cols="30" rows="2" class="form-control" placeholder="Leave a Post here"></textarea>
+								</div>
+								<div id="id_image_container"></div>
+								<button id="id_btn_submit" type="Submit" hidden="hidden"></button>
+							</form>
+						</div>
+						<div class="post-btn">
+							<p><i class="fa fa-camera"></i> Illustration</p>
+							<p id="id_post" style="float: right; display: inline;"><i class="fa fa-laptop"></i> Post</p>
+							<input type="file" id="id_image" style="display: none;">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default top-margin">
+				<div class="post-head" style="background: #3b5998;">
+					<h4 style="color: #fff;">POSTS for <span style="font-size: 16px; font-weight: 600;">{{current_channel}}</span></h4>
+				</div>
+				{% for post in posts %}
+				<div class="post" onload="hideDetail({{post.id}})">
+					<div class="l-name">
+						{% if post.user.mentee %}
+						{% thumbnail post.user.mentee.photo "50x50" crop="top" as im %}
+						 <img src="{{im.url}}" alt="">
+						 {% endthumbnail %}
+						{% endif %}
+						{% if post.user.mentor %}
+						{% thumbnail post.user.mentor.photo "50x50" crop="top" as im %}
+						 <img src="{{im.url}}" alt="">
+						 {% endthumbnail %}
+						{% endif %}
+						{% if post.user.expert %}
+						{% thumbnail post.user.expert.photo "50x50" crop="top" as im %}
+						 <img src="{{im.url}}" alt="">
+						 {% endthumbnail %}
+						{% endif %}
+						<h5><strong>{{post.user.first_name}} {{post.user.last_name}}</strong>: <span>{{post.title}}</span><br>
+						<span>{{post.date_created}}</span></h5>
 
+					</div>
+					<p>{{post.content}}</p>
+					<!-- <img src="{% static 'images/about.jpg' %}" alt="" style="width: 100%; height: 200px;"> -->
+					<div style="margin-top: 5px;">
+						<a><i class="fa fa-heart-o"></i> Like</a>
+						<a style="cursor: pointer;" data-toggle="modal" data-target="#{{post.id}}"><i class="fa fa-comment-o"> {{post.comment_set.count}}</i> Comment</a>
+						<div class="modal fade" id="{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						  {% include 'forum/_comment.html' %}
+						</div>	
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="col-sm-3">
+			{% include 'forum/_channels.html' %}
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block extrajs %}
+<script>
+	$('.inner-post').hide();
+	isVisible = false;
+	var container = document.getElementById('id_container');
+	$('#id_prompt').click(function() {
+		if (isVisible) {
+			container.style.display = 'none';
+			isVisible = false;
+			$('id_head').val('');
+			$('#id_panel').removeClass('blur');
+		} else {
+			container.style.display = 'block';
+			$('#id_panel').addClass('blur');
+			isVisible = true;
+		}
+	})
+
+	function toggleDetail(item_id) {
+		var f_id = '#frm_comment'+item_id;
+		$(f_id).slideToggle('fade');
+	}
+</script>
+<script>
+	$('#id_post').click(function() {
+		$('#id_btn_submit').click();
+	})
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+    function alignModal(){
+        var modalDialog = $(this).find(".modal-dialog");
+        /* Applying the top margin on modal dialog to align it vertically center */
+        modalDialog.css("margin-top", Math.max(0, ($(window).height() - modalDialog.height()) / 2));
+    }
+    // Align modal when it is displayed
+    $(".modal").on("shown.bs.modal", alignModal);
+    
+    // Align modal when user resize the window
+    $(window).on("resize", function(){
+        $(".modal:visible").each(alignModal);
+    });   
+});
+</script>
 {% endblock %}

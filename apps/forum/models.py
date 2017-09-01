@@ -12,6 +12,11 @@ class Channels(models.Model):
 	def __str__(self):
 		return self.name
 
+	class Meta:
+		verbose_name = 'Channel'
+		verbose_name_plural = 'Channels'
+		ordering = ('date_created',)
+
 
 class Post(models.Model):
 	title = models.CharField(max_length=50, null=True)
@@ -26,7 +31,7 @@ class Post(models.Model):
 
 	def save(self, *args, **kwargs):
 		orig = slugify(self.content)
-		self.slug = "%s-%s"[:52] % (self.orig, uuid.uuid4())
+		self.slug = "%s-%s"[:52] % (orig, uuid.uuid4())
 		super(Post, self).save(*args, **kwargs)
 
 

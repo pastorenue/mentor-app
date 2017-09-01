@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Channels
 
-# Register your models here.
+@admin.register(Channels)
+class ChannelsAdmin(admin.ModelAdmin):
+	list_display = ('name',)
