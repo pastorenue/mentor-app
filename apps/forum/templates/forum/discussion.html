@@ -45,9 +45,12 @@
 	select, input[type=text] {
 		height: 33px !important;
 		color: #000 !important;
+		border-color: #d5d5d5 !important;
 	}
 	textarea {
 		min-height: 70px !important;
+		color: #000;
+		border-color: #d5d5d5 !important;
 	}
 	.post-base p {
 		padding: 6px 5px;
@@ -221,6 +224,7 @@
 		</div>
 		<div class="col-sm-3">
 			{% include 'forum/_channels.html' %}
+			{% include '_mini_footer.html' %}
 		</div>
 	</div>
 </div>
@@ -237,10 +241,12 @@
 			isVisible = false;
 			$('id_head').val('');
 			$('#id_panel').removeClass('blur');
+			$('#id_head').html('Click to Add a Post Here');
 		} else {
 			container.style.display = 'block';
 			$('#id_panel').addClass('blur');
 			isVisible = true;
+			$('#id_head').html('Click to Collapse');
 		}
 	})
 

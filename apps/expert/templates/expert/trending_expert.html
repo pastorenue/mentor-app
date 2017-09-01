@@ -1,24 +1,16 @@
 {% load staticfiles thumbnail %}
 <div class="panel panel-default top-margin">
 	<div class="div-header">
-		<h3><strong>Trending Experts</strong> <span style="font-size: 15px; float: right;"><a href="">View all</a></span></h3>
+		<h3><strong>Trending Experts</strong> <span style="font-size: 15px; float: right;"><a href="{% url 'expert:expert-list' %}">View all</a></span></h3>
 	</div>
+	{% for expert in trending_experts %}
 	<div class="div-content-list">
-		<img src="{% static 'images/logo.png' %}" alt="">
-		<h4>Pastor, Emmanuel</h4>
-		<h5>Expert in Marketing</h5>
-		<a href="">See Profile &raquo;</a>
+		{% thumbnail expert.photo "50x50" crop="top" as im %}
+		 <img src="{{im.url}}" alt="">
+		 {% endthumbnail %}
+		<h4>{{expert}}</h4>
+		<h5>Expert in {{expert.industry}}</h5>
+		<a href="{{expert.get_absolute_url}}">See Profile &raquo;</a>
 	</div>
-	<div class="div-content-list">
-		<img src="{% static 'images/logo.png' %}" alt="">
-		<h4>Cleo, Mardi</h4>
-		<h5>Expert in Branding</h5>
-		<a href="">View Profile &raquo;</a>
-	</div>
-	<div class="div-content-list">
-		<img src="{% static 'images/logo.png' %}" alt="">
-		<h4>James, Adetola</h4>
-		<h5>Expert in Branding</h5>
-		<a href="">View Profile &raquo;</a>
-	</div>
+	{% endfor %}
 </div>
