@@ -111,10 +111,8 @@
           $('#user').mouseenter(function() {
             $('.drop-menu').show('fade');
           })
-          $('.drop-menu').mouseleave(function() {
-            setTimeout(function() {
-              $('.drop-menu').hide('fade')
-            }, 2000);
+          $('body').click(function() {
+            $('.drop-menu').hide('fade');
           });
     </script>
     {% block extrajs %}{% endblock %}

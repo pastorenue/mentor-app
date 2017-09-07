@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load staticfiles thumbnail %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+{% block header %}
+	<h1>Notifications</h1>
+{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-9">
+			<div class="row">
+			</div>
+			<div class="row">
+				<div class="panel panel-default top-margin">
+					<div class="div-header">
+						<h3><strong>Other Mentors in {% if user == mentor.user %} Your {% else %}{{mentor.title}} {{mentor.user.first_name}}'s {% endif %} Area of Expertise</strong></h3>
+					</div>
+					<div class="row" style="padding: 5px 10px;">
+						{% for other_mentor in mentors_for_industry %}
+						<div class="col-sm-3">
+							<a href="{{other_mentor.get_public_url}}">
+								<div class="other-detail">
+									{% thumbnail other_mentor.photo "150x150" crop="top" as img %}
+									<img src="{{img.url}}" alt="">
+									{% endthumbnail %}
+									<h4>{{other_mentor}}</h4>
+								</div>
+							</a>
+						</div>
+						{% empty %}
+						<p style="text-align: center; margin: 20px auto;">Sorry! We couldn't find any other Mentors for similar expertise.</p>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			{% include 'side_bar.html' %}
+			{% if user.is_authenticated %}
+			{% include 'expert/trending_expert.html' %}
+			{% endif %}
+			{% include '_mini_footer.html' %}
+		</div>
+	</div>
+</div>
+{% endblock %}

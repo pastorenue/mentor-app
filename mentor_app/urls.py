@@ -43,6 +43,7 @@ urlpatterns = [
     url(r'^mentor/', include('mentor.urls', namespace='mentor')),
     url(r'^expert/', include('expert.urls', namespace='expert')),
     url(r'^discussion/', include('forum.urls', namespace='forum')),
+    url(r'^notifications/', include('notifications.urls', namespace='notifications')),
 ]
 
 urlpatterns+=static(setting.MEDIA_URL, document_root=setting.MEDIA_ROOT)

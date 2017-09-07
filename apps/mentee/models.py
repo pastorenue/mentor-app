@@ -66,9 +66,15 @@ class Mentee(models.Model):
 
 
 class MentorshipRequest(models.Model):
+	STATUS = (
+		('O', 'Open'),
+		('A', 'Accepted'),
+		('D', 'Denied')
+	)
 	mentee= models.ForeignKey(User, related_name='request_sent', null=True)
 	industry = models.ForeignKey(Industry)
 	to_user = models.ForeignKey(User, related_name='request_received')
+	status = models.CharField(max_length=1, choices=STATUS, default='O')
 	date_created = models.DateTimeField(auto_now_add=True)
 
 

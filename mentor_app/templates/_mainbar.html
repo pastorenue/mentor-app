@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load staticfiles notifications_tags %}
 
 <div class="main-wrapper">
   <div class="container">
@@ -19,7 +19,8 @@
           <a href="{% url 'mentor:mentor-list' %}"><li class="scroll"><i class="fa fa-group"></i><br>See All Mentors</li></a>
           <a href="{% url 'mentee:mentee-list' %}"><li class="scroll"><i class="fa fa-group"></i><br>See All Mentees</li></a>
           {% if user.is_authenticated %}
-          <a href=""><li class="scroll"><i class="fa fa-bell"></i><br>Notifications</li></a>
+          {% notifications_unread as unread_count %}
+          <a href="{% url 'notifications:all' %}"><li class="scroll"><i class="fa fa-bell"></i>{% if unread_count > 0 %}<span style="position: absolute; top: 0; color: #fff; font-size: 13px; background: #c12; height: 20px; width: 20px; border-radius: 50%;">{{ unread_count }}</span>{% endif %}<br>Notifications</li></a>
           <a href="{% url 'forum:forum' %}?channel=all"><li class="scroll"><i class="fa fa-laptop"></i><br>Forum</li></a>
           {% else %}
           <a href="{% url 'about' %}"><li class="scroll"><i class="fa fa-info"></i><br>About Us</li></a>

@@ -21,7 +21,7 @@
 					{% for expert in experts %}
 					<div class="col-md-6">
 						<div class="dtl12">
-							{% thumbnail expert.photo "267x213" crop="center" as im %}
+							{% thumbnail expert.photo "267x213" crop="top" as im %}
                             <img src="{{im.url}}" alt="{{expert}}">
                             {% endthumbnail %}
                             <h4>{{expert.name}}</h4>

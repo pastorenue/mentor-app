@@ -24,7 +24,13 @@
 						<div class="com-md-3">
 							{% if user.is_authenticated %}
 								{% if user.mentee %}
-								<a href="">Connect with Mentor</a>
+									{% if is_connected %}
+									<a href="">Leave a Message</a>
+									{% elif waiting_connection %}
+									<a href="">You have a pending request</a>
+									{% else %}
+									<a href="{% url 'mentee:send-request' slug=mentor.slug %}">Connect with Mentor</a>
+									{% endif %}
 								{% elif user == mentor.user %}
 								<a href="">Edit Account</a>
 								{% else %}
