@@ -160,7 +160,7 @@ def alternative_notify(request):
 	login(request, user)
 	messages.success(request, 'Your account is now active')
 
-def landing_view(request, user):
+def landing_view(request):
 	quote = None
 	if Quote.objects.count() > 0:
 		quote_pk = randint(1, Quote.objects.count())
