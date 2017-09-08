@@ -85,7 +85,8 @@ def signup(request):
 			if hasattr(basic, 'cv_file'):
 				basic.cv_file = professional_form.cleaned_data['cv_file']
 			basic.save()
-			alternative_notify(request, user)
+			login(request, user)
+			messages.success(request, 'Your account is now active. Login to access your account')
 			return HttpResponseRedirect(reverse('mentee:mentee-list'))
 	else:
 		user_form = basic_form = professional_form = None
