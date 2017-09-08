@@ -156,9 +156,9 @@ def notify(request, user):
 
 def alternative_notify(request):
 	user.is_active = True
-    user.save()
-    login(request, user)
-    messages.success(request, 'Your account is now active')
+	user.save()
+	login(request, user)
+	messages.success(request, 'Your account is now active')
 
 def landing_view(request, user):
 	quote = None
