@@ -85,7 +85,7 @@ def signup(request):
 			if hasattr(basic, 'cv_file'):
 				basic.cv_file = professional_form.cleaned_data['cv_file']
 			basic.save()
-			notify(request, user)
+			alternative_notify(request, user)
 			return HttpResponseRedirect(reverse('mentee:mentee-list'))
 	else:
 		user_form = basic_form = professional_form = None
@@ -154,7 +154,13 @@ def notify(request, user):
 	        login(request, user)
 	    messages.success(request, 'Your account is now active')
 
-def landing_view(request):
+def alternative_notify(request):
+	user.is_active = True
+    user.save()
+    login(request, user)
+    messages.success(request, 'Your account is now active')
+
+def landing_view(request, user):
 	quote = None
 	if Quote.objects.count() > 0:
 		quote_pk = randint(1, Quote.objects.count())
