@@ -62,29 +62,7 @@ def signup(request):
 			basic.name = "%s, %s" % (user.first_name, user.last_name)
 			basic.user = user
 			basic.industry = professional_form.cleaned_data['industry']
-			if hasattr(basic, 'mode_details'):
-				basic.mode_details = professional_form.cleaned_data['mode_details']
-			if hasattr(basic, 'mode_of_communication'):
-				basic.mode_of_communication = professional_form.cleaned_data['mode_of_communication']
-			if hasattr(basic, 'name_of_business'):
-				basic.name_of_business = professional_form.cleaned_data['name_of_business']
-			if hasattr(basic, 'level_of_education'):
-				basic.level_of_education = professional_form.cleaned_data['level_of_education']
-			if hasattr(basic, 'time_with_mentor'):
-				basic.time_with_mentor = professional_form.cleaned_data['time_with_mentor']
-			if hasattr(basic, 'year_of_commencement'):
-				basic.year_of_commencement = professional_form.cleaned_data['year_of_commencement']
-			if hasattr(basic, 'type_to_handle'):
-				basic.type_to_handle = professional_form.cleaned_data['type_to_handle']
-			if hasattr(basic, 'availability'):
-				basic.availability = professional_form.cleaned_data['availability']
-			if hasattr(basic, 'linkedin_url'):
-				basic.linkedin_url = professional_form.cleaned_data['linkedin_url']
-			if hasattr(basic, 'years_of_experience'):
-				basic.years_of_experience = professional_form.cleaned_data['years_of_experience']
-			if hasattr(basic, 'cv_file'):
-				basic.cv_file = professional_form.cleaned_data['cv_file']
-			basic.save()
+			save_other_objects(basic, professional_form)
 			login(request, user)
 			messages.success(request, 'Your account is now active. Login to access your account')
 			return HttpResponseRedirect(reverse('mentee:mentee-list'))
@@ -172,3 +150,28 @@ def landing_view(request):
 	}
 	return render(request, template_name, context)
 
+def save_other_objects(base, other):
+	basic = base
+	if hasattr(basic, 'mode_details'):
+		basic.mode_details = other.cleaned_data['mode_details']
+	if hasattr(basic, 'mode_of_communication'):
+		basic.mode_of_communication = other.cleaned_data['mode_of_communication']
+	if hasattr(basic, 'name_of_business'):
+		basic.name_of_business = other.cleaned_data['name_of_business']
+	if hasattr(basic, 'level_of_education'):
+		basic.level_of_education = other.cleaned_data['level_of_education']
+	if hasattr(basic, 'time_with_mentor'):
+		basic.time_with_mentor = other.cleaned_data['time_with_mentor']
+	if hasattr(basic, 'year_of_commencement'):
+		basic.year_of_commencement = other.cleaned_data['year_of_commencement']
+	if hasattr(basic, 'type_to_handle'):
+		basic.type_to_handle = other.cleaned_data['type_to_handle']
+	if hasattr(basic, 'availability'):
+		basic.availability = other.cleaned_data['availability']
+	if hasattr(basic, 'linkedin_url'):
+		basic.linkedin_url = other.cleaned_data['linkedin_url']
+	if hasattr(basic, 'years_of_experience'):
+		basic.years_of_experience = other.cleaned_data['years_of_experience']
+	if hasattr(basic, 'cv_file'):
+		basic.cv_file = other.cleaned_data['cv_file']
+	basic.save()
