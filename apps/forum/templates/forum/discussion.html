@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles thumbnail %}
- box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 12px 18px 1px rgba(0,0,0,.2);
+
 {% block header %}
 <h2>Join The Discussion</h2>
 {% endblock %}
@@ -153,26 +153,7 @@
 						<div class="prompt" id="id_prompt">
 							<h5 id="id_head">Click to Start a Discussion</h5>
 						</div>
-						<div id="id_container">
-							<form method="POST" action="{% url 'forum:create-post' %}">{% csrf_token %}
-								<div class="form-group" style="margin-bottom: 10px;">
-									<select name="channel" id="id_channel" class="form-control">
-										<option value="">Select a Channel...</option>
-										{% for channel in channels %}
-										<option value="{{channel.id}}">{{channel}}</option>
-										{% endfor %}
-									</select>
-								</div>
-								<div class="form-group" style="margin-bottom: 10px;">
-									<input type="text" name="title" class="form-control" placeholder="Enter Title" required>
-								</div>
-								<div class="form-group" style="margin-bottom: 0;">
-									<textarea name="comment" id="id_comment" cols="30" rows="2" class="form-control" placeholder="Leave a Post here"></textarea>
-								</div>
-								<div id="id_image_container"></div>
-								<button id="id_btn_submit" type="Submit" hidden="hidden"></button>
-							</form>
-						</div>
+						{% include 'forum/_post.html' %}
 						<div class="post-btn">
 							<p><i class="fa fa-camera"></i> Illustration</p>
 							<p id="id_post" style="float: right; display: inline;"><i class="fa fa-laptop"></i> Post</p>

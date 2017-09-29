@@ -43,6 +43,8 @@ urlpatterns = [
     url(r'^mentor/', include('mentor.urls', namespace='mentor')),
     url(r'^expert/', include('expert.urls', namespace='expert')),
     url(r'^discussion/', include('forum.urls', namespace='forum')),
+    url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^newsroom/', include('newsroom.urls', namespace='newsroom')),
     url(r'^notifications/', include('notifications.urls', namespace='notifications')),
 ]
 

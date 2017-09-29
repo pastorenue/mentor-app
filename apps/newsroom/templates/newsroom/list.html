@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link href="{% static 'css/news.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block mainbar %}
+{% include 'newsroom/_carousel.html' %}
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+ {% block extrajs %}
+ <script type="text/javascript" src="{% static 'js/news.js' %}"></script>
+ {% endblock %}

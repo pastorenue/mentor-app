@@ -59,7 +59,9 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'states',
     'anymail',
-    'notifications'
+    'notifications',
+    'newsroom',
+    'tinymce'
 ]
 
 MIDDLEWARE = [

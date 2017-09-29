@@ -25,7 +25,7 @@ ADMINS = (
 DEBUG = True
 SECRET_KEY = 'i-a=nwysyhwu8^xhck3k78oar=%fryvcn^5c7n7m-_=a6+!2-6'
 EMAIL_HOST_PASSWORD = ''
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
+ALLOWED_HOSTS = ['localhost', '*']
 
 DATABASES = {
     'default': {
@@ -58,7 +58,9 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'states',
     'anymail',
-    'notifications'
+    'notifications',
+    'newsroom',
+    'tinymce'
 ]
 
 MIDDLEWARE = [

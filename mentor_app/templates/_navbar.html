@@ -18,7 +18,7 @@
         <li class="scroll"><a href="{% url 'mentor:mentor-list' %}">See All Mentors</a></li>
         <li class="scroll"><a href="{% url 'mentee:mentee-list' %}">See All Mentees</a></li>
         <li class="scroll"><a href="{% url 'about' %}">About Us</a></li>
-        <li class="scroll"><a href="">News</a></li>  
+        <li class="scroll"><a href="{% url 'newsroom:news-list' %}">Newsroom</a></li>  
         {% if user.is_authenticated %}
         <li class="scroll"></li>  
         <li class="scroll"><a href="{% url 'logout' %}">Log out</a></li>
