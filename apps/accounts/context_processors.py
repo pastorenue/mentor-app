@@ -1,6 +1,7 @@
 from mentor.models import Mentor
 from expert.models import Industry, Expert
 from forum.models import Channels, Post
+from newsroom.models import Entry
 from mentee.models import MentorshipRequest
 
 def trending_data(request):
@@ -16,9 +17,10 @@ def trending_data(request):
 		is_connected = MentorshipRequest.objects.filter(mentee=request.user, status='A').exists()
 	
 	return {
+		'recent_posts': Entry.objects.all().order_by('date_created')[:3],
 		'industries': Industry.objects.all(),
 		'latest_news': list(),
-		'trending_experts': Expert.objects.all().order_by('-date_created')[:3],
+		'trending_experts': Expert.objects.all()[:3],
 		'latest_mentors': list(),
 		'newest_mentees': list(),
 		'get_profile': get_profile,

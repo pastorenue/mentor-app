@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static thumbnail page_renderer %}
 
 {% block extra_css %}
 <link href="{% static 'css/news.css' %}" rel="stylesheet">
@@ -32,86 +32,124 @@
 		</div>
 	</div>
 </div>
+
 <div class="container" style="background: #fff;">
-	<div class="row" style="min-height: 400px; margin-top: 30px;">
+	<div class="row" style="min-height: 300px; margin-top: 30px;">
+		<div class="col-md-12">
+			<h3 style="margin-bottom: 0; font-size: 2rem; font-weight: 600;">Recent Posts &raquo;</h3>
+			<hr style="margin-top: 5px;">
+		</div>
+		{% for entry in recents %}
+		<div class="col-md-4 col-sm-6 col-xs-12 pad">
+			<div class="post">
+				<div class="img">
+					{% if entry.illustration %}
+					{% thumbnail entry.illustration "165x198" crop="center" as im %}
+					<img src="{{im.url}}" alt="" width="{{im.width}}" height="{{im.height}}">
+					{% endthumbnail %}
+					{% else %}
+					<img src="{% static 'images/noise.png' %}" alt="">
+					{% endif %}
+				</div>
+				<div class="content">
+					<h3>{{entry.title}}</h3>
+					{% if entry.sub_title %}
+					<p>{{entry.sub_title|truncatechars:26}}</p>
+					{% endif %}
+					{% if entry.author.photo %}
+					{% thumbnail entry.author.photo "50x50" crop="top" as im %}
+					<img src="{{im.url}}" alt="{{entry.author}}" width="{{im.width}}" height="{{im.height}}">
+					{% endthumbnail %}
+					{% endif %}
+					<span>
+						<p>{{entry.author.name}}</p>
+						<small>{{entry.date_created|timesince}} ago</small>
+					</span>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+<div class="container" style="background: #fff;">
+	<div class="row" style="min-height: 300px; margin-top: 30px;">
 		<div class="col-md-12">
 			<h3 style="margin-bottom: 0; font-size: 2rem; font-weight: 600;">Top Read &raquo;</h3>
 			<hr style="margin-top: 5px;">
 		</div>
+		{% for entry in most_reads %}
 		<div class="col-md-4 col-sm-6 col-xs-12 pad">
 			<div class="post">
 				<div class="img">
-					<img src="{% static 'images/marketing.jpg' %}" alt="">
-				</div>
-				<div class="content">
-					<h3>Business and Intelligence: Love Made from Heaven</h3>
-					<p>Very short subtitle </p>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4 col-sm-6 col-xs-12 pad">
-			<div class="post">
-				<div class="img">
+					{% if entry.illustration %}
+					{% thumbnail entry.illustration "165x198" crop="center" as im %}
+					<img src="{{im.url}}" alt="" width="{{im.width}}" height="{{im.height}}">
+					{% endthumbnail %}
+					{% else %}
 					<img src="{% static 'images/noise.png' %}" alt="">
+					{% endif %}
 				</div>
 				<div class="content">
-					<h3>Business and Intelligence: Love Made from Heaven</h3>
-					<p>Very short subtitle </p>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4 col-sm-6 col-xs-12 pad">
-			<div class="post">
-				<div class="img">
-					<img src="{% static 'images/marketing.jpg' %}" alt="">
-				</div>
-				<div class="content">
-					<h3>Business and Intelligence: Love Made from Heaven</h3>
-					<p>Very short subtitle </p>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4 col-sm-6 col-xs-12 pad">
-			<div class="post">
-				<div class="img">
-					<img src="{% static 'images/login.jpg' %}" alt="">
-				</div>
-				<div class="content">
-					<h3>Business and Intelligence: Love Made from Heaven</h3>
-					<p>Very short subtitle </p>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4 col-sm-6 col-xs-12 pad">
-			<div class="post">
-				<div class="img">
-					<img src="{% static 'images/marketing.jpg' %}" alt="">
-				</div>
-				<div class="content">
-					<h3>Business and Intelligence: Love Made from Heaven</h3>
-					<p>Very short subtitle </p>
+					<h3>{{entry.title}}</h3>
+					{% if entry.sub_title %}
+					<p>{{entry.sub_title|truncatechars:26}}</p>
+					{% endif %}
+					{% if entry.author.photo %}
+					{% thumbnail entry.author.photo "50x50" crop="top" as im %}
+					<img src="{{im.url}}" alt="{{entry.author}}" width="{{im.width}}" height="{{im.height}}">
+					{% endthumbnail %}
+					{% endif %}
 					<span>
-						<p>Lawretta Maduegbuna</p>
-						<small>March 12</small>
+						<p>{{entry.author.name}}</p>
+						<small>{{entry.date_created|timesince}} ago</small>
 					</span>
-					<img src="{% static 'images/lawretta.jpg' %}" alt="">
 				</div>
 			</div>
 		</div>
+		{% endfor %}
+	</div>
+</div>
+
+<div class="container" style="background: #fff;">
+	<div class="row" style="min-height: 300px; margin-top: 30px;">
+		<div class="col-md-12">
+			<h3 style="margin-bottom: 0; font-size: 2rem; font-weight: 600;">Other Posts &raquo;</h3>
+			<hr style="margin-top: 5px;">
+		</div>
+		{% for entry in entries %}
 		<div class="col-md-4 col-sm-6 col-xs-12 pad">
 			<div class="post">
 				<div class="img">
-					<img src="{% static 'images/overlay.jpg' %}" alt="">
+					{% if entry.illustration %}
+					{% thumbnail entry.illustration "165x198" crop="center" as im %}
+					<img src="{{im.url}}" alt="" width="{{im.width}}" height="{{im.height}}">
+					{% endthumbnail %}
+					{% else %}
+					<img src="{% static 'images/noise.png' %}" alt="">
+					{% endif %}
 				</div>
 				<div class="content">
-					<h3>Business and Intelligence: Love Made from Heaven</h3>
-					<p>Very short subtitle </p>
+					<h3>{{entry.title}}</h3>
+					{% if entry.sub_title %}
+					<p>{{entry.sub_title|truncatechars:26}}</p>
+					{% endif %}
+					{% if entry.author.photo %}
+					{% thumbnail entry.author.photo "50x50" crop="top" as im %}
+					<img src="{{im.url}}" alt="{{entry.author}}" width="{{im.width}}" height="{{im.height}}">
+					{% endthumbnail %}
+					{% endif %}
+					<span>
+						<p>{{entry.author.name}}</p>
+						<small>{{entry.date_created|timesince}} ago</small>
+					</span>
 				</div>
 			</div>
 		</div>
+		{% endfor %}
 	</div>
-	<div class="row more">
-		<a href="">Read More...</a>
+	<div class="row">
+		<div>{% render_paginator entries %}</div>
 	</div>
 </div>
 {% endblock %}
