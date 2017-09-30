@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import *
 
 class NewsListView(ListView):
@@ -27,5 +27,9 @@ class NewsListView(ListView):
 		context['most_reads'] = Entry.objects.get_most_viewed()
 		return context
 
-
+class NewsDetailView(DetailView):
+	model = Entry
+	template_name = 'newsroom/news_detail.html'
+	context_object_name = 'entry'
+	slug_url_kwarg = 'slug'
 

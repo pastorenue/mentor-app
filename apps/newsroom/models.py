@@ -2,6 +2,8 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
 from tinymce.models import HTMLField
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from datetime import datetime, timedelta
 
@@ -49,6 +51,10 @@ class Entry(models.Model):
 
 	def __str__(self):
 		return "%s --> %s" % (self.author, self.title)
+
+	@models.permalink
+	def get_abosolute_url(self):
+		return HttpResponseRedirect(reverse('newsroom:news-detail', args=(self.slug,)))
 
 	class Meta:
 		verbose_name = _(u'Entry')

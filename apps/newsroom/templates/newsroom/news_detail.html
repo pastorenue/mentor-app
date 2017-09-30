@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static thumbnail %}
+
+{% block extra_css %}
+<link href="{% static 'css/news.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block mainbar %}
+<div class="container" style="background: #fff;">
+	<div class="row" style="min-height: 300px; margin: 30px 200px;">
+		<div class="news">
+			<div class="col-md-12">
+				<h2>{{entry.title|title}}</h2>
+			</div>
+			<div class="col-md-12 author">
+				<div>
+					{% thumbnail entry.author.photo "45x45" crop="top" as im %}
+					<img src="{{im.url}}" alt="">
+					{% endthumbnail %}
+					<h5>{{entry.author.name}}</h5>
+					<p> {{entry.date_created}}</p>
+				</div>
+			</div>
+			<div class="content">
+				{{entry.content|safe}}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+ {% block extrajs %}
+ <script type="text/javascript" src="{% static 'js/news.js' %}"></script>
+ {% endblock %}

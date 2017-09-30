@@ -41,32 +41,34 @@
 		</div>
 		{% for entry in recents %}
 		<div class="col-md-4 col-sm-6 col-xs-12 pad">
-			<div class="post">
-				<div class="img">
-					{% if entry.illustration %}
-					{% thumbnail entry.illustration "165x198" crop="center" as im %}
-					<img src="{{im.url}}" alt="" width="{{im.width}}" height="{{im.height}}">
-					{% endthumbnail %}
-					{% else %}
-					<img src="{% static 'images/noise.png' %}" alt="">
-					{% endif %}
+			<a href="{% url 'newsroom:news-detail' slug=entry.slug %}">
+				<div class="post">
+					<div class="img">
+						{% if entry.illustration %}
+						{% thumbnail entry.illustration "165x198" crop="center" as im %}
+						<img src="{{im.url}}" alt="" width="{{im.width}}" height="{{im.height}}">
+						{% endthumbnail %}
+						{% else %}
+						<img src="{% static 'images/noise.png' %}" alt="">
+						{% endif %}
+					</div>
+					<div class="content">
+						<h3>{{entry.title}}</h3>
+						{% if entry.sub_title %}
+						<p>{{entry.sub_title|truncatechars:26}}</p>
+						{% endif %}
+						{% if entry.author.photo %}
+						{% thumbnail entry.author.photo "50x50" crop="top" as im %}
+						<img src="{{im.url}}" alt="{{entry.author}}" width="{{im.width}}" height="{{im.height}}">
+						{% endthumbnail %}
+						{% endif %}
+						<span>
+							<p>{{entry.author.name}}</p>
+							<small>{{entry.date_created|timesince}} ago</small>
+						</span>
+					</div>
 				</div>
-				<div class="content">
-					<h3>{{entry.title}}</h3>
-					{% if entry.sub_title %}
-					<p>{{entry.sub_title|truncatechars:26}}</p>
-					{% endif %}
-					{% if entry.author.photo %}
-					{% thumbnail entry.author.photo "50x50" crop="top" as im %}
-					<img src="{{im.url}}" alt="{{entry.author}}" width="{{im.width}}" height="{{im.height}}">
-					{% endthumbnail %}
-					{% endif %}
-					<span>
-						<p>{{entry.author.name}}</p>
-						<small>{{entry.date_created|timesince}} ago</small>
-					</span>
-				</div>
-			</div>
+			</a>
 		</div>
 		{% endfor %}
 	</div>
@@ -79,7 +81,7 @@
 			<hr style="margin-top: 5px;">
 		</div>
 		{% for entry in most_reads %}
-		<div class="col-md-4 col-sm-6 col-xs-12 pad">
+		<div class="col-md-4 col-sm-6 col-xs-12 pad" onclick="location.href='{{entry.get_absolute_url}}'">
 			<div class="post">
 				<div class="img">
 					{% if entry.illustration %}
@@ -118,7 +120,7 @@
 			<hr style="margin-top: 5px;">
 		</div>
 		{% for entry in entries %}
-		<div class="col-md-4 col-sm-6 col-xs-12 pad">
+		<div class="col-md-4 col-sm-6 col-xs-12 pad" onclick="location.href='{{entry.get_absolute_url}}'">
 			<div class="post">
 				<div class="img">
 					{% if entry.illustration %}
