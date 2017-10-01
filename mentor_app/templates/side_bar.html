@@ -44,26 +44,22 @@
 {% else %}
 <div class="panel panel-default top-margin">
 	<div class="div-header">
-		<h3><strong>Trending News</strong> <span style="font-size: 14px; float: right;"><a href="">See More &raquo;</a></span></h3>
+		<h3><strong>Trending Posts</strong> <span style="font-size: 14px; float: right;"><a href="{% url 'newsroom:news-list' %}">See More &raquo;</a></span></h3>
 	</div>
+	{% if recent_posts %}
+	{% for entry in recent_posts %}
 	<div class="news-list">
-		<img src="{% static 'images/about.jpg' %}" alt="tweets">
+		{% thumbnail entry.illustration "254x70" crop="center" as im %}
+		<img src="{{im.url}}" alt="tweets" height="{{im.height}}">
+		{% endthumbnail %}
 		<div class="content">
-			<a href=""><h4>Taking the first steps to writing a business paln <span>[posted: {date}]</span></h4></a>
+			<a href="{% url 'newsroom:news-detail' slug=entry.slug %}"><h4>{{entry.title|title}} <span>[posted: {{entry.date_created}}]</span></h4></a>
 		</div>
 	</div>
-	<div class="news-list">
-		<img src="{% static 'images/tweets.jpg' %}" alt="tweets">
-		<div class="content">
-			<a href=""><h4>Using Multivariated approach in Business <span>[posted: {date}]</span></h4></a>
-		</div>
-	</div>
-	<div class="news-list">
-		<img src="{% static 'images/work.jpg' %}" alt="tweets">
-		<div class="content">
-			<a href=""><h4>Your first business deal <span>[posted: {date}]</span></h4></a>
-		</div>
-	</div>
+	{% endfor %}
+	{% else %}
+	<h4 style="text-align: center;">None available</h4>
+	{% endif %}
 </div>
 <div class="panel panel-default top-margin">
 	<div class="div-header">
