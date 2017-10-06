@@ -45,7 +45,7 @@ class Mentor(models.Model):
 	type_to_handle = models.CharField(max_length=20, choices=PROJECT_TYPE_CHOICES)
 	short_biography = models.TextField(blank=True)
 	years_of_experience = models.PositiveIntegerField(null=True)
-	cv_file = models.FileField("Attach PDF copy of CV ", upload_to='uploads/%Y/%m/%d')
+	cv_file = models.FileField("Attach PDF copy of CV ", upload_to='uploads/%Y/%m/%d', blank=True)
 	slug = models.SlugField(unique=True, blank=True)
 	linkedin_url = models.URLField("Link to LinkedIn Bio/profile", null=True, blank=True)
 	account_status = models.CharField(max_length=1, default='A', choices=STATUS_CHOICES)

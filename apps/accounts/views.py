@@ -171,6 +171,4 @@ def save_other_objects(base, other):
 		basic.linkedin_url = other.cleaned_data['linkedin_url']
 	if hasattr(basic, 'years_of_experience'):
 		basic.years_of_experience = other.cleaned_data['years_of_experience']
-	if hasattr(basic, 'cv_file'):
-		basic.cv_file = other.cleaned_data['cv_file']
 	basic.save()
