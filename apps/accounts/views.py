@@ -47,8 +47,6 @@ def signup(request):
 			basic_form = BasicMenteeForm(request.POST, request.FILES)
 			professional_form = MenteeProfessionalForm(request.POST)
 			addr_form = AddressForm(request.POST)
-		import pdb
-		pdb.set_trace()
 		if user_form.is_valid() and basic_form.is_valid() and professional_form.is_valid():
 			user = user_form.save(commit=False)
 			user.save()
@@ -63,8 +61,6 @@ def signup(request):
 			basic.user = user
 			basic.industry = professional_form.cleaned_data['industry']
 			save_other_objects(basic, professional_form)
-			import pdb
-			pdb.set_trace()
 			user = authenticate(username=request.POST.get('username'), password=request.POST.get('password1'))
 			login(request, user)
 			messages.success(request, 'Your account is now active. Login to access your account')
