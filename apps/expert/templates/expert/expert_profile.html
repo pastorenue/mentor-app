@@ -30,6 +30,8 @@
 								{% else %}
 								<a href="">Request for more details</a>
 								{% endif %}
+							{% else %}
+							<a href="{% url 'accounts:signup' %}?user_type=unknown">Sign Up Now to Request Assistance</a>
 							{% endif %}
 						</div>
 					</div>

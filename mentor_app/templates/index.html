@@ -60,7 +60,7 @@
 
       {% include '_navbar.html' %}
     </header><!--/#home-->
-    <section id="services">
+    <section  id="services">
       <div class="container">
         <div class="wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInUp;">
           <div class="row">
@@ -84,7 +84,7 @@
                       <div class="ch-info-back">
                         <h3>What’s wrong with my business?</h3>
                           <p>We thoroughly review business operations and the books to determine the health of the business and make recommendations. Apart from recommendation, we render services to SMEs in the following aspects;
-                          <a href="">Meet an Expert &raquo;</a>
+                          <a href="{% url 'expert:expert-list' %}">Meet an Expert &raquo;</a>
                           </p>
                       </div>
                     </div>
@@ -103,7 +103,7 @@
                       <div class="ch-info-back">
                         <h3>Need to do things better</h3>
                           <p>We offer operations optimization services to SMEs to improve their business processes to attain better efficiencies and optimum performances
-                          <a href="">Meet an Expert &raquo;</a>
+                          <a href="{% url 'expert:expert-list' %}">Meet an Expert &raquo;</a>
                           </p>
                       </div>
                     </div>
@@ -122,7 +122,7 @@
                       <div class="ch-info-back">
                         <h3>Business templates</h3>
                           <p>As part of the support services we render, business templates will be available for download on our website. These would be paid for by SMEs. The templates would cover all business aspects
-                          <a href="">Meet an Expert &raquo;</a>
+                          <a href="{% url 'expert:expert-list' %}">Meet an Expert &raquo;</a>
                           </p>
                       </div>
                     </div>
@@ -141,7 +141,7 @@
                       <div class="ch-info-back">
                         <h3>Logo Design</h3>
                           <p>We design highly interactive logos. Our logo is a typical example.
-                          <a href="">Meet an Expert &raquo;</a>
+                          <a href="{% url 'expert:expert-list' %}">Meet an Expert &raquo;</a>
                           </p>
                       </div>
                     </div>
@@ -160,7 +160,7 @@
                       <div class="ch-info-back">
                         <h3>Marketing/Branding</h3>
                           <p>Our experts can transform your business from one ordinary business to the spotlight when we’re engaged. We have professional industry experts that can transform your business
-                          <a href="">Meet an Expert &raquo;</a>
+                          <a href="{% url 'expert:expert-list' %}">Meet an Expert &raquo;</a>
                           </p>
                       </div>
                     </div>
@@ -179,7 +179,7 @@
                       <div class="ch-info-back">
                         <h3>Business plan</h3>
                           <p>Most small businesses do not have business plans thus at the preliminary stages of the mentorship program, we encourage the mentors to demand for a business plan so that sustainability plan can be checked. To this end, we provide free templates and paid business plan services for SMEs
-                          <a href="">Meet an Expert &raquo;</a>
+                          <a href="{% url 'expert:expert-list' %}">Meet an Expert &raquo;</a>
                           </p>
                       </div>
                     </div>
@@ -190,93 +190,18 @@
         </div>
       </div>
     </section><!--/#services-->
-    <section id="team" style="margin-top: 40px;">
-      <div class="container">
-        <div class="row">
-          <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp animated" data-wow-duration="1200ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1200ms; animation-delay: 300ms; animation-name: fadeInUp;">
-            <h1><strong>Meet The Team</strong></h1>
-            <h3>Thebossoffice has 700 years cumulative experience in startups and MSMEs support services.<br> 
-            </h3>
-            <p>Feel free to contact us:</p>
-          </div>
+    <section>
+      <div class="row" style="background: #3b5998; height: 150px;">
+        <div class="col-md-6" style="text-align: center;">
+          <h2 style="color: #fff; margin: 40px auto;">You can get more updates from thebossoffice.com</h2>
         </div>
-         <hr>
-        <div class="team-members">
-          <div class="row">
-            <div class="col-sm-6 col-md-3">
-              <div class="team-member wow flipInY animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: flipInY;">
-                <div class="member-image">
-                  <img class="img-responsive" src="{% static 'images/tereigh.jpg' %}" alt="">
-                </div>
-                <div class="member-info">
-                  <h3>Tereigh Ozakpo</h3>
-                  <h4>Head, Strategy</h4>
-                  <p>Tereigh is passionate about success, especially business success. 
-                  He is an avid business development consultant
-                  </p>
-                  <p>tereigh.o@thebossoffice.com</p>
-                </div>
-                <div class="social-icons">
-                  <ul>
-                    <li><a class="facebook" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a class="twitter" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a class="linkedin" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a class="dribbble" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-dribbble"></i></a></li>
-                    <li><a class="rss" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-rss"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-              <div class="team-member wow flipInY animated" data-wow-duration="1000ms" data-wow-delay="1100ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 1100ms; animation-name: flipInY;">
-                <div class="member-image">
-                  <img class="img-responsive" src="{% static '/images/bunmi.png' %}" alt="">
-                </div>
-                <div class="member-info">
-                  <h3>Kenechukwu Udeh</h3>
-                  <h4>Partner</h4>
-                  <p>Kenechukwu is an associate of McKinsey & Company. He has passion for consulting and solutions for business optimization</p>
-                  <p>kene.u@thebossoffice.com</p>
-                </div>
-                <div class="social-icons">
-                  <ul>
-                    <li><a class="facebook" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a class="twitter" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a class="linkedin" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a class="dribbble" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-dribbble"></i></a></li>
-                    <li><a class="rss" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-rss"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-              <div class="team-member wow flipInY animated" data-wow-duration="1000ms" data-wow-delay="500ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 500ms; animation-name: flipInY;">
-                <div class="member-image">
-                  <img class="img-responsive" src="{% static '/images/lawretta.jpg' %}" alt="">
-                </div>
-                <div class="member-info">
-                  <h3>Obehi  Usifo-Ogbebor</h3>
-                  <h4>Head, Legal/HR</h4>
-                  <p>has experience across three continents in Legal services. She has great interest in the MSMEs sector</p>
-                  <p>lawretta.m@thebossoffice.com</p>
-                </div>
-                <div class="social-icons">
-                  <ul>
-                    <li><a class="facebook" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a class="twitter" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a class="linkedin" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a class="dribbble" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-dribbble"></i></a></li>
-                    <li><a class="rss" href="http://demo.themeum.com/html/oxygen/#"><i class="fa fa-rss"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-        </div>            
+        <div class="col-md-6">
+          <div class="load-more wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms" style="visibility: hidden; animation-duration: 1000ms; animation-delay: 500ms; animation-name: none;">
+            <a href="#" class="btn btn-loadmore" style="color: #f6f6f6;"><i class="fa fa-repeat" ></i> Sign Up For a Free Newsletter</a>
+          </div> 
+        </div>
       </div>
-    </section><!--/#team-->
-
+    </section>
     <section>
       <div>
         <div class="container">
@@ -350,10 +275,7 @@
               </div>
             </div>
             {% endfor %}                    
-          </div>
-          <div class="load-more wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms" style="visibility: hidden; animation-duration: 1000ms; animation-delay: 500ms; animation-name: none;">
-            <a href="#" class="btn btn-loadmore"><i class="fa fa-repeat"></i> Sign Up For a Free Newsletter</a>
-          </div>                
+          </div>               
         </div>
       </div>
     </section><!--/#blog-->

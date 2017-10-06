@@ -7,8 +7,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.db import transaction
-from django.contrib.auth import login
-from django.contrib.auth import authenticate, logout
+from django.contrib.auth import login, authenticate, logout
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
@@ -48,9 +47,10 @@ def signup(request):
 			basic_form = BasicMenteeForm(request.POST, request.FILES)
 			professional_form = MenteeProfessionalForm(request.POST)
 			addr_form = AddressForm(request.POST)
+		import pdb
+		pdb.set_trace()
 		if user_form.is_valid() and basic_form.is_valid() and professional_form.is_valid():
 			user = user_form.save(commit=False)
-			user.is_active = False
 			user.save()
 			basic = basic_form.save(commit=False)
 			if hasattr(basic, 'address_id'):
@@ -63,6 +63,9 @@ def signup(request):
 			basic.user = user
 			basic.industry = professional_form.cleaned_data['industry']
 			save_other_objects(basic, professional_form)
+			import pdb
+			pdb.set_trace()
+			user = authenticate(username=request.POST.get('username'), password=request.POST.get('password1'))
 			login(request, user)
 			messages.success(request, 'Your account is now active. Login to access your account')
 			return HttpResponseRedirect(reverse('mentee:mentee-list'))

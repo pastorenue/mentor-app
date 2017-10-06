@@ -1725,3 +1725,10 @@ ul.address {
   transform: rotate(-45deg);
   background: #f5f5f5;
 }
+/********************************
+************SLIDER***************/
+.strong-head {
+  font-size: 5em !important;
+  font-weight: 800 !important;
+
+}
