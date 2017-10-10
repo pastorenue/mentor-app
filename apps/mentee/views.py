@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Mentee, MentorshipRequest
 from django.views.generic import ListView, DetailView
 from notifications.signals import notify
@@ -9,6 +9,9 @@ from mentor.models import Mentor
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.db import transaction
+from .forms import *
+from expert.models import Address
+from expert.forms import AddressForm
 
 class MenteeListView(ListView):
 	model = Mentee
@@ -86,3 +89,37 @@ def reject(request, mentee_id, mentor_id):
 				due to some reasons on the Mentor's part." % (sender.mentor))
 	messages.success(request, "Thank you for your response. A notification will be sent to %s" % (mentee.mentee))
 	return HttpResponseRedirect(reverse('notifications:all'))
+
+
+@login_required
+def edit_profile(request):
+	instance = get_object_or_404(Mentee, user=request.user)
+	address = None
+	try:
+		address = get_object_or_404(Address, user=request.user)
+	except:
+		address = None
+	context = {}
+	template_name = 'mentee/edit.html'
+	if request.method == 'POST':
+		form = MenteeForm(request.POST, request.FILES, instance=instance)
+		addr_form = AddressForm(request.POST, instance=address)
+		if form.is_valid():
+			form = form.save(commit=False)
+			form.user = request.user
+			if addr_form.is_valid():
+				address = addr_form.save(commit=False)
+				address.user = request.user
+				address.save()
+			form.address = address
+			form.save()
+			messages.success(request, "Your profile has been updated")
+			return HttpResponseRedirect(reverse('mentee:mentee-profile', kwargs={'slug': instance.slug}))
+	else:
+		form = MenteeForm(instance=instance)
+		addr_form = AddressForm(instance=address)
+		context['form'] = list(form)
+		context['addr_form'] = addr_form 
+		context['mentee'] = instance
+
+	return render(request, template_name, context)

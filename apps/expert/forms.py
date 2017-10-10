@@ -55,6 +55,15 @@ class ExpertProfessionalForm(forms.ModelForm):
 		fields = ('industry', 'availability', 'type_to_handle', 'cv_file', 'linkedin_url')
 
 class AddressForm(forms.ModelForm):
+
+	def __init__(self, *args, **kwargs):
+		super(AddressForm, self).__init__(*args, **kwargs)
+		self.fields['street'].widget.attrs = {'class':'form-control'}
+		self.fields['city'].widget.attrs = {'class':'form-control'}
+		self.fields['state'].widget.attrs = {'class':'form-control'}
+		self.fields['country'].widget.attrs = {'class':'form-control'}
+
+
 	class Meta:
 		model = Address
 		exclude = ('user',)

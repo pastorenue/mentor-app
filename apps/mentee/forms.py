@@ -12,6 +12,28 @@ class BasicMenteeForm(forms.ModelForm):
 		fields = ('title', 'photo', 'age_range', 'phone_number',)
 
 
+class MenteeForm(forms.ModelForm):
+
+	def __init__(self, *args, **kwargs):
+		super(MenteeForm, self).__init__(*args, **kwargs)
+		self.fields['title'].widget.attrs = {'class':'form-control'}
+		self.fields['name'].widget.attrs = {'class':'form-control'}
+		self.fields['age_range'].widget.attrs = {'class':'form-control'}
+		self.fields['industry'].widget.attrs = {'class':'form-control'}
+		self.fields['phone_number'].widget.attrs = {'class':'form-control'}
+		self.fields['year_of_commencement'].widget.attrs = {'class':'form-control'}
+		self.fields['time_with_mentor'].widget.attrs = {'class':'form-control'}
+		self.fields['phone_number'].widget.attrs = {'class':'form-control'}
+		self.fields['photo'].widget.attrs = {'class':'form-control'}
+		self.fields['name_of_business'].widget.attrs = {'class':'form-control'}
+		self.fields['mode_of_communication'].widget.attrs = {'class':'form-control'}
+		self.fields['mode_details'].widget.attrs = {'class':'form-control'}
+		self.fields['level_of_education'].widget.attrs = {'class':'form-control'}
+		self.fields['background_image'].widget.attrs = {'class':'form-control'}
+
+	class Meta:
+		model = Mentee
+		exclude = ('user', 'email', 'slug', 'address')
 class MenteeProfessionalForm(forms.ModelForm):
 
 	class Meta:

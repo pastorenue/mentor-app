@@ -16,7 +16,7 @@
 </style>
 {% endblock %}
 {% block header %}
-	<h1>{{mentor.name}}</h1>
+	<h1>{{mentee.name}}</h1>
 {% endblock %}
 {% block content %}
 <div class="container">
@@ -25,17 +25,17 @@
 			<div class="row">
 				<div class="panel panel-default top-margin">
 					<div style="height: 150px;">
-						{% thumbnail mentor.background_image "875x150" crop="center" as img %}
-					<img src="{{img.url}}" alt="" class=""> 
-					{% endthumbnail %}
+						{% thumbnail mentee.background_image "875x150" crop="center" as img %}
+						<img src="{{img.url}}" alt="" class=""> 
+						{% endthumbnail %}
 					</div>
 					<div class="lc-profile">
-					{% thumbnail mentor.photo "120x120" crop="top" as img %}
+					{% thumbnail mentee.photo "120x120" crop="top" as img %}
 					<img src="{{img.url}}" alt="" style="position: absolute; left: 4%; top: 125px; padding: 5px; background: #fff;" class="img-circle">
 					{% endthumbnail %}
 						<div class="col-md-2"></div>
 						<div class="col-md-7">
-							<h2>{{mentor}}</h2>
+							<h2>{{mentee}}</h2>
 						</div>
 						<div class="com-md-3">
 							<a href="" id="id_update">Update Profile</a>
@@ -47,12 +47,12 @@
 				<div class="panel panel-default top-margin">
 					<div class="lc-detail">
 						<div>
-							<h3>mentor Profile</h3>
+							<h3>mentee Profile</h3>
 						</div>
 						<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
 							<div class="row" style="padding: 10px;">
 								<div class="col-md-6">
-									{% for field in form|slice:"0:6" %}
+									{% for field in form|slice:"0:7" %}
 									<div class="form-group">
 										<label for="{{field.id_for_label}}">{{field.label}}</label><br>
 										{{field}}
@@ -60,12 +60,15 @@
 									{% endfor %}
 								</div>
 								<div class="col-md-6">
-									{% for field in form|slice:"6:" %}
+									{% for field in form|slice:"7:" %}
 									<div class="form-group">
 										<label for="{{field.id_for_label}}">{{field.label}}</label><br>
 										{{field}}
 									</div>
 									{% endfor %}
+									<div class="form-group">
+										{{addr_form}}
+									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
@@ -80,22 +83,22 @@
 			<div class="row">
 				<div class="panel panel-default top-margin">
 					<div class="div-header">
-						<h3><strong>Other Mentors in {% if user == mentor.user %} Your {% else %}{{mentor.title}} {{mentor.user.first_name}}'s {% endif %} Area of mentorise</strong></h3>
+						<h3><strong>Other mentees in {% if user == mentee.user %} Your {% else %}{{mentee.title}} {{mentee.user.first_name}}'s {% endif %} Area of menteeise</strong></h3>
 					</div>
 					<div class="row" style="padding: 5px 10px;">
-						{% for other_mentor in mentors_for_industry %}
+						{% for other_mentee in mentees_for_industry %}
 						<div class="col-sm-3">
-							<a href="{{other_mentor.get_public_url}}">
+							<a href="{{other_mentee.get_public_url}}">
 								<div class="other-detail">
-									{% thumbnail other_mentor.photo "150x150" crop="top" as img %}
+									{% thumbnail other_mentee.photo "150x150" crop="top" as img %}
 									<img src="{{img.url}}" alt="">
 									{% endthumbnail %}
-									<h4>{{other_mentor}}</h4>
+									<h4>{{other_mentee}}</h4>
 								</div>
 							</a>
 						</div>
 						{% empty %}
-						<p style="text-align: center; margin: 20px auto;">Sorry! We couldn't find any other Mentors for similar mentorise.</p>
+						<p style="text-align: center; margin: 20px auto;">Sorry! We couldn't find any other mentees for similar menteeise.</p>
 						{% endfor %}
 					</div>
 				</div>

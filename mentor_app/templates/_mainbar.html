@@ -16,8 +16,8 @@
       <div class="col-md-6">
         <ul>                     
           <a href="{% url 'expert:expert-list' %}"><li class="scroll"><i class="fa fa-group"></i><br>Meet An Expert</li></a>
-          <a href="{% url 'mentor:mentor-list' %}"><li class="scroll"><i class="fa fa-group"></i><br>See All Mentors</li></a>
-          <a href="{% url 'mentee:mentee-list' %}"><li class="scroll"><i class="fa fa-group"></i><br>See All Mentees</li></a>
+          <a href="{% url 'mentor:mentor-list' %}"><li class="scroll"><i class="fa fa-group"></i><br>Mentors</li></a>
+          <a href="{% url 'mentee:mentee-list' %}"><li class="scroll"><i class="fa fa-group"></i><br>Mentees</li></a>
           <a href="{% url 'newsroom:news-list' %}"><li class="scroll"><i class="fa fa-laptop"></i><br>Newsroom</li></a>
           {% if user.is_authenticated %}
           {% notifications_unread as unread_count %}

@@ -10,9 +10,13 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-9">
-			<div class="row">
+			<div class="row">	
 				<div class="panel panel-default top-margin">
-					<div style="height: 150px; background: #fff;"></div>
+					<div style="height: 150px;">
+						{% thumbnail mentor.background_image "875x145" crop="center" as img %}
+					<img src="{{img.url}}" alt="" class=""> 
+					{% endthumbnail %}
+					</div>
 					<div class="lc-profile">
 					{% thumbnail mentor.photo "120x120" crop="top" as img %}
 					<img src="{{img.url}}" alt="" style="position: absolute; left: 4%; top: 125px; padding: 5px; background: #fff;" class="img-circle">
@@ -24,18 +28,14 @@
 						<div class="com-md-3">
 							{% if user.is_authenticated %}
 								{% if user.mentee %}
-									{% if is_connected %}
-									<a href="">Leave a Message</a>
-									{% elif waiting_connection %}
-									<a href="">You have a pending request</a>
-									{% else %}
-									<a href="{% url 'mentee:send-request' slug=mentor.slug %}">Connect with Mentor</a>
-									{% endif %}
+								<a href="">Request mentor's Services</a>
 								{% elif user == mentor.user %}
 								<a href="{% url 'mentor:edit' %}">Edit Account</a>
 								{% else %}
 								<a href="">Request for more details</a>
 								{% endif %}
+							{% else %}
+							<a href="{% url 'accounts:signup' %}?user_type=unknown">Sign Up Now to Request Assistance</a>
 							{% endif %}
 						</div>
 					</div>
@@ -52,12 +52,11 @@
 					<div class="panel panel-default top-margin">
 						<div class="lc-detail">
 							<div>
-								<h3>Mentor Profile</h3>
+								<h3>mentor Profile</h3>
 							</div>
 							<div class="col-md-6">
-								<p><strong>Area of Expertise:</strong> <span>{{mentor.industry}}</span></p>
+								<p><strong>Area of mentorise:</strong> <span>{{mentor.industry}}</span></p>
 								<p><strong>Availability:</strong> <span>{{mentor.availability}}</span></p> 
-								<p><strong>Years of Experience:</strong> <span>{{mentor.years_of_experience}} years</span></p>
 							</div>
 							<div class="col-md-6">
 								<p><strong>Last Active:</strong> <span>{{mentor.date_modified}}</span></p> 
@@ -70,22 +69,22 @@
 			<div class="row">
 				<div class="panel panel-default top-margin">
 					<div class="div-header">
-						<h3><strong>Other Mentors in {% if user == mentor.user %} Your {% else %}{{mentor.title}} {{mentor.user.first_name}}'s {% endif %} Area of Expertise</strong></h3>
+						<h3><strong>Other mentors in {% if user == mentor.user %} Your {% else %}{{mentor.title}} {{mentor.user.first_name}}'s {% endif %}Area of mentorise</strong></h3>
 					</div>
 					<div class="row" style="padding: 5px 10px;">
-						{% for other_mentor in mentors_for_industry %}
+						{% for mentor in mentors_for_industry %}
 						<div class="col-sm-3">
-							<a href="{{other_mentor.get_public_url}}">
+							<a href="{{mentor.get_absolute_url}}">
 								<div class="other-detail">
-									{% thumbnail other_mentor.photo "150x150" crop="top" as img %}
+									{% thumbnail mentor.photo "150x150" crop="top" as img %}
 									<img src="{{img.url}}" alt="">
 									{% endthumbnail %}
-									<h4>{{other_mentor}}</h4>
+									<h4>{{mentor}}</h4>
 								</div>
 							</a>
 						</div>
 						{% empty %}
-						<p style="text-align: center; margin: 20px auto;">Sorry! We couldn't find any other Mentors for similar expertise.</p>
+						<p style="text-align: center; margin: 20px auto;">Sorry! We couldn't find any other mentor for similar mentorise.</p>
 						{% endfor %}
 					</div>
 				</div>
@@ -94,7 +93,7 @@
 		<div class="col-md-3">
 			{% include 'side_bar.html' %}
 			{% if user.is_authenticated %}
-			{% include 'expert/trending_expert.html' %}
+				{% include 'expert/trending_expert.html' %}
 			{% endif %}
 			{% include '_mini_footer.html' %}
 		</div>

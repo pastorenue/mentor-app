@@ -53,10 +53,10 @@ class MeetingExpert(models.Model):
 
 class Address(models.Model):
 	user = models.OneToOneField(User)
-	street = models.CharField(max_length=50)
-	city = models.CharField("City/Town/Village", max_length=20)
-	state = models.ForeignKey("states.State")
-	Country = models.ForeignKey("states.Country", default="156")
+	street = models.CharField(max_length=50, blank=True)
+	city = models.CharField("City/Town/Village", max_length=20, blank=True)
+	state = models.ForeignKey("states.State", blank=True)
+	country = models.ForeignKey("states.Country", default="156")
 
 	def __str__(self):
 		return "%s, %s" % (self.street, self.city)

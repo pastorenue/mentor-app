@@ -13,7 +13,11 @@
 		<div class="col-md-9">
 			<div class="row">
 				<div class="panel panel-default top-margin">
-					<div style="height: 150px; background: #fff;"></div>
+					<div style="height: 150px; background: #fff;">
+						{% thumbnail mentee.background_image "875x150" crop="center" as img %}
+						<img src="{{img.url}}" alt="" class=""> 
+						{% endthumbnail %}
+					</div>
 					<div class="lc-profile">
 					{% thumbnail mentee.photo "120x120" crop="top" as img %}
 					<img src="{{img.url}}" alt="" style="position: absolute; left: 4%; top: 125px; padding: 5px; background: #fff;" class="img-circle">
@@ -27,7 +31,7 @@
 								{% if user != mentee.user %}
 									<a href="">Request for more details</a>
 								{% else %}
-									<a href="">Edit Account</a>
+									<a href="{% url 'mentee:edit' %}">Edit Account</a>
 								{% endif %}
 							{% endif %}					
 						</div>

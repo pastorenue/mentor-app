@@ -49,5 +49,6 @@ def edit_profile(request):
 	else:
 		form = MentorForm(instance=instance)
 		context['form'] = form
+		context['mentor'] = instance
 
 	return render(request, template_name, context)
