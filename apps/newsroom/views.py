@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView, DetailView
 from .models import *
+from django.contrib.auth.decorators import login_required
+from django.db import transaction
+from django.contrib import messages
 
 class NewsListView(ListView):
 	model = Entry
@@ -33,3 +36,19 @@ class NewsDetailView(DetailView):
 	context_object_name = 'entry'
 	slug_url_kwarg = 'slug'
 
+@login_required
+@transaction.atomic
+def new_comment(request):
+	if request.method == 'POST':
+		params = request.POST
+		body = params.get('body')
+
+		entry_id = params.get('entry_id')
+		entry = Entry.objects.get(pk=entry_id)
+		try:
+			Comment.objects.create(user=request.user, entry=entry, body=body)
+			messages.success(request, "Comment successfully added")
+			return HttpResponseRedirect(reverse('newsroom:news-detail', kwargs={'slug':entry.slug}))
+		except: 
+			messages.error(request, "Please register to post a comment")
+			return HttpResponseRedirect(reverse('accounts:signup'))

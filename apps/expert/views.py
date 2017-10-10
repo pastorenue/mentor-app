@@ -1,7 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Expert
 from django.views.generic import ListView, DetailView
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
+from .forms import *
 
+from django.contrib import messages
 # Create your views here.
 class ExpertListView(ListView):
 	model = Expert
@@ -29,3 +34,24 @@ class ExpertDetailView(DetailView):
 		self.expert = context['expert']
 		context['experts_for_industry'] = Expert.objects.filter(industry=self.expert.industry).exclude(user=self.expert.user)[:4]
 		return context
+
+
+@login_required
+def edit_profile(request):
+	instance = get_object_or_404(Expert, user=request.user)
+	context = {}
+	template_name = 'expert/edit.html'
+	if request.method == 'POST':
+		form = ExpertForm(request.POST, request.FILES, instance=instance)
+		if form.is_valid():
+			form = form.save(commit=False)
+			form.user = request.user
+			form.save()
+			messages.success(request, "Your profile has been updated")
+			return HttpResponseRedirect(reverse('expert:expert-profile', kwargs={'slug': instance.slug}))
+	else:
+		form = ExpertForm(instance=instance)
+		context['form'] = list(form)
+		context['expert'] = instance
+
+	return render(request, template_name, context)

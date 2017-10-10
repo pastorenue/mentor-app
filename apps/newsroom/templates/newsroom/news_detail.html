@@ -25,11 +25,31 @@
 				{{entry.content|safe}}
 			</div>
 		</div>
+		<hr>
+		<div>
+			<form method="POST" action="{% url 'newsroom:comment' %}">{% csrf_token %}
+				<input type="hidden" value="{{entry.id}}" name="entry_id">
+				<div class="form-group">
+					<textarea name="body" id="id_body" cols="30" rows="2" class="form-control" style="max-height: 70px; min-height: 70px !important;" placeholder="Leave a Comment"></textarea>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Save Comment</button>
+				</div>
+			</form>
+		</div>
+		<hr>
+		<div>
+			<h4>Comments {{entry.comment_set.count}}</h4>
+			{% for comment in entry.comment_set.all %}
+			<div>
+				<h5>{{comment.user}} posted {{comment.date_created|timesince}} ago</h5>
+				<p>{{comment.body}}</p>
+			</div>
+			{% endfor %}
+		</div>
 	</div>
 </div>
 {% endblock %}
  {% block extrajs %}
  <script type="text/javascript" src="{% static 'js/news.js' %}"></script>
- <script type="text/javascript" src="{% static 'js/tinymce/tinymce.min.js' %}"></script>
- <script type="text/javascript" src="{% static 'js/tinymce/custom.js' %}"></script>
  {% endblock %}

@@ -2,9 +2,21 @@
 {% load staticfiles thumbnail %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<style>
+	select, input[type=text], input[type=email], input[type=url], input[type=file] {
+		height: 33px !important;
+		color: #000 !important;
+		border-color: #d5d5d5 !important;
+	}
+	textarea {
+		min-height: 70px !important;
+		color: #000 !important;
+		border-color: #d5d5d5 !important;
+	}
+</style>
 {% endblock %}
 {% block header %}
-	<h1>{{mentor.name}}</h1>
+	<h1>{{expert.name}}</h1>
 {% endblock %}
 {% block content %}
 <div class="container">
@@ -12,58 +24,56 @@
 		<div class="col-md-9">
 			<div class="row">
 				<div class="panel panel-default top-margin">
-					<div style="height: 150px; background: #fff;"></div>
+					<div style="height: 150px;">
+						{% thumbnail expert.background_image "875x150" crop="center" as img %}
+					<img src="{{img.url}}" alt="" class=""> 
+					{% endthumbnail %}
+					</div>
 					<div class="lc-profile">
-					{% thumbnail mentor.photo "120x120" crop="top" as img %}
+					{% thumbnail expert.photo "120x120" crop="top" as img %}
 					<img src="{{img.url}}" alt="" style="position: absolute; left: 4%; top: 125px; padding: 5px; background: #fff;" class="img-circle">
 					{% endthumbnail %}
 						<div class="col-md-2"></div>
 						<div class="col-md-7">
-							<h2>{{mentor}}</h2>
+							<h2>{{expert}}</h2>
 						</div>
 						<div class="com-md-3">
-							{% if user.is_authenticated %}
-								{% if user.mentee %}
-									{% if is_connected %}
-									<a href="">Leave a Message</a>
-									{% elif waiting_connection %}
-									<a href="">You have a pending request</a>
-									{% else %}
-									<a href="{% url 'mentee:send-request' slug=mentor.slug %}">Connect with Mentor</a>
-									{% endif %}
-								{% elif user == mentor.user %}
-								<a href="{% url 'mentor:edit' %}">Edit Account</a>
-								{% else %}
-								<a href="">Request for more details</a>
-								{% endif %}
-							{% endif %}
+							<a href="" id="id_update">Update Profile</a>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-3">
-					<div style="text-align: center; margin-top: 20px;">
-						<p><strong>Short Bio</strong></p>
-						{{mentor.short_biography}}
-					</div>
-				</div>
-				<div class="col-md-9" style="padding-right: 0;">
-					<div class="panel panel-default top-margin">
-						<div class="lc-detail">
-							<div>
-								<h3>Mentor Profile</h3>
-							</div>
-							<div class="col-md-6">
-								<p><strong>Area of Expertise:</strong> <span>{{mentor.industry}}</span></p>
-								<p><strong>Availability:</strong> <span>{{mentor.availability}}</span></p> 
-								<p><strong>Years of Experience:</strong> <span>{{mentor.years_of_experience}} years</span></p>
-							</div>
-							<div class="col-md-6">
-								<p><strong>Last Active:</strong> <span>{{mentor.date_modified}}</span></p> 
-								<p><strong>Type of Business to Handle:</strong> <span>{{mentor.type_to_handle}}</span></p>
-							</div>
+				<div class="panel panel-default top-margin">
+					<div class="lc-detail">
+						<div>
+							<h3>Expert Profile</h3>
 						</div>
+						<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+							<div class="row" style="padding: 10px;">
+								<div class="col-md-6">
+									{% for field in form|slice:"0:6" %}
+									<div class="form-group">
+										<label for="{{field.id_for_label}}">{{field.label}}</label><br>
+										{{field}}
+									</div>
+									{% endfor %}
+								</div>
+								<div class="col-md-6">
+									{% for field in form|slice:"6:" %}
+									<div class="form-group">
+										<label for="{{field.id_for_label}}">{{field.label}}</label><br>
+										{{field}}
+									</div>
+									{% endfor %}
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<button class="btn btn-primary" type="submit">Update Profile</button>
+									</div>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>

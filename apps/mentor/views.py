@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Mentor
 from django.views.generic import ListView, DetailView
 from mentee.models import MentorshipRequest
-
+from .forms import *
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 class MentorListView(ListView):
 	model = Mentor
@@ -31,3 +32,22 @@ class MentorDetailView(DetailView):
 		context['waiting_connection'] = MentorshipRequest.objects.filter(to_user=self.mentor.user, status='O').exists()
 		context['mentors_for_industry'] = Mentor.objects.exclude(user=self.mentor.user).filter(industry=self.mentor.industry)[:4]
 		return context
+
+@login_required
+def edit_profile(request):
+	instance = get_object_or_404(Mentor, user=request.user)
+	context = {}
+	template_name = 'mentor/edit.html'
+	if request.method == 'POST':
+		form = MentorForm(request.POST, request.FILES, instance=instance)
+		if form.is_valid():
+			form = form.save(commit=False)
+			form.user = request.user
+			form.save()
+			messages.success(request, "Your profile has been updated")
+			return HttpResponseRedirect(reverse('mentor:mentor-profile'))
+	else:
+		form = MentorForm(instance=instance)
+		context['form'] = form
+
+	return render(request, template_name, context)

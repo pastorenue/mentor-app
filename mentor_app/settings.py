@@ -152,7 +152,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
@@ -172,7 +172,6 @@ PAGE_SIZE = 20
 PAGE_ORPHANS = 5        
 
 #Email_configuration
-# EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
 # DEFAULT_FROM_EMAIL = 'noreply@thebossoffice.com'
 # EMAIL_USE_TLS = True
 #EMAIL_HOST = 'smtp.gmail.com'
@@ -182,10 +181,11 @@ ANYMAIL = {
     "SENDGRID_API_KEY": os.environ.get('SENDGRID_API_KEY'),
 }
 
+EMAIL_BACKEND = "anymail.backends.sendgrid.EmailBackend"
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'pastorenuel@gmail.com'
-EMAIL_HOST_PASSWORD = 'treble89'
+EMAIL_HOST_PASSWORD = 'Treble89'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-TEMPLATE_DEBUG=True\
+TEMPLATE_DEBUG=True

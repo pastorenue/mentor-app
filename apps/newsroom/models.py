@@ -60,3 +60,15 @@ class Entry(models.Model):
 		verbose_name = _(u'Entry')
 		verbose_name_plural = _(u'Entries')
 		ordering = ('-date_created',)
+
+
+class Comment(models.Model):
+	user = models.ForeignKey(User, related_name="user_commment", null=True)
+	entry = models.ForeignKey(Entry, null=True)
+	body = HTMLField()
+	date_created = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return "%s --> %s" % (self.user.first_name, self.entry.title)
+
+

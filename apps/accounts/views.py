@@ -61,6 +61,7 @@ def signup(request):
 			basic.user = user
 			basic.industry = professional_form.cleaned_data['industry']
 			save_other_objects(basic, professional_form)
+			notify(request, user)
 			user = authenticate(username=request.POST.get('username'), password=request.POST.get('password1'))
 			login(request, user)
 			messages.success(request, 'Your account is now active. Login to access your account')
@@ -118,7 +119,7 @@ def notify(request, user):
     }
 	txt_message = render_to_string('accounts/account_activation_email.txt', context_dict)
 	html_message = render_to_string('accounts/account_activation_email.html', context_dict)
-	subject, from_email, to = 'thebossoffice.com: Verification Required', 'no-reply@thebossoffice.com',  user.username
+	subject, from_email, to = 'thebossoffice.com: Verification Required', 'no-reply@thebossoffice.com',  "pastorenuel@gmail.com"
 	msg = EmailMultiAlternatives(subject, txt_message, from_email, [to])
 	msg.attach_alternative(html_message, "text/html")
 	try:
