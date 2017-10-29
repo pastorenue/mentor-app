@@ -62,10 +62,8 @@ def signup(request):
 			basic.industry = professional_form.cleaned_data['industry']
 			save_other_objects(basic, professional_form)
 			notify(request, user)
-			user = authenticate(username=request.POST.get('username'), password=request.POST.get('password1'))
-			login(request, user)
-			messages.success(request, 'Your account is now active. Login to access your account')
-			return HttpResponseRedirect(reverse('mentee:mentee-list'))
+			# user = authenticate(username=request.POST.get('username'), password=request.POST.get('password1'))
+			# login(request, user)
 	else:
 		user_form = basic_form = professional_form = None
 		if user_type == 'mentor':
@@ -119,7 +117,7 @@ def notify(request, user):
     }
 	txt_message = render_to_string('accounts/account_activation_email.txt', context_dict)
 	html_message = render_to_string('accounts/account_activation_email.html', context_dict)
-	subject, from_email, to = 'thebossoffice.com: Verification Required', 'no-reply@thebossoffice.com',  "pastorenuel@gmail.com"
+	subject, from_email, to = 'thebossoffice.com: Verification Required', 'no-reply@thebossoffice.com', user.username
 	msg = EmailMultiAlternatives(subject, txt_message, from_email, [to])
 	msg.attach_alternative(html_message, "text/html")
 	try:
@@ -132,6 +130,7 @@ def notify(request, user):
 	    if user is not None:
 	        login(request, user)
 	    messages.success(request, 'Your account is now active')
+	    return HttpResponseRedirect(reverse('mentee:mentee-list'))
 
 def alternative_notify(request):
 	user.is_active = True

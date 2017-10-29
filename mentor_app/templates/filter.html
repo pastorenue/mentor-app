@@ -2,7 +2,6 @@
 	<h4 for=""><i class="fa fa-filter"></i> Filter</h4>
 	<select name="industry" id="id_industry" class="form-filter">
 		<option value="all">Filter By Industry...</option>
-		<option value="all">All Mentors</option>
 		{% for industry in industries %}
 		<option value="{{industry.id}}">{{industry}}</option>
 		{% endfor %}

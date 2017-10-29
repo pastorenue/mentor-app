@@ -54,7 +54,15 @@
     <!--.preloader-->
     
     <!--/.preloader-->
-
+    {% if messages %}
+      {% for message in messages %}
+      <div id="notification" class="alert-{{message.tags}}" style="">
+        <div><span onclick="hideMe()">&times;</span></div>
+        <h4><strong>{{message.tags|title}}</strong></h4>
+        <h5>{{ message }}</h5>
+      </div>
+      {% endfor %}
+    {% endif %}
     <header id="home">
       {% include '_slider.html' %}
 
@@ -294,7 +302,7 @@
           <div class="contact-form wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: hidden; animation-duration: 1000ms; animation-delay: 600ms; animation-name: none;">
             <div class="row">
               <div class="col-sm-5 contact-us">
-                <form id="main-contact-form" name="contact-form" method="post" action="">
+                <form method="post" action="{% url 'contact:contact' %}">{% csrf_token %}
                   <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: hidden; animation-duration: 1000ms; animation-delay: 300ms; animation-name: none;">
                     <div class="col-sm-6">
                       <div class="form-group">
@@ -346,6 +354,15 @@
     <script type="text/javascript" src="{% static 'js/jquery.countTo.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/lightbox.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script> 
+    <script>
+      function hideMe(){
+          $("#notification").hide('slideUp');
+        }
+
+        setTimeout(function() {
+            $("#notification").slideUp(1000)
+          }, 6000);
+    </script>
     <script>
       !function() {
         var t;

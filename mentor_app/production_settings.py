@@ -173,12 +173,6 @@ LOGOUT_REDIRECT_URL = 'home'
 PAGE_SIZE = 20
 PAGE_ORPHANS = 5        
 
-#Email_configuration
-DEFAULT_FROM_EMAIL = 'noreply@thebossoffice.com'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'pastorenuel@gmail.com' #'emails.address.email_addr'
 
 LOGGING = {
     'version': 1,
@@ -196,14 +190,17 @@ LOGGING = {
     },
 }
 
+#Email_configuration
 ANYMAIL = {
-    "SENDGRID_API_KEY": os.environ.get('SENDGRID_API_KEY') ,
+    # (exact settings here depend on your ESP...)
+    "MAILGUN_API_KEY": "key-5b8244a85dd4969806098365b885bf55",
+    "MAILGUN_SENDER_DOMAIN": 'sandbox7373036bb12e480998e2fa37856e5d0b.mailgun.org',  # your Mailgun domain, if needed
 }
-
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'pastorenuel@gmail.com'
-EMAIL_HOST_PASSWORD = 'Treble1603'
+EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"  # or sendgrid.EmailBackend, or...
+EMAIL_HOST = 'smtp.mailgun.org'
 EMAIL_PORT = 587
+EMAIL_HOST_USER = 'postmaster@sandbox7373036bb12e480998e2fa37856e5d0b.mailgun.org'
+EMAIL_HOST_PASSWORD = 'd27474638e25b795b750173855724bed'
 EMAIL_USE_TLS = True
 
 TEMPLATE_DEBUG=True

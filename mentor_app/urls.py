@@ -41,6 +41,7 @@ urlpatterns = [
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
     url(r'^mentee/', include('mentee.urls', namespace='mentee')),
     url(r'^mentor/', include('mentor.urls', namespace='mentor')),
+    url(r'^contact/', include('contacts.urls', namespace='contact')),
     url(r'^expert/', include('expert.urls', namespace='expert')),
     url(r'^discussion/', include('forum.urls', namespace='forum')),
     url(r'^tinymce/', include('tinymce.urls')),

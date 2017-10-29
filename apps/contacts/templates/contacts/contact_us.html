@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load staticfiles thumbnail %}
+
+{% block header %}<h1>Leave a Message</h1>{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			{% include 'side_bar.html' %}
+		</div>
+		<div class="col-md-6" style="padding-left: 0; padding-right: 0;">
+			<div class="panel panel-default top-margin">
+				
+			</div>
+			<div class="panel panel-default">
+				<form action="">
+					<div class="form-control">
+						<label for="{{field.id_for_label}}">{{field.label}}</label>
+						<input type="text" name="name" placeholder="Your name ">
+					</div>
+					{% endfor %}
+					<div>
+						<button class="btn btn-primary">Send</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="col-md-3">
+			{% include 'expert/trending_expert.html' %}
+			{% include '_mini_footer.html' %}
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block extrajs %}
+<script>
+	$('#id_industry').change(function() {
+		$('#id_filter').click();
+	})
+</script>
+<script>
+	$('#id_industry').select2();
+</script>
+{% endblock %}

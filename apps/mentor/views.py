@@ -2,8 +2,11 @@ from django.shortcuts import render, get_object_or_404
 from .models import Mentor
 from django.views.generic import ListView, DetailView
 from mentee.models import MentorshipRequest
+from django.http import HttpResponseRedirect	
+from django.core.urlresolvers import reverse
 from .forms import *
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 # Create your views here.
 class MentorListView(ListView):
 	model = Mentor
@@ -45,10 +48,10 @@ def edit_profile(request):
 			form.user = request.user
 			form.save()
 			messages.success(request, "Your profile has been updated")
-			return HttpResponseRedirect(reverse('mentor:mentor-profile'))
+			return HttpResponseRedirect(reverse('mentor:mentor-profile', kwargs={'slug': instance.slug}))
 	else:
 		form = MentorForm(instance=instance)
-		context['form'] = form
+		context['form'] = list(form)
 		context['mentor'] = instance
 
 	return render(request, template_name, context)
