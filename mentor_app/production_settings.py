@@ -193,7 +193,7 @@ LOGGING = {
 #Email_configuration
 ANYMAIL = {
     # (exact settings here depend on your ESP...)
-    "MAILGUN_API_KEY": "key-5b8244a85dd4969806098365b885bf55",
+    "MAILGUN_API_KEY": os.environ.get("MAILGUN_API_KEY"),
     "MAILGUN_SENDER_DOMAIN": 'sandbox7373036bb12e480998e2fa37856e5d0b.mailgun.org',  # your Mailgun domain, if needed
 }
 EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"  # or sendgrid.EmailBackend, or...
