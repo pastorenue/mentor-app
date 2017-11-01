@@ -13,22 +13,14 @@
 			<h4>Update yourself with recent articles and happenings at <strong>thebossoffice HQ</strong></h4>
 		</div>
 	</div>
-	<div class="row" style="min-height: 300px; margin-top: 30px;">
-		<div class="col-md-6">
-			<div class="trend-post">
-				<img src="{% static 'images/banner1.jpg' %}" alt="" class="img-responsive">
-				<h3><strong>The rise of a new dream.</strong> <span><a href="">Read Now</a></span></h3>
-				<h5>Micheale Okpara, 45mins ago</h5>
-				<p>During an independent study conducted at three eye care professional locations, over 150 patients were interviewed before and after using GUNNAR Technology Eyewear throughout a multi-week test involving intense computer use</p>				
-			</div>
+	<div class="row">
+		<div class="col-md-6 col-sm-6 col-xs-12">
+			<img src="{% static 'images/tbo.jpg' %}" alt="" class="img-responsive" style="height: 350px; width: 100%;">
 		</div>
-		<div class="col-md-6">
-			<div class="trend-post">
-				<img src="{% static 'images/banner1.jpg' %}" alt="" class="img-responsive">
-				<h3><strong>The rise of a new dream.</strong> <span><a href="">Read Now</a></span></h3>
-				<h5>Micheale Okpara, 45mins ago</h5>
-				<p>During an independent study conducted at three eye care professional locations, over 150 patients were interviewed before and after using GUNNAR Technology Eyewear throughout a multi-week test involving intense computer use</p>
-			</div>
+		<div class="col-md-6 col-sm-6 col-xs-12" style="margin: 80px auto;">
+			<h1 style="text-align: center;">Get fresh feeds on business and startup growth</h1>
+			<h4>From Business 101 tips, to motivational drives to keep your business ideas afloat - Whatever the startup and business issues, thebossoffice newsroom is your best stop</h4>
+			<span><a href="">Read Now</a></span> <span><a href="">Read Now</a></span>
 		</div>
 	</div>
 </div>
@@ -54,7 +46,7 @@
 						{% endif %}
 					</div>
 					<div class="content">
-						<h3>{{entry.title}}</h3>
+						<h3>{{entry.title|title}}</h3>
 						{% if entry.sub_title %}
 						<p>{{entry.sub_title|truncatechars:26}}</p>
 						{% endif %}
@@ -85,7 +77,7 @@
 		</div>
 		{% for entry in most_reads %}
 		<a href="{% url 'newsroom:news-detail' slug=entry.slug %}">
-			<div class="col-md-4 col-sm-6 col-xs-12 pad" onclick="location.href='{{entry.get_absolute_url}}'">
+			<div class="col-md-4 col-sm-6 col-xs-12 pad" onclick="location.href='{% url 'newsroom:news-detail' slug=entry.slug %}'">
 				<div class="post">
 					<div class="img">
 						{% if entry.illustration %}
@@ -97,7 +89,7 @@
 						{% endif %}
 					</div>
 					<div class="content">
-						<h3>{{entry.title}}</h3>
+						<h3>{{entry.title|title}}</h3>
 						{% if entry.sub_title %}
 						<p>{{entry.sub_title|truncatechars:26}}</p>
 						{% endif %}
@@ -128,7 +120,7 @@
 		</div>
 		{% for entry in entries %}
 		<a href="{% url 'newsroom:news-detail' slug=entry.slug %}">
-			<div class="col-md-4 col-sm-6 col-xs-12 pad" onclick="location.href='{{entry.get_absolute_url}}'">
+			<div class="col-md-4 col-sm-6 col-xs-12 pad" onclick="location.href='{% url 'newsroom:news-detail' slug=entry.slug %}'">
 				<div class="post">
 					<div class="img">
 						{% if entry.illustration %}
@@ -140,7 +132,7 @@
 						{% endif %}
 					</div>
 					<div class="content">
-						<h3>{{entry.title}}</h3>
+						<h3>{{entry.title|title}}</h3>
 						{% if entry.sub_title %}
 						<p>{{entry.sub_title|truncatechars:26}}</p>
 						{% endif %}

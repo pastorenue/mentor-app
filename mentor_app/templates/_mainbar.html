@@ -39,9 +39,11 @@
               <ul>
                 {% if user.mentee %}
                 <li><a href="{{ user.mentee.get_absolute_url}}">Account Settings</a></li>
+                <li><a href="{{ user.mentor.get_absolute_url}}">All Mentorship Requests</a></li>
                 {% endif %}
                 {% if user.mentor %}
                 <li><a href="{{ user.mentor.get_absolute_url}}">Account Settings</a></li>
+                <li><a href="{{ user.mentor.get_absolute_url}}">Mentorship Requests</a></li>
                 {% endif %}
                 {% if user.expert %}
                 <li><a href="{{ user.expert.get_absolute_url}}">Account Settings</a></li>

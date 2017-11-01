@@ -5,11 +5,12 @@ from .models import *
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.contrib import messages
+from django.conf import settings
 
 class NewsListView(ListView):
 	model = Entry
 	template_name = 'newsroom/list.html'
-	paginated_by = 2
+	paginated_by = settings.PAGE_SIZE
 
 	def get_context_data(self, **kwargs):
 		context = super(NewsListView, self).get_context_data(**kwargs)
@@ -28,6 +29,7 @@ class NewsListView(ListView):
 		context['entries'] = all_entries
 		context['recents'] = Entry.objects.get_recent()
 		context['most_reads'] = Entry.objects.get_most_viewed()
+
 		return context
 
 class NewsDetailView(DetailView):
@@ -35,6 +37,7 @@ class NewsDetailView(DetailView):
 	template_name = 'newsroom/news_detail.html'
 	context_object_name = 'entry'
 	slug_url_kwarg = 'slug'
+
 
 @login_required
 @transaction.atomic

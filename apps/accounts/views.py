@@ -91,20 +91,19 @@ def activation_sent(request):
 
 
 def activate(request, uidb64, token):
-	try:
-		uid = force_text(urlsafe_base64_decode(uidb64))
-		user = User.objects.get(pk=uid)
-	except (TypeError, ValueError, OverflowError, User.DoesNotExist):
-		user = None
-		if user is not None and account_activation_token.check_token(user, token):
-		    user.is_active = True
-		    user.profile.email_confirmed = True
-		    user.save()
-		    login(request, user)
-		    return redirect('dashboard')
-	else:
-		messages.error(request, "Sorry! an error occured")
-	return HttpResponseRedirect(reverse('dashboard'))
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+        if user is not None and account_activation_token.check_token(user, token):
+            user.is_active = True
+            user.save()
+            user = User.objects.get(pk=uid)
+            user.backend = 'django.contrib.auth.backends.ModelBackend'
+            login(request, user)
+            return redirect('dashboard')
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        messages.error(request, "Sorry! an error occured")
+    return HttpResponseRedirect(reverse('mentee:mentee-list'))
 
 def notify(request, user):
 	current_site = get_current_site(request)
@@ -123,12 +122,13 @@ def notify(request, user):
 	try:
 		msg.send()
 		messages.info(request, 'Check your email for a link to activate your account.')
-		return HttpResponseRedirect(reverse('accounts:account_activation_sent'))
+		return HttpResponseRedirect(reverse('accounts:activation_sent'))
 	except:#I activate the user if I can't send email and log.
 	    user.is_active = True
 	    user.save()
-	    if user is not None:
-	        login(request, user)
+	    user = User.objects.get()
+	    user.backend = 'django.contrib.auth.backends.ModelBackend'
+	    login(request, user)
 	    messages.success(request, 'Your account is now active')
 	    return HttpResponseRedirect(reverse('mentee:mentee-list'))
 

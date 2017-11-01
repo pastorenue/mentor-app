@@ -1,38 +1,41 @@
-{% load static %}
-<div class="container">
-    <div class="col-md-12">
-      <div class="carousel carousel-showmanymoveone slide" id="carousel123">
-        <div class="carousel-inner">
-          <div class="item active">
-            <div class="col-xs-12 col-sm-6 col-md-4"><a href="#"><img src="{% static 'images/values.jpg' %}" class="img-responsive"></a>
-              <div class="details">
-                <h4>This is a bigginer</h4>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="col-xs-12 col-sm-6 col-md-4"><a href="#"><img src="{% static 'images/contact.jpg' %}" class="img-responsive"></a>
-            <div class="details">
-              <h4>This is a bigginer</h4>
-            </div></div>
-          </div>
-          <div class="item">
-            <div class="col-xs-12 col-sm-6 col-md-4"><a href="#"><img src="{% static 'images/african.jpg' %}" class="img-responsive"></a>
-            <div class="details">
-                <h4>This is a bigginer</h4>
-              </div>
-            </div>
-          </div>          
-          <div class="item">
-            <div class="col-xs-12 col-sm-6 col-md-4"><a href="#"><img src="{% static 'images/template.jpg' %}" class="img-responsive"></a>
-            <div class="details">
-                <h4>This is a bigginer</h4>
-              </div>
-            </div>
-          </div>
+{% load static thumbnail %}
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <div class="trend-post">
+          {% thumbnail l_trend.illustration "1000x198" crop="center" as im %}
+          <img src="{{im.url}}" alt="" class="img-responsive">
+          {% endthumbnail %}
+          <h3><strong>{{l_trend.title}}</strong> <span><a href="{% url 'newsroom:news-detail' slug=l_trend.slug %}">Read Now</a></span></h3>
+          <h5>{{l_trend.author.name}}, {{l_trend.date_created|timesince}} ago</h5>
+          <p>{{l_trend.content|truncatechars:"150"}}</p>
         </div>
-        <a class="left carousel-control" href="#carousel123" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-        <a class="right carousel-control" href="#carousel123" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
       </div>
     </div>
+
+    <div class="item">
+      <div class="trend-post">
+          {% thumbnail l_trend.illustration "1000x198" crop="center" as im %}
+          <img src="{{im.url}}" alt="" class="img-responsive">
+          {% endthumbnail %}
+          <h3><strong>{{l_trend.title}}</strong> <span><a href="{% url 'newsroom:news-detail' slug=l_trend.slug %}">Read Now</a></span></h3>
+          <h5>{{l_trend.author.name}}, {{l_trend.date_created|timesince}} ago</h5>
+          <p>{{l_trend.content|truncatechars:"150"}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="ny.jpg" alt="New York">
+    </div>
   </div>
+
+  <!-- Left and right controls -->

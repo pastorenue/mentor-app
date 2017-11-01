@@ -36,10 +36,7 @@
 	  </div>
 	  <div class="modal-footer">
 	  	{% if notification.actor.mentee %}
-		  	{% if notification.unread %}
-		  	<a href="{% url 'mentee:accept' mentee_id=notification.actor.mentee.user.id mentor_id=request.user.id %}"><button class="btn btn-success">Accept</button></a>
-		  	<button class="btn btn-danger">Reject</button>
-		  	{% endif %}
+		  
 	  	{% endif %}
 	  	<button class="btn btn-primary">Mark as read</button>
 	  </div>

@@ -28,7 +28,7 @@
 						<div class="com-md-3">
 							{% if user.is_authenticated %}
 								{% if user.mentee %}
-								<a href="">Request mentor's Services</a>
+								<a href="{% url 'mentee:send-request' slug=mentor.slug %}">Request mentor's Services</a>
 								{% elif user == mentor.user %}
 								<a href="{% url 'mentor:edit' %}">Edit Account</a>
 								{% else %}

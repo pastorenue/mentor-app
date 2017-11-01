@@ -1,0 +1,20 @@
+{% load static %}
+<div style="width: 80%; border-radius: 5px; border: 1px solid #3b5998; margin-left: auto; margin-right: auto; padding: 10px 15px;">
+	{% autoescape off %}
+	<img src="{{request.get_host}}{% static 'images/logo.png' %}" alt="" width="70" height="70" style="float: right; padding: 3px;">
+	<h2>Hi {{ receiver.first_name }},</h2>
+	<div style="text-align: center;">
+		<h3>{{sender.first_name}} {{sender.last_name}} is requesting your mentorship</h3>
+		<p>Please click on any of the links below to to take an action</p>
+		<div style="padding: 20px 10px;">
+			<span style="margin-right: 20px;"><a href="http://{{ domain }}{{sender.mentee.get_absolute_url}}" style="border-radius: 30px; padding: 8px 35px; background: #3b5998; color: #fff; text-decoration: none;">View {{sender.last_name}}'s Profile</a></span><span style="margin-right: 20px;"><a href="http://{{ domain }}{% url 'mentee:accept' mentee_id=sender.id mentor_id=receiver.id %}" style="border-radius: 30px; padding: 6px 25px; border: 2px solid #03a87c; color: #03a87c; text-decoration: none;">Accept Request</a></span><span><a href="http://{{ domain }}{% url 'mentee:reject' mentee_id=sender.id mentor_id=receiver.id %}" style="border-radius: 30px; padding: 6px 25px; border: 2px solid #c12; color: #c12; text-decoration: none;">Reject Request</a></span>
+		</div>
+	</div>
+	{% endautoescape %}
+	<div style="margin-top: 30px;">
+		<h4>THEBOSSOFFICE TEAM</h4>
+	</div>
+</div>
+<div style="background: #3b5998; color: #fff; width: 80%; text-align: center; min-height: 70px; margin-right: auto; margin-left: auto; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+	<h3 style="padding: 25px; color: #ffffff !important; margin-top: 0;">thebossoffice.com</h3>
+</div>

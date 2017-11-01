@@ -10,6 +10,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.db import transaction
 from .forms import *
+from accounts.mailing import *
 from expert.models import Address
 from expert.forms import AddressForm
 
@@ -50,13 +51,16 @@ def send_request(request, slug):
 							verb="A mentor request has been sent",
 							description="%s is demanding your services as a Mentor \
 							in the area of %s" % (request.user.mentee, request.user.mentee.industry))
-	if new_notify:
+	if not MentorshipRequest.objects.filter(mentee=request.user, to_user=mentor.user,).exists():
 		MentorshipRequest.objects.create(mentee=request.user, 
 										to_user=mentor.user, 
 										industry=mentor.industry)
-		messages.success(request, "Your mentorship request has been sent to %s" % (mentor))
+		try:
+			send_mentorship_mail(request, request.user, mentor.user)
+		except:
+			pass
 	else:
-		messages.error(request, "Sorry an error occured while sending your request. Try again after a while")
+		messages.info(request, "You have already sent a mentorship request to %s" % (mentor))
 	return HttpResponseRedirect(reverse('mentee:mentee-profile', kwargs={'slug': request.user.mentee.slug}))
 
 @login_required
