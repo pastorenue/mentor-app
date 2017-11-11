@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.db import transaction
+from django.views.generic import ListView
 from django.contrib.auth import login, authenticate, logout
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import render_to_string
@@ -20,6 +21,9 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import Quote
 from random import randint
+from mentee.models import MentorshipRequest
+from django.conf import settings
+
 
 def dashboard(request):
 	template_name = 'accounts/dashboard.html'
@@ -172,3 +176,24 @@ def save_other_objects(base, other):
 	if hasattr(basic, 'years_of_experience'):
 		basic.years_of_experience = other.cleaned_data['years_of_experience']
 	basic.save()
+
+
+class MentorRequestListView(ListView):
+	model = MentorshipRequest
+	template_name = 'accounts/all_requests.html'
+	context_object_name = "requests"
+	paginated_by = settings.PAGE_SIZE
+
+	def get_queryset(self):
+		queryset = MentorshipRequest.objects.filter(to_user=self.request.user)
+		print(queryset)
+		return queryset
+
+
+def mentorship_request(request):
+	req = MentorshipRequest.objects.filter(to_user=request.user)
+
+	context = {
+		'requests': req
+	}
+	return 0

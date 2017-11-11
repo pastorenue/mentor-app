@@ -77,7 +77,7 @@ def accept(request, mentee_id, mentor_id):
 				description="Your mentorship request to %s has been accepted. \
 				 You can communicate with Him now on %s" % (sender.mentor, sender))
 	messages.success(request, "Thank you for your response. A notification will be sent to %s" % (recipient.mentee))
-	return HttpResponseRedirect(reverse('notifications:all'))
+	return HttpResponseRedirect(reverse('mentee:mentee-list'))
 
 @login_required
 @transaction.atomic
@@ -90,9 +90,9 @@ def reject(request, mentee_id, mentor_id):
 	notify.send(request.user, recipient=mentee, 
 				verb="A mentor-request response has been sent.",
 				description="Your mentorship request to %s was rejected \
-				due to some reasons on the Mentor's part." % (sender.mentor))
+				due to some reasons on the Mentor's part." % (mentor.mentor))
 	messages.success(request, "Thank you for your response. A notification will be sent to %s" % (mentee.mentee))
-	return HttpResponseRedirect(reverse('notifications:all'))
+	return HttpResponseRedirect(reverse('mentee:mentee-list'))
 
 
 @login_required
