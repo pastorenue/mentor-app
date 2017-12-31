@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles thumbnail %}
 
-{% block header %}<h1>AVAILABLE <span style="color: #446f1e;">MENTEES</span> <span style="padding: 3px 25px; border-radius: 15px; background: #f4f4f4;">{{mentees.count}}</span></h1>{% endblock %}
+{% block header %}<h1>AVAILABLE <span style="color: #3b5998;">MENTEES</span> <span style="padding: 3px 25px; border-radius: 15px; background: #f4f4f4;">{{mentees.count}}</span></h1>{% endblock %}
 {% block content %}
 <div class="container">
 	<div class="row">
@@ -19,7 +19,7 @@
 			<div class="panel panel-default">
 				<div class="row" style="padding: 10px;">
 					{% for mentee in mentees %}
-					<div class="col-md-6">
+					<div class="col-md-4">
 						<div class="dtl12">
                             {% thumbnail mentee.photo "240x200" crop="top" as im %}
                             <img src="{{im.url}}" alt="{{mentee.name}}">
@@ -27,9 +27,11 @@
                             <h4>{{mentee}}</h4>
                             <div class="dtl">
                                 <h3>{{mentee.name}}</h3>
+                                <p>
+                                	<a href="{{mentee.get_absolute_url}}">View Profile</a>
+                                </p>
                                 <p>Name of Business: <strong>{{mentee.name_of_business}}</strong></p>
                                 <p>Years of Commencement: <strong>{{mentee.year_of_commencement}}</strong></p>
-                                <a href="{{mentee.get_absolute_url}}">View Profile</a>
                             </div>
                         </div>
 					</div>

@@ -48,7 +48,7 @@
                 {% if user.expert %}
                 <li><a href="{{ user.expert.get_absolute_url}}">Account Settings</a></li>
                 {% endif %}
-                <li><a href="">Help Center</a></li>
+                <li><a href="{% url 'password_change' %}">Change Password</a></li>
                 <li><a href="">Chat with your mentor</a></li>
               </ul>
             </div>

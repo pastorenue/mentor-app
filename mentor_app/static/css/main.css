@@ -1538,9 +1538,10 @@ ul.address {
 .dtl12 {
     width: 100%;
     position: relative;
-    height: 250px;
+    height: 170px;
     overflow: hidden;
     margin: 7px 5px 5px 0px;
+    padding-bottom: 4px;
     border-radius: 3px;
     -webkit-box-shadow: 1px 2px 4px rgba(0,0,0,0.1), 2px 2px 6px rgba(0,0,0,0.3);
     -moz-box-shadow: 1px 2px 4px rgba(0,0,0,0.1), 2px 2px 6px rgba(0,0,0,0.3);
@@ -1562,6 +1563,8 @@ ul.address {
   text-align: center;margin-top: 5px;
   border-top: 1px solid #e5e5e5;
   padding-top: 3px;
+  margin-bottom: 5px;
+  font-size: 15px;
 }
 .dtl12 .dtl {
     background: rgba(59,89,152,0.9);
@@ -1574,6 +1577,7 @@ ul.address {
     opacity: 0;
     padding: 5px 15px;
     visibility: hidden;
+    overflow-y: hidden;
     text-align: center;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
@@ -1582,14 +1586,14 @@ ul.address {
 }
 .dtl12 .dtl h3 {
     color: #fff;
-    font-size: 23px;
+    font-size: 15px;
     font-weight: normal;
     margin-top: 20px;
     margin-bottom: 10px;
     text-decoration: underline;
 }
 .dtl12 .dtl p {
-    font-size: 17px;
+    font-size: 14px;
     margin-bottom: 10px;
     line-height: 1.2;
     color: #fff;
@@ -1601,8 +1605,8 @@ ul.address {
     border-radius: 15px;
     border: 2px solid #fff;
     color: #333;
-    font-size: 14px;
-    padding: 4px 15px;
+    font-size: 12px;
+    padding: 2px 15px;
     text-align: center;
     text-decoration: none;
 }

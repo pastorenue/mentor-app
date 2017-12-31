@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles humanize thumbnail %}
 
-{% block header %}<h1>MEET OUR <span style="color: #104e8a;">MENTORS</span> <span style="padding: 3px 25px; border-radius: 15px; background: #f4f4f4;">{{ mentors.count}}</span></h1>{% endblock %}
+{% block header %}<h1>MEET OUR <span style="color: #3b5998;">MENTORS</span> <span style="padding: 3px 25px; border-radius: 15px; background: #f4f4f4;">{{ mentors.count}}</span></h1>{% endblock %}
 {% block content %}
 <div class="container">
 	<div class="row">
@@ -19,17 +19,19 @@
 			<div class="panel panel-default top-margin">
 				<div class="row" style="padding: 10px;">
 					{% for mentor in mentors %}
-					<div class="col-md-6">
+					<div class="col-md-4">
 						<div class="dtl12">
-							{% thumbnail mentor.photo "267x213" crop="top" as im %}
+							{% thumbnail mentor.photo "227x180" crop="center" as im %}
                             <img src="{{im.url}}" alt="{{mentor}}">
                             {% endthumbnail %}
                             <h4>{{mentor.name}}</h4>
                             <div class="dtl">
                                 <h3>{{mentor.name}}</h3>
+                                <p>
+                                	<a href="{{mentor.get_absolute_url}}">View Profile</a>
+                                </p>
                                 <p>Area of Expertise: <strong>{{mentor.industry}}</strong></p>
                                 <p>Years of Experience: <strong>{{mentor.years_of_experience}} years</strong></p>
-                                <a href="{{mentor.get_absolute_url}}">View Profile</a>
                             </div>
                         </div>
 					</div>
