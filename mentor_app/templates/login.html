@@ -49,7 +49,7 @@
             {% endfor %}
             <div class="form-group">
                 <div  style="padding: 10px 0; text-align: center;">
-                    <a href="">Forgot Password?</a><br>
+                    <a href="{% url 'password_reset' %}">Forgot Password?</a><br>
                 </div>
                 <button id="submit" type="submit" class="btn btn-primary btn-block"><i></i> Login</button>
                <input type="hidden" name="next" value="{{ next }}">

@@ -69,7 +69,7 @@
 			<div class="row">
 				<div class="panel panel-default top-margin">
 					<div class="div-header">
-						<h3><strong>Other mentors in {% if user == mentor.user %} Your {% else %}{{mentor.title}} {{mentor.user.first_name}}'s {% endif %}Area of mentorise</strong></h3>
+						<h3><strong>Other mentors in {% if user == mentor.user %} your {% else %}{{mentor.title}} {{mentor.user.first_name}}'s {% endif %}area of expertise</strong></h3>
 					</div>
 					<div class="row" style="padding: 5px 10px;">
 						{% for mentor in mentors_for_industry %}
@@ -84,7 +84,7 @@
 							</a>
 						</div>
 						{% empty %}
-						<p style="text-align: center; margin: 20px auto;">Sorry! We couldn't find any other mentor for similar mentorise.</p>
+						<p style="text-align: center; margin: 20px auto;">Sorry! We couldn't find any other mentor for similar expertise.</p>
 						{% endfor %}
 					</div>
 				</div>

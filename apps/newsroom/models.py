@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
 from tinymce.models import HTMLField
 from django.http import HttpResponseRedirect
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from datetime import datetime, timedelta
@@ -32,7 +33,10 @@ class EntryManager(models.Manager):
 		return self.filter(date_created__gte=recent).order_by('-date_created')[:6]
 
 	def get_most_viewed(self):
-		return self.all().order_by('-views')[:6]
+		return self.filter(views__gte=settings.TOP_READ_SIZE).order_by('-views')[:6]
+
+	def get_others(self):
+		return self.filter(views__lte=(settings.TOP_READ_SIZE-1)).order_by('-views')[:6]
 
 
 class Entry(models.Model):

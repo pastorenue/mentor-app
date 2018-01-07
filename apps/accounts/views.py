@@ -65,9 +65,12 @@ def signup(request):
 			basic.user = user
 			basic.industry = professional_form.cleaned_data['industry']
 			save_other_objects(basic, professional_form)
+		try:
 			notify(request, user)
-			# user = authenticate(username=request.POST.get('username'), password=request.POST.get('password1'))
-			# login(request, user)
+		except:
+			messages.error(request, "Sorry an Error was encountered. Try again later")
+			
+		return HttpResponseRedirect(reverse('mentee:mentee-list'))
 	else:
 		user_form = basic_form = professional_form = None
 		if user_type == 'mentor':
@@ -104,7 +107,7 @@ def activate(request, uidb64, token):
             user = User.objects.get(pk=uid)
             user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, user)
-            return redirect('dashboard')
+            return reverse('mentee:mentee-list')
     except (TypeError, ValueError, OverflowError, User.DoesNotExist):
         messages.error(request, "Sorry! an error occured")
     return HttpResponseRedirect(reverse('mentee:mentee-list'))
@@ -126,15 +129,15 @@ def notify(request, user):
 	try:
 		msg.send()
 		messages.info(request, 'Check your email for a link to activate your account.')
-		return HttpResponseRedirect(reverse('accounts:activation_sent'))
+		return redirect('accounts:activation_sent')
 	except:#I activate the user if I can't send email and log.
 	    user.is_active = True
 	    user.save()
-	    user = User.objects.get()
 	    user.backend = 'django.contrib.auth.backends.ModelBackend'
 	    login(request, user)
+
 	    messages.success(request, 'Your account is now active')
-	    return HttpResponseRedirect(reverse('mentee:mentee-list'))
+	    return reverse('mentee:mentee-list')
 
 def alternative_notify(request):
 	user.is_active = True

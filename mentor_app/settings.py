@@ -169,7 +169,8 @@ LOGIN_REDIRECT_URL = 'mentee:mentee-list'
 LOGOUT_REDIRECT_URL = 'home'
 
 PAGE_SIZE = 20
-PAGE_ORPHANS = 5        
+PAGE_ORPHANS = 5 
+TOP_READ_SIZE = 15       
 
 ANYMAIL = {
     # (exact settings here depend on your ESP...)

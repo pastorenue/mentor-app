@@ -21,7 +21,7 @@
 					{% for mentor in mentors %}
 					<div class="col-md-4">
 						<div class="dtl12">
-							{% thumbnail mentor.photo "227x180" crop="center" as im %}
+							{% thumbnail mentor.photo "227x180" crop="top" as im %}
                             <img src="{{im.url}}" alt="{{mentor}}">
                             {% endthumbnail %}
                             <h4>{{mentor.name}}</h4>

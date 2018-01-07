@@ -26,7 +26,7 @@ class NewsListView(ListView):
 		except EmptyPage:
 			all_entries = paginator.page(paginator.num_pages)
 
-		context['entries'] = all_entries
+		context['entries'] = Entry.objects.get_others()
 		context['recents'] = Entry.objects.get_recent()
 		context['most_reads'] = Entry.objects.get_most_viewed()
 
@@ -38,6 +38,18 @@ class NewsDetailView(DetailView):
 	context_object_name = 'entry'
 	slug_url_kwarg = 'slug'
 
+	def dispatch(self, request, *args, **kwargs):
+		# entry = self.
+		# entry.views+=1
+		# entry.save()
+		return super(NewsDetailView, self).dispatch(request, *args, **kwargs)
+
+def news_detail(request, slug):
+	template_name = 'newsroom/news_detail.html'
+	entry = Entry.objects.get(slug=slug)
+	entry.views+=1
+	entry.save()
+	return render(request, template_name, {'entry':entry})
 
 @login_required
 @transaction.atomic
