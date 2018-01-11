@@ -23,7 +23,7 @@ ADMINS = (
 )
 
 DEBUG = True
-SECRET_KEY = os.environ.get('THEBOSSOFFICE_SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 EMAIL_HOST_PASSWORD = ''
 ALLOWED_HOSTS = ['localhost', '*']
 
