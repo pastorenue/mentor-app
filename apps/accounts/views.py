@@ -42,10 +42,7 @@ def signup(request):
 			user_form = MentorSignUpForm(request.POST)
 			basic_form = BasicMentorForm(request.POST, request.FILES)
 			professional_form = MentorProfessionalForm(request.POST, request.FILES)
-		if user_type == 'expert':
-			user_form = ExpertSignUpForm(request.POST)
-			basic_form = BasicExpertForm(request.POST, request.FILES)
-			professional_form = ExpertProfessionalForm(request.POST, request.FILES)
+	
 		if user_type == 'mentee':
 			user_form = MenteeSignUpForm(request.POST)
 			basic_form = BasicMenteeForm(request.POST, request.FILES)
@@ -78,11 +75,7 @@ def signup(request):
 			basic_form = BasicMentorForm()
 			professional_form = MentorProfessionalForm()
 			context = {'u_form': user_form, 'b_form': basic_form, 'p_form': professional_form}
-		if user_type == 'expert':
-			user_form = ExpertSignUpForm()
-			basic_form = BasicExpertForm()
-			professional_form = ExpertProfessionalForm()
-			context = {'u_form': user_form, 'b_form': basic_form, 'p_form': professional_form}
+		
 		if user_type == 'mentee':
 			user_form = MenteeSignUpForm()
 			basic_form = BasicMenteeForm()

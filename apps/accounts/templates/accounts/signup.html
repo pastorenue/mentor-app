@@ -95,6 +95,9 @@ textarea {
 					<option value="mentor">Mentor</option>
 				</select>
 				<button hidden="hidden" type="search" id="get_type"></button>
+				<div style="text-align: center; padding: 15px;">
+					<p>Already have an account? <a href="{% url 'user_login' %}">Sign In</a></p>
+				</div>
 				{% endif %}
 			</form>
 			{% if user_type != "unknown" %}

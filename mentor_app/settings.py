@@ -175,13 +175,13 @@ TOP_READ_SIZE = 15
 ANYMAIL = {
     # (exact settings here depend on your ESP...)
     "MAILGUN_API_KEY": os.environ.get("MAILGUN_API_KEY"),
-    "MAILGUN_SENDER_DOMAIN": 'sandbox7373036bb12e480998e2fa37856e5d0b.mailgun.org',  # your Mailgun domain, if needed
+    "MAILGUN_SENDER_DOMAIN": 'thebossoffice.com',  # your Mailgun domain, if needed
 }
 EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"  # or sendgrid.EmailBackend, or...
 EMAIL_HOST = 'smtp.mailgun.org'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'postmaster@sandbox7373036bb12e480998e2fa37856e5d0b.mailgun.org'
-EMAIL_HOST_PASSWORD = 'd27474638e25b795b750173855724bed'
+EMAIL_HOST_USER = 'postmaster@thebossoffice.com'
+EMAIL_HOST_PASSWORD = '6a2325ce9d3215a77a7823540ba0422f'
 EMAIL_USE_TLS = True
 
 TEMPLATE_DEBUG=True
