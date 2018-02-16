@@ -46,9 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.humanize', 
+    'django.contrib.humanize',
     'django.contrib.staticfiles',
-    #install apps 
+    #install apps
     'accounts',
     'forum',
     'mentee',
@@ -169,8 +169,8 @@ LOGIN_REDIRECT_URL = 'mentee:mentee-list'
 LOGOUT_REDIRECT_URL = 'home'
 
 PAGE_SIZE = 20
-PAGE_ORPHANS = 5 
-TOP_READ_SIZE = 15       
+PAGE_ORPHANS = 5
+TOP_READ_SIZE = 15
 
 ANYMAIL = {
     # (exact settings here depend on your ESP...)

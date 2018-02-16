@@ -3,36 +3,33 @@
 <div class="main-wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-2">
         {% if user.is_authenticated %}
         <a href="{% url 'mentee:mentee-list' %}"><img src="{% static 'images/logo.png' %}" alt="thebossoffice.com"></a>
         {% else %}
          <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="thebossoffice.com"></a>
          {% endif %}
-        <div class="search-bar">
-          <input type="text" placeholder="Search Here">
-        </div>
       </div>
       <div class="col-md-6">
-        <ul>                     
-          <a href="{% url 'expert:expert-list' %}"><li class="scroll"><i class="fa fa-group"></i><br>Meet An Expert</li></a>
-          <a href="{% url 'mentor:mentor-list' %}"><li class="scroll"><i class="fa fa-group"></i><br>Mentors</li></a>
-          <a href="{% url 'mentee:mentee-list' %}"><li class="scroll"><i class="fa fa-group"></i><br>Mentees</li></a>
+        <ul>
+          <a href="{% url 'expert:expert-list' %}"><li class="scroll"><i class="fa fa-group"><span class="added-badge">{{experts.count}}</span></i><br>Meet An Expert</li></a>
+          <a href="{% url 'mentor:mentor-list' %}"><li class="scroll"><i class="fa fa-group"><span class="added-badge">{{mentors.count}}</span></i><br>Mentors</li></a>
+          <a href="{% url 'mentee:mentee-list' %}"><li class="scroll"><i class="fa fa-group"><span class="added-badge">{{mentees.count}}</span></i><br>Mentees</li></a>
           <a href="{% url 'newsroom:news-list' %}"><li class="scroll"><i class="fa fa-laptop"></i><br>Newsroom</li></a>
           {% if user.is_authenticated %}
           {% notifications_unread as unread_count %}
-          <a href="{% url 'notifications:all' %}"><li class="scroll"><i class="fa fa-bell"></i>{% if unread_count > 0 %}<span style="position: absolute; top: 0; color: #fff; font-size: 13px; background: #c12; height: 20px; width: 20px; border-radius: 50%;">{{ unread_count }}</span>{% endif %}<br>Notifications</li></a>
+          <a href="{% url 'notifications:all' %}"><li class="scroll"><i class="fa fa-bell"></i>{% if unread_count > 0 %}<span class="added-badge">{{ unread_count }}</span>{% endif %}<br>Notifications</li></a>
           <a href="{% url 'forum:forum' %}?channel=all"><li class="scroll"><i class="fa fa-laptop"></i><br>Forum</li></a>
           {% else %}
           <a href="{% url 'about' %}"><li class="scroll"><i class="fa fa-info"></i><br>About Us</li></a>
           {% endif %}
         </ul>
       </div>
-      <div class="col-md-2" style="padding-left: 5px;">
+      <div class="col-md-3" style="padding-left: 5px; float: right;">
         <div class="nav-reg">
           {% if user.is_authenticated %}
-            <a id="user" href="">{{user.first_name}} <i class="fa fa-chevron-down"></i></a>
-          
+            <a id="user" href="">{{user}} <i class="fa fa-chevron-down"></i></a>
+
           <div class="drop-menu">
             <span></span>
             <div class="panel panel-default">
@@ -40,6 +37,7 @@
                 {% if user.mentee %}
                 <li><a href="{{ user.mentee.get_absolute_url}}">Account Settings</a></li>
                 <li><a href="{% url 'mentor:mentorship-request' %}">All Mentorship Requests</a></li>
+                <li><a href="">Chat with your mentor</a></li>
                 {% endif %}
                 {% if user.mentor %}
                 <li><a href="{{ user.mentor.get_absolute_url}}">Account Settings</a></li>
@@ -49,7 +47,6 @@
                 <li><a href="{{ user.expert.get_absolute_url}}">Account Settings</a></li>
                 {% endif %}
                 <li><a href="{% url 'password_change' %}">Change Password</a></li>
-                <li><a href="">Chat with your mentor</a></li>
               </ul>
             </div>
             <div class="panel panel-default">

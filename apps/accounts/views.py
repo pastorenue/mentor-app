@@ -42,7 +42,7 @@ def signup(request):
 			user_form = MentorSignUpForm(request.POST)
 			basic_form = BasicMentorForm(request.POST, request.FILES)
 			professional_form = MentorProfessionalForm(request.POST, request.FILES)
-	
+
 		if user_type == 'mentee':
 			user_form = MenteeSignUpForm(request.POST)
 			basic_form = BasicMenteeForm(request.POST, request.FILES)
@@ -66,7 +66,7 @@ def signup(request):
 			notify(request, user)
 		except:
 			messages.error(request, "Sorry an Error was encountered. Try again later")
-			
+
 		return HttpResponseRedirect(reverse('mentee:mentee-list'))
 	else:
 		user_form = basic_form = professional_form = None
@@ -75,7 +75,7 @@ def signup(request):
 			basic_form = BasicMentorForm()
 			professional_form = MentorProfessionalForm()
 			context = {'u_form': user_form, 'b_form': basic_form, 'p_form': professional_form}
-		
+
 		if user_type == 'mentee':
 			user_form = MenteeSignUpForm()
 			basic_form = BasicMenteeForm()
@@ -91,19 +91,21 @@ def activation_sent(request):
 
 
 def activate(request, uidb64, token):
-    try:
-        uid = force_text(urlsafe_base64_decode(uidb64))
-        user = User.objects.get(pk=uid)
-        if user is not None and account_activation_token.check_token(user, token):
-            user.is_active = True
-            user.save()
-            user = User.objects.get(pk=uid)
-            user.backend = 'django.contrib.auth.backends.ModelBackend'
-            login(request, user)
-            return reverse('mentee:mentee-list')
-    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
-        messages.error(request, "Sorry! an error occured")
-    return HttpResponseRedirect(reverse('mentee:mentee-list'))
+	import pdb; pdb.set_trace()
+	try:
+	    uid = force_text(urlsafe_base64_decode(uidb64))
+	    user = User.objects.get(pk=uid)
+	    if user is not None and account_activation_token.check_token(user, token):
+	        user.is_active = True
+	        user.save()
+	        user = User.objects.get(pk=uid)
+	        user.backend = 'django.contrib.auth.backends.ModelBackend'
+	        login(request, user)
+	        return reverse('mentee:mentee-list')
+	except (TypeError, ValueError, OverflowError):
+		messages.error(request, "Sorry! an error occured")
+	return HttpResponseRedirect(reverse('mentee:mentee-list'))
+
 
 def notify(request, user):
 	current_site = get_current_site(request)

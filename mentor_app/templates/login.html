@@ -4,16 +4,18 @@
 <style>
 	#login-div {
     background-image: linear-gradient(to bottom right, rgba(0,0,0,0.4),rgba(59,89,152,0.8)), url("{% static 'images/login.jpg' %}");
-    background-repeat: no-repeat; 
-    background-size: cover; 
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 90vh;
     overflow: hidden;
   }
   #login-div input {
-    background: #fff;
-    height: 35px;
-    border-radius: 17px;
-    border-color: #3b5998;  
+		width: 100%;
+		border: none;
+		height: 25px;
+		border-bottom: 1px solid  #ecf0f1;
+		box-shadow: none;
+		transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   }
   .sub-panel {
     margin-bottom: 10px;
@@ -56,7 +58,7 @@
             </div>
         </form>
         <div style="margin-bottom: 10px; text-align: center;">
-            <h5 style="margin-bottom: 0;">New to <strong>thebossoffice.com</strong>? <a href="{% url 'accounts:signup' %}?user_type=unknown">Sign Up HERE!</a></h5> 
+            <h5 style="margin-bottom: 0;">New to <strong>thebossoffice.com</strong>? <a href="{% url 'accounts:signup' %}?user_type=unknown">Sign Up HERE!</a></h5>
             <small>[You can sign up as a Mentee or a Mentor]</small><br>
         </div>
       </div>

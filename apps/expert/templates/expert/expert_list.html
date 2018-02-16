@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% load staticfiles humanize thumbnail %}
+{% load staticfiles thumbnail %}
 
-{% block header %}<h1>SEE OUR <span style="color: #3b5998;">EXPERTS</span> <span style="padding: 3px 25px; border-radius: 15px; background: #f4f4f4;">{{experts.count}}</span></h1>{% endblock %}
+{% block header %}<h1>MEET OUR <span style="color: #3b5998;">EXPERTS</span></h1>{% endblock %}
 {% block content %}
 <div class="container">
 	<div class="row">
@@ -21,21 +21,21 @@
 					{% for expert in experts %}
 					<div class="col-md-4">
 						<div class="dtl12">
-							{% thumbnail expert.photo "267x213" crop="top" as im %}
-                            <img src="{{im.url}}" alt="{{expert}}">
-                            {% endthumbnail %}
-                            <h4>{{expert.name}}</h4>
-                            <div class="dtl">
-                                <h3>{{expert.name}}</h3>
-                                <p>
-                                	<a href="{{expert.get_absolute_url}}">View Profile</a>
-                                </p>
-                                <p>Area of Expertise: <strong>{{expert.industry}}</strong></p>
-                            </div>
-                        </div>
+							{% thumbnail expert.photo "167x170" crop="top" as im %}
+                <img src="{{im.url}}" alt="{{expert}}">
+              {% endthumbnail %}
+                <h4>{{expert.name}}</h4>
+                <div class="dtl">
+                    <h3>{{expert.name}}</h3>
+                    <p>
+                    	<a href="{{expert.get_absolute_url}}">View Profile</a>
+                    </p>
+                    <p>Area of Expertise: <strong>{{expert.industry}}</strong></p>
+                </div>
+            </div>
 					</div>
 					{% empty %}
-					<h4 style="text-align: center; margin: 30px auto;">Sorry! No Experts was found</h4>
+					<h5 style="text-align: center; margin: 30px auto;">Sorry! No Experts was found</h5>
 					{% endfor %}
 				</div>
 			</div>

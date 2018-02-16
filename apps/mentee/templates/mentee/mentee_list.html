@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles thumbnail %}
 
-{% block header %}<h1>AVAILABLE <span style="color: #3b5998;">MENTEES</span> <span style="padding: 3px 25px; border-radius: 15px; background: #f4f4f4;">{{mentees.count}}</span></h1>{% endblock %}
+{% block header %}<h1>AVAILABLE <span style="color: #3b5998;">MENTEES </span></h1>{% endblock %}
 {% block content %}
 <div class="container">
 	<div class="row">
@@ -36,7 +36,7 @@
                         </div>
 					</div>
 					{% empty %}
-					<h4 style="text-align: center; margin: 30px auto;">Sorry! No records were found</h4>
+					<h5 style="text-align: center; margin: 30px auto;">Sorry! No records were found</h5>
 					{% endfor %}
 				</div>
 			</div>

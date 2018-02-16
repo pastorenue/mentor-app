@@ -19,7 +19,6 @@ class Channels(models.Model):
 
 
 class Post(models.Model):
-	title = models.CharField(max_length=100, null=True)
 	user = models.ForeignKey(User, null=True)
 	content = models.TextField()
 	channels = models.ForeignKey(Channels, null=True)
@@ -43,7 +42,3 @@ class Comment(models.Model):
 
 	def __str__(self):
 		return "%s --> %s" % (self.user.first_name, self.body[:20])
-
-
-
-

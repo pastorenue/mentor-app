@@ -2,7 +2,7 @@ from mentor.models import Mentor
 from expert.models import Industry, Expert
 from forum.models import Channels, Post
 from newsroom.models import Entry
-from mentee.models import MentorshipRequest
+from mentee.models import MentorshipRequest, Mentee
 
 def trending_data(request):
 	get_profile = None
@@ -15,7 +15,7 @@ def trending_data(request):
 		get_profile = request.user.expert
 	if not request.user.is_anonymous():
 		is_connected = MentorshipRequest.objects.filter(mentee=request.user, status='A').exists()
-	
+
 	return {
 		'recent_posts': Entry.objects.all().order_by('-date_created')[:3],
 		'industries': Industry.objects.all(),
@@ -25,5 +25,8 @@ def trending_data(request):
 		'newest_mentees': list(),
 		'get_profile': get_profile,
 		'channels': Channels.objects.all(),
-		'is_connected': is_connected
+		'is_connected': is_connected,
+		'mentees': Mentee.objects.all(),
+		'experts': Expert.objects.all(),
+		'mentors': Mentor.objects.all()
 	}

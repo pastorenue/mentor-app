@@ -8,14 +8,14 @@ https://docs.djangoproject.com/en/1.11/howto/deployment/wsgi/
 """
 
 import os
-import sys 
+import sys
 
 from django.core.wsgi import get_wsgi_application
 filedir = os.path.abspath(os.path.dirname(__file__))
 basedir = os.path.dirname(filedir)
 sys.path.append(os.path.join(basedir, 'apps'))
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mentor_app.production_settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mentor_app.settings")
 
 
 # application = get_wsgi_application()

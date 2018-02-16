@@ -4,7 +4,7 @@
 		<h3><strong>Channels</strong></h3>
 	</div>
 	<div class="channel-link">
-		<p>Click to view posts for each channel</p>
+		<p style="font-size: 14px;">Click to view posts for each channel</p>
 		<ul>
 			{% for channel in channels %}
 			<a href="{% url 'forum:forum' %}?channel={{channel.id}}"><li>{{channel}}</li></a>

@@ -42,11 +42,10 @@ def new_post(request):
 	if request.method == 'POST':
 		params = request.POST
 		body = params.get('comment')
-		title = params.get('title')
 		channel_id = params.get('channel')
 
 		channel = Channels.objects.get(pk=channel_id)
-		post = Post.objects.create(title=title, channels=channel, content=body, user=request.user)
+		post = Post.objects.create(channels=channel, content=body, user=request.user)
 		messages.success(request, "Post successfully created")
 		return HttpResponseRedirect(reverse('forum:forum'))
 
