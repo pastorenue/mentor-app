@@ -46,6 +46,15 @@
       #contact-us {
         background-image:url("{% static 'images/contact.jpg' %}");
       }
+      .sub input, select {
+        padding: 7px 15px;
+        width: 100%;
+        border: none;
+        height: 28px;
+        border-bottom: 1px solid  #ecf0f1;
+        box-shadow: none;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+      }
 	</style>
 	</head><!--/head-->
 
@@ -205,8 +214,11 @@
         </div>
         <div class="col-md-6">
           <div class="load-more wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms" style="visibility: hidden; animation-duration: 1000ms; animation-delay: 500ms; animation-name: none;">
-            <a href="#" class="btn btn-loadmore" style="color: #f6f6f6;"><i class="fa fa-repeat" ></i> Sign Up For a Free Newsletter</a>
+            <a data-target="#subscribe" data-toggle="modal" class="btn btn-loadmore" style="color: #f6f6f6;"><i class="fa fa-repeat" ></i> Sign Up For a Free Newsletter</a>
           </div> 
+        </div>
+        <div class="modal fade sub" id="subscribe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          {% include 'newsletters/_new_subscription.html' %}
         </div>
       </div>
     </section>
@@ -216,8 +228,7 @@
           <div class="row">
             <div class="col-sm-6" style="text-align: left; font-size: 17px; padding: 0 5px;">
                <h3 style="font-size: 24px; margin-top: 0;"><strong>OUR PASSION IS FUELED BY WHAT RESEARCH HAS SHOWN…</strong></h3>
-              <img src="{% static 'images/logo.png' %}" alt="thebossoffice" style="float: left;" width="220" height="220">
-              <ol style="line-height: 20px;">
+              <ol style="line-height: 40px;">
                 <li>Why does only 73% of Startups in Nigeria fold up before their third year?</li>
                 <li>Why do 20 million startups die within their first three years?</li>
                 <li>Do you know that Nigeria’s MSMEs employ about 80% of her workforce?</li>
@@ -320,10 +331,10 @@
                 <div class="contact-info wow fadeInUp" style="font-size: 18px;" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: hidden; animation-duration: 1000ms; animation-delay: 300ms; animation-name: none;">
                   <p></p>
                   <ul class="address">
-                    <li><i class="fa fa-map-marker"></i> <span> Address:</span> </li>
-                    <li><i class="fa fa-phone"></i> <span> Phone:</span>   </li>
-                    <li><i class="fa fa-envelope"></i> <span> Email:</span><a href="mailto:info@thebossoffice.com"> info@thebossoffice.com</a></li>
-                    <li><i class="fa fa-globe"></i> <span> Website:</span> <a href="http://www.thebossoffice.com">www.thebossoffice.com</a></li>
+                    <li><i class="fa fa-map-marker"></i> <span> Address: </span> #50 Homewell Estate, Ajah, Lagos </li>
+                    <li><i class="fa fa-phone"></i> <span> Phone: </span> (+234) 8131 006 373  </li>
+                    <li><i class="fa fa-envelope"></i> <span> Email: </span><a href="mailto:info@thebossoffice.com"> info@thebossoffice.com</a></li>
+                    <li><i class="fa fa-globe"></i> <span> Website: </span> <a href="http://www.thebossoffice.com">www.thebossoffice.com</a></li>
                   </ul>
                 </div>                            
               </div>

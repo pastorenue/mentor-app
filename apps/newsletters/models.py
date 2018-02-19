@@ -7,9 +7,8 @@ LETTER_CHOICES = (
 )
 class Subscription(models.Model):
 	email = models.EmailField()
-	name = models.CharField(max_length=50, null=True)
+	name = models.CharField(max_length=50, null=True, blank=True)
 	name_of_company = models.CharField(max_length=100, null=True)
-	sector = models.CharField(max_length=100, null=True)
 	letter_type = models.CharField(max_length=100, choices=LETTER_CHOICES, null=True)
 
 	def __str__(self):

@@ -1,0 +1,37 @@
+{% load static thumbnail %}
+<div class="modal-dialog">
+	<div class="modal-content">
+	  <div class="modal-header" style="background: #3b5998; color: #fff;">
+	    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff; font-size: 28px;">&times;</span><span class="sr-only">Close</span></button>
+	    <h4 class="modal-title" style="text-align: center; color: #fff;">Leave a comment on <strong>{{post.title}}</strong></h4>
+	  </div>
+      <form method="post" action="{% url 'newsletters:subscribe' %}">{% csrf_token %}
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="id_email">Email:</label>
+                <input id="id_email" name="email" type="email" class="" placeholder="Email Here...">
+            </div>
+            <div class="form-group">
+                <label for="id_name">Name:</label>
+                <input id="id_name" name="name" type="text" placeholder="Full Name...">
+            </div>
+            <div class="form-group">
+                <label for="id_company">Company:</label>
+                <input id="id_company" name="company" type="text" placeholder="Please Enter Your Company Name Here...">
+            </div>
+            <div class="form-group">
+                <label for="id_type">Type of Newsletter:</label>
+                <select name="type" id="id_type">
+                    <option value="forbes">Forbes Newsletters</option>
+                </select>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="form-group">
+                <button class="btn btn-primary btn-sm" type="submit">Subscribe</button>
+            </div>
+            
+        </div>
+      </form>
+	</div>
+</div>

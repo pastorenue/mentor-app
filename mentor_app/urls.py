@@ -46,6 +46,7 @@ urlpatterns = [
     url(r'^discussion/', include('forum.urls', namespace='forum')),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^newsroom/', include('newsroom.urls', namespace='newsroom')),
+    url(r'^newsletters/', include('newsletters.urls', namespace='newsletters')),
     url(r'^notifications/', include('notifications.urls', namespace='notifications')),
 ]
 
