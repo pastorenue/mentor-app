@@ -23,7 +23,7 @@
         <li class="scroll"></li>  
         <li class="scroll"><a href="{% url 'logout' %}">Log out</a></li>
         {% else %}
-        <li class="scroll"><a href="{% url 'user_login' %}">Log In</a></li>   
+        <li class="scroll"><a href="{% url 'user_login' %}">Sign In</a></li>   
         <li class="scroll"><a href="{% url 'accounts:signup' %}?user_type=unknown">Sign Up</a></li>
         {% endif %}                                      
       </ul>
