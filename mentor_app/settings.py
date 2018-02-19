@@ -60,7 +60,8 @@ INSTALLED_APPS = [
     'anymail',
     'notifications',
     'newsroom',
-    'tinymce'
+    'tinymce',
+    'newsletters'
 ]
 
 MIDDLEWARE = [
