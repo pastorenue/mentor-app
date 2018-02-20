@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load staticfiles thumbnail i18n %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<link rel="stylesheet" href="{% static 'css/inbox.css' %}">
+
+<!-- Include Froala-Editor for nice text editing -->
+<link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.5/css/froala_editor.min.css' rel='stylesheet' type='text/css' />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.5/css/froala_style.min.css' rel='stylesheet' type='text/css' />
+ 
+<style>
+	.modal.fade .modal-dialog {
+	    -webkit-transform: scale(0.1);
+	    -moz-transform: scale(0.1);
+	    -ms-transform: scale(0.1);
+	    transform: scale(0.1);
+	    top: 500px;
+	    opacity: 0;
+	    -webkit-transition: all 0.3s;
+	    -moz-transition: all 0.3s;
+	    transition: all 0.3s;
+	}
+
+	.modal.fade.in .modal-dialog {
+	    -webkit-transform: scale(1);
+	    -moz-transform: scale(1);
+	    -ms-transform: scale(1);
+	    transform: scale(1);
+	    -webkit-transform: translate3d(0, -300px, 0);
+	    transform: translate3d(0, -500px, 0);
+	    opacity: 1;
+    }
+    input[type=text] {
+        width: 100%;
+        padding: 10px;
+        height: 26px;    
+        font-size: 14px;
+    }
+    textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+
+    }
+</style>
+{% endblock %}
+{% block header %}
+	<h1>{% trans "New Conversation" %}</h1>
+{% endblock %}
+
+<!-- Main block for the inbox -->
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			{% include "django_messages/_message_menu.html" %}
+			{% include '_mini_footer.html' %}
+		</div>
+		<div class="col-md-7 panel panel-default top-margin" style="padding: 20px 10px;">
+            <form action="" method="post" style="padding-top: 20px;">{% csrf_token %}
+                {% for field in form %}
+                    {% if field.html_name == "recipient" %}
+                    <div class="form-group">
+                            <label for="id_body">Recipient:</label>
+                            {{field}}
+                    </div>
+                    {% endif %}
+                    {% if field.html_name == "subject" %}
+                    <div class="form-group">
+                            <label for="id_body">Subject:</label>
+                        {{field}}
+                    </div>
+                    {% endif %}
+                    {% if field.html_name == "body" %}
+                    <div class="form-group">
+                        <label for="id_body">Body:</label>
+                       {{field}}
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                <button type="submit" class="btn btn-primary">{% trans "Send" %} &raquo;</button>
+            </form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+{% block extrajs %}
+<!-- Include the Froala JS file. -->
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.5/js/froala_editor.min.js'></script>
+
+<script>
+    $(function() {
+        $('textarea#id_body').froalaEditor({toolbarInline: false})
+        });
+	$(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip(); 
+	    function alignModal(){
+	        var modalDialog = $(this).find(".modal-dialog");
+	        /* Applying the top margin on modal dialog to align it vertically center */
+	        modalDialog.css("margin-top", Math.max(0, ($(window).height() - modalDialog.height()) / 2));
+	    }
+	    // Align modal when it is displayed
+	    $(".modal").on("shown.bs.modal", alignModal);
+	    
+	    // Align modal when user resize the window
+	    $(window).on("resize", function(){
+	        $(".modal:visible").each(alignModal);
+	    });   
+	});
+</script>
+{% endblock %}

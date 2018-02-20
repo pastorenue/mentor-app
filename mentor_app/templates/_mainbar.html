@@ -20,7 +20,7 @@
           {% notifications_unread as unread_count %}
           <a href="{% url 'notifications:all' %}"><li class="scroll"><i class="fa fa-bell"></i>{% if unread_count > 0 %}<span class="added-badge">{{ unread_count }}</span>{% endif %}<br>Notifications</li></a>
           <a href="{% url 'forum:forum' %}?channel=all"><li class="scroll"><i class="fa fa-laptop"></i><br>Forum</li></a>
-          <a href="{% url 'forum:forum' %}?channel=all"><li class="scroll"><i class="fa fa-envelope"></i><br>Inbox</li></a>
+          <a href="{% url 'messages_inbox' %}"><li class="scroll"><i class="fa fa-envelope"><span class="added-badge">{{messages_inbox_count}}</span></i><br>Inbox</li></a>
           {% else %}
           <a href="{% url 'about' %}"><li class="scroll"><i class="fa fa-info"></i><br>About Us</li></a>
           {% endif %}

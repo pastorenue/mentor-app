@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.humanize',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
     #install apps
     'accounts',
     'forum',
@@ -61,7 +63,9 @@ INSTALLED_APPS = [
     'notifications',
     'newsroom',
     'tinymce',
-    'newsletters'
+    'newsletters',
+    'django_messages'
+  
 ]
 
 MIDDLEWARE = [
@@ -91,6 +95,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'accounts.context_processors.trending_data',
+                'django_messages.context_processors.inbox',
             ],
         },
     },
@@ -186,3 +191,7 @@ EMAIL_HOST_PASSWORD = '6a2325ce9d3215a77a7823540ba0422f'
 EMAIL_USE_TLS = True
 
 TEMPLATE_DEBUG=True
+
+#Newsletter settings
+NEWSLETTER_CONFIRM_EMAIL = False
+SITE_ID=2

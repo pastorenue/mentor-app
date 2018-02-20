@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load staticfiles thumbnail i18n %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<link rel="stylesheet" href="{% static 'css/inbox.css' %}">
+<style>
+	.modal.fade .modal-dialog {
+	    -webkit-transform: scale(0.1);
+	    -moz-transform: scale(0.1);
+	    -ms-transform: scale(0.1);
+	    transform: scale(0.1);
+	    top: 500px;
+	    opacity: 0;
+	    -webkit-transition: all 0.3s;
+	    -moz-transition: all 0.3s;
+	    transition: all 0.3s;
+	}
+
+	.modal.fade.in .modal-dialog {
+	    -webkit-transform: scale(1);
+	    -moz-transform: scale(1);
+	    -ms-transform: scale(1);
+	    transform: scale(1);
+	    -webkit-transform: translate3d(0, -300px, 0);
+	    transform: translate3d(0, -500px, 0);
+	    opacity: 1;
+	}
+</style>
+{% endblock %}
+{% block header %}
+	<h1>{% trans "Sent Messages" %}</h1>
+{% endblock %}
+
+<!-- Main block for the inbox -->
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			{% include "django_messages/_message_menu.html" %}
+			{% include '_mini_footer.html' %}
+		</div>
+		<div class="col-md-7 panel panel-default top-margin" style="padding: 20px 10px;">
+			{% if message_list %}
+			<table class="table">
+				<thead>
+					<tr><th>{% trans "Recipient" %}</th><th>{% trans "Subject" %}</th><th>{% trans "Sent" %}</th><th>{% trans "Action" %}</th></tr>
+				</thead>
+				<tbody>
+				{% for message in message_list %}
+					<tr>
+						<td>{{ message.recipient}}</td>
+						<td>
+							<a href="{{ message.get_absolute_url }}">{{ message.subject }}</a>
+                        <td>{{ message.sent_at|date:_("DATETIME_FORMAT") }}</td>
+						<td><a href="{% url 'messages_delete' message.id %}?next={% url 'messages_outbox' %}">{% trans "delete" %}</a></td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+			{% else %}
+			<div class="msg-notify">
+				<i class="fa fa-envelope"></i>
+				<h4>No messages in your outbox yet..</h4>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+{% block extrajs %}
+<script>
+    
+	$(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip(); 
+	    function alignModal(){
+	        var modalDialog = $(this).find(".modal-dialog");
+	        /* Applying the top margin on modal dialog to align it vertically center */
+	        modalDialog.css("margin-top", Math.max(0, ($(window).height() - modalDialog.height()) / 2));
+	    }
+	    // Align modal when it is displayed
+	    $(".modal").on("shown.bs.modal", alignModal);
+	    
+	    // Align modal when user resize the window
+	    $(window).on("resize", function(){
+	        $(".modal:visible").each(alignModal);
+	    });   
+	});
+</script>
+{% endblock %}

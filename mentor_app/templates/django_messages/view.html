@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load staticfiles thumbnail i18n %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<link rel="stylesheet" href="{% static 'css/inbox.css' %}">
+
+<!-- Include Froala-Editor for nice text editing -->
+<link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.5/css/froala_editor.min.css' rel='stylesheet' type='text/css' />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.5/css/froala_style.min.css' rel='stylesheet' type='text/css' />
+ 
+<style>
+    .detail-heading {
+        padding: 10px;
+    }
+    .detail-heading span {
+       margin-left: 15px;
+    }
+    .detail-view {
+        border-radius: 5px;
+        background: #fcfcfc;
+        padding: 10px;
+        margin-bottom: 14px;
+    }
+    .detail-footer {
+        border-top: 1px solid #fefefe;
+        padding: 10px;
+    }
+    .detail-footer a {
+        padding-left: 6px;
+    }
+</style>
+{% endblock %}
+{% block header %}
+	<h1>{% trans "Conversation Details" %}</h1>
+{% endblock %}
+
+<!-- Main block for the inbox -->
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			{% include "django_messages/_message_menu.html" %}
+			{% include '_mini_footer.html' %}
+		</div>
+		<div class="col-md-7 panel panel-default top-margin" style="padding-bottom: 20px;">
+            <div class="detail-heading"> 
+                <h5><strong>Subject: </strong><span>{{ message.subject }}</span></h5>
+                <h5><strong>Sender: </strong><span>{{ message.sender }}</span></h5>
+                <h6><strong>Date: </strong><span>{{ message.sent_at|date:_("DATETIME_FORMAT") }}</span></h6>
+            </div>
+            <hr>
+            <div class="detail-view">
+                <h6>{{ message.body|safe }}</h6>
+            </div>
+            <div class="detail-footer">
+                {% ifequal message.recipient.pk user.pk %}
+                <a href="{% url 'messages_reply' message.id %}">{% trans "Reply" %}</a>
+                {% endifequal %}
+                <a href="{% url 'messages_delete' message.id %}">{% trans "Delete" %}</a>
+            </div>
+                
+                {% comment %}Example reply_form integration
+                {% if reply_form %}
+                <h1>{% trans "Compose reply"%}</h1>
+                <form action="{% url 'messages_reply' message.id %}" method="post">
+                {% csrf_token %}
+                <table>
+                {{ reply_form.as_table }}
+                </table>
+                <input type="submit" value="{% trans "Send" %} &raquo;"/>
+                </form>
+                {% endif %}
+                {% endcomment %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+{% block extrajs %}
+<!-- Include the Froala JS file. -->
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.5/js/froala_editor.min.js'></script>
+
+<script>
+    $(function() {
+        $('textarea#id_body').froalaEditor({toolbarInline: false})
+        });
+	$(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip(); 
+	    function alignModal(){
+	        var modalDialog = $(this).find(".modal-dialog");
+	        /* Applying the top margin on modal dialog to align it vertically center */
+	        modalDialog.css("margin-top", Math.max(0, ($(window).height() - modalDialog.height()) / 2));
+	    }
+	    // Align modal when it is displayed
+	    $(".modal").on("shown.bs.modal", alignModal);
+	    
+	    // Align modal when user resize the window
+	    $(window).on("resize", function(){
+	        $(".modal:visible").each(alignModal);
+	    });   
+	});
+</script>
+{% endblock %}

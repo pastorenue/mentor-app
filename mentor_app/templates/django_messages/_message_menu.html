@@ -1,0 +1,23 @@
+{% load staticfiles thumbnail %}
+
+
+<div class="panel panel-default top-margin">
+  <div>
+        {% if user.mentee %}
+        {% endif %}
+
+        {% if user.mentee %}
+        {% endif %}
+
+        {% if user.mentee %}
+        {% endif %}
+  </div>
+  <div class="inbox">
+      <ul>
+          <a href="{% url "messages_inbox" %}"><li><i class="fa fa-envelope"></i> Inbox</li></a>
+          <a href="{% url "messages_compose" %}"><li><i class="fa fa-edit"></i> New Conversation</li></a>
+          <a href="{% url "messages_outbox" %}"><li><i class="fa fa-envelope-o"></i> Outbox</li></a>
+          <a href="{% url "messages_trash" %}"><li><i class="fa fa-trash-o"></i> Trash</li></a>
+      </ul>
+  </div>  
+</div>

@@ -50,6 +50,7 @@ urlpatterns = [
     url(r'^newsroom/', include('newsroom.urls', namespace='newsroom')),
     url(r'^newsletters/', include('newsletters.urls', namespace='newsletters')),
     url(r'^notifications/', include('notifications.urls', namespace='notifications')),
+    url(r'^messages/', include('django_messages.urls')),
 ]
 
 urlpatterns+=static(setting.MEDIA_URL, document_root=setting.MEDIA_ROOT)

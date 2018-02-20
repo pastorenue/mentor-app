@@ -1,0 +1,29 @@
+.inbox {
+    padding: 10px;
+
+}
+.inbox ul {
+    padding-left: 10px;
+}
+.inbox ul li {
+    text-decoration: none;
+    list-style: none;
+    margin-top: 10px;
+    border-bottom: 1px solid #f1f1f1;
+    padding: 10px;
+    transition: all .45s ease-in-out;
+}
+.inbox ul li:hover{
+    transform: scale(1.1);
+    
+    border-color: #428bca;
+    border-top: none;
+}
+.msg-notify {
+    text-align: center;
+    padding: 40px;
+}
+.msg-notify i {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
