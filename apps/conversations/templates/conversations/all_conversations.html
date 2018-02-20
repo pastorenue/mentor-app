@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load staticfiles thumbnail %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<style>
+	.modal.fade .modal-dialog {
+	    -webkit-transform: scale(0.1);
+	    -moz-transform: scale(0.1);
+	    -ms-transform: scale(0.1);
+	    transform: scale(0.1);
+	    top: 500px;
+	    opacity: 0;
+	    -webkit-transition: all 0.3s;
+	    -moz-transition: all 0.3s;
+	    transition: all 0.3s;
+	}
+
+	.modal.fade.in .modal-dialog {
+	    -webkit-transform: scale(1);
+	    -moz-transform: scale(1);
+	    -ms-transform: scale(1);
+	    transform: scale(1);
+	    -webkit-transform: translate3d(0, -300px, 0);
+	    transform: translate3d(0, -500px, 0);
+	    opacity: 1;
+	}
+</style>
+{% endblock %}
+{% block header %}
+	<h1>Notifications</h1>
+{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			{% include 'side_bar.html' %}
+		</div>
+		<div class="col-md-6">
+			<div class="row">
+				<div class="panel panel-default top-margin">
+					<div class="div-header" style="text-align: left;">
+						<h3><strong>All Notifications</strong> <span style="float: right; font-size: 14px;"><a href="{% url 'notifications:mark_all_as_read' %}"> <i class="fa fa-check"></i>Mark All as Read</a></span></h3>
+					</div>
+					<div class="row" style="padding: 10px;">
+						{% for notification in notifications %}
+						<div class="col-md-12">
+							<a href="" data-toggle="modal" data-target="#{{notification.id}}">
+								<div class="other-detail" {% if notification.unread %} style="background: #f5f5f5;" {% endif %}>
+									{% if notification.actor.mentee %}
+									{% thumbnail notification.actor.mentee.photo "40x40" crop="top" as img %}
+									<img src="{{img.url}}" alt="{{notification.actor.mentee}}" style="border-radius: 50%; display: inline-block; float: left;">
+									{% endthumbnail %}
+									{% endif %}
+									<h4>{{notification.verb}}</h4>
+									<h5>{{notification.timesince}} ago</h5>
+								</div>
+							</a>
+						</div>
+						<div class="modal fade" id="{{notification.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+						  {% include 'notifications/notification_detail.html' %}
+						</div>
+						{% empty %}
+						<p style="text-align: center; margin: 20px auto;">There are no new notifications. Click <a href="{% url 'notifications:all' %}">here</a> to see all notifications.</p>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			{% if user.is_authenticated %}
+				{% include 'expert/trending_expert.html' %}
+			{% endif %}
+			{% include '_mini_footer.html' %}
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block extrajs %}
+<script>
+    
+	$(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip(); 
+	    function alignModal(){
+	        var modalDialog = $(this).find(".modal-dialog");
+	        /* Applying the top margin on modal dialog to align it vertically center */
+	        modalDialog.css("margin-top", Math.max(0, ($(window).height() - modalDialog.height()) / 2));
+	    }
+	    // Align modal when it is displayed
+	    $(".modal").on("shown.bs.modal", alignModal);
+	    
+	    // Align modal when user resize the window
+	    $(window).on("resize", function(){
+	        $(".modal:visible").each(alignModal);
+	    });   
+	});
+</script>
+{% endblock %}

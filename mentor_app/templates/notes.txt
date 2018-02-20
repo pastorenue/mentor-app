@@ -1,0 +1,3 @@
+What's left...
+1. Fix the inbox page
+2. Create the message model and views
