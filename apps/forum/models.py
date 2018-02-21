@@ -22,6 +22,7 @@ class Post(models.Model):
 	user = models.ForeignKey(User, null=True)
 	content = models.TextField()
 	channels = models.ForeignKey(Channels, null=True)
+	illustration = models.ImageField(upload_to="uploads", blank=True, null=True)
 	slug = models.SlugField(max_length=255, unique=True, blank=True)
 	date_created = models.DateTimeField(auto_now_add=True)
 

@@ -68,7 +68,7 @@ textarea {
 	border-top: 1px solid #e5e5e5;
 }
 .blur {
-	box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 12px 18px 1px rgba(0,0,0,.2) !important;
+	box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 12px 18px 1px rgba(0,0,0,.1) !important;
 }
 .post-head {
 	padding: 5px 10px;
@@ -77,8 +77,9 @@ textarea {
 }
 .post {
 	padding: 5px 10px;
-	border-bottom: 1px solid #e5e5e5;
-	margin-bottom: 5px;
+	
+	margin-bottom: 10px;
+	box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 4px 3px 1px rgba(0,0,0,.2); 
 }
 .post h5 {
 	margin-top: 0;
@@ -88,22 +89,25 @@ textarea {
 	display: inline-block;
 	padding: 5px 10px;
 }
-.post img {
-	border-radius: 50%;
-	float: left;
+.post p {
+	font-size: 14px;
 }
 .l-name {
+	display: inline;
 	margin-bottom: 10px;
 	padding-left: 0;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #fafafa;
 }
-.l-name img {
+.l-name>img {
 	height: 50px;
 	width: 50px;
 	border-radius: 50%;
 	padding: 5px;
+	float: left;
 }
-.l-name p {
-	margin-bottom: 0;
+.l-name h5 {
+	margin-top: 7px;
 	padding-left: 10px;
 }
 .comment {
@@ -127,3 +131,37 @@ textarea {
 	transform: translateY(-3px);
 	transform: translateX(5px);
 }
+.center-cropped {
+	position: relative;
+	margin: 5px;
+	overflow: hidden;
+  }
+  .center-cropped img {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: 200px;
+	padding: 5px;
+	border-radius: 7px;
+	border: 1px solid #f5f5f5;
+	width: auto;
+	-webkit-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+  }
+  .center-cropped img.portrait {
+	width: 100%;
+	height: auto;
+  }
+  #id_upload {
+	  position: absolute;
+	  top: -50%;
+  }
+  .post-illustration {
+	  width: 100%;
+	  margin: 10px;
+  }
+  .post-illustration img {
+	  border-radius: 6px;
+	  
+  }

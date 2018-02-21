@@ -12,7 +12,7 @@
 {% block content %}
 <div class="container">
 	<div class="row">
-		<div class="col-sm-3" style="">
+		<div class="col-sm-3">
 			{% include 'side_bar.html' %}
 			{% include 'expert/trending_expert.html' %}
 		</div>
@@ -24,10 +24,12 @@
 							<h5 id="id_head">Click to Start a Discussion</h5>
 						</div>
 						{% include 'forum/_post.html' %}
+						<div id="cropped" class="center-cropped">
+							<img class="portrait" id="preview" src="" alt="">
+						</div>
 						<div class="post-btn">
-							<p><i class="fa fa-camera"></i> Illustration</p>
-							<p id="id_post" style="float: right; display: inline;"><i class="fa fa-laptop"></i> Post</p>
-							<input type="file" id="id_image" style="display: none;">
+							<p id="id_btn_upload"><i class="fa fa-camera"></i> Illustration</p>
+							<p id="id_post" style="float: right;"><i class="fa fa-laptop"></i> Post</p>
 						</div>
 					</div>
 				</div>
@@ -37,7 +39,7 @@
 					<h4 style="color: #fff;">POSTS for <span style="font-size: 16px; font-weight: 600;">{{current_channel}}</span></h4>
 				</div>
 				{% for post in posts %}
-				<div class="post" onload="hideDetail({{post.id}})">
+				<div class="post" onload="hideDetail('{{post.id}}')">
 					<div class="l-name">
 						{% if post.user.mentee %}
 						{% thumbnail post.user.mentee.photo "50x50" crop="top" as im %}
@@ -56,11 +58,20 @@
 						{% endif %}
 						<h5><strong>{{post.user.first_name}} {{post.user.last_name}}</strong><br>
 						<span>{{post.date_created}}</span></h5>
-
 					</div>
-					<p>{{post.content}}</p>
+					<div>
+						<p>{{post.content}}</p>
+					</div>
+					{% if post.illustration %}
+					<div class="post-illustration">
+						{% thumbnail post.illustration "545x250" crop="center" as im %}
+						 <img src="{{im.url}}" alt="">
+						 {% endthumbnail %}
+					</div>
+					{% endif %}
+					
 					<!-- <img src="{% static 'images/about.jpg' %}" alt="" style="width: 100%; height: 200px;"> -->
-					<div style="margin-top: 5px;">
+					<div style="margin-top: 5px; border-top: 1px solid #f5f5f5; padding: 5px;">
 						<a><i class="fa fa-heart-o"></i> Like</a>
 						<a style="cursor: pointer;" data-toggle="modal" data-target="#{{post.id}}"><i class="fa fa-comment-o"> {{post.comment_set.count}}</i> Comment{{post.comment_set.count|pluralize}}</a>
 						<div class="modal fade" id="{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -84,6 +95,7 @@
 {% block extrajs %}
 <script>
 	$('.inner-post').hide();
+	
 	isVisible = false;
 	var container = document.getElementById('id_container');
 	$('#id_prompt').click(function() {
@@ -107,12 +119,37 @@
 	}
 </script>
 <script>
+	function readURL(input) {
+
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+		
+			reader.onload = function(e) {
+			$('#preview').attr('src', e.target.result);
+			}
+		
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	$("#id_upload").change(function() {
+		var c = document.getElementById('cropped');
+		c.style.height = 200+"px";
+		readURL(this);
+	  });
+	
+	$("#id_btn_upload").click(function(){
+		$("#id_upload").click();
+	});
+
 	$('#id_post').click(function() {
 		$('#id_btn_submit').click();
 	})
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
+	var c = document.getElementById('cropped');
+	c.style.height = 0;
     function alignModal(){
         var modalDialog = $(this).find(".modal-dialog");
         /* Applying the top margin on modal dialog to align it vertically center */
