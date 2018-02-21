@@ -24,6 +24,8 @@ class Post(models.Model):
 	channels = models.ForeignKey(Channels, null=True)
 	illustration = models.ImageField(upload_to="uploads", blank=True, null=True)
 	slug = models.SlugField(max_length=255, unique=True, blank=True)
+	likes = models.PositiveIntegerField(default=0)
+	shares = models.PositiveIntegerField(default=0)
 	date_created = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
