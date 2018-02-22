@@ -5,9 +5,17 @@ from .models import Channels, Post, Comment
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.http import HttpResponse
 from django.core.urlresolvers import reverse
 from django.views.generic import ListView
 from django.db import transaction
+from django.shortcuts import get_object_or_404
+from django.views.decorators.http import require_POST
+try:
+	import json
+except:
+	from django.utils import simplejson as json
+
 
 class PostListView(ListView):
 	model = Post
@@ -67,3 +75,48 @@ def new_comment(request):
 		Comment.objects.create(user=request.user, post=post, body=body)
 		messages.success(request, "Comment successfully added")
 		return HttpResponseRedirect(reverse('forum:forum'))
+
+
+@login_required
+@require_POST
+def like(request):
+	message=''
+	if request.method == 'POST':
+		user = request.user
+		post_id = request.POST.get('post_id', None)
+		post = get_object_or_404(Post, id=int(post_id))
+
+		if post.likes.filter(id=user.id).exists():
+			# user has already liked this post
+			# remove like/user
+			post.likes.remove(user)
+			message = 'disliked'
+		else:
+			# add a new like for a post
+			post.likes.add(user)
+			message = 'liked'
+
+	ctx = {'likes_count': post.total_likes, 'message': message}
+	# use mimetype instead of content_type if django < 5
+	return HttpResponse(json.dumps(ctx), content_type='application/json')
+
+
+@login_required
+@require_POST
+def share(request):
+    if request.method == 'POST':
+        user = request.user
+        post_id = request.POST.get('post_id', None)
+        post = get_object_or_404(Post, id=post_id)
+
+        if post.shares.filter(id=user.id).exists():
+            # user has already shared this post
+            message = 'You have already shared this'
+        else:
+            # add a new like for a post
+            post.shares.add(user)
+            message = 'You shared this'
+
+    ctx = {'likes_count': post.total_shares, 'message': message}
+    # use mimetype instead of content_type if django < 5
+    return HttpResponse(json.dumps(ctx), content_type='application/json')

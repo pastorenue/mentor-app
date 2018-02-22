@@ -13,7 +13,7 @@
 
 body {
   font-family: 'Candara', sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 17px;
   color: #666;
   background-color: #fff;
@@ -858,7 +858,7 @@ section {
   color: #666666;
   font-size: 14px;
   font-weight: 600;
-  ©padding: 15px 125px;
+  padding: 15px 125px;
   text-transform: uppercase;
 }
 
@@ -884,11 +884,6 @@ section {
 #gmap {
   height: 300px;
 }
-
-#contact-us {
-
-}
-
 #contact-us .heading {
   padding-top: 95px;
 }

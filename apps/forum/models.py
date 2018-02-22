@@ -24,15 +24,31 @@ class Post(models.Model):
 	channels = models.ForeignKey(Channels, null=True)
 	illustration = models.ImageField(upload_to="uploads", blank=True, null=True)
 	slug = models.SlugField(max_length=255, unique=True, blank=True)
-	likes = models.PositiveIntegerField(default=0)
-	shares = models.PositiveIntegerField(default=0)
+	likes = models.ManyToManyField(User, related_name='likes')
+	shares = models.ManyToManyField(User, related_name='shares')
 	date_created = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
 		return "%s --> %s" % (self.user.first_name, self.title)
 
+	@property
+	def total_likes(self):
+		"""
+		Total likes for the post
+		return: Integer: Likes for the post
+		"""
+		return self.likes.count()
+	
+	@property
+	def total_shares(self):
+		"""
+		Total shares for the post
+		return: Integer: Shares for the post
+		"""
+		return self.shares.count()
+
 	def save(self, *args, **kwargs):
-		orig = slugify(self.content)
+		orig = slugify(self.content[:40])
 		self.slug = "%s-%s" % (orig, uuid.uuid4())
 		super(Post, self).save(*args, **kwargs)
 

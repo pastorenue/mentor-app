@@ -3,7 +3,7 @@
 	<div class="modal-content">
 	  <div class="modal-header" style="background: #3b5998; color: #fff;">
 	    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff; font-size: 28px;">&times;</span><span class="sr-only">Close</span></button>
-	    <h4 class="modal-title" style="text-align: center; color: #fff;">Leave a comment on <strong>{{post.title}}</strong></h4>
+	    <h4 class="modal-title" style="text-align: center; color: #fff;">Leave a comment </h4>
 	  </div>
 	  <div class="modal-body">
 		  <div class="l-name">
@@ -33,14 +33,14 @@
 				<textarea name="reply" id="id_reply" cols="30" rows="2" class="form-control" placeholder="Leave a Comment"></textarea>
 			</div>
 			<input type="text" name="post_id" value="{{post.id}}" hidden="hidden">
-			<button type="submit" class="btn btn-primary">Comment</button>
+			<button type="submit" class="btn btn-primary btn-sm">Submit</button>
 		</form>
 		<div class="comment row">
 			<div class="col-sm-12">
-				<h3><strong>Comments</strong>:</h3>
+				
 			</div>
 			{% for comment in post.comment_set.all %}
-			<div class="col-sm-12 l-name" style="display: block;">
+			<div class="col-sm-12 l-name-comment" style="display: block;">
 				<div class="">
 					{% if comment.user.mentee %}
 					{% thumbnail comment.user.mentee.photo "50x50" crop="top" as im %}
@@ -57,7 +57,7 @@
 					 <img src="{{im.url}}" alt="">
 					 {% endthumbnail %}
 					{% endif %}
-					<p><strong>{{comment.user.first_name}}</strong> said {{comment.body}}</p>
+					<h5 style="color: #9a4252;"><strong>{{comment.user.first_name}}</strong>: <br> {{comment.body}}</h5>
 					<small>{{comment.date_created|timesince}} ago</small>
 				</div>
 			</div>
