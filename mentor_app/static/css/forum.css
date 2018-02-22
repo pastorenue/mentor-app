@@ -44,7 +44,7 @@ textarea {
 	color: #000 !important;
 	border-color: #d5d5d5 !important;
 }
-.post-base p {
+.post-base .post-btn p {
 	padding: 6px 5px;
 	cursor: pointer;
 	width: 19%;
@@ -56,7 +56,7 @@ textarea {
 	border: 1px solid #f5f5f5;
 	transition: all .45s ease-in-out;
 }
-.post-base p:hover {
+.post-base .post-btn p:hover {
 	border: 1px solid #3b5998;
 	color: #3b5998;
 }

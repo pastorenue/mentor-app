@@ -7,6 +7,11 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/forum.css' %}">
+
+<!-- Include Froala-Editor for nice text editing -->
+<link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.5/css/froala_editor.min.css' rel='stylesheet' type='text/css' />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.5/css/froala_style.min.css' rel='stylesheet' type='text/css' />
+
 {% endblock %}
 
 {% block content %}
@@ -60,7 +65,7 @@
 						<span>{{post.date_created|timesince}} ago</span></h5>
 					</div>
 					<div>
-						<p>{{post.content}}</p>
+						<p>{{post.content|safe}}</p>
 					</div>
 					{% if post.illustration %}
 					<div class="post-illustration">
@@ -105,7 +110,13 @@
 {% endblock %}
 
 {% block extrajs %}
+<!-- Include the Froala JS file. -->
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.5/js/froala_editor.min.js'></script>
+
 <script>
+	$(function() {
+		$('textarea#id_comment').froalaEditor({toolbarInline: false})
+	});
 	$('.inner-post').hide();
 	
 	isVisible = false;

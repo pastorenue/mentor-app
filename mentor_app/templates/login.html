@@ -67,3 +67,13 @@
 
 {% endblock %}
 {% block footer %}{% endblock %}
+
+{% 
+{% block extrajs %}
+<script>
+  window.onload = function() {
+    document.getElementById("id_username").focus();
+  };
+</script>
+{% endblock extrajs %}
+
