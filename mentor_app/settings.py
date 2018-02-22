@@ -1,3 +1,4 @@
+
 """
 Django settings for mentor_app project.
 
@@ -23,23 +24,22 @@ ADMINS = (
 )
 
 DEBUG = True
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'i-a=nwysyhwu8^xhck3k78oar=%fryvcn^5c7n7m-_=a6+!2-6')
 EMAIL_HOST_PASSWORD = ''
-ALLOWED_HOSTS = ['localhost', '*']
+ALLOWED_HOSTS = ['.thebossoffice.com', '138.68.145.121']
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'thebossoffice',
+	'USER': 'theboss_admin',
+	'PASSWORD': 'Welcome*234',
+	'HOST': 'localhost',
+	'PORT': ''
     }
 }
 
-import dj_database_url
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
-DATABASES['default']['CONN_MAX_AGE'] = 500
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -180,7 +180,7 @@ TOP_READ_SIZE = 15
 
 ANYMAIL = {
     # (exact settings here depend on your ESP...)
-    "MAILGUN_API_KEY": os.environ.get("MAILGUN_API_KEY"),
+    "MAILGUN_API_KEY": os.environ.get("MAILGUN_API_KEY", "key-5b8244a85dd4969806098365b885bf55"),
     "MAILGUN_SENDER_DOMAIN": 'thebossoffice.com',  # your Mailgun domain, if needed
 }
 EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"  # or sendgrid.EmailBackend, or...
