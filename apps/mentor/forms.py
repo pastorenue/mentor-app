@@ -15,7 +15,6 @@ class MentorForm(forms.ModelForm):
 		self.fields['short_biography'].widget.attrs = {'class':'form-control'}
 		self.fields['availability'].widget.attrs = {'class':'form-control'}
 		self.fields['years_of_experience'].widget.attrs = {'class':'form-control'}
-		self.fields['type_to_handle'].widget.attrs = {'class':'form-control'}
 		self.fields['cv_file'].widget.attrs = {'class':'form-control'}
 		self.fields['linkedin_url'].widget.attrs = {'class':'form-control'}
 		self.fields['industry'].widget.attrs = {'class':'form-control'}
@@ -39,7 +38,7 @@ class MentorProfessionalForm(forms.ModelForm):
 	class Meta:
 		model = Mentor
 		fields = ('industry', 'years_of_experience', 
-					'availability', 'type_to_handle', 
+					'availability', 
 					'cv_file', 'linkedin_url')
 
 

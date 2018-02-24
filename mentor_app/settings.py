@@ -23,20 +23,28 @@ ADMINS = (
     ('Pastor Emmanuel', 'pastorenuel@gmail.com'),
 )
 
-DEBUG = True
+DEBUG = False
 SECRET_KEY = os.environ.get('SECRET_KEY', 'i-a=nwysyhwu8^xhck3k78oar=%fryvcn^5c7n7m-_=a6+!2-6')
 EMAIL_HOST_PASSWORD = ''
-ALLOWED_HOSTS = ['.thebossoffice.com', '138.68.145.121']
+ALLOWED_HOSTS = ['.thebossoffice.com', '138.68.145.121', 'localhost']
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'thebossoffice',
-	'USER': 'theboss_admin',
-	'PASSWORD': 'Welcome*234',
-	'HOST': 'localhost',
-	'PORT': ''
-    }
+        'USER': 'theboss_admin',
+        'PASSWORD': 'Welcome*234',
+        'HOST': 'localhost',
+        'PORT': '5432'
+        }
 }
 
 # Application definition
@@ -160,7 +168,6 @@ USE_TZ = True
 
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 STATIC_URL = '/static/'
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

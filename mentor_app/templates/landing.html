@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
- {% load static %}
+ {% load static thumbnail %}
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}
 <style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}
 </style><style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style><style type="text/css">.gm-style-pbc{transition:opacity ease-in-out;background-color:rgba(0,0,0,0.45);text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}
@@ -62,26 +62,10 @@
       <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
           <div class="item" style="background-image: url('{% static 'images/work.jpg' %}'); height: 672px;">
-            <div class="caption">
-              <h1 class="animated fadeInLeftBig">We <span style="color: #027db3;">TRAIN</span></h1>
-              <p class="animated fadeInRightBig head-p">We bring you close enough to mentors that can collaborate with you to  achieve that dream</p>
-              <a data-scroll="" class="btn btn-start animated fadeInUpBig" href="http://demo.themeum.com/html/oxygen/#services">Start now</a>
-            </div>
           </div>
           <div class="item" style="background-image: url('{% static 'images/mentor.jpg' %}'); height: 672px;">
-            <div class="caption">
-              <h1 class="animated fadeInLeftBig"><span>THEBOSSOFFICE.COM</span></h1>
-              <p class="animated fadeInRightBig">Mentorship | Business Success</p>
-              <a data-scroll="" class="btn btn-start animated fadeInUpBig" href="http://demo.themeum.com/html/oxygen/#services">Start now</a>
-            </div>
           </div>
           <div class="item active" style="background-image: url('{% static 'images/mentee.jpg' %}'); height: 672px;">
-            <div class="caption">
-              <h1 class="animated fadeInLeftBig">This is <span style="color: #027db3;">thebossoffice</span></h1>
-              <p class="animated fadeInRightBig">Mentorship | Business Success</p>
-              <a data-scroll="" class="btn btn-start animated fadeInUpBig" href="#">Get Started Now!</a>
-               <a data-scroll="" class="btn btn-start animated fadeInUpBig" href="#">Apply as a Mentor</a>
-            </div>
           </div>
         </div>
         <a class="left-control" href="http://demo.themeum.com/html/oxygen/#home-slider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
@@ -114,7 +98,13 @@
            <span class="span2">"</span>
         </div>
         <div class="quote-author">
-          <img class="img" src="{{quote.image.url}}" alt="">
+          {% if quote.image %}
+          {% thumbnail quote.image "90x90" crop="top" as im %}
+          <img class="img" src="{{im.url}}" alt="{{quote.author}}" width="{{im.width}}" height="{{im.height}}">
+          {% endthumbnail %}
+          {% else %}
+          <img class="img" src="" alt="">
+          {% endif %}
         </div>
       </div>
       {% else %}

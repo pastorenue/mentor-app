@@ -42,10 +42,10 @@ class Mentee(models.Model):
 	age_range = models.CharField(max_length=5, choices=settings.AGE_RANGE_CHOICES, null=True, blank=True)
 	phone_number = models.CharField(max_length=12, blank=True)
 	level_of_education = models.CharField(max_length=27, choices=QUALIFICATION_CHOICES, null=True, blank=True)
-	name_of_business = models.CharField(max_length=50, null=True, blank=True)
+	name_of_business = models.CharField(max_length=150, null=True, blank=True)
 	industry = models.ForeignKey(Industry, null=True, blank=True)
 	address = models.ForeignKey(Address, null=True, blank=True)
-	slug = models.SlugField(unique=True)
+	slug = models.SlugField(max_length=255, unique=True)
 	year_of_commencement = models.IntegerField(choices=YEAR_CHOICES, default=datetime.datetime.now().year) 
 	time_with_mentor = models.CharField("How much time would you need from your mentor?", max_length=20, choices=TIME_CHOICES, null=True, blank=True)
 	mode_of_communication = models.CharField(max_length=50, choices=MODE_CHOICES, null=True, blank=True)
@@ -62,6 +62,7 @@ class Mentee(models.Model):
 	def save(self, *args, **kwargs):
 		orig = slugify(self.name)
 		self.slug = "%s-%s"[:50] % (orig, uuid.uuid4())
+		self.name = "%s, %s" % (self.user.first_name, self.user.last_name)
 		super(Mentee, self).save(*args, **kwargs)
 
 

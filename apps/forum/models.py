@@ -22,7 +22,7 @@ class Post(models.Model):
 	user = models.ForeignKey(User, null=True)
 	content = models.TextField()
 	channels = models.ForeignKey(Channels, null=True)
-	illustration = models.ImageField(upload_to="uploads", blank=True, null=True)
+	illustration = models.ImageField(upload_to="uploads/%Y/%m/%", blank=True, null=True)
 	slug = models.SlugField(max_length=255, unique=True, blank=True)
 	likes = models.ManyToManyField(User, related_name='likes')
 	shares = models.ManyToManyField(User, related_name='shares')

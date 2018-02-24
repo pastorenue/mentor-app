@@ -30,9 +30,13 @@
 					{% endthumbnail %}
 					</div>
 					<div class="lc-profile">
-					{% thumbnail mentor.photo "120x120" crop="top" as img %}
-					<img src="{{img.url}}" alt="" style="position: absolute; left: 4%; top: 125px; padding: 5px; background: #fff;" class="img-circle">
-					{% endthumbnail %}
+						{% if mentor.photo %}
+						{% thumbnail mentor.photo "120x120" crop="top" as img %}
+						<img src="{{img.url}}" alt="" style="position: absolute; left: 4%; top: 125px; padding: 5px; background: #fff;" class="img-circle">
+						{% endthumbnail %}
+						{% else %}
+						<img src="{% static 'images/avatar.png' %}" alt="" class="img-circle">
+						{% endif %}
 						<div class="col-md-2"></div>
 						<div class="col-md-7">
 							<h2>{{mentor}}</h2>
@@ -69,7 +73,7 @@
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
-										<button id="btn_update" class="btn btn-primary" type="submit">Update Profile</button>
+										<button id="id_save" class="btn btn-primary" type="submit">Update Profile</button>
 									</div>
 								</div>
 							</div>
@@ -114,9 +118,9 @@
 
 {% block extrajs %}
 <script>
-	function update(e) {
-		e.preventDefault();
-		$("#frm_update").submit();
-	}
+	$("#id_update").click(function(event) {
+		event.preventDefault();
+		$("#id_save").click();
+	})
 </script>
 {% endblock %}

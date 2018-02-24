@@ -14,13 +14,17 @@
 				<div class="panel panel-default top-margin">
 					<div style="height: 150px;">
 						{% thumbnail mentor.background_image "875x145" crop="center" as img %}
-					<img src="{{img.url}}" alt="" class=""> 
-					{% endthumbnail %}
+						<img src="{{img.url}}" alt="" class=""> 
+						{% endthumbnail %}
 					</div>
 					<div class="lc-profile">
-					{% thumbnail mentor.photo "120x120" crop="top" as img %}
-					<img src="{{img.url}}" alt="" style="position: absolute; left: 4%; top: 125px; padding: 5px; background: #fff;" class="img-circle">
-					{% endthumbnail %}
+					{% if mentor.photo %}
+						{% thumbnail mentor.photo "120x120" crop="top" as img %}
+						<img src="{{img.url}}" alt="" style="position: absolute; left: 4%; top: 125px; padding: 5px; background: #fff;" class="img-circle">
+						{% endthumbnail %}
+					{% else %}
+					<img src="{% static 'images/avatar.png' %}" alt="" class="img-circle">
+					{% endif %}
 						<div class="col-md-2"></div>
 						<div class="col-md-7">
 							<h2>{{mentor}}</h2>

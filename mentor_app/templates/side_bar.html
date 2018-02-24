@@ -6,13 +6,17 @@
 		<div class="bg-pane">
 		</div>
 		<div class="profile">
-			{% thumbnail user.mentee.photo "80x80" crop="top" as im %}
-			<img src="{{im.url}}" alt="">
-			{% endthumbnail %}
+			{% if user.mentee.photo %}
+				{% thumbnail user.mentee.photo "80x80" crop="top" as im %}
+				<img src="{{im.url}}" alt="">
+				{% endthumbnail %}
+			{% else %}
+			<img src="{% static 'images/avatar.png' %}" alt="">
+			{% endif %}
 			<a href="{{user.mentee.get_absolute_url}}"><h3>{{user.mentee.name}}</h3></a>
-			<h5>{{user.mentee.name_of_business}}</h5>
+			<h5>{% if user.mentee.name_of_business %}{{user.mentee.name_of_business}}{% else%}Set Your <strong>Business Name</strong>{%endif%}</h5>
 			<hr>
-			<h5><strong>Address: </strong>{{user.mentee.address}}</h5>
+			<h5><strong>Address: </strong>{% if user.mentee.address %}{{user.mentee.address}}{%else%}Set Your Address Here{%endif%}</h5>
 		</div>
 	</div>
 	{% endif %}

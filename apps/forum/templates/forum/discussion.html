@@ -111,12 +111,7 @@
 
 {% block extrajs %}
 <!-- Include the Froala JS file. -->
-<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.5/js/froala_editor.min.js'></script>
-
 <script>
-	$(function() {
-		$('textarea#id_comment').froalaEditor({toolbarInline: false})
-	});
 	$('.inner-post').hide();
 	
 	isVisible = false;

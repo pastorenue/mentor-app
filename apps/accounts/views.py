@@ -21,7 +21,8 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import Quote
 from random import randint
-from mentee.models import MentorshipRequest
+from mentee.models import MentorshipRequest, Mentee
+from mentor.models import Mentor
 from django.conf import settings
 
 
@@ -37,31 +38,18 @@ def signup(request):
 	user_type = request.GET.get('user_type')
 
 	if request.method == "POST":
-		user_form = basic_form = professional_form = None
+		user_form = None
 		if user_type == 'mentor':
 			user_form = MentorSignUpForm(request.POST)
-			basic_form = BasicMentorForm(request.POST, request.FILES)
-			professional_form = MentorProfessionalForm(request.POST, request.FILES)
-
 		if user_type == 'mentee':
 			user_form = MenteeSignUpForm(request.POST)
-			basic_form = BasicMenteeForm(request.POST, request.FILES)
-			professional_form = MenteeProfessionalForm(request.POST)
-			addr_form = AddressForm(request.POST)
-		if user_form.is_valid() and basic_form.is_valid() and professional_form.is_valid():
+		if user_form.is_valid():
 			user = user_form.save(commit=False)
 			user.save()
-			basic = basic_form.save(commit=False)
-			if hasattr(basic, 'address_id'):
-				if addr_form.is_valid:
-					addr = addr_form.save(commit=False)
-					addr.user = user
-					addr.save()
-					basic.address = addr
-			basic.name = "%s, %s" % (user.first_name, user.last_name)
-			basic.user = user
-			basic.industry = professional_form.cleaned_data['industry']
-			save_other_objects(basic, professional_form)
+			if user_type == 'mentee':
+				Mentee.objects.create(user=user)
+			if user_type == 'mentor':
+				Mentor.objects.create(user=user)
 		try:
 			notify(request, user)
 		except:
@@ -72,16 +60,11 @@ def signup(request):
 		user_form = basic_form = professional_form = None
 		if user_type == 'mentor':
 			user_form = MentorSignUpForm()
-			basic_form = BasicMentorForm()
-			professional_form = MentorProfessionalForm()
-			context = {'u_form': user_form, 'b_form': basic_form, 'p_form': professional_form}
+			context = {'u_form': user_form}
 
 		if user_type == 'mentee':
 			user_form = MenteeSignUpForm()
-			basic_form = BasicMenteeForm()
-			professional_form = MenteeProfessionalForm()
-			addr_form = AddressForm()
-			context = {'a_form': addr_form, 'u_form': user_form, 'b_form': basic_form, 'p_form': professional_form}
+			context = {'u_form': user_form}
 		context['user_type'] = user_type
 	return render(request, template_name, context)
 
@@ -150,30 +133,6 @@ def landing_view(request):
 		'quote': quote,
 	}
 	return render(request, template_name, context)
-
-def save_other_objects(base, other):
-	basic = base
-	if hasattr(basic, 'mode_details'):
-		basic.mode_details = other.cleaned_data['mode_details']
-	if hasattr(basic, 'mode_of_communication'):
-		basic.mode_of_communication = other.cleaned_data['mode_of_communication']
-	if hasattr(basic, 'name_of_business'):
-		basic.name_of_business = other.cleaned_data['name_of_business']
-	if hasattr(basic, 'level_of_education'):
-		basic.level_of_education = other.cleaned_data['level_of_education']
-	if hasattr(basic, 'time_with_mentor'):
-		basic.time_with_mentor = other.cleaned_data['time_with_mentor']
-	if hasattr(basic, 'year_of_commencement'):
-		basic.year_of_commencement = other.cleaned_data['year_of_commencement']
-	if hasattr(basic, 'type_to_handle'):
-		basic.type_to_handle = other.cleaned_data['type_to_handle']
-	if hasattr(basic, 'availability'):
-		basic.availability = other.cleaned_data['availability']
-	if hasattr(basic, 'linkedin_url'):
-		basic.linkedin_url = other.cleaned_data['linkedin_url']
-	if hasattr(basic, 'years_of_experience'):
-		basic.years_of_experience = other.cleaned_data['years_of_experience']
-	basic.save()
 
 
 class MentorRequestListView(ListView):

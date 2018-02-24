@@ -1117,48 +1117,48 @@ ul.address {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.89);
+    background-color: rgba(0,0,0,0.79);
     z-index: 300;
     cursor: pointer;
 }
 .page-overlay .vertical-line {
-  right: 10%;
-  top: 40px;
+  right: 20%;
+  top: 130px;
   position: absolute;
-  height: 430px;
-  width: 6px;
+  height: 300px;
+  width: 4px;
   background: #fff;
 }
 .page-overlay .horizontal-line {
-  right: 10%;
-  top: 70px;
+  right: 20%;
+  top: 130px;
   position: absolute;
-  height: 6px;
-  width: 350px;
+  height: 4px;
+  width: 220px;
   background: #fff;
 }
 .page-overlay .short-vertical-1 {
-  right: 30%;
-  top: 76px;
+  right: 25%;
+  top: 130px;
   position: absolute;
-  height: 30px;
-  width: 6px;
+  height: 24px;
+  width: 4px;
   background: #fff;
 }
 .page-overlay .short-vertical-2 {
-  right: 20%;
-  top: 76px;
+  right: 35%;
+  top: 130px;
   position: absolute;
-  height: 30px;
-  width: 6px;
+  height: 24px;
+  width: 4px;
   background: #fff;
 }
 .page-overlay .quote {
   position: absolute;
-  bottom: 30%;
-  right: 13%;
-  height: 400px;
-  width: 400px;
+  bottom: 35%;
+  right: 23%;
+  height: 300px;
+  width: 300px;
   border-top-left-radius: 15%;
   border: 6px solid #fff;
   color: #fff;
@@ -1168,9 +1168,9 @@ ul.address {
   position: relative;
   height: 350px;
   vertical-align: middle;
-  top: 10%;
+  top: 15%;
   padding: 40px;
-  font-size: 24px;
+  font-size: 18px;
   text-align: center;
 }
 .page-overlay .content>h3 {
@@ -1179,32 +1179,32 @@ ul.address {
   padding: 10px;
   font-weight: 600;
   margin-top: -10px;
-  font-size: 21px;
+  font-size: 20px;
 }
 .page-overlay .content .span1 {
   position: absolute;
   left: 70px;
-  top: 10px;
-  font-size: 3em;
+  top: 20px;
+  font-size: 1.6em;
 }
 .page-overlay .span2 {
   position: absolute;
-  right: 70px;
-  bottom: 10%;
-  font-size: 3em;
+  right: 30px;
+  bottom: 40%;
+  font-size: 1.7em;
 }
 .page-overlay .quote-author {
   position: absolute;
-  top: -60px;
+  top: -40px;
   right: 80%;
   border: none;
-  height: 100px;
-  width: 100px;
+  height: 60px;
+  width: 60px;
   border-radius: 50%;
 }
 .page-overlay .quote-author .img {
-  height: 100px;
-  width: 100px;
+  height: 90px;
+  width: 90px;
   padding: 6px;
   border-radius: 50%;
   background: #fff;
@@ -1212,14 +1212,14 @@ ul.address {
 .page-overlay .overlay-h1 h1 {
   position: absolute;
   top: 30%;
-  left: 50px;
+  left: 100px;
   font-weight: 600;
   color: #3b5998;
 }
 .page-overlay .overlay-exit {
   position: absolute;
   top: 40%;
-  left: 50px;
+  left: 130px;
   font-weight: 600;
   font-size: 18px;
   color: #fff;
@@ -1743,4 +1743,7 @@ ul.address {
   padding: 2px;
   min-width: 15px;
   border-radius: 50%;
+}
+.s-icon {
+  margin-top: 10px;
 }

@@ -103,13 +103,8 @@ textarea {
 			</form>
 			{% if user_type != "unknown" %}
 			<form id="frm_reg" method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
-				<h4 class="btn-tab" onclick="toggleUser()">SignUp Detail<span class="pull-right"><i class="fa fa-angle-down"></i></span></h4>
 				<div id="id_user" class="panel panel-default added-padding">
 					{{u_form.as_p}}
-				</div>
-				<h4 class="btn-tab" onclick="toggleBasic()">Basic Profile Detail<span class="pull-right"><i class="fa fa-angle-down"></i></span></h4>
-				<div id="id_basic" class="panel panel-default added-padding">
-					{{b_form.as_p}}
 				</div>
 				{% if user_type == "mentee" %}
 				<h4 class="btn-tab" onclick="toggleAddress()">Address Detail<span class="pull-right"><i class="fa fa-angle-down"></i></span></h4>
@@ -117,10 +112,6 @@ textarea {
 					{{a_form.as_p}}
 				</div>
 				{% endif %}
-				<h4 class="btn-tab" onclick="toggleProffession()">Business\Professional Detail<span class="pull-right"><i class="fa fa-angle-down"></i></span></h4>
-				<div id="id_prof" class="panel panel-default added-padding">
-					{{p_form.as_p}}
-				</div>
 				<div class="panel panel-default" style="padding: 10px;">
 					<p style="cursor: pointer; color: #027db3;" onclick="showTCs()">Please click to read the terms and conditions</p>
 					<div id="id_tcs" class="tcs">
@@ -130,12 +121,9 @@ textarea {
 						{% if user_type == 'mentee' %}
 						{% include 'accounts/_mentee_tcs.html' %}
 						{% endif %}
-						{% if user_type == 'expert' %}
-						{% include 'accounts/_expert_tcs.html' %}
-						{% endif %}
 						<button id="id_accept" type="button" class="btn btn-primary btn-block">I have read and accept</button>
 					</div>
-					<button id="submit" type="submit" disabled="disabled" class="btn btn-primary btn-block">Register</button>
+					<button id="submit" type="submit" disabled="disabled" class="btn btn-primary btn-block">SignUp</button>
 				</div>
 			</form>
 			{% endif %}

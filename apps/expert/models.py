@@ -53,10 +53,10 @@ class MeetingExpert(models.Model):
 
 class Address(models.Model):
 	user = models.OneToOneField(User)
-	street = models.CharField(max_length=50, blank=True)
+	street = models.CharField(max_length=50, null=True, blank=True)
 	city = models.CharField("City/Town/Village", max_length=20, blank=True)
-	state = models.ForeignKey("states.State", blank=True)
-	country = models.ForeignKey("states.Country", default="156")
+	state = models.ForeignKey("states.State", null=True, blank=True)
+	country = models.ForeignKey("states.Country", null=True, default="156", blank=True)
 
 	def __str__(self):
 		return "%s, %s" % (self.street, self.city)
@@ -85,20 +85,20 @@ class Expert(models.Model):
 		('long-term', 'Long-term Jobs'),
 		('one-off', 'One-off Jobs')
 	)
-	title = models.CharField(max_length=10, choices=settings.TITLE_CHOICES)
+	title = models.CharField(max_length=10, choices=settings.TITLE_CHOICES, blank=True)
 	name = models.CharField(max_length=50)
 	user = models.OneToOneField(User)
 	photo = models.ImageField(upload_to='uploads/%Y/%m/%d', blank=True)
 	background_image = models.ImageField(upload_to='uploads/%Y/%m/%d', blank=True)
-	age_range = models.CharField(max_length=5, choices=settings.AGE_RANGE_CHOICES)
+	age_range = models.CharField(max_length=5, choices=settings.AGE_RANGE_CHOICES, blank=True)
 	industry = models.ForeignKey(Industry)
-	availability = models.CharField(max_length=20, choices=AVAILABILITY_CHOICES)
+	availability = models.CharField(max_length=20, choices=AVAILABILITY_CHOICES, blank=True)
 	email = models.EmailField(blank=True)
-	phone_number = models.CharField(max_length=13)
-	type_to_handle = models.CharField(max_length=20, choices=PROJECT_TYPE_CHOICES)
+	phone_number = models.CharField(max_length=13, blank=True)
+	type_to_handle = models.CharField(max_length=20, choices=PROJECT_TYPE_CHOICES, blank=True)
 	short_biography = models.TextField(blank=True)
-	cv_file = models.FileField("Attach PDF copy of CV ", upload_to='uploads/%Y/%m/%d')
-	slug = models.SlugField(unique=True, blank=True)
+	cv_file = models.FileField("Attach PDF copy of CV ", upload_to='uploads/%Y/%m/%d', blank=True)
+	slug = models.SlugField(max_length=255, unique=True, blank=True)
 	linkedin_url = models.URLField("Link to LinkedIn Bio/profile", blank=True)
 	date_created = models.DateTimeField(auto_now_add=True)
 	date_modified = models.DateTimeField(auto_now=True)
@@ -113,6 +113,7 @@ class Expert(models.Model):
 		orig = slugify(self.name)
 		self.slug = "%s-%s"[:50] % (orig, uuid.uuid4())
 		self.email = self.user.username
+		self.name = "%s, %s" % (user.first_name, user.last_name)
 		super(Expert, self).save(*args, **kwargs)
 
 	class Meta:

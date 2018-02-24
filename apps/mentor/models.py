@@ -32,19 +32,18 @@ class Mentor(models.Model):
 		('D', 'Deleted')
 	)
 
-	title = models.CharField(max_length=10, choices=settings.TITLE_CHOICES)
+	title = models.CharField(max_length=10, choices=settings.TITLE_CHOICES, blank=True)
 	name = models.CharField(max_length=50, blank=True)
 	user = models.OneToOneField(User)
 	photo = models.ImageField(upload_to='uploads/%Y/%m/%d', blank=True)
 	background_image = models.ImageField(upload_to='uploads/%Y/%m/%d', blank=True)
-	age_range = models.CharField(max_length=5, choices=settings.AGE_RANGE_CHOICES)
-	industry = models.ForeignKey('expert.Industry')
-	availability = models.CharField(max_length=20, choices=AVAILABILITY_CHOICES)
+	age_range = models.CharField(max_length=5, choices=settings.AGE_RANGE_CHOICES, blank=True)
+	industry = models.ForeignKey('expert.Industry', blank=True)
+	availability = models.CharField(max_length=20, choices=AVAILABILITY_CHOICES, blank=True)
 	email = models.EmailField(blank=True)
-	phone_number = models.CharField(max_length=13)
-	type_to_handle = models.CharField(max_length=20, choices=PROJECT_TYPE_CHOICES)
+	phone_number = models.CharField(max_length=13, blank=True, null=True)
 	short_biography = models.TextField(blank=True)
-	years_of_experience = models.PositiveIntegerField(null=True)
+	years_of_experience = models.PositiveIntegerField(null=True, blank=True)
 	cv_file = models.FileField("Attach PDF copy of CV ", upload_to='uploads/%Y/%m/%d', blank=True)
 	slug = models.SlugField(unique=True, blank=True)
 	linkedin_url = models.URLField("Link to LinkedIn Bio/profile", null=True, blank=True)
@@ -63,6 +62,7 @@ class Mentor(models.Model):
 		orig = slugify(self.name)
 		self.slug = "%s-%s"[:50] % (orig, uuid.uuid4())
 		self.email = self.user.username
+		self.name = "%s, %s" % (self.user.first_name, self.user.last_name)
 		super(Mentor, self).save(*args, **kwargs)
 
 	class Meta:
