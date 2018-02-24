@@ -106,12 +106,6 @@ textarea {
 				<div id="id_user" class="panel panel-default added-padding">
 					{{u_form.as_p}}
 				</div>
-				{% if user_type == "mentee" %}
-				<h4 class="btn-tab" onclick="toggleAddress()">Address Detail<span class="pull-right"><i class="fa fa-angle-down"></i></span></h4>
-				<div id="id_addr" class="panel panel-default added-padding">
-					{{a_form.as_p}}
-				</div>
-				{% endif %}
 				<div class="panel panel-default" style="padding: 10px;">
 					<p style="cursor: pointer; color: #027db3;" onclick="showTCs()">Please click to read the terms and conditions</p>
 					<div id="id_tcs" class="tcs">
