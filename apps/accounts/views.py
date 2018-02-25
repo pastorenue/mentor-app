@@ -53,7 +53,7 @@ def signup(request):
 		try:
 			notify(request, user)
 		except Exception as e:
-			messages.error(request, "Sorry an Error was encountered. Try again later. %s" % (e))
+			messages.error(request, e)
 
 		return HttpResponseRedirect(reverse('mentee:mentee-list'))
 	else:
