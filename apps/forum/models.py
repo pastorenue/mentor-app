@@ -29,7 +29,7 @@ class Post(models.Model):
 	date_created = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
-		return "%s --> %s" % (self.user.first_name)
+		return "%s-->%s" % (self.user.first_name, self.channels)
 
 	@property
 	def total_likes(self):
