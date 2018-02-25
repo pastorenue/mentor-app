@@ -52,8 +52,8 @@ def signup(request):
 				Mentor.objects.create(user=user)
 		try:
 			notify(request, user)
-		except:
-			messages.error(request, "Sorry an Error was encountered. Try again later")
+		except Exception as e:
+			messages.error(request, "Sorry an Error was encountered. Try again later. %s" % (e))
 
 		return HttpResponseRedirect(reverse('mentee:mentee-list'))
 	else:
