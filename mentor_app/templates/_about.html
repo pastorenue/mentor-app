@@ -12,6 +12,15 @@
   	color: #fff;
   	font-weight: 600;
   }
+  .sub input, select {
+    padding: 7px 15px;
+    width: 100%;
+    border: none;
+    height: 28px;
+    border-bottom: 1px solid  #ecf0f1;
+    box-shadow: none;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  }
 </style>
 {% endblock %}
 {% block header %}   
@@ -85,7 +94,10 @@
 </div>
 <div class="row about-row">
   <div style="text-align: center;">
-    <button class="btn btn-primary" style="width: 40%; border-radius: 12px; font-size: 16px;">Subscribe to Free Newsletter</button>
+    <button data-target="#subscribe" data-toggle="modal"  class="btn btn-primary" style="width: 40%; border-radius: 12px; font-size: 16px;">Subscribe to Free Newsletter</button>
+    <div class="modal fade sub" id="subscribe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      {% include 'newsletters/_new_subscription.html' %}
+    </div>
   </div>
 </div>
 </div>

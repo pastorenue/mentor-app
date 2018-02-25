@@ -12,7 +12,7 @@ from django.contrib.auth.models import User
 from django.db import transaction
 from .forms import *
 from accounts.mailing import *
-from expert.models import Address
+from expert.models import Address, Expert
 from expert.forms import AddressForm
 
 class MenteeListView(ListView):
@@ -45,54 +45,76 @@ class MenteeDetailView(DetailView):
 
 @login_required
 @transaction.atomic
-def send_request(request, slug):
+def send_mentor_request(request, slug):
+	"""
+	Send a mentorship request to a mentor
+
+	Arguments
+		slug:string: Slug value of the mentor
+	"""
 	mentor = Mentor.objects.get(slug=slug)
-	new_notify = notify.send(request.user, 
-							recipient=mentor.user, 
-							verb="A mentor request has been sent",
-							description="%s is demanding your services as a Mentor \
-							in the area of %s" % (request.user.mentee, request.user.mentee.industry))
-	if not MentorshipRequest.objects.filter(mentee=request.user, to_user=mentor.user,).exists():
-		MentorshipRequest.objects.create(mentee=request.user, 
-										to_user=mentor.user, 
-										industry=mentor.industry)
-		try:
-			send_mentorship_mail(request, request.user, mentor.user)
-		except:
-			pass
-	else:
-		messages.info(request, "You have already sent a mentorship request to %s" % (mentor))
+	mentorship_request(request, recipient=mentor)
 	return HttpResponseRedirect(reverse('mentee:mentee-profile', kwargs={'slug': request.user.mentee.slug}))
+
+
+@login_required
+@transaction.atomic
+def send_expert_request(request, slug):
+	"""
+	Send a mentorship request to an Expert
+
+	Arguments
+		slug:string: Slug value of the expert
+	"""
+	expert = Expert.objects.get(slug=slug)
+	mentorship_request(request, recipient=expert)
+	return HttpResponseRedirect(reverse('mentee:mentee-profile', kwargs={'slug': request.user.mentee.slug}))
+
 
 @login_required
 @transaction.atomic
 def accept(request, mentee_id, mentor_id):
 	recipient = User.objects.get(pk=mentee_id)
-	sender = User.objects.get(pk=mentor_id)
-	m_request = MentorshipRequest.objects.get(mentee=recipient, to_user=sender)
+	user = User.objects.get(pk=mentor_id)
+	
+	#Check if the sender is a mentor or expert
+	sender = None
+	if hasattr(user, 'mentor'):
+		sender = user.mentor
+	if hasattr(user, 'expert'):
+		sender = user.expert
+	m_request = MentorshipRequest.objects.get(mentee=recipient, to_user=user)
 	m_request.status = 'A'
 	m_request.save()
 	notify.send(request.user, 
 				recipient=recipient, 
 				verb="A mentor-request response has been sent.",
 				description="Your mentorship request to %s has been accepted. \
-				 You can communicate with Him now on %s" % (sender.mentor, sender))
+				 You can communicate with Him now on %s" % (sender, user))
 	messages.success(request, "Thank you for your response. A notification will be sent to %s" % (recipient.mentee))
 	return HttpResponseRedirect(reverse('mentee:mentee-list'))
 
 @login_required
 @transaction.atomic
 def reject(request, mentee_id, mentor_id):
-	mentee = User.objects.get(pk=mentee_id)
-	mentor = User.objects.get(pk=mentor_id)
-	m_request = MentorshipRequest.objects.get(mentee=mentee, to_user=mentor)
+	mentee_user = User.objects.get(pk=mentee_id)
+	user = User.objects.get(pk=mentor_id)
+
+	#Check if the sender is a mentor or expert
+	sender = None
+	if hasattr(user, 'mentor'):
+		sender = user.mentor
+	if hasattr(user, 'expert'):
+		sender = user.expert
+		
+	m_request = MentorshipRequest.objects.get(mentee=mentee_user, to_user=user)
 	m_request.status = 'D'
 	m_request.save()
-	notify.send(request.user, recipient=mentee, 
+	notify.send(request.user, recipient=mentee_user, 
 				verb="A mentor-request response has been sent.",
 				description="Your mentorship request to %s was rejected \
-				due to some reasons on the Mentor's part." % (mentor.mentor))
-	messages.success(request, "Thank you for your response. A notification will be sent to %s" % (mentee.mentee))
+				due to some reasons on the Mentor's part." % (sender))
+	messages.success(request, "Thank you for your response. A notification will be sent to %s" % (mentee_user.mentee))
 	return HttpResponseRedirect(reverse('mentee:mentee-list'))
 
 
@@ -128,3 +150,24 @@ def edit_profile(request):
 		context['mentee'] = instance
 
 	return render(request, template_name, context)
+
+
+def mentorship_request(request, recipient=None):
+	if recipient == None:
+		raise ValueError("Choose an appropriate user")
+
+	new_notify = notify.send(request.user, 
+							recipient=recipient.user, 
+							verb="A mentor request has been sent",
+							description="%s is demanding your services as a Mentor \
+							in the area of %s" % (request.user.mentee, request.user.mentee.industry))
+	if not MentorshipRequest.objects.filter(mentee=request.user, to_user=recipient.user,).exists():
+		MentorshipRequest.objects.create(mentee=request.user, 
+										to_user=recipient.user, 
+										industry=recipient.industry)
+		try:
+			send_mentorship_mail(request, request.user, recipient.user)
+		except:
+			pass
+	else:
+		messages.info(request, "You have already sent a mentorship request to %s" % (recipient))

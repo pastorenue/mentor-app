@@ -56,7 +56,7 @@
 						  {% include 'notifications/notification_detail.html' %}
 						</div>
 						{% empty %}
-						<p style="text-align: center; margin: 20px auto;">There are no mentorship requests available for you now. </p>
+						<p style="text-align: center; margin: 20px auto;">{% if user.mentee %}You have not sent any mentorship requests yet... {% else %}There are no mentorship requests available for you now. {% endif %}</p>
 						{% endfor %}
 					</div>
 				</div>

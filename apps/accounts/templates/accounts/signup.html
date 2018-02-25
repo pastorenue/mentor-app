@@ -148,9 +148,6 @@ textarea {
 	$('#id_user_type').change(function() {
 		$('#get_type').click();
 	});
-	// // $('#id_phone_number').intlTelInput({
-	// 	defaultCountry: "ng",
-	// });
 	$('#id_tcs').hide();
 	$('#id_prof').hide();
 	$('#id_addr').hide();
@@ -163,19 +160,6 @@ textarea {
 		$('#id_tcs').hide('fade');
 		$('#submit').attr('disabled', false);
 	})
-
-	function toggleProffession() {
-		$('#id_prof').toggle('fade');
-	}
-	function toggleAddress() {
-		$('#id_addr').toggle('fade');
-	}
-	function toggleBasic() {
-		$('#id_basic').toggle('fade');
-	}
-	function toggleUser() {
-		$('#id_user').toggle('fade');
-	}
 	$(window).on('load',function(){
         $('#modal-info').modal('show');
     });

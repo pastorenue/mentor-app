@@ -48,7 +48,7 @@
 					<div class="panel panel-default top-margin">
 						<div class="lc-detail">
 							<div>
-								<h3>Profile <span style="float: right; padding-right: 10px; font-size: 16px;">{% if user == mentee.user %} <a href=""><i class="fa fa-edit"></i> Edit</a></span>{% endif %}</h3>
+								<h3>Profile <span style="float: right; padding-right: 10px; font-size: 16px;">{% if user == mentee.user %} <a href="{% url 'mentee:edit' %}"><i class="fa fa-edit"></i> Edit</a></span>{% endif %}</h3>
 							</div>
 							<div class="col-md-6">
 								<p><strong>Industry:</strong> <span>{{mentee.industry}}</span></p>
@@ -67,7 +67,7 @@
 			<diV class="row">
 				<div class="panel panel-default top-margin">
 					<div class="div-header">
-						<h3><strong>Other Mentees with {% if user == mentee.user %} Your {% else %} {{mentee.title}} {{mentee.user.first_name}}'s {% endif %}Industry type</strong></h3>
+						<h3><strong>Other Mentees with {% if user == mentee.user %} Your {% else %} {{mentee}}'s {% endif %}Industry type</strong></h3>
 					</div>
 					<div class="row" style="padding: 5px 10px;">
 						{% for mentee in mentees_for_industry %}
