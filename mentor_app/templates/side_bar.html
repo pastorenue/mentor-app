@@ -25,9 +25,13 @@
 		<div class="bg-pane">
 		</div>
 		<div class="profile">
-			{% thumbnail user.mentor.photo "80x80" crop="top" as im %}
-			<img src="{{im.url}}" alt="">
-			{% endthumbnail %}
+			{% if user.mentor.photo %}
+				{% thumbnail user.mentor.photo "80x80" crop="top" as im %}
+				<img src="{{im.url}}" alt="">
+				{% endthumbnail %}
+			{% else %}
+			<img src="{% static 'images/avatar.png' %}" alt="">
+			{% endif %}
 			<a href="{{user.mentor.get_absolute_url}}"><h3>{{user.mentor.name}}</h3></a>
 			<hr>
 		</div>
@@ -38,9 +42,13 @@
 		<div class="bg-pane">
 		</div>
 		<div class="profile">
-			{% thumbnail user.expert.photo "80x80" crop="top" as im %}
-			<img src="{{im.url}}" alt="">
-			{% endthumbnail %}
+			{% if user.expert.photo %}
+				{% thumbnail user.expert.photo "80x80" crop="top" as im %}
+				<img src="{{im.url}}" alt="">
+				{% endthumbnail %}
+			{% else %}
+			<img src="{% static 'images/avatar.png' %}" alt="">
+			{% endif %}
 			<a href="{{user.expert.get_absolute_url}}"><h3>{{user.expert.name}}</h3></a>
 		</div>
 	</div>

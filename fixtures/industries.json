@@ -3,168 +3,70 @@
     "model": "expert.industry",
     "pk": 1,
     "fields": {
-        "name": "Education"
+        "name": "Technology"
     }
 },
 {
     "model": "expert.industry",
     "pk": 2,
     "fields": {
-        "name": "Entertainment"
+        "name": "Marketing"
     }
 },
 {
     "model": "expert.industry",
     "pk": 3,
     "fields": {
-        "name": "Agriculture"
+        "name": "Oil and Gas"
     }
 },
 {
     "model": "expert.industry",
     "pk": 4,
     "fields": {
-        "name": "Manufacturing"
+        "name": "Telecommunication"
     }
 },
 {
     "model": "expert.industry",
     "pk": 5,
     "fields": {
-        "name": "Oil/gas"
+        "name": "Media and Design"
     }
 },
 {
     "model": "expert.industry",
     "pk": 6,
     "fields": {
-        "name": "Financial services"
+        "name": "Fashion"
     }
 },
 {
     "model": "expert.industry",
     "pk": 7,
     "fields": {
-        "name": "Public speaking"
+        "name": "Education"
     }
 },
 {
     "model": "expert.industry",
     "pk": 8,
     "fields": {
-        "name": "Technology"
+        "name": "Film Production"
     }
 },
 {
     "model": "expert.industry",
     "pk": 9,
     "fields": {
-        "name": "Retail"
+        "name": "Finance"
     }
 },
 {
     "model": "expert.industry",
     "pk": 10,
     "fields": {
-        "name": "Fashion"
-    }
-},
-{
-    "model": "expert.industry",
-    "pk": 11,
-    "fields": {
-        "name": "NGOs"
-    }
-},
-{
-    "model": "expert.industry",
-    "pk": 12,
-    "fields": {
-        "name": "Transportation"
-    }
-},
-{
-    "model": "expert.industry",
-    "pk": 13,
-    "fields": {
-        "name": "Business Support services"
-    }
-},
-{
-    "model": "expert.industry",
-    "pk": 14,
-    "fields": {
-        "name": "Digital marketing"
-    }
-},
-{
-    "model": "expert.industry",
-    "pk": 15,
-    "fields": {
-        "name": "Export/import"
-    }
-},
-{
-    "model": "expert.industry",
-    "pk": 16,
-    "fields": {
-        "name": "Real Estate"
-    }
-},
-{
-    "model": "expert.industry",
-    "pk": 17,
-    "fields": {
-        "name": "Photography"
-    }
-},
-{
-    "model": "expert.industry",
-    "pk": 18,
-    "fields": {
-        "name": "Lifestyle"
-    }
-},
-{
-    "model": "expert.industry",
-    "pk": 19,
-    "fields": {
-        "name": "Catering"
-    }
-},
-{
-    "model": "expert.industry",
-    "pk": 20,
-    "fields": {
-        "name": "Humanitarian services"
-    }
-},
-{
-    "model": "expert.industry",
-    "pk": 21,
-    "fields": {
-        "name": "Cleaning services"
-    }
-},
-{
-    "model": "expert.industry",
-    "pk": 22,
-    "fields": {
-        "name": "Home Support Services"
-    }
-},
-{
-    "model": "expert.industry",
-    "pk": 23,
-    "fields": {
-        "name": "Delivery services"
-    }
-},
-{
-    "model": "expert.industry",
-    "pk": 24,
-    "fields": {
-        "name": "Marketing services"
+        "name": "Banking"
     }
 }
 ]
