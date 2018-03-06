@@ -5,6 +5,7 @@ from mentee.forms import MenteeSignUpForm, MenteeProfessionalForm, BasicMenteeFo
 from django.contrib.sites.shortcuts import get_current_site
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
+from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse
 from django.db import transaction
 from django.views.generic import ListView
@@ -38,11 +39,7 @@ def signup(request):
 	user_type = request.GET.get('user_type')
 
 	if request.method == "POST":
-		user_form = None
-		if user_type == 'mentor':
-			user_form = MentorSignUpForm(request.POST)
-		if user_type == 'mentee':
-			user_form = MenteeSignUpForm(request.POST)
+		user_form = UserCreationForm(request.POST)
 		if user_form.is_valid():
 			user = user_form.save(commit=False)
 			user.save()
