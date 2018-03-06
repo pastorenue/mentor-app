@@ -2,6 +2,7 @@
 /static/
 db.sqlite3
 *.pyc
+.vscode/
 __secrete_file.txt
 uploads/
 mentor_app/settings/local.py
