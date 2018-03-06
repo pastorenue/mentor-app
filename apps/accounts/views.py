@@ -88,7 +88,7 @@ def notify(request, user):
 	context_dict = {
         'name': '{0} {1}'.format(user.last_name, user.first_name),
         'user': user,
-        'domain': current_site
+        'domain': current_site,
         'uid': urlsafe_base64_encode(force_bytes(user.pk)),
         'token': account_activation_token.make_token(user),
     }
