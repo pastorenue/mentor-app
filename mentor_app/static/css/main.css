@@ -1159,7 +1159,7 @@ ul.address {
   right: 23%;
   height: 300px;
   width: 300px;
-  border-top-left-radius: 15%;
+  border-top-left-radius: 16%;
   border: 6px solid #fff;
   color: #fff;
   font-weight: 400;
@@ -1169,7 +1169,7 @@ ul.address {
   height: 350px;
   vertical-align: middle;
   top: 15%;
-  padding: 40px;
+  padding: 10px;
   font-size: 18px;
   text-align: center;
 }
