@@ -25,6 +25,7 @@ from random import randint
 from mentee.models import MentorshipRequest, Mentee
 from mentor.models import Mentor
 from django.conf import settings
+from django.contrib.sites.models import Site
 
 
 def dashboard(request):
@@ -82,11 +83,12 @@ def activate(request, uidb64, token):
 
 
 def notify(request, user):
-	current_site = get_current_site(request)
+	current_site = Site.objects.get_current().domain
+
 	context_dict = {
         'name': '{0} {1}'.format(user.last_name, user.first_name),
         'user': user,
-        'domain': current_site.domain,
+        'domain': current_site
         'uid': urlsafe_base64_encode(force_bytes(user.pk)),
         'token': account_activation_token.make_token(user),
     }
