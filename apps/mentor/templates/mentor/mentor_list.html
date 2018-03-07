@@ -21,9 +21,13 @@
 					{% for mentor in mentors %}
 					<div class="col-md-4">
 						<div class="dtl12">
-							{% thumbnail mentor.photo "227x180" crop="top" as im %}
-                            <img src="{{im.url}}" alt="{{mentor}}">
-                            {% endthumbnail %}
+								{% if mentor.photo %}
+								{% thumbnail mentor.photo "240x200" crop="top" as im %}
+								<img src="{{im.url}}" alt="{{mentee.name}}">
+								{% endthumbnail %}
+								{% else %}
+								<img src="{% static 'images/avatar.png' %}" alt="" style="width: 168px; height: 141px;">
+								{% endif %}
                             <h4>{{mentor.name}}</h4>
                             <div class="dtl">
                                 <h3>{{mentor.name}}</h3>

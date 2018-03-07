@@ -53,7 +53,10 @@ def signup(request):
 		except Exception as e:
 			messages.error(request, e)
 
-		return HttpResponseRedirect(reverse('mentee:mentee-list'))
+		if user_type == 'mentee':
+			return HttpResponseRedirect(reverse('mentee:edit'))
+		else:
+			return HttpResponseRedirect(reverse('mentor:edit'))
 	else:
 		user_form = CustomUserCreationForm()
 		context = {'u_form': user_form}
@@ -99,7 +102,11 @@ def notify(request, user):
 	msg.attach_alternative(html_message, "text/html")
 	try:
 		msg.send()
-		messages.info(request, 'Check your email for a link to activate your account.')
+		messages.info(request, 'Check your email.')
+		user.is_active = True
+		user.save()
+		user.backend = 'django.contrib.auth.backends.ModelBackend'
+		login(request, user)
 		return redirect('accounts:activation_sent')
 	except:#I activate the user if I can't send email and log.
 	    user.is_active = True
@@ -107,7 +114,7 @@ def notify(request, user):
 	    user.backend = 'django.contrib.auth.backends.ModelBackend'
 	    login(request, user)
 
-	    messages.success(request, 'Your account is now active')
+	    messages.success(request, "Welcome %s, your account is now active. You can now update your profile." % (user.first_name))
 	    return reverse('mentee:mentee-list')
 
 def alternative_notify(request):

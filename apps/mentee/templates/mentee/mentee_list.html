@@ -21,9 +21,13 @@
 					{% for mentee in mentees %}
 					<div class="col-md-4">
 						<div class="dtl12">
+							{% if mentee.photo %}
                             {% thumbnail mentee.photo "240x200" crop="top" as im %}
                             <img src="{{im.url}}" alt="{{mentee.name}}">
-                            {% endthumbnail %}
+							{% endthumbnail %}
+							{% else %}
+							<img src="{% static 'images/avatar.png' %}" alt="" style="width: 168px; height: 141px;">
+							{% endif %}
                             <h4>{{mentee}}</h4>
                             <div class="dtl">
                                 <h3>{{mentee.name}}</h3>
