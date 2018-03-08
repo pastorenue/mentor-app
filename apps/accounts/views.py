@@ -154,3 +154,13 @@ def mentorship_request(request):
 		'requests': req
 	}
 	return 0
+
+
+def error_404(request):
+        data = {}
+        return render(request,'404.html', data)
+
+ 
+def error_500(request):
+        data = {}
+        return render(request,'500.html', data)

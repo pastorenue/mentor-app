@@ -21,6 +21,9 @@ from django.conf.urls.static import static
 from django.core.urlresolvers import reverse
 from accounts.views import dashboard, landing_view
 from django.contrib.auth import views as auth_views
+from django.conf.urls import handler404, handler500
+from accounts.views import error_404, error_500
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -52,5 +55,8 @@ urlpatterns = [
     url(r'^notifications/', include('notifications.urls', namespace='notifications')),
     url(r'^messages/', include('django_messages.urls')),
 ]
+
+handler404 = error_404
+handler500 = error_500
 
 urlpatterns+=static(setting.MEDIA_URL, document_root=setting.MEDIA_ROOT)
