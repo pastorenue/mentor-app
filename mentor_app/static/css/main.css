@@ -1281,7 +1281,7 @@ ul.address {
   z-index: 300;
   height: 50px;
   width: 100%;
-  background: #3b5998;
+  background: linear-gradient(45deg, #3b5998, #163356);
   box-shadow: 0px 2px 3px #163356;
 }
 .main-wrapper img {
@@ -1562,7 +1562,7 @@ ul.address {
   font-size: 15px;
 }
 .dtl12 .dtl {
-    background: rgba(59,89,152,0.9);
+    background: #ae127980;
     background-image: url("../images/noise.png");
     width: 100%;
     position: absolute;

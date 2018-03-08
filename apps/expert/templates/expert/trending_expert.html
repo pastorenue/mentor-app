@@ -1,13 +1,17 @@
 {% load staticfiles thumbnail %}
 <div class="panel panel-default top-margin">
 	<div class="div-header">
-		<h3><strong>Trending Experts</strong> <span style="font-size: 15px; float: right;"><a href="{% url 'expert:expert-list' %}">View all</a></span></h3>
+		<h3 style="color: #4bbf7f;"><strong>Trending Experts</strong> <span style="font-size: 13px; float: right;"><a style="color: #287523 !important;" href="{% url 'expert:expert-list' %}">View all &raquo;</a></span></h3>
 	</div>
 	{% for expert in trending_experts %}
 	<div class="div-content-list">
-		{% thumbnail expert.photo "50x50" crop="top" as im %}
-		 <img src="{{im.url}}" alt="">
-		 {% endthumbnail %}
+		{% if expert.photo %}
+			{% thumbnail expert.photo "50x50" crop="top" as img %}
+			<img src="{{img.url}}" alt="" class="img-circle">
+			{% endthumbnail %}
+		{% else %}
+		<img src="{% static 'images/avatar.png' %}" alt="" class="img-circle" width="50" height="50">
+		{% endif %}
 		<h4>{{expert}}</h4>
 		<h5>Expert in {{expert.industry}}</h5>
 		<a href="{{expert.get_absolute_url}}">See Profile &raquo;</a>

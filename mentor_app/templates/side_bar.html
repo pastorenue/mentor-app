@@ -56,7 +56,7 @@
 {% else %}
 <div class="panel panel-default top-margin">
 	<div class="div-header">
-		<h3><strong>Trending Posts</strong> <span style="font-size: 14px; float: right;"><a href="{% url 'newsroom:news-list' %}">See More &raquo;</a></span></h3>
+		<h3 style="color: #a81680;"><strong>Trending Posts</strong> <span style="font-size: 13px; float: right;"><a style="color: #ca3587;" href="{% url 'newsroom:news-list' %}">See More &raquo;</a></span></h3>
 	</div>
 	{% if recent_posts %}
 	{% for entry in recent_posts %}

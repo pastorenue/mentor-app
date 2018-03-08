@@ -52,8 +52,11 @@ def send_mentor_request(request, slug):
 	Arguments
 		slug:string: Slug value of the mentor
 	"""
-	mentor = Mentor.objects.get(slug=slug)
-	mentorship_request(request, recipient=mentor)
+	try:
+		mentor = Mentor.objects.get(slug=slug)
+		mentorship_request(request, recipient=mentor)
+	except Exception as e:
+		messages.error(request, 'Please ensure that your industry has been selected in your profile. %s' % str(e))
 	return HttpResponseRedirect(reverse('mentee:mentee-profile', kwargs={'slug': request.user.mentee.slug}))
 
 
@@ -66,8 +69,11 @@ def send_expert_request(request, slug):
 	Arguments
 		slug:string: Slug value of the expert
 	"""
-	expert = Expert.objects.get(slug=slug)
-	mentorship_request(request, recipient=expert)
+	try:
+		expert = Expert.objects.get(slug=slug)
+		mentorship_request(request, recipient=expert)
+	except Exception as e:
+		messages.error(request, 'Please ensure that your industry has been selected in your profile %s' % str(e))
 	return HttpResponseRedirect(reverse('mentee:mentee-profile', kwargs={'slug': request.user.mentee.slug}))
 
 

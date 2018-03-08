@@ -21,9 +21,13 @@
 					{% for expert in experts %}
 					<div class="col-md-4">
 						<div class="dtl12">
-							{% thumbnail expert.photo "167x170" crop="top" as im %}
-                <img src="{{im.url}}" alt="{{expert}}">
-              {% endthumbnail %}
+							{% if expert.photo %}
+								{% thumbnail expert.photo "240x200" crop="top" as im %}
+								<img src="{{im.url}}" alt="{{expert.name}}">
+								{% endthumbnail %}
+								{% else %}
+								<img src="{% static 'images/avatar.jpg' %}" alt="" style="width: 168px; height: 141px;">
+								{% endif %}
                 <h4>{{expert.name}}</h4>
                 <div class="dtl">
                     <h3>{{expert.name}}</h3>

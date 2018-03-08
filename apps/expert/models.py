@@ -113,7 +113,7 @@ class Expert(models.Model):
 		orig = slugify(self.name)
 		self.slug = "%s-%s"[:50] % (orig, uuid.uuid4())
 		self.email = self.user.username
-		self.name = "%s, %s" % (user.first_name, user.last_name)
+		self.name = "%s, %s" % (self.user.first_name, self.user.last_name)
 		super(Expert, self).save(*args, **kwargs)
 
 	class Meta:

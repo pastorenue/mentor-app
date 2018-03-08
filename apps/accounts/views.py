@@ -69,7 +69,6 @@ def activation_sent(request):
 
 
 def activate(request, uidb64, token):
-	import pdb; pdb.set_trace()
 	try:
 	    uid = force_text(urlsafe_base64_decode(uidb64))
 	    user = User.objects.get(pk=uid)
@@ -86,6 +85,7 @@ def activate(request, uidb64, token):
 
 
 def notify(request, user):
+	user = user
 	current_site = Site.objects.get_current().domain
 
 	context_dict = {

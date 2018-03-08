@@ -25,9 +25,13 @@
 			<div class="row">
 				<div class="panel panel-default top-margin">
 					<div style="height: 150px;">
-						{% thumbnail expert.background_image "875x150" crop="center" as img %}
-					<img src="{{img.url}}" alt="" class=""> 
-					{% endthumbnail %}
+						{% if expert.photo %}
+							{% thumbnail expert.photo "120x120" crop="top" as img %}
+							<img src="{{img.url}}" alt="" style="position: absolute; left: 4%; top: 125px; padding: 5px; background: #fff;" class="img-circle">
+							{% endthumbnail %}
+						{% else %}
+						<img src="{% static 'images/avatar.png' %}" alt="" class="img-circle">
+						{% endif %}
 					</div>
 					<div class="lc-profile">
 					{% thumbnail expert.photo "120x120" crop="top" as img %}
