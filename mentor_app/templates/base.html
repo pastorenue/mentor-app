@@ -76,6 +76,13 @@
     </header>
     {% block banner %}{% endblock %}
     {% block mainbar %}
+    {% if user.is_authenticated %}
+      {% if update_percentage < 70 %}
+      <div style="background: #fff5f5; text-align: center; padding: 6px;">
+        <h5 style=" color: #e44646; font-size: 14px;">Your profile is <strong>{{update_percentage}}%</strong> completed. Please click <a href="{{get_profile.get_absolute_edit}}">HERE</a> to edit and complete your profile information</h5>
+      </div>
+      {% endif%}
+    {% endif %}
     <div  class="row main-header" style="background: #fff;">
     {% block header %}<h1>Our Core Values</h1>{% endblock %}
     </div>
@@ -89,6 +96,7 @@
 {% endblock %}
 
     <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" href="{% static 'js/jquery-ui.custom.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/wow.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/mousescroll.js' %}"></script>
@@ -96,9 +104,13 @@
     <script type="text/javascript" src="{% static 'js/jquery.countTo.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/lightbox.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.0.1/js/utils.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
      <script>
+       //Load the tooltip
+      $(document).ready(function(){
+          $('[data-toggle="popover"]').tooltip();
+      });
+
       function hideMe(){
             $("#notification").hide('slideUp');
           }

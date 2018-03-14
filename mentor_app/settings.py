@@ -23,7 +23,7 @@ ADMINS = (
     ('Pastor Emmanuel', 'pastorenuel@gmail.com'),
 )
 
-DEBUG = False
+DEBUG = True
 SECRET_KEY = os.environ.get('SECRET_KEY', 'i-a=nwysyhwu8^xhck3k78oar=%fryvcn^5c7n7m-_=a6+!2-6')
 EMAIL_HOST_PASSWORD = ''
 ALLOWED_HOSTS = ['.thebossoffice.com', '138.68.145.121', 'localhost']
@@ -202,3 +202,4 @@ TEMPLATE_DEBUG=True
 #Newsletter settings
 NEWSLETTER_CONFIRM_EMAIL = False
 SITE_ID=2
+DEFAULT_DOMAIN = "thebossoffice.com"

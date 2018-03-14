@@ -4,14 +4,14 @@ from django.views.generic import ListView, DetailView
 from notifications.signals import notify
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from mentor.models import Mentor
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.db import transaction
 from .forms import *
-from accounts.mailing import *
+from accounts.mailing import send_mentorship_mail
 from expert.models import Address, Expert
 from expert.forms import AddressForm
 
@@ -44,6 +44,7 @@ class MenteeDetailView(DetailView):
 		return context
 
 @login_required
+@user_passes_test(lambda u: u.mentee)
 @transaction.atomic
 def send_mentor_request(request, slug):
 	"""
@@ -61,6 +62,7 @@ def send_mentor_request(request, slug):
 
 
 @login_required
+@user_passes_test(lambda u: u.mentee)
 @transaction.atomic
 def send_expert_request(request, slug):
 	"""
@@ -125,6 +127,7 @@ def reject(request, mentee_id, mentor_id):
 
 
 @login_required
+@user_passes_test(lambda u: u.mentee)
 def edit_profile(request):
 	instance = get_object_or_404(Mentee, user=request.user)
 	address = None
@@ -162,11 +165,15 @@ def mentorship_request(request, recipient=None):
 	if recipient == None:
 		raise ValueError("Choose an appropriate user")
 
-	new_notify = notify.send(request.user, 
+	try:
+		new_notify = notify.send(request.user, 
 							recipient=recipient.user, 
 							verb="A mentor request has been sent",
 							description="%s is demanding your services as a Mentor \
 							in the area of %s" % (request.user.mentee, request.user.mentee.industry))
+	except:
+		messages.error(request, "Please Update your profile so the system can capture your industry type")
+		return HttpResponseRedirect(reverse('mentee:mentee-list'))
 	if not MentorshipRequest.objects.filter(mentee=request.user, to_user=recipient.user,).exists():
 		MentorshipRequest.objects.create(mentee=request.user, 
 										to_user=recipient.user, 

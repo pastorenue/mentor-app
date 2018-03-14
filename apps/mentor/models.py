@@ -58,6 +58,9 @@ class Mentor(models.Model):
 	def get_absolute_url(self):
 		return reverse('mentor:mentor-profile', kwargs={'slug': self.slug})
 
+	def get_absolute_edit(self):
+		return reverse('mentor:edit')
+
 	def save(self, *args, **kwargs):
 		orig = slugify(self.name)
 		self.slug = "%s-%s"[:50] % (orig, uuid.uuid4())

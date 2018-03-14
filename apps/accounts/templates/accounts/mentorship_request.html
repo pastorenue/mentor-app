@@ -7,7 +7,12 @@
 		<h3>{{sender.first_name}} {{sender.last_name}} is requesting your mentorship</h3>
 		<p>Please click on any of the links below to to take an action</p>
 		<div style="padding: 20px 10px;">
-			<span style="margin-right: 20px;"><a href="http://{{ domain }}{{sender.mentee.get_absolute_url}}" style="border-radius: 30px; padding: 8px 35px; background: #3b5998; color: #fff; text-decoration: none;">View {{sender.last_name}}'s Profile</a></span><span style="margin-right: 20px;"><a href="http://{{ domain }}{% url 'mentee:accept' mentee_id=sender.id mentor_id=receiver.id %}" style="border-radius: 30px; padding: 6px 25px; border: 2px solid #03a87c; color: #03a87c; text-decoration: none;">Accept Request</a></span><span><a href="http://{{ domain }}{% url 'mentee:reject' mentee_id=sender.id mentor_id=receiver.id %}" style="border-radius: 30px; padding: 6px 25px; border: 2px solid #c12; color: #c12; text-decoration: none;">Reject Request</a></span>
+			<span style="margin-right: 20px;">
+				<a href="{{ domain }}{{sender.mentee.get_absolute_url}}" style="border-radius: 30px; padding: 8px 35px; background: #3b5998; color: #fff; text-decoration: none;">View {{sender.last_name}}'s Profile</a>
+			</span>
+			<span style="margin-right: 20px;">
+				<a href="{{ domain }}{% url 'mentee:accept' mentee_id=sender.id mentor_id=receiver.id %}" style="border-radius: 30px; padding: 6px 25px; border: 2px solid #03a87c; color: #03a87c; text-decoration: none;">Accept Request</a></span>
+			<span><a href="{{ domain }}{% url 'mentee:reject' mentee_id=sender.id mentor_id=receiver.id %}" style="border-radius: 30px; padding: 6px 25px; border: 2px solid #c12; color: #c12; text-decoration: none;">Reject Request</a></span>
 		</div>
 	</div>
 	{% endautoescape %}

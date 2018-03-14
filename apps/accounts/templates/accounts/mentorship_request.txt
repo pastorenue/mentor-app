@@ -1,0 +1,5 @@
+Hi {{ receiver.first_name }},
+{{sender.first_name}} {{sender.last_name}} is requesting your mentorship
+Please click on any of the links below to to take an action
+
+{{ domain }}{{sender.mentee.get_absolute_url}}

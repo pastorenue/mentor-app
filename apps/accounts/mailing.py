@@ -26,6 +26,7 @@ def send_mentorship_mail(request, sender, receiver):
 	except Exception as e:
 		messages.error(request, e)
 	
+
 def send_response_mail(request, sender, receiver):
 	current_site = get_current_site(request)
 	context_dict = {
@@ -34,7 +35,10 @@ def send_response_mail(request, sender, receiver):
 		'domain': current_site.domain
 	}
 
+	import pdb; pdb.set_trace()
+
 	txt_message = render_to_string('accounts/mentorship_request.txt', context_dict)
 	html_message = render_to_string('accounts/mentorship_request.html', context_dict)
 	subject, from_email, to = 'thebossoffice.com: Mentorship Response', 'no-reply@thebossoffice.com', user.username
 	msg = EmailMultiAlternatives(subject, txt_message, from_email, [to])
+

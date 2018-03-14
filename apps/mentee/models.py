@@ -58,6 +58,14 @@ class Mentee(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('mentee:mentee-profile', kwargs={'slug': self.slug})
+	
+	def get_absolute_edit(self):
+		return reverse('mentee:edit')
+
+	@property 
+	def percentage_complete(self):
+		percent = get_profile_complete(self)
+		return percent
 
 	def save(self, *args, **kwargs):
 		orig = slugify(self.name)
@@ -86,3 +94,50 @@ class MentorshipRequest(models.Model):
 		verbose_name = _(u'Mentorship Request')
 		verbose_name_plural = _(u'Mentorship Requests')
 		ordering = ('-date_created',)
+
+
+def get_profile_complete(self):
+	percent = { 
+			'title': 5, 
+			'name': 2, 
+			'photo': 10,
+			'background_image': 5,
+			'industry': 42, 
+			'phone_number': 2,
+			'address': 5,
+			'time_with_mentor':2,
+			'mode_of_communication':2,
+			'mode_details': 5,
+			'name_of_business': 10,
+			'year_of_commencement': 5,
+			'level_of_education': 5
+		}
+
+	total = 0
+	if self.title:
+		total += percent.get('title', 0)
+	if self.name:
+		total += percent.get('name', 0)
+	if self.photo:
+		total += percent.get('photo', 0)
+	if self.background_image:
+		total += percent.get('background_image', 0)
+	if self.industry:
+		total += percent.get('industry', 0)
+	if self.phone_number:
+		total += percent.get('phone_number', 0)
+	if self.address:
+		total += percent.get('address', 0)
+	if self.time_with_mentor:
+		total += percent.get('time_with_mentor', 0)
+	if self.mode_of_communication:
+		total += percent.get('mode_of_communication', 0)
+	if self.name_of_business:
+		total += percent.get('name_of_business', 0)
+	if self.year_of_commencement:
+		total += percent.get('year_of_commencement', 0)
+	if self.level_of_education:
+		total += percent.get('level_of_education', 0)
+	
+	#and so on
+	return int(total)

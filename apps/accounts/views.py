@@ -86,7 +86,7 @@ def activate(request, uidb64, token):
 
 def notify(request, user):
 	user = user
-	current_site = Site.objects.get_current().domain
+	current_site = Site.objects.get(pk=2).domain
 
 	context_dict = {
         'name': '{0} {1}'.format(user.last_name, user.first_name),

@@ -3,7 +3,7 @@ from .models import Expert
 from django.views.generic import ListView, DetailView
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from .forms import *
 
 from django.contrib import messages
@@ -37,6 +37,7 @@ class ExpertDetailView(DetailView):
 
 
 @login_required
+@user_passes_test(lambda u: u.expert)
 def edit_profile(request):
 	instance = get_object_or_404(Expert, user=request.user)
 	context = {}

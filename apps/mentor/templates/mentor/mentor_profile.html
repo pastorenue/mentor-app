@@ -32,7 +32,11 @@
 						<div class="com-md-3">
 							{% if user.is_authenticated %}
 								{% if user.mentee %}
-								<a href="{% url 'mentee:send-mentor-request' slug=mentor.slug %}">Request mentor's Services</a>
+									{% if update_percentage < 75 %}
+									<a href="#" data-toggle="popover" title="Your profile is just {{update_percentage}}% complete. Update profile to enable you send a mentorship request.">Request Mentor's Services</a>
+									{% else %}
+									<a href="{% url 'mentee:send-mentor-request' slug=mentor.slug %}">Request mentor's Services</a>
+									{% endif %}
 								{% elif user == mentor.user %}
 								<a href="{% url 'mentor:edit' %}">Edit Account</a>
 								{% else %}

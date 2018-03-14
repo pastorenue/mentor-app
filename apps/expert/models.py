@@ -108,6 +108,9 @@ class Expert(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('expert:expert-profile', kwargs={'slug': self.slug})
+	
+	def get_absolute_edit(self):
+		return reverse('expert:edit')
 
 	def save(self, *args, **kwargs):
 		orig = slugify(self.name)
