@@ -1,0 +1,6 @@
+/******************************************/
+********* TODOs ***************************
+*******************************************
+
+1. Send message to the User's email address during conversation
+2. Fix the "Mark as Read" button in the Notification details

@@ -1488,11 +1488,7 @@ ul.address {
   -o-transform: translateY(-6px);
 }
 .news-list img {
-  width: 254px;
-  height: 150px;
-  padding: 4px;
   border-radius: 3px;
-  border: 1px solid rgba(59,89,152,.3);
 
 }
 .news-list .content {

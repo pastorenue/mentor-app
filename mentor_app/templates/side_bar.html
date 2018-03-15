@@ -61,8 +61,8 @@
 	{% if recent_posts %}
 	{% for entry in recent_posts %}
 	<div class="news-list">
-		{% thumbnail entry.illustration "254x70" crop="center" as im %}
-		<img src="{{im.url}}" alt="tweets" height="{{im.height}}">
+		{% thumbnail entry.illustration "254x50" crop="center" as im %}
+		<img src="{{im.url}}" alt="tweets">
 		{% endthumbnail %}
 		<div class="content">
 			<a href="{% url 'newsroom:news-detail' slug=entry.slug %}"><h4>{{entry.title|title}} <span>[posted: {{entry.date_created}}]</span></h4></a>

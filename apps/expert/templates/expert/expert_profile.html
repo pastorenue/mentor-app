@@ -34,6 +34,8 @@
 								{% if user.mentee %}
 								{% if update_percentage < 75 %}
 									<a href="#" data-toggle="popover" title="Your profile is just {{update_percentage}}% complete. Update your profile to enable you send a mentorship request.">Request Expert's Services</a>
+									{% elif expert.percentage_complete < 75 %}
+									<a href="#" data-toggle="popover" title="Sorry! You can't send a mentorship request to {{expert}}. It appears there is an issue with the account currently. Try again Later">Request Expert's Services</a>
 									{% else %}
 									<a href="{% url 'mentee:send-mentor-request' slug=mentor.slug %}">Request Expert's Services</a>
 									{% endif %}

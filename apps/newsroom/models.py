@@ -41,7 +41,7 @@ class EntryManager(models.Manager):
 
 class Entry(models.Model):
 	author = models.ForeignKey(Author, null=True)
-	title = models.CharField(max_length=200, null=True)
+	title = models.CharField(max_length=300, null=True)
 	sub_title = models.CharField(max_length=100, null=True, blank=True)
 	content = HTMLField()
 	illustration = models.ImageField(upload_to='uploads/blogs/', blank=True)

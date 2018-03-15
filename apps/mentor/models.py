@@ -61,6 +61,11 @@ class Mentor(models.Model):
 	def get_absolute_edit(self):
 		return reverse('mentor:edit')
 
+	@property 
+	def percentage_complete(self):
+		percent = get_profile_complete(self)
+		return percent
+
 	def save(self, *args, **kwargs):
 		orig = slugify(self.name)
 		self.slug = "%s-%s"[:50] % (orig, uuid.uuid4())
@@ -72,3 +77,50 @@ class Mentor(models.Model):
 		verbose_name = _(u'Mentor')
 		verbose_name_plural = _(u'Mentors')
 		ordering = ('name',)
+
+
+
+def get_profile_complete(self):
+	percent = { 
+			'title': 5, 
+			'name': 2, 
+			'photo': 10,
+			'background_image': 5,
+			'industry': 42, 
+			'phone_number': 2,
+			'cv_file':2,
+			'years_of_experience':7,
+			'age_range': 5,
+			'short_biography': 5,
+			'availability': 15,
+			'linkedin_url': 5
+		}
+
+	total = 0
+	if self.title:
+		total += percent.get('title', 0)
+	if self.name:
+		total += percent.get('name', 0)
+	if self.photo:
+		total += percent.get('photo', 0)
+	if self.background_image:
+		total += percent.get('background_image', 0)
+	if self.industry:
+		total += percent.get('industry', 0)
+	if self.phone_number:
+		total += percent.get('phone_number', 0)
+	if self.cv_file:
+		total += percent.get('cv_file', 0)
+	if self.years_of_experience:
+		total += percent.get('years_of_experience', 0)
+	if self.age_range:
+		total += percent.get('age_range', 0)
+	if self.short_biography:
+		total += percent.get('short_biography', 0)
+	if self.availability:
+		total += percent.get('availability', 0)
+	if self.linkedin_url:
+		total += percent.get('linkedin_url', 0)
+	
+	#and so on
+	return int(total)

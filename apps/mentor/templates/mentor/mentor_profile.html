@@ -34,8 +34,10 @@
 								{% if user.mentee %}
 									{% if update_percentage < 75 %}
 									<a href="#" data-toggle="popover" title="Your profile is just {{update_percentage}}% complete. Update profile to enable you send a mentorship request.">Request Mentor's Services</a>
+									{% elif mentor.percentage_complete < 75 %}
+									<a href="#" data-toggle="popover" title="Sorry! You can't send a mentorship request to {{mentor}}. It appears there is an issue with the account currently. Try again Later">Request mentor's Services</a>
 									{% else %}
-									<a href="{% url 'mentee:send-mentor-request' slug=mentor.slug %}">Request mentor's Services</a>
+									<a href="{% url 'mentee:send-mentor-request' slug=mentor.slug %}">Request Mentor's Services</a>
 									{% endif %}
 								{% elif user == mentor.user %}
 								<a href="{% url 'mentor:edit' %}">Edit Account</a>
@@ -68,7 +70,7 @@
 							</div>
 							<div class="col-md-6">
 								<p><strong>Last Active:</strong> <span>{{mentor.date_modified}}</span></p> 
-								<p><strong>Type of Business to Handle:</strong> <span>{{mentor.type_to_handle}}</span></p>
+								<p><strong>Years of Experience:</strong> <span>{{mentor.years_of_experience}}</span></p>
 							</div>
 						</div>
 					</div>
