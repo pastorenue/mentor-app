@@ -44,7 +44,7 @@
 					<div class="row" style="padding: 10px;">
 						{% for req in requests %}
 						<div class="col-md-12">
-							<a href="" data-toggle="modal" data-target="#{{notification.id}}">
+							<a href="" data-toggle="modal" data-target="#{{req.id}}">
 								<div class="other-detail">
 									<h5>{{req.mentee.mentee.name}} of {{req.mentee.mentee.name_of_business}}, under the {{req.mentee.mentee.industry}} category has sent you a mentorship request</h5>
 									<h5>{{req.date_created}}</h5>
@@ -52,8 +52,8 @@
 								</div>
 							</a>
 						</div>
-						<div class="modal fade" id="{{notification.id}}" tabindex="-1" role="dialog" aria-hidden="true">
-						  {% include 'notifications/notification_detail.html' %}
+						<div class="modal fade" id="{{req.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+						  {% include 'accounts/req_details.html' %}
 						</div>
 						{% empty %}
 						<p style="text-align: center; margin: 20px auto;">{% if user.mentee %}You have not sent any mentorship requests yet... {% else %}There are no mentorship requests available for you now. {% endif %}</p>

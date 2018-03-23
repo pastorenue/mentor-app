@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^our-history/$', TemplateView.as_view(template_name='_about.html'), name='about'),
     url(r'^home/$', TemplateView.as_view(template_name='index.html'), name='home'),
-    
+
     # Auth Views
     url(r'^auth/login/$', auth_views.LoginView.as_view(template_name='login.html'), name='user_login'),
     url(r'^auth/password_change$', auth_views.PasswordChangeView.as_view(template_name='password_change.html'), name='password_change'),
@@ -41,7 +41,7 @@ urlpatterns = [
     url(r'^auth/logout/$', auth_views.LogoutView.as_view(), name='logout'),
     url(r'^$', landing_view, name='landing'),
     url(r'^auth/dashboard/$', dashboard, name='dashboard'),
-    
+
     # Custom Apps BaseViews
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
     url(r'^mentee/', include('mentee.urls', namespace='mentee')),

@@ -23,7 +23,7 @@ ADMINS = (
     ('Pastor Emmanuel', 'pastorenuel@gmail.com'),
 )
 
-DEBUG = False
+DEBUG = True
 SECRET_KEY = os.environ.get('SECRET_KEY', 'i-a=nwysyhwu8^xhck3k78oar=%fryvcn^5c7n7m-_=a6+!2-6')
 EMAIL_HOST_PASSWORD = ''
 ALLOWED_HOSTS = ['.thebossoffice.com', '138.68.145.121', 'localhost']
@@ -179,7 +179,7 @@ STATICFILES_DIRS = (
 #Login Credentials and urls
 LOGIN_URL = '/auth/login' #reverse_lazy('login') ##VERY HARMFUL TO LOGINREQUIRED VIEWS
 LOGIN_REDIRECT_URL = 'mentee:mentee-list'
-LOGOUT_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = '/auth/login'
 
 PAGE_SIZE = 20
 PAGE_ORPHANS = 5

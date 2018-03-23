@@ -143,7 +143,7 @@ class MentorRequestListView(ListView):
 
 	def get_queryset(self):
 		queryset = MentorshipRequest.objects.filter(to_user=self.request.user)
-		print(queryset)
+	
 		return queryset
 
 

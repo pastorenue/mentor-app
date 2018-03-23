@@ -6,45 +6,40 @@
 	    <h4 class="modal-title" style="text-align: center; color: #fff;"><strong>Mentorship Request</strong></h4>
 	  </div>
 	  <div class="modal-body">
-		{% if notification.actor.mentee %}
 		<div>
 			<h4><strong>Mentee's Profile</strong></h4>
 		</div>
 		<div class="l-name">
 			<div style="display: inline-block; float: left; width: 20%;">
-				{% thumbnail notification.actor.mentee.photo "100x100" crop="top" as im %}
+				{% thumbnail req.mentee.mentee.photo "100x100" crop="top" as im %}
 				 <img src="{{im.url}}" alt="">
 				 {% endthumbnail %}
 			</div>
 			 <div style="display: inline-block; width: 75%;">
 			 	<table class="table table-striped table-condensed">
 			 		<tbody>
-			 			<tr><td>Name: </td><td>{{notification.actor.mentee}}</td></tr>
-			 			<tr><td>Business Name: </td><td>{{notification.actor.mentee.name_of_business}}</td></tr>
-			 			<tr><td>Year Commenced: </td><td>{{notification.actor.mentee.year_of_commencement}}</td></tr>
-			 			<tr><td>Address: </td><td>{{notification.actor.mentee.address}}</td></tr>
+			 			<tr><td>Name: </td><td>{{req.mentee.mentee}}</td></tr>
+			 			<tr><td>Business Name: </td><td>{{req.mentee.mentee.name_of_business}}</td></tr>
+			 			<tr><td>Year Commenced: </td><td>{{req.mentee.mentee.year_of_commencement}}</td></tr>
+			 			<tr><td>Address: </td><td>{{req.mentee.mentee.address}}</td></tr>
 			 		</tbody>
 			 	</table>
 			 </div>
-			 <h5>{{notification.description}}</h5>
+			 <div>
+				<h5>{{req.mentee.mentee.name}} of {{req.mentee.mentee.name_of_business}}, under the {{req.mentee.mentee.industry}} category has sent you a mentorship request</h5>
+				<h5><strong>Date Sent: </strong>{{req.date_created}}</h5>
+			</div>
 		</div>
-		{% else %}
-		<div>
-			<h4>{{ notification.description}}</h4>
-		</div>
-		{% endif %}
 	  </div>
 	  {% if not requests %}
 	  <div class="modal-footer">
 		  <button onclick="location.href='{% url 'mentee:accept' mentee_id=notification.actor.mentee.user.id mentor_id=user.id %}'" class="btn btn-primary">Accept</button>
 		  <button onclick="location.href='{% url 'mentee:reject' mentee_id=notification.actor.mentee.user.id mentor_id=user.id %}'" class="btn btn-danger">Reject</button>
-	  	<button class="btn btn-primary">Mark as read</button>
 	  </div>
 	  {% else %}
 	  <div class="modal-footer">
 		  <button onclick="location.href='{% url 'mentee:accept' mentee_id=req.mentee.mentee.user.id mentor_id=user.id %}'" class="btn btn-primary">Accept</button>
 		  <button onclick="location.href='{% url 'mentee:reject' mentee_id=req.mentee.mentee.user.id mentor_id=user.id %}'" class="btn btn-danger">Reject</button>
-	  	<button class="btn btn-primary">Mark as read</button>
 	  </div>
 	  {% endif %}
 	</div>
