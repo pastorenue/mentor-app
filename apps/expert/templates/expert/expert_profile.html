@@ -66,11 +66,12 @@
 							</div>
 							<div class="col-md-6">
 								<p><strong>Area of Expertise:</strong> 
-									{% if expert.industry == "Others" %}
-									<span>{{expert.specify_industry}}</span></p>
+									{% if expert.industry.title == "Others" %}
+									<span>{{expert.specify_industry}}</span>
 									{% else %}
-									<span>{{expert.industry}}</span></p>
+									<span>{{expert.industry}}</span>
 									{% endif %}
+								</p>
 								<p><strong>Availability:</strong> <span>{{expert.availability}}</span></p> 
 							</div>
 							<div class="col-md-6">
