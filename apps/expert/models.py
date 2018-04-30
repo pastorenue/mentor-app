@@ -120,8 +120,11 @@ class Expert(models.Model):
 
 	@property
 	def get_industry(self):
-		if self.industry.name == "Others":
-			return self.specify_industry
+		if self.industry:
+			if self.industry.name == "Others":
+				return self.specify_industry
+			else:
+				return self.industry
 		else:
 			return self.industry
 
