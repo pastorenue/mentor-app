@@ -62,6 +62,13 @@ class Mentor(models.Model):
 	def get_absolute_edit(self):
 		return reverse('mentor:edit')
 
+	@property
+	def get_industry(self):
+		if self.industry.name == "Others":
+			return self.specify_industry
+		else:
+			return self.industry
+
 	@property 
 	def percentage_complete(self):
 		percent = get_profile_complete(self)

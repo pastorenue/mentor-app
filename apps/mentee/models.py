@@ -44,6 +44,7 @@ class Mentee(models.Model):
 	level_of_education = models.CharField(max_length=27, choices=QUALIFICATION_CHOICES, null=True, blank=True)
 	name_of_business = models.CharField(max_length=150, null=True, blank=True)
 	industry = models.ForeignKey(Industry, null=True, blank=True)
+	specify_industry = models.CharField('If Others, Specify', max_length=100, null=True, blank=True)
 	address = models.ForeignKey(Address, null=True, blank=True)
 	slug = models.SlugField(max_length=255, unique=True)
 	year_of_commencement = models.IntegerField(choices=YEAR_CHOICES, default=datetime.datetime.now().year) 
@@ -66,6 +67,13 @@ class Mentee(models.Model):
 	def percentage_complete(self):
 		percent = get_profile_complete(self)
 		return percent
+
+	@property
+	def get_industry(self):
+		if self.industry.name == "Others":
+			return self.specify_industry
+		else:
+			return self.industry
 
 	def save(self, *args, **kwargs):
 		orig = slugify(self.name)

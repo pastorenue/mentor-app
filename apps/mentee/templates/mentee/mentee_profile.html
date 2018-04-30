@@ -52,11 +52,7 @@
 							</div>
 							<div class="col-md-6">
 								<p><strong>Industry:</strong> 
-									{% if mentee.industry.name == "Others" %}
-									<span>{{mentee.specify_industry}}</span>
-									{% else %}
-									<span>{{mentee.industry}}</span>
-									{% endif %}
+									<span>{{mentee.get_industry}}</span>
 								</p>
 								<p><strong>Business Name:</strong> <span>{{mentee.name_of_business}}</span></p> 
 								<p><strong>Date of Commencement:</strong> <span>{{mentee.year_of_commencement}}</span></p>

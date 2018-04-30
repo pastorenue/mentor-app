@@ -13,7 +13,7 @@
 		<img src="{% static 'images/avatar.png' %}" alt="" class="img-circle" width="50" height="50">
 		{% endif %}
 		<h4>{{expert}}</h4>
-		<h5>Expert in {{expert.industry}}</h5>
+		<h5>Expert in {{expert.get_industry}}</h5>
 		<a href="{{expert.get_absolute_url}}">See Profile &raquo;</a>
 	</div>
 	{% empty %}

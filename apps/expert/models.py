@@ -92,6 +92,7 @@ class Expert(models.Model):
 	background_image = models.ImageField(upload_to='uploads/%Y/%m/%d', blank=True)
 	age_range = models.CharField(max_length=5, choices=settings.AGE_RANGE_CHOICES, blank=True)
 	industry = models.ForeignKey(Industry)
+	specify_industry = models.CharField('If Others, Specify', max_length=100, null=True, blank=True)
 	availability = models.CharField(max_length=20, choices=AVAILABILITY_CHOICES, blank=True)
 	email = models.EmailField(blank=True)
 	phone_number = models.CharField(max_length=13, blank=True)
@@ -116,6 +117,13 @@ class Expert(models.Model):
 	def percentage_complete(self):
 		percent = get_profile_complete(self)
 		return percent
+
+	@property
+	def get_industry(self):
+		if self.industry.name == "Others":
+			return self.specify_industry
+		else:
+			return self.industry
 
 	def save(self, *args, **kwargs):
 		orig = slugify(self.name)
