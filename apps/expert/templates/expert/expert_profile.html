@@ -65,7 +65,12 @@
 								<h3>Profile<span style="float: right; padding-right: 10px; font-size: 16px;">{% if user == expert.user %} <a href="{% url 'expert:edit' %}"><i class="fa fa-edit"></i> Edit</a></span>{% endif %}</h3>
 							</div>
 							<div class="col-md-6">
-								<p><strong>Area of Expertise:</strong> <span>{{expert.industry}}</span></p>
+								<p><strong>Area of Expertise:</strong> 
+									{% if expert.industry == "Others" %}
+									<span>{{expert.specify_industry}}</span></p>
+									{% else %}
+									<span>{{expert.industry}}</span></p>
+									{% endif %}
 								<p><strong>Availability:</strong> <span>{{expert.availability}}</span></p> 
 							</div>
 							<div class="col-md-6">

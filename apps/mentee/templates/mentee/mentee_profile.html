@@ -51,7 +51,13 @@
 								<h3>Profile <span style="float: right; padding-right: 10px; font-size: 16px;">{% if user == mentee.user %} <a href="{% url 'mentee:edit' %}"><i class="fa fa-edit"></i> Edit</a></span>{% endif %}</h3>
 							</div>
 							<div class="col-md-6">
-								<p><strong>Industry:</strong> <span>{{mentee.industry}}</span></p>
+								<p><strong>Industry:</strong> 
+									{% if mentee.industry == "Others" %}
+									<span>{{mentee.specify_industry}}</span></p>
+									{% else %}
+									<span>{{mentee.industry}}</span></p>
+									{% endif %}
+								</p>
 								<p><strong>Business Name:</strong> <span>{{mentee.name_of_business}}</span></p> 
 								<p><strong>Date of Commencement:</strong> <span>{{mentee.year_of_commencement}}</span></p>
 							</div>
