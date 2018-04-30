@@ -107,7 +107,7 @@ textarea {
 					{{u_form.as_p}}
 				</div>
 				<div class="panel panel-default" style="padding: 10px;">
-					<p style="cursor: pointer; color: #027db3;" onclick="showTCs()">Please click to read the terms and conditions</p>
+					<p style="cursor: pointer; color: #027db3;" onclick="showTCs()">Please click to read and ACCEPT the terms and conditions</p>
 					<div id="id_tcs" class="tcs">
 						{% if user_type == 'mentor' %}
 						{% include 'accounts/_mentor_tcs.html' %}
@@ -115,7 +115,7 @@ textarea {
 						{% if user_type == 'mentee' %}
 						{% include 'accounts/_mentee_tcs.html' %}
 						{% endif %}
-						<button id="id_accept" type="button" class="btn btn-primary btn-block">I have read and accept</button>
+						<button id="id_accept" type="button" class="btn btn-primary btn-block">I have read and ACCEPTED</button>
 					</div>
 					<button id="submit" type="submit" disabled="disabled" class="btn btn-primary btn-block">SignUp</button>
 				</div>

@@ -38,7 +38,10 @@ class MentorDetailView(DetailView):
 
 @login_required
 def edit_profile(request):
+	linked_in = None
 	instance = get_object_or_404(Mentor, user=request.user)
+	if instance.linkedin_url:
+		linked_in = instance.linkedin_url.split('/')[4]
 	context = {}
 	template_name = 'mentor/edit.html'
 	if request.method == 'POST':
@@ -53,5 +56,6 @@ def edit_profile(request):
 		form = MentorForm(instance=instance)
 		context['form'] = list(form)
 		context['mentor'] = instance
+		context['linkedin'] = linked_in
 
 	return render(request, template_name, context)

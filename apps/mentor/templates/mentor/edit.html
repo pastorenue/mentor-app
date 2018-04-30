@@ -13,6 +13,17 @@
 		color: #000 !important;
 		border-color: #d5d5d5 !important;
 	}
+	.link{
+		position: absolute;
+		top: 30px;
+		font-size: 14px;
+		left: 10px;
+		font-weight: 600;
+		color: #3971a5;
+	}
+	.link-in{
+		padding-left: 183px;
+	}
 </style>
 {% endblock %}
 {% block header %}
@@ -65,10 +76,19 @@
 								</div>
 								<div class="col-md-6">
 									{% for field in form|slice:"7:" %}
+									{% if field.html_name == 'linkedin_url' %}
+									<div class="form-group" style="position: relative;">
+										<label for="{{field.id_for_label}}">{{field.label}}</label><br>
+										<input class="form-control link-in" type="text" id="temp_url" {% if linkedin %}value="{{linkedin}}"{% endif %} placeholder="LinkedIn url e.g thebossofficeng">
+										<span class="link">https://www.linkedin.com/in/</span>
+									</div>
+									<input style="position: absolute; top: -1000px;"  type="url" id="{{field.id_for_label}}" name="{{field.html_name}}" placeholder="LinkedIn url e.g thebossofficeng">
+									{% else %}
 									<div class="form-group">
 										<label for="{{field.id_for_label}}">{{field.label}}</label><br>
 										{{field}}
 									</div>
+									{% endif %}
 									{% endfor %}
 								</div>
 								<div class="col-md-12">
@@ -120,7 +140,14 @@
 <script>
 	$("#id_update").click(function(event) {
 		event.preventDefault();
+		$('#id_linkedin_url').val("https://www.linkedin.com/in/"+$('#temp_url').val());
 		$("#id_save").click();
 	})
+	$('#temp_url').keyup(function() {
+		$('#id_linkedin_url').val("https://www.linkedin.com/in/"+$('#temp_url').val());
+	})
+	$("#id_save").click(function(){
+		$('#id_linkedin_url').val("https://www.linkedin.com/in/"+$('#temp_url').val());
+	});
 </script>
 {% endblock %}

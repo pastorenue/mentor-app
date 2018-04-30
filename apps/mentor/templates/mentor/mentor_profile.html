@@ -67,6 +67,15 @@
 							<div class="col-md-6">
 								<p><strong>Area of expertise:</strong> <span>{{mentor.industry}}</span></p>
 								<p><strong>Availability:</strong> <span>{{mentor.availability}}</span></p> 
+								<p><strong>LinkedIn Profile:</strong> 
+									<span>
+									{% if mentor.linkedin_url %}
+									<a href="{{mentor.linkedin_url}}" target="_blank">{{mentor.linkedin_url|truncatechars:"20"}}</a>
+									{% else %}
+									Not Specified Yet
+									{% endif %}
+									</span>
+								</p> 
 							</div>
 							<div class="col-md-6">
 								<p><strong>Last Active:</strong> <span>{{mentor.date_modified}}</span></p> 

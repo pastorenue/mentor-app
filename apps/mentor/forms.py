@@ -16,8 +16,9 @@ class MentorForm(forms.ModelForm):
 		self.fields['availability'].widget.attrs = {'class':'form-control'}
 		self.fields['years_of_experience'].widget.attrs = {'class':'form-control'}
 		self.fields['cv_file'].widget.attrs = {'class':'form-control'}
-		self.fields['linkedin_url'].widget.attrs = {'class':'form-control'}
+		self.fields['linkedin_url'].widget.attrs = {'class':'form-control', 'placeholder':'Enter your linkedin url e.g thebossofficeng'}
 		self.fields['industry'].widget.attrs = {'class':'form-control'}
+		self.fields['specify_industry'].widget.attrs = {'class':'form-control', 'placeholder': 'Please Specify your industry'}
 		self.fields['email'].widget.attrs = {'class':'form-control'}
 		self.fields['name'].widget.attrs = {'class':'form-control'}
 		self.fields['background_image'].widget.attrs = {'class':'form-control'}

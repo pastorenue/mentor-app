@@ -26,6 +26,8 @@ from mentee.models import MentorshipRequest, Mentee
 from mentor.models import Mentor
 from django.conf import settings
 from django.contrib.sites.models import Site
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 
 
 def dashboard(request):
@@ -164,3 +166,21 @@ def error_404(request):
 def error_500(request):
         data = {}
         return render(request,'500.html', data)
+
+		
+
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return HttpResponseRedirect(reverse('mentee:mentee-list'))
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'password_change.html', {
+        'form': form
+    })

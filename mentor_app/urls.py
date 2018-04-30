@@ -19,7 +19,7 @@ from django.views.generic import TemplateView
 from django.conf import settings as setting
 from django.conf.urls.static import static
 from django.core.urlresolvers import reverse
-from accounts.views import dashboard, landing_view
+from accounts.views import dashboard, landing_view, change_password
 from django.contrib.auth import views as auth_views
 from django.conf.urls import handler404, handler500
 from accounts.views import error_404, error_500
@@ -32,7 +32,7 @@ urlpatterns = [
 
     # Auth Views
     url(r'^auth/login/$', auth_views.LoginView.as_view(template_name='login.html'), name='user_login'),
-    url(r'^auth/password_change$', auth_views.PasswordChangeView.as_view(template_name='password_change.html'), name='password_change'),
+    url(r'^auth/password_change$', change_password, name='password_change'),
     # url(r'^auth/password_change/done$', auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
     url(r'^auth/password_reset$', auth_views.PasswordResetView.as_view(template_name='password_reset.html'), name='password_reset'),
     url(r'^auth/password_reset/done$', auth_views.PasswordResetDoneView .as_view(template_name='password_reset_done.html'), name='password_reset_done'),
