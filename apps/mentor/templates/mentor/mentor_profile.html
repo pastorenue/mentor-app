@@ -66,7 +66,7 @@
 							</div>
 							<div class="col-md-6">
 								<p><strong>Area of expertise:</strong> 
-									{% if mentor.industry.title == "Others" %}
+									{% if mentor.industry.name == "Others" %}
 									<span>{{mentor.specify_industry}}</span>
 									{% else %}
 									<span>{{mentor.industry}}</span>
