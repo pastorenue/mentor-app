@@ -46,7 +46,7 @@ class Entry(models.Model):
 	content = HTMLField()
 	illustration = models.ImageField(upload_to='uploads/blogs/', blank=True)
 	tags = models.CharField(max_length=300, blank=True)
-	slug = models.SlugField(blank=True)
+	slug = models.SlugField(max_length=300, blank=True)
 	views = models.PositiveIntegerField(default=0)
 	publish = models.BooleanField(_('Publish now'), default=True, help_text="Show this field in the news feed")
 	date_created = models.DateTimeField(auto_now_add=True)
