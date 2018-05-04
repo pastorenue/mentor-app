@@ -56,7 +56,7 @@
 						<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
 							<div class="row" style="padding: 10px;">
 								<div class="col-md-6">
-									{% for field in form|slice:"0:7" %}
+									{% for field in form|slice:":8" %}
 									<div class="form-group">
 										<label for="{{field.id_for_label}}">{{field.label}}</label><br>
 										{{field}}
@@ -64,7 +64,7 @@
 									{% endfor %}
 								</div>
 								<div class="col-md-6">
-									{% for field in form|slice:"7:" %}
+									{% for field in form|slice:"8:" %}
 									<div class="form-group">
 										<label for="{{field.id_for_label}}">{{field.label}}</label><br>
 										{{field}}
@@ -81,29 +81,6 @@
 								</div>
 							</div>
 						</form>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="panel panel-default top-margin">
-					<div class="div-header">
-						<h3><strong>Other mentees in {% if user == mentee.user %} Your {% else %}{{mentee.title}} {{mentee.user.first_name}}'s {% endif %} Area of menteeise</strong></h3>
-					</div>
-					<div class="row" style="padding: 5px 10px;">
-						{% for other_mentee in mentees_for_industry %}
-						<div class="col-sm-3">
-							<a href="{{other_mentee.get_public_url}}">
-								<div class="other-detail">
-									{% thumbnail other_mentee.photo "150x150" crop="top" as img %}
-									<img src="{{img.url}}" alt="">
-									{% endthumbnail %}
-									<h4>{{other_mentee}}</h4>
-								</div>
-							</a>
-						</div>
-						{% empty %}
-						<p style="text-align: center; margin: 20px auto;">Sorry! We couldn't find any other mentees for similar menteeise.</p>
-						{% endfor %}
 					</div>
 				</div>
 			</div>

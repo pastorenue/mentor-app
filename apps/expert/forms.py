@@ -17,7 +17,9 @@ class ExpertForm(forms.ModelForm):
 		self.fields['title'].widget.attrs = {'class':'form-control'}
 		self.fields['name'].widget.attrs = {'class':'form-control'}
 		self.fields['age_range'].widget.attrs = {'class':'form-control'}
+		self.fields['years_of_experience'].widget.attrs = {'class':'form-control'}
 		self.fields['industry'].widget.attrs = {'class':'form-control'}
+		self.fields['specify_industry'].widget.attrs = {'class':'form-control'}
 		self.fields['availability'].widget.attrs = {'class':'form-control'}
 		self.fields['phone_number'].widget.attrs = {'class':'form-control'}
 		self.fields['type_to_handle'].widget.attrs = {'class':'form-control'}

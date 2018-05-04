@@ -62,15 +62,25 @@
 					<div class="panel panel-default top-margin">
 						<div class="lc-detail">
 							<div>
-								<h3>Profile<span style="float: right; padding-right: 10px; font-size: 16px;">{% if user == expert.user %} <a href="{% url 'expert:edit' %}"><i class="fa fa-edit"></i> Edit</a></span>{% endif %}</h3>
+								<h3>Profile</h3>
 							</div>
 							<div class="col-md-6">
 								<p><strong>Area of Expertise:</strong> <span>{{expert.get_industry}}</span></p>
 								<p><strong>Availability:</strong> <span>{{expert.availability}}</span></p> 
+								<p><strong>Years of Experience:</strong> <span>{{expert.years_of_experience}}</span></p> 
 							</div>
 							<div class="col-md-6">
 								<p><strong>Last Active:</strong> <span>{{expert.date_modified}}</span></p> 
 								<p><strong>Type of Business to Handle:</strong> <span>{{expert.type_to_handle}}</span></p>
+								<p><strong>LinkedIn Profile:</strong> 
+									<span>
+									{% if expert.linkedin_url %}
+									<a href="{{expert.linkedin_url}}" target="_blank">{{expert.linkedin_url|truncatechars:"20"}}</a>
+									{% else %}
+									Not Specified Yet
+									{% endif %}
+									</span>
+								</p> 
 							</div>
 						</div>
 					</div>
@@ -79,7 +89,7 @@
 			<div class="row">
 				<div class="panel panel-default top-margin">
 					<div class="div-header">
-						<h3><strong>Other Experts in {% if user == expert.user %} Your {% else %}{{expert.title}} {{expert.user.first_name}}'s {% endif %}Area of Expertise</strong></h3>
+						<h2>Other Experts in {% if user == expert.user %} Your {% else %}{{expert.title}} {{expert.user.first_name}}'s {% endif %}Area of Expertise</h3>
 					</div>
 					<div class="row" style="padding: 5px 10px;">
 						{% for expert in experts_for_industry %}
@@ -109,4 +119,5 @@
 		</div>
 	</div>
 </div>
+>>>>>>> d8056e320d44bc79297db6d6106c6ea0d9b59971
 {% endblock %}

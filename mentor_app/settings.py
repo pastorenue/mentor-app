@@ -1,4 +1,3 @@
-
 """
 Django settings for mentor_app project.
 
@@ -23,7 +22,7 @@ ADMINS = (
     ('Pastor Emmanuel', 'pastorenuel@gmail.com'),
 )
 
-DEBUG = True
+DEBUG = False   
 SECRET_KEY = os.environ.get('SECRET_KEY', 'i-a=nwysyhwu8^xhck3k78oar=%fryvcn^5c7n7m-_=a6+!2-6')
 EMAIL_HOST_PASSWORD = ''
 ALLOWED_HOSTS = ['.thebossoffice.com', '138.68.145.121', 'localhost']
@@ -72,7 +71,8 @@ INSTALLED_APPS = [
     'newsroom',
     'tinymce',
     'newsletters',
-    'django_messages'
+    'django_messages',  
+    'django_summernote'
   
 ]
 
@@ -203,3 +203,4 @@ TEMPLATE_DEBUG=True
 NEWSLETTER_CONFIRM_EMAIL = False
 SITE_ID=2
 DEFAULT_DOMAIN = "thebossoffice.com"
+

@@ -1,11 +1,13 @@
 from django.contrib import admin
+from django_summernote.admin import SummernoteModelAdmin
 from .models import *
 from django.template.defaultfilters import slugify
 
 
 @admin.register(Entry)
-class EntryAdmin(admin.ModelAdmin):
-	list_display = ('author', 'title')
+class EntryAdmin(SummernoteModelAdmin):
+	summernote_fields = ('content',)
+	
 
 	def save_model(self, request, obj, form, change):
 		obj.slug = slugify(obj.title)

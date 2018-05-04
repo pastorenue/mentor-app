@@ -2,11 +2,13 @@ from django.shortcuts import render, get_object_or_404
 from .models import Mentor
 from django.views.generic import ListView, DetailView
 from mentee.models import MentorshipRequest
+from expert.models import Expert
 from django.http import HttpResponseRedirect	
 from django.core.urlresolvers import reverse
 from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db import transaction
 # Create your views here.
 class MentorListView(ListView):
 	model = Mentor
@@ -59,3 +61,26 @@ def edit_profile(request):
 		context['linkedin'] = linked_in
 
 	return render(request, template_name, context)
+
+@transaction.atomic
+@login_required
+def migrate_mentor(request):
+	mentor = get_object_or_404(Mentor, user=request.user)
+	mentor_fields = mentor.__dict__
+	new_user = mentor.user
+	field_exceptions = ['id','can_migrate','_state','date_modified', 'account_status']
+	payload = {}
+	for key,value in mentor_fields.items():
+		if key in field_exceptions:
+			continue
+		else:
+			payload[key] = value
+	#import pdb; pdb.set_trace()
+	try:
+		expert = Expert.objects.create(**payload)
+		mentor.delete()
+		messages.success(request, 'Congratulations "%s"!!!. You have successfully been migrated to an Expert.' % (expert.name))
+		return HttpResponseRedirect(reverse('expert:expert-profile', kwargs={'slug': expert.slug}))
+	except:
+		print(payload)
+	return HttpResponseRedirect(reverse('mentor:mentor-list'))
