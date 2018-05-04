@@ -91,6 +91,7 @@ class Expert(models.Model):
 	photo = models.ImageField(upload_to='uploads/%Y/%m/%d', blank=True)
 	background_image = models.ImageField(upload_to='uploads/%Y/%m/%d', blank=True)
 	age_range = models.CharField(max_length=5, choices=settings.AGE_RANGE_CHOICES, blank=True)
+	years_of_experience = models.PositiveIntegerField(null=True, blank=True)
 	industry = models.ForeignKey(Industry)
 	specify_industry = models.CharField('If Others, Specify', max_length=100, null=True, blank=True)
 	availability = models.CharField(max_length=20, choices=AVAILABILITY_CHOICES, blank=True)

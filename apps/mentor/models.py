@@ -49,6 +49,7 @@ class Mentor(models.Model):
 	slug = models.SlugField(max_length=255, unique=True, blank=True)
 	linkedin_url = models.URLField("Link to LinkedIn Bio/profile", null=True, blank=True)
 	account_status = models.CharField(max_length=1, default='A', choices=STATUS_CHOICES)
+	can_migrate = models.BooleanField(default=False)
 	date_created = models.DateTimeField(auto_now_add=True)
 	date_modified = models.DateTimeField(auto_now=True)
 	objects = MentorManager()

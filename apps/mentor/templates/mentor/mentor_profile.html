@@ -2,6 +2,24 @@
 {% load staticfiles thumbnail %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<style>
+	.butn{
+		border-radius: 25px; 
+		padding: 5px 20px; 
+		background: rgb(13, 83, 116);
+		color: #fff;
+		font-size: 13px;
+		transition: all .43s ease-in-out;
+		box-shadow: 7px 7px 15px 0 rgba(0,0,0,0.3);
+	}
+	.butn:hover{
+		color: #fff;
+		box-shadow: 2px 2px 6px 0 rgba(0,0,0,0.3);
+	}
+	p{
+		margin-bottom: 13px;
+	}
+</style>
 {% endblock %}
 {% block header %}
 	<h1>{{mentor.name}}</h1>
@@ -62,7 +80,7 @@
 					<div class="panel panel-default top-margin">
 						<div class="lc-detail">
 							<div>
-								<h3>Profile<span style="float: right; padding-right: 10px; font-size: 16px;">{% if user == mentor.user %} <a href="{% url 'mentor:edit' %}"><i class="fa fa-edit"></i> Edit</a></span>{% endif %}</h3>
+								<h3>Profile</h3>
 							</div>
 							<div class="col-md-6">
 								<p><strong>Area of expertise:</strong> 
@@ -86,6 +104,11 @@
 							<div class="col-md-6">
 								<p><strong>Last Active:</strong> <span>{{mentor.date_modified}}</span></p> 
 								<p><strong>Years of Experience:</strong> <span>{{mentor.years_of_experience}}</span></p>
+								{% if user == mentor.user %}
+									{% if mentor.can_migrate %}
+									<a class="butn" href="{% url 'mentor:migrate' %}">Migrate To Expert</a>
+									{% endif %}
+								{% endif %}
 							</div>
 						</div>
 					</div>
@@ -94,7 +117,7 @@
 			<div class="row">
 				<div class="panel panel-default top-margin">
 					<div class="div-header">
-						<h3><strong>Other mentors in {% if user == mentor.user %} your {% else %}{{mentor}}'s {% endif %}area of expertise</strong></h3>
+						<h2>Other Mentors in {% if user == mentor.user %} your {% else %}{{mentor}}'s {% endif %}area of expertise</h2>
 					</div>
 					<div class="row" style="padding: 5px 10px;">
 						{% for mentor in mentors_for_industry %}

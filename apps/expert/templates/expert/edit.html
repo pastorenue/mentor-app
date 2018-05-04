@@ -3,7 +3,7 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/profile.css' %}">
 <style>
-	select, input[type=text], input[type=email], input[type=url], input[type=file] {
+	select, input[type=text], input[type=number], input[type=email], input[type=url], input[type=file] {
 		height: 33px !important;
 		color: #000 !important;
 		border-color: #d5d5d5 !important;
@@ -56,7 +56,7 @@
 						<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
 							<div class="row" style="padding: 10px;">
 								<div class="col-md-6">
-									{% for field in form|slice:"0:6" %}
+									{% for field in form|slice:"0:8" %}
 									<div class="form-group">
 										<label for="{{field.id_for_label}}">{{field.label}}</label><br>
 										{{field}}
@@ -64,11 +64,20 @@
 									{% endfor %}
 								</div>
 								<div class="col-md-6">
-									{% for field in form|slice:"6:" %}
-									<div class="form-group">
+									{% for field in form|slice:"8:" %}
+									{% if field.html_name == 'linkedin_url' %}
+									<div class="form-group" style="position: relative;">
+										<label for="{{field.id_for_label}}">{{field.label}}</label><br>
+										<input class="form-control link-in" type="text" id="temp_url" {% if linkedin %}value="{{linkedin}}"{% endif %} placeholder="LinkedIn url e.g thebossofficeng">
+										<span class="link">https://www.linkedin.com/in/</span>
+									</div>
+									<input style="position: absolute; top: -1000px;"  type="url" id="{{field.id_for_label}}" name="{{field.html_name}}" placeholder="LinkedIn url e.g thebossofficeng">
+									{% else %
+									}<div class="form-group">
 										<label for="{{field.id_for_label}}">{{field.label}}</label><br>
 										{{field}}
 									</div>
+									{% endif %}
 									{% endfor %}
 								</div>
 								<div class="col-md-12">
@@ -78,29 +87,6 @@
 								</div>
 							</div>
 						</form>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="panel panel-default top-margin">
-					<div class="div-header">
-						<h3><strong>Other Mentors in {% if user == mentor.user %} Your {% else %}{{mentor.title}} {{mentor.user.first_name}}'s {% endif %} Area of Expertise</strong></h3>
-					</div>
-					<div class="row" style="padding: 5px 10px;">
-						{% for other_mentor in mentors_for_industry %}
-						<div class="col-sm-3">
-							<a href="{{other_mentor.get_public_url}}">
-								<div class="other-detail">
-									{% thumbnail other_mentor.photo "150x150" crop="top" as img %}
-									<img src="{{img.url}}" alt="">
-									{% endthumbnail %}
-									<h4>{{other_mentor}}</h4>
-								</div>
-							</a>
-						</div>
-						{% empty %}
-						<p style="text-align: center; margin: 20px auto;">Sorry! We couldn't find any other Mentors for similar expertise.</p>
-						{% endfor %}
 					</div>
 				</div>
 			</div>

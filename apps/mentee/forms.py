@@ -20,6 +20,7 @@ class MenteeForm(forms.ModelForm):
 		self.fields['name'].widget.attrs = {'class':'form-control'}
 		self.fields['age_range'].widget.attrs = {'class':'form-control'}
 		self.fields['industry'].widget.attrs = {'class':'form-control'}
+		self.fields['specify_industry'].widget.attrs = {'class':'form-control'}
 		self.fields['phone_number'].widget.attrs = {'class':'form-control'}
 		self.fields['year_of_commencement'].widget.attrs = {'class':'form-control'}
 		self.fields['time_with_mentor'].widget.attrs = {'class':'form-control'}

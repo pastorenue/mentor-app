@@ -25,7 +25,7 @@ class MentorForm(forms.ModelForm):
 
 	class Meta:
 		model = Mentor
-		exclude = ('user', 'slug', 'account_status')
+		exclude = ('user', 'slug', 'account_status', 'can_migrate')
 
 class BasicMentorForm(forms.ModelForm):
 

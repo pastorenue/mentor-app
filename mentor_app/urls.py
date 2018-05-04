@@ -54,6 +54,7 @@ urlpatterns = [
     url(r'^newsletters/', include('newsletters.urls', namespace='newsletters')),
     url(r'^notifications/', include('notifications.urls', namespace='notifications')),
     url(r'^messages/', include('django_messages.urls')),
+    url(r'^summernote/', include('django_summernote.urls')),
 ]
 
 handler404 = error_404
