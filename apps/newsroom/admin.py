@@ -6,7 +6,7 @@ from django.template.defaultfilters import slugify
 
 @admin.register(Entry)
 class EntryAdmin(SummernoteModelAdmin):
-	summernote_fields = ('content',)
+	fields = ('author','title','content')
 	
 
 	def save_model(self, request, obj, form, change):
