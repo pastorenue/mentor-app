@@ -4,7 +4,7 @@ chardet==3.0.4
 dj-database-url==0.4.2
 dj-static==0.0.6
 Django==1.11.4
-django-anymail==0.11.1
+django-anymail==1.2.1
 django-appconf==1.0.2
 django-extensions==1.9.9
 django-messages==0.5.3
